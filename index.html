@@ -3,435 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Philippe Starck | GCSE DT</title>
+  <title>Philippe Starck</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom right, #f4f7fb, #dde7f3);
-      color: #222;
-      line-height: 1.6;
     }
 
-    header {
-      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-      url('https://images.unsplash.com/photo-1519947486511-46149fa0a254?auto=format&fit=crop&w=1200&q=80');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      text-align: center;
-      padding: 90px 20px;
+    body, html {
+      height: 100%;
     }
 
-    header h1 {
-      font-size: 52px;
-      margin-bottom: 10px;
+    .hero {
+      height: 100vh;
+      background: url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1500&q=80") no-repeat center center/cover;
+      position: relative;
     }
 
-    header p {
-      font-size: 20px;
-    }
-
-    nav {
-      background: #111;
-      padding: 15px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 14px;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #ffd54f;
-    }
-
-    .container {
-      width: 88%;
-      max-width: 1100px;
-      margin: 35px auto;
-    }
-
-    .section {
-      background: white;
-      padding: 30px;
-      border-radius: 18px;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
-      margin-bottom: 30px;
-    }
-
-    h2 {
-      font-size: 30px;
-      margin-bottom: 18px;
-      color: #111;
-      border-left: 6px solid #ffd54f;
-      padding-left: 12px;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 25px;
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      display: flex;
+      justify-content: center;
       align-items: center;
-    }
-
-    .about-grid img {
-      width: 100%;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-
-    .cards, .materials-grid, .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .card, .material-box, .info-card {
-      background: linear-gradient(to bottom right, #ffffff, #f7f7f7);
-      border-radius: 14px;
-      padding: 20px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
-      border-top: 5px solid #ffd54f;
-    }
-
-    .quote {
-      background: linear-gradient(to right, #fff5cc, #ffe082);
-      padding: 20px;
-      border-radius: 12px;
-      font-style: italic;
-      font-size: 18px;
-      margin-top: 20px;
-    }
-
-    .highlight {
-      color: #c68a00;
-      font-weight: bold;
-    }
-
-    .fact-box, .quiz-box {
-      margin-top: 20px;
-      background: #f4f7fb;
-      padding: 18px;
-      border-radius: 12px;
-    }
-
-    .quiz-options button {
-      margin-right: 10px;
-      margin-bottom: 10px;
-    }
-
-    button {
-      background: #111;
-      color: white;
-      border: none;
-      padding: 14px 22px;
-      font-size: 16px;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-top: 15px;
-    }
-
-    button:hover {
-      background: #ffd54f;
-      color: #111;
-    }
-
-    ul {
-      padding-left: 20px;
-      margin-top: 10px;
-    }
-
-    li {
-      margin-bottom: 10px;
-    }
-
-    footer {
-      background: #111;
-      color: white;
       text-align: center;
+      color: white;
       padding: 20px;
-      margin-top: 30px;
-      font-size: 15px;
     }
 
-    .product-image {
-      width: 100%;
-      max-width: 420px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      display: block;
-      margin: 20px auto;
+    .hero-text h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
     }
 
-    @media (max-width: 850px) {
-      .about-grid {
-        grid-template-columns: 1fr;
+    .hero-text .subtitle {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    .hero-text .name {
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero-text h1 {
+        font-size: 2.5rem;
       }
 
-      header h1 {
-        font-size: 40px;
+      .hero-text .subtitle {
+        font-size: 1.2rem;
       }
 
-      header p {
-        font-size: 17px;
-      }
-
-      nav a {
-        display: inline-block;
-        margin: 8px 10px;
+      .hero-text .name {
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Philippe Starck</h1>
-    <p>GCSE Design & Technology | Famous Designers Project</p>
-  </header>
-
-  <nav>
-    <a href="#about">About</a>
-    <a href="#style">Style</a>
-    <a href="#products">Products</a>
-    <a href="#materials">Colours & Materials</a>
-    <a href="#importance">Importance</a>
-    <a href="#facts">Facts</a>
-    <a href="#juicy">Juicy Salif</a>
-    <a href="#quiz">Quiz</a>
-  </nav>
-
-  <div class="container">
-
-    <section class="section" id="about">
-      <h2>About Philippe Starck</h2>
-      <div class="about-grid">
-        <img src="https://www.starck.com/media/cache/thumb_800_0/uploads/media/default/0001/04/thumb_3558_default_big.jpeg" alt="Philippe Starck">
-        <div>
-          <p>
-            <span class="highlight">Philippe Starck</span> is a famous French designer known for
-            furniture, interiors and household products. His work often combines
-            <span class="highlight">function</span>, <span class="highlight">creativity</span>
-            and bold modern style.
-          </p>
-          <p style="margin-top:15px;">
-            He is important for GCSE DT because his products show how everyday objects can be both practical and visually striking.
-          </p>
-        </div>
+  <section class="hero">
+    <div class="overlay">
+      <div class="hero-text">
+        <h1>Philippe Starck</h1>
+        <p class="subtitle">GCSE Design & Technology | Famous Designers Project</p>
+        <p class="name">By Juju</p>
       </div>
-    </section>
-
-    <section class="section" id="style">
-      <h2>Design Style</h2>
-      <div class="cards">
-        <div class="card"><h3>Modern</h3><p>Clean shapes and simple forms.</p></div>
-        <div class="card"><h3>Creative</h3><p>Ordinary products look unusual and exciting.</p></div>
-        <div class="card"><h3>Functional</h3><p>Designed to be useful in everyday life.</p></div>
-        <div class="card"><h3>Innovative</h3><p>Experiments with materials and shape.</p></div>
-      </div>
-    </section>
-
-    <section class="section" id="products">
-      <h2>Famous Products</h2>
-      <ul>
-        <li><strong>Juicy Salif</strong> – a famous lemon squeezer with a tripod form.</li>
-        <li><strong>Louis Ghost Chair</strong> – a transparent modern chair.</li>
-        <li><strong>Interior Design</strong> – hotels, restaurants and stylish spaces.</li>
-        <li><strong>Household Products</strong> – furniture, bathroom items and kitchen products.</li>
-      </ul>
-      <div class="quote">
-        Philippe Starck’s work shows that products can be useful, artistic and memorable at the same time.
-      </div>
-    </section>
-
-    <section class="section" id="materials">
-      <h2>Colours and Materials</h2>
-      <div class="materials-grid">
-        <div class="material-box"><h3>Metallic Silver</h3><p>Creates a sleek, futuristic look.</p></div>
-        <div class="material-box"><h3>Transparent Plastic</h3><p>Gives products a light modern appearance.</p></div>
-        <div class="material-box"><h3>Black and Neutral Tones</h3><p>Feel elegant and sophisticated.</p></div>
-        <div class="material-box"><h3>Glossy Finishes</h3><p>Make products look eye-catching and premium.</p></div>
-      </div>
-    </section>
-
-    <section class="section" id="importance">
-      <h2>Why He Is Important</h2>
-      <p>
-        Philippe Starck is important because he changed the way people think about everyday
-        objects. He showed that products can be both <span class="highlight">useful</span> and
-        <span class="highlight">artistic</span>. His work combines creativity, function and innovation.
-      </p>
-    </section>
-
-    <section class="section" id="facts">
-      <h2>Quick Facts</h2>
-      <p>Click the button to show a random fact.</p>
-      <button onclick="showFact()">Show Fact</button>
-      <div class="fact-box" id="factBox">Your fact will appear here.</div>
-    </section>
-
-    <section class="section" id="juicy">
-      <h2>Juicy Salif</h2>
-      <p>
-        <span class="highlight">Juicy Salif</span> is one of Philippe Starck’s most famous products.
-        It is a lemon squeezer created for Alessi and is known for its unusual tripod shape and futuristic appearance.
-      </p>
-
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Juicy_Salif_and_lemon.jpg/800px-Juicy_Salif_and_lemon.jpg" alt="Juicy Salif lemon squeezer" class="product-image">
-
-      <div class="info-grid">
-        <div class="info-card"><h3>Designer</h3><p>Philippe Starck</p></div>
-        <div class="info-card"><h3>Manufacturer</h3><p>Alessi</p></div>
-        <div class="info-card"><h3>Material</h3><p>Cast aluminium</p></div>
-        <div class="info-card"><h3>Year</h3><p>1990</p></div>
-      </div>
-
-      <div class="info-grid">
-        <div class="info-card"><h3>Shape</h3><p>Tall, slim and tripod-like.</p></div>
-        <div class="info-card"><h3>Colour</h3><p>Silver metallic finish.</p></div>
-        <div class="info-card"><h3>Material Choice</h3><p>Aluminium is strong and lightweight.</p></div>
-        <div class="info-card"><h3>User Appeal</h3><p>Eye-catching and memorable.</p></div>
-      </div>
-
-      <div class="info-grid">
-        <div class="info-card">
-          <h3>Advantages</h3>
-          <ul>
-            <li>Very stylish and modern appearance</li>
-            <li>Easy to recognise and memorable</li>
-            <li>Strong material</li>
-            <li>Creative and original design</li>
-          </ul>
-        </div>
-        <div class="info-card">
-          <h3>Disadvantages</h3>
-          <ul>
-            <li>Not as practical as some other lemon squeezers</li>
-            <li>Can be harder to use</li>
-            <li>Sometimes valued more for looks than function</li>
-            <li>May be less comfortable for some users</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="quiz">
-      <h2>Mini Quiz</h2>
-      <p>Test your knowledge about Philippe Starck.</p>
-
-      <div class="quiz-box">
-        <p id="questionText"><strong>Question will appear here</strong></p>
-
-        <div class="quiz-options">
-          <button onclick="checkAnswer('A')" id="btnA">A</button>
-          <button onclick="checkAnswer('B')" id="btnB">B</button>
-          <button onclick="checkAnswer('C')" id="btnC">C</button>
-          <button onclick="checkAnswer('D')" id="btnD">D</button>
-        </div>
-
-        <div id="quizResult" style="margin-top:15px; font-weight:bold;">Click an answer to begin.</div>
-        <button onclick="nextQuestion()" style="margin-top:15px;">Next Question</button>
-
-        <div style="margin-top:15px; font-weight:bold;">
-          Score: <span id="score">0</span> / <span id="total">10</span>
-        </div>
-      </div>
-    </section>
-
-  </div>
-
-  <footer>
-    <p>Made for GCSE Design & Technology | Philippe Starck Project</p>
-  </footer>
-
-  <script>
-    const facts = [
-      "Philippe Starck is a French designer.",
-      "He is famous for designing Juicy Salif.",
-      "His designs are often modern, imaginative and practical.",
-      "He has designed furniture, interiors and household products.",
-      "The Louis Ghost Chair is one of his best-known chair designs."
-    ];
-
-    function showFact() {
-      const randomIndex = Math.floor(Math.random() * facts.length);
-      document.getElementById("factBox").innerText = facts[randomIndex];
-    }
-
-    const quizQuestions = [
-      { question: "1. What nationality is Philippe Starck?", A: "Italian", B: "French", C: "Spanish", D: "German", correct: "B" },
-      { question: "2. Which famous product was designed by Philippe Starck?", A: "Juicy Salif", B: "Anglepoise Lamp", C: "Mini Cooper", D: "Dyson Fan", correct: "A" },
-      { question: "3. What type of product is Juicy Salif?", A: "Chair", B: "Lamp", C: "Lemon squeezer", D: "Clock", correct: "C" },
-      { question: "4. Which company made Juicy Salif?", A: "IKEA", B: "Apple", C: "Kartell", D: "Alessi", correct: "D" },
-      { question: "5. What material is Juicy Salif mainly made from?", A: "Wood", B: "Cast aluminium", C: "Glass", D: "Rubber", correct: "B" },
-      { question: "6. Which word best describes Philippe Starck’s style?", A: "Old-fashioned", B: "Traditional", C: "Modern", D: "Boring", correct: "C" },
-      { question: "7. What is the Louis Ghost Chair known for?", A: "Being transparent", B: "Being made of stone", C: "Being very small", D: "Being made of cardboard", correct: "A" },
-      { question: "8. Philippe Starck is famous for designing...", A: "Only cars", B: "Only phones", C: "Furniture, interiors and products", D: "Only clothes", correct: "C" },
-      { question: "9. Why is Philippe Starck important in DT?", A: "He only copies old products", B: "He combines function and creativity", C: "He avoids unusual designs", D: "He only designs toys", correct: "B" },
-      { question: "10. Which finish is often linked to Starck’s products?", A: "Bright furry texture", B: "Rough muddy surface", C: "Sleek glossy finish", D: "Soft fabric only", correct: "C" }
-    ];
-
-    let currentQuestion = 0;
-    let score = 0;
-    let answered = false;
-
-    function loadQuestion() {
-      const q = quizQuestions[currentQuestion];
-      document.getElementById("questionText").innerHTML = "<strong>" + q.question + "</strong>";
-      document.getElementById("btnA").innerText = "A. " + q.A;
-      document.getElementById("btnB").innerText = "B. " + q.B;
-      document.getElementById("btnC").innerText = "C. " + q.C;
-      document.getElementById("btnD").innerText = "D. " + q.D;
-      document.getElementById("quizResult").innerText = "Choose one answer.";
-      answered = false;
-    }
-
-    function checkAnswer(answer) {
-      if (answered) return;
-      const q = quizQuestions[currentQuestion];
-
-      if (answer === q.correct) {
-        score++;
-        document.getElementById("quizResult").innerText = "Correct!";
-      } else {
-        document.getElementById("quizResult").innerText = "Wrong. The correct answer was " + q.correct + ".";
-      }
-
-      document.getElementById("score").innerText = score;
-      answered = true;
-    }
-
-    function nextQuestion() {
-      if (currentQuestion < quizQuestions.length - 1) {
-        currentQuestion++;
-        loadQuestion();
-      } else {
-        document.getElementById("questionText").innerHTML = "<strong>Quiz finished!</strong>";
-        document.getElementById("btnA").style.display = "none";
-        document.getElementById("btnB").style.display = "none";
-        document.getElementById("btnC").style.display = "none";
-        document.getElementById("btnD").style.display = "none";
-        document.getElementById("quizResult").innerText = "Your final score is " + score + " out of 10.";
-      }
-    }
-
-    document.getElementById("total").innerText = quizQuestions.length;
-    loadQuestion();
-  </script>
+    </div>
+  </section>
 
 </body>
 </html>
