@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Subject Master Page</title>
+  <title>Master Subjects Hub</title>
   <style>
     * {
       margin: 0;
@@ -13,102 +13,132 @@
     }
 
     body {
-      background: #f4f1ea;
+      background: linear-gradient(135deg, #eef3f8, #dfe8f2);
       color: #222;
       line-height: 1.6;
     }
 
     header {
-      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-      url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-      height: 50vh;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+      url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
       color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       text-align: center;
-      padding: 20px;
+      padding: 90px 20px;
     }
 
-    .hero-text h1 {
+    header h1 {
       font-size: 3rem;
       margin-bottom: 10px;
     }
 
-    .hero-text p {
-      font-size: 1.2rem;
+    header p {
+      font-size: 1.15rem;
     }
 
-    section {
-      max-width: 1100px;
-      margin: auto;
-      padding: 50px 20px;
-    }
-
-    h2 {
+    nav {
+      background: #111;
       text-align: center;
-      margin-bottom: 25px;
-      color: #2f3b2f;
-      font-size: 2rem;
+      padding: 15px;
     }
 
-    .cards {
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #ffd54f;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1150px;
+      margin: 40px auto;
+    }
+
+    .intro {
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
     }
 
     .card {
       background: white;
-      border-radius: 12px;
-      padding: 25px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: center;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
       transition: 0.3s;
     }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
     }
 
-    .card h3 {
-      margin-bottom: 12px;
-      color: #7a4e2d;
+    .card-image {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
     }
 
-    .card p {
+    .card-content {
+      padding: 22px;
+    }
+
+    .card-content h2 {
+      margin-bottom: 10px;
+      color: #111;
+    }
+
+    .card-content p {
       margin-bottom: 18px;
     }
 
     .btn {
       display: inline-block;
-      text-decoration: none;
-      background: #2f3b2f;
+      background: #111;
       color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 10px;
       font-weight: bold;
     }
 
     .btn:hover {
-      background: #1e261e;
+      background: #ffd54f;
+      color: #111;
     }
 
     footer {
-      background: #1e261e;
+      background: #111;
       color: white;
       text-align: center;
-      padding: 20px;
+      padding: 18px;
       margin-top: 40px;
     }
 
     @media (max-width: 768px) {
-      .hero-text h1 {
+      header h1 {
         font-size: 2.2rem;
       }
 
-      .hero-text p {
+      header p {
         font-size: 1rem;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 8px 10px;
       }
     }
   </style>
@@ -116,37 +146,64 @@
 <body>
 
   <header>
-    <div class="hero-text">
-      <h1>Subject Master Page</h1>
-      <p>Choose a subject to open its webpage.</p>
-    </div>
+    <h1>Master Subjects Hub</h1>
+    <p>Click a subject below to open its own page.</p>
   </header>
 
-  <section>
-    <h2>Subjects</h2>
-    <div class="cards">
+  <nav>
+    <a href="dt.html">DT</a>
+    <a href="a2b.html">A2B</a>
+    <a href="history.html">History</a>
+    <a href="engineering.html">Engineering</a>
+  </nav>
+
+  <div class="container">
+    <section class="intro">
+      <h2>Welcome</h2>
+      <p>This is the main page for all your subjects. Click a button below to open each website page.</p>
+    </section>
+
+    <section class="grid">
       <div class="card">
-        <h3>A2B</h3>
-        <p>Online safety, digital skills, and responsible use of technology.</p>
-        <a class="btn" href="./A2B.html">Open A2B</a>
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1519947486511-46149fa0a254?auto=format&fit=crop&w=1200&q=80');"></div>
+        <div class="card-content">
+          <h2>DT</h2>
+          <p>Philippe Starck and Design Technology work.</p>
+          <a class="btn" href="dt.html">Open DT Page</a>
+        </div>
       </div>
 
       <div class="card">
-        <h3>History</h3>
-        <p>Explore the life of soldiers and key events from the past.</p>
-        <a class="btn" href="./History.html">Open History</a>
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=80');"></div>
+        <div class="card-content">
+          <h2>A2B</h2>
+          <p>Online safety, digital skills, and responsible use of technology.</p>
+          <a class="btn" href="a2b.html">Open A2B Page</a>
+        </div>
       </div>
 
       <div class="card">
-        <h3>DT</h3>
-        <p>Learn about Philippe Starck and famous design work.</p>
-        <a class="btn" href="./DT.html">Open DT</a>
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1400&q=80');"></div>
+        <div class="card-content">
+          <h2>History</h2>
+          <p>Life of soldiers and historical learning page.</p>
+          <a class="btn" href="history.html">Open History Page</a>
+        </div>
       </div>
-    </div>
-  </section>
+
+      <div class="card">
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=80');"></div>
+        <div class="card-content">
+          <h2>Engineering</h2>
+          <p>Open your engineering subject page.</p>
+          <a class="btn" href="engineering.html">Open Engineering Page</a>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <footer>
-    <p>&copy; 2026 Subject Master Page</p>
+    Master Subjects Hub
   </footer>
 
 </body>
