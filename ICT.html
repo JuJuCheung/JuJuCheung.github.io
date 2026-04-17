@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICT | GCSE Project</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #f4f7fb, #dde7f3);
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+      url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 90px 20px;
+    }
+
+    header h1 {
+      font-size: 52px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 20px;
+    }
+
+    nav {
+      background: #111;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 14px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #4fc3f7;
+    }
+
+    .container {
+      width: 88%;
+      max-width: 1100px;
+      margin: 35px auto;
+    }
+
+    .section {
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-size: 30px;
+      margin-bottom: 18px;
+      color: #111;
+      border-left: 6px solid #4fc3f7;
+      padding-left: 12px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .about-grid img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .cards, .materials-grid, .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card, .material-box, .info-card {
+      background: linear-gradient(to bottom right, #ffffff, #f7f7f7);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+      border-top: 5px solid #4fc3f7;
+    }
+
+    .quote {
+      background: linear-gradient(to right, #dff6ff, #b3e5fc);
+      padding: 20px;
+      border-radius: 12px;
+      font-style: italic;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    .highlight {
+      color: #0277bd;
+      font-weight: bold;
+    }
+
+    .fact-box, .quiz-box, .achievement-box {
+      margin-top: 20px;
+      background: #f4f7fb;
+      padding: 18px;
+      border-radius: 12px;
+    }
+
+    .achievement-box {
+      display: none;
+      text-align: center;
+      border: 2px solid #4fc3f7;
+      background: linear-gradient(to right, #e1f5fe, #b3e5fc);
+      color: #111;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .quiz-options button {
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background: #111;
+      color: white;
+      border: none;
+      padding: 14px 22px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background: #4fc3f7;
+      color: #111;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+      font-size: 15px;
+    }
+
+    .product-image {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      display: block;
+      margin: 20px auto;
+    }
+
+    @media (max-width: 850px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 40px;
+      }
+
+      header p {
+        font-size: 17px;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 8px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Information and Communication Technology</h1>
+    <p>GCSE ICT Project</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#types">Areas</a>
+    <a href="#uses">Uses</a>
+    <a href="#tools">Tools</a>
+    <a href="#importance">Importance</a>
+    <a href="#facts">Facts</a>
+    <a href="#internet">Internet Safety</a>
+    <a href="#quiz">Quiz</a>
+  </nav>
+
+  <div class="container">
+
+    <section class="section" id="about">
+      <h2>About ICT</h2>
+      <div class="about-grid">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="ICT">
+        <div>
+          <p>
+            <span class="highlight">ICT</span> stands for
+            <span class="highlight">Information and Communication Technology</span>.
+            It is about using computers and digital systems to store, process and share information.
+          </p>
+          <p style="margin-top:15px;">
+            ICT is important in school and everyday life because it helps people communicate,
+            complete work, learn new skills and stay connected across the world.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="types">
+      <h2>Main Areas of ICT</h2>
+      <div class="cards">
+        <div class="card"><h3>Communication</h3><p>Emails, messaging, video calls and social media help people communicate quickly.</p></div>
+        <div class="card"><h3>Data Storage</h3><p>Files can be saved on hard drives, USB sticks and cloud storage systems.</p></div>
+        <div class="card"><h3>Networking</h3><p>Networks connect devices so they can share information and resources.</p></div>
+        <div class="card"><h3>Cyber Security</h3><p>Protects devices, data and accounts from threats such as hacking and viruses.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="uses">
+      <h2>How ICT Is Used</h2>
+      <ul>
+        <li><strong>Education</strong> – students use ICT for research, presentations and online learning.</li>
+        <li><strong>Business</strong> – companies use computers for communication, finance and records.</li>
+        <li><strong>Healthcare</strong> – ICT helps store patient information and improve services.</li>
+        <li><strong>Entertainment</strong> – streaming, gaming and media all use ICT systems.</li>
+      </ul>
+      <div class="quote">
+        ICT makes it easier to communicate, learn, work and solve problems in modern life.
+      </div>
+    </section>
+
+    <section class="section" id="tools">
+      <h2>Tools Used in ICT</h2>
+      <div class="materials-grid">
+        <div class="material-box"><h3>Computers</h3><p>Used to create documents, browse the internet and run software.</p></div>
+        <div class="material-box"><h3>Smartphones</h3><p>Useful for communication, apps and accessing information anywhere.</p></div>
+        <div class="material-box"><h3>Routers</h3><p>Connect devices to the internet and help create networks.</p></div>
+        <div class="material-box"><h3>Cloud Storage</h3><p>Lets users save files online and access them from different devices.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="importance">
+      <h2>Why ICT Is Important</h2>
+      <p>
+        ICT is important because it helps people work faster, share information and solve problems.
+        It is used in schools, businesses, hospitals and homes every day.
+        Good ICT use combines <span class="highlight">communication</span>,
+        <span class="highlight">efficiency</span> and <span class="highlight">safety</span>.
+      </p>
+    </section>
+
+    <section class="section" id="facts">
+      <h2>Quick Facts</h2>
+      <p>Click the button to show a random fact.</p>
+      <button onclick="showFact()">Show Fact</button>
+      <div class="fact-box" id="factBox">Your fact will appear here.</div>
+    </section>
+
+    <section class="section" id="internet">
+      <h2>Internet Safety Example</h2>
+      <p>
+        <span class="highlight">Internet safety</span> is a very important part of ICT.
+        People should use strong passwords, avoid suspicious links and never share personal information online.
+        Safe ICT use helps protect users from scams, viruses and cyberbullying.
+      </p>
+
+      <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80" alt="Internet safety" class="product-image">
+
+      <div class="info-grid">
+        <div class="info-card"><h3>Topic</h3><p>Internet Safety</p></div>
+        <div class="info-card"><h3>Main Purpose</h3><p>To protect users and information online</p></div>
+        <div class="info-card"><h3>Main Tools</h3><p>Passwords, antivirus and secure websites</p></div>
+        <div class="info-card"><h3>Key Feature</h3><p>Protection and awareness</p></div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card"><h3>Risks</h3><p>Viruses, scams, cyberbullying and hackers.</p></div>
+        <div class="info-card"><h3>Protection</h3><p>Use strong passwords and think before clicking links.</p></div>
+        <div class="info-card"><h3>Safety</h3><p>Never share personal details with strangers online.</p></div>
+        <div class="info-card"><h3>User Need</h3><p>Safe and responsible internet use.</p></div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Advantages</h3>
+          <ul>
+            <li>Helps protect personal information</li>
+            <li>Reduces the risk of scams</li>
+            <li>Keeps devices safer from viruses</li>
+            <li>Encourages responsible online behaviour</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>Disadvantages</h3>
+          <ul>
+            <li>People may forget safety rules</li>
+            <li>Weak passwords can be risky</li>
+            <li>Unsafe websites can cause problems</li>
+            <li>Scammers can trick users easily</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="quiz">
+      <h2>Mini Quiz</h2>
+      <p>Test your knowledge about ICT.</p>
+
+      <div class="quiz-box">
+        <p id="questionText"><strong>Question will appear here</strong></p>
+
+        <div class="quiz-options">
+          <button onclick="checkAnswer('A')" id="btnA">A</button>
+          <button onclick="checkAnswer('B')" id="btnB">B</button>
+          <button onclick="checkAnswer('C')" id="btnC">C</button>
+          <button onclick="checkAnswer('D')" id="btnD">D</button>
+        </div>
+
+        <div id="quizResult" style="margin-top:15px; font-weight:bold;">Click an answer to begin.</div>
+
+        <button onclick="nextQuestion()" id="nextBtn" style="margin-top:15px;">Next Question</button>
+
+        <div style="margin-top:15px; font-weight:bold;">
+          Score: <span id="score">0</span> / <span id="total">10</span>
+        </div>
+
+        <div class="achievement-box" id="achievementBox">
+          🏆 ICT Expert Achievement Unlocked!
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>Made for GCSE ICT Project</p>
+  </footer>
+
+  <script>
+    const facts = [
+      "ICT stands for Information and Communication Technology.",
+      "The internet allows computers around the world to connect and share data.",
+      "Cloud storage lets people save files online.",
+      "Cyber security helps protect computers and information.",
+      "ICT is used in schools, businesses, hospitals and homes."
+    ];
+
+    function showFact() {
+      const randomIndex = Math.floor(Math.random() * facts.length);
+      document.getElementById("factBox").innerText = facts[randomIndex];
+    }
+
+    const quizQuestions = [
+      { question: "1. What does ICT stand for?", A: "Internet and Computer Tools", B: "Information and Communication Technology", C: "International Computer Training", D: "Input and Control Technology", correct: "B" },
+      { question: "2. Which device is often used to connect to the internet?", A: "Router", B: "Chair", C: "Book", D: "Pen", correct: "A" },
+      { question: "3. What should you use to help protect an account?", A: "A weak password", B: "A strong password", C: "No password", D: "Someone else's password", correct: "B" },
+      { question: "4. What does cloud storage do?", A: "Stores files online", B: "Prints documents", C: "Deletes the internet", D: "Builds computers", correct: "A" },
+      { question: "5. Which of these is an online danger?", A: "Scams", B: "Homework", C: "Pencils", D: "Posters", correct: "A" },
+      { question: "6. What is cyberbullying?", A: "Fixing computers", B: "Bullying using technology", C: "Writing code", D: "Sending homework", correct: "B" },
+      { question: "7. What should you do before clicking a link?", A: "Click quickly", B: "Think first", C: "Share it with strangers", D: "Ignore safety", correct: "B" },
+      { question: "8. Which of these helps connect devices in a network?", A: "Router", B: "Pillow", C: "Ruler", D: "Shoe", correct: "A" },
+      { question: "9. Why is ICT important?", A: "It wastes time", B: "It helps people communicate and work", C: "It stops all learning", D: "It only works in games", correct: "B" },
+      { question: "10. What is the purpose of cyber security?", A: "To damage computers", B: "To protect data and devices", C: "To slow down the internet", D: "To delete all files", correct: "B" }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+    let quizFinished = false;
+
+    function loadQuestion() {
+      const q = quizQuestions[currentQuestion];
+      document.getElementById("questionText").innerHTML = "<strong>" + q.question + "</strong>";
+      document.getElementById("btnA").innerText = "A. " + q.A;
+      document.getElementById("btnB").innerText = "B. " + q.B;
+      document.getElementById("btnC").innerText = "C. " + q.C;
+      document.getElementById("btnD").innerText = "D. " + q.D;
+      document.getElementById("quizResult").innerText = "Choose one answer.";
+
+      document.getElementById("btnA").style.display = "inline-block";
+      document.getElementById("btnB").style.display = "inline-block";
+      document.getElementById("btnC").style.display = "inline-block";
+      document.getElementById("btnD").style.display = "inline-block";
+
+      document.getElementById("nextBtn").innerText = "Next Question";
+      document.getElementById("achievementBox").style.display = "none";
+
+      answered = false;
+      quizFinished = false;
+    }
+
+    function checkAnswer(answer) {
+      if (answered || quizFinished) return;
+
+      const q = quizQuestions[currentQuestion];
+
+      if (answer === q.correct) {
+        score++;
+        document.getElementById("quizResult").innerText = "Correct!";
+      } else {
+        document.getElementById("quizResult").innerText = "Wrong. The correct answer was " + q.correct + ".";
+      }
+
+      document.getElementById("score").innerText = score;
+      answered = true;
+    }
+
+    function nextQuestion() {
+      if (quizFinished) {
+        restartQuiz();
+        return;
+      }
+
+      if (!answered) {
+        document.getElementById("quizResult").innerText = "Please answer the question first.";
+        return;
+      }
+
+      if (currentQuestion < quizQuestions.length - 1) {
+        currentQuestion++;
+        loadQuestion();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function finishQuiz() {
+      quizFinished = true;
+
+      document.getElementById("questionText").innerHTML = "<strong>Quiz finished!</strong>";
+      document.getElementById("btnA").style.display = "none";
+      document.getElementById("btnB").style.display = "none";
+      document.getElementById("btnC").style.display = "none";
+      document.getElementById("btnD").style.display = "none";
+
+      document.getElementById("quizResult").innerText = "Your final score is " + score + " out of " + quizQuestions.length + ".";
+
+      if (score === quizQuestions.length) {
+        document.getElementById("achievementBox").style.display = "block";
+      }
+
+      document.getElementById("nextBtn").innerText = "Restart Quiz";
+    }
+
+    function restartQuiz() {
+      currentQuestion = 0;
+      score = 0;
+      answered = false;
+      quizFinished = false;
+
+      document.getElementById("score").innerText = score;
+      loadQuestion();
+    }
+
+    document.getElementById("total").innerText = quizQuestions.length;
+    loadQuestion();
+  </script>
+
+</body>
+</html>
