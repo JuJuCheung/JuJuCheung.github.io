@@ -384,57 +384,58 @@
 
   <script>
     const quizData = [
-      {
-        question: "1. Why is it important to keep your password private?",
-        answers: ["A. It prevents others from accessing your personal accounts", "B. It makes your internet faster", "C. It improves website design", "D. It helps you remember it better"],
-        correct: 0
-      },
-      {
-        question: "2. Which option best explains why strong passwords are important?",
-        answers: ["A. They make logging in easier", "B. They help protect accounts from being hacked", "C. They reduce internet costs", "D. They are required for games only"],
-        correct: 1
-      },
-      {
-        question: "3. What is the safest action if a stranger asks for personal information online?",
-        answers: ["A. Give limited information", "B. Ignore them and tell a trusted adult", "C. Ask them questions first", "D. Send something else instead"],
-        correct: 1
-      },
-      {
-        question: "4. Why should personal information be protected online?",
-        answers: ["A. It can be shared or misused without your permission", "B. It disappears quickly anyway", "C. Only strangers can see it", "D. It improves online games"],
-        correct: 0
-      },
-      {
-        question: "5. What should you consider before clicking a link?",
-        answers: ["A. Whether it looks interesting", "B. Whether it comes from a trusted and safe source", "C. Whether your friends clicked it", "D. Whether it loads quickly"],
-        correct: 1
-      },
-      {
-        question: "6. What is the main problem with cyberbullying?",
-        answers: ["A. It uses technology too much", "B. It can harm someone's feelings and well-being", "C. It makes the internet slower", "D. It only happens in games"],
-        correct: 1
-      },
-      {
-        question: "7. What is the most responsible way to deal with mean online messages?",
-        answers: ["A. Reply angrily", "B. Ignore them forever", "C. Block, report, and tell a trusted adult", "D. Share them with others"],
-        correct: 2
-      },
-      {
-        question: "8. Why is it important to check if information online is reliable?",
-        answers: ["A. Not all information online is true or trustworthy", "B. It helps websites load faster", "C. It makes searching easier", "D. It is only needed for homework"],
-        correct: 0
-      },
-      {
-        question: "9. Why should you think carefully before posting online?",
-        answers: ["A. Posts can be shared and may stay online permanently", "B. Posts are always deleted quickly", "C. Only friends can see posts", "D. The internet is always private"],
-        correct: 0
-      },
-      {
-        question: "10. What is the best response if something online feels unsafe?",
-        answers: ["A. Keep it secret", "B. Try to solve it alone", "C. Tell a trusted adult and use report/block tools", "D. Share it with friends"],
-        correct: 2
-      }
-    ];
+      const quizData = [
+  {
+    question: "1. Why is reusing the same password across multiple accounts dangerous?",
+    answers: ["A. It makes login faster", "B. If one account is hacked, other accounts may be hacked too", "C. It improves security", "D. It hides your username"],
+    correct: 1
+  },
+  {
+    question: "2. Which is the strongest sign that a message could be phishing?",
+    answers: ["A. It uses your name", "B. It asks urgently for personal or login details", "C. It has a logo", "D. It is short"],
+    correct: 1
+  },
+  {
+    question: "3. Why is two-factor authentication useful?",
+    answers: ["A. It removes the need for passwords", "B. It adds another step to prove it is really you", "C. It makes websites load faster", "D. It shares your account safely"],
+    correct: 1
+  },
+  {
+    question: "4. What is a digital footprint?",
+    answers: ["A. A mark on your keyboard", "B. The trail of information you leave online", "C. Your computer’s memory", "D. Your internet speed"],
+    correct: 1
+  },
+  {
+    question: "5. What should you check before trusting information online?",
+    answers: ["A. Whether it looks colourful", "B. Whether it is from a reliable source", "C. Whether it has many emojis", "D. Whether it loads quickly"],
+    correct: 1
+  },
+  {
+    question: "6. Why can public Wi-Fi be unsafe?",
+    answers: ["A. It is always too slow", "B. Other people may be able to view or steal data", "C. It deletes apps", "D. It blocks passwords"],
+    correct: 1
+  },
+  {
+    question: "7. What is the safest action if you receive a suspicious link?",
+    answers: ["A. Click it quickly", "B. Send it to friends", "C. Check the source before clicking", "D. Reply with your password"],
+    correct: 2
+  },
+  {
+    question: "8. Why should you think before posting a photo online?",
+    answers: ["A. It may stay online and affect your privacy", "B. It makes your phone slower", "C. It always disappears after one day", "D. It cannot be copied"],
+    correct: 0
+  },
+  {
+    question: "9. What should you do if cyberbullying happens?",
+    answers: ["A. Reply angrily", "B. Keep it secret", "C. Report it, block the person, and tell a trusted adult", "D. Share it everywhere"],
+    correct: 2
+  },
+  {
+    question: "10. What does a strong password usually include?",
+    answers: ["A. Only your name", "B. A mix of letters, numbers, and symbols", "C. The word password", "D. Your birthday only"],
+    correct: 1
+  }
+];
 
     let currentQuestion = 0;
     let score = 0;
