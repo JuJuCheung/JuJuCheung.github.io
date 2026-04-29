@@ -2,74 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Life of Soldiers</title>
-
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f1ea;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: #f4f1ea; color: #222; line-height: 1.6; }
 
     header {
-      background: #2f3b2f;
-      color: white;
-      padding: 40px;
-      text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+      url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      height: 60vh; color: white; display: flex; align-items: center; justify-content: center; text-align: center;
     }
 
-    nav {
-      background: #1e261e;
-      padding: 10px;
-      text-align: center;
-    }
+    .hero-text { max-width: 800px; padding: 20px; }
+    .hero-text h1 { font-size: 3rem; margin-bottom: 10px; }
+    .hero-text p { font-size: 1.2rem; }
 
-    nav a {
-      color: white;
-      margin: 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+    nav { background: #2f3b2f; padding: 15px; text-align: center; }
+    nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
+    nav a:hover { color: #d4b483; }
 
-    section {
-      padding: 30px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    h2 {
-      text-align: center;
-      color: #2f3b2f;
-    }
+    section { padding: 50px 20px; max-width: 1100px; margin: auto; }
+    h2 { text-align: center; margin-bottom: 20px; color: #2f3b2f; font-size: 2rem; }
 
     .quiz-wrapper {
-      background: #f3f4f7;
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 20px;
+      max-width: 650px; margin: 20px auto;
+      background: #f3f4f7; padding: 18px;
+      border-radius: 12px;
     }
 
     .answers {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 20px;
     }
 
     .answer-btn {
+      background: #0b0b0b;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      cursor: pointer;
+    }
+
+    .answer-btn.correct { background: green; }
+    .answer-btn.wrong { background: crimson; }
+
+    .next-btn {
       background: black;
       color: white;
-      padding: 10px;
       border: none;
+      padding: 12px 20px;
       border-radius: 10px;
       cursor: pointer;
     }
 
-    .correct { background: green; }
-    .wrong { background: crimson; }
+    .result-box {
+      text-align: center;
+      padding: 20px;
+    }
 
-    .next-btn {
-      margin-top: 15px;
+    .restart-btn {
+      margin-top: 10px;
       padding: 10px 20px;
       background: black;
       color: white;
@@ -77,19 +73,16 @@
       border-radius: 10px;
       cursor: pointer;
     }
-
-    .score {
-      margin-top: 10px;
-      font-weight: bold;
-    }
   </style>
 </head>
 
 <body>
 
 <header>
-  <h1>Life of Soldiers</h1>
-  <p>Explore the struggles, courage, and sacrifices of soldiers.</p>
+  <div class="hero-text">
+    <h1>Life of Soldiers</h1>
+    <p>Exploring the daily struggles, courage, and sacrifices of soldiers.</p>
+  </div>
 </header>
 
 <nav>
@@ -97,121 +90,31 @@
 </nav>
 
 <section id="quiz">
-  <h2>Harder Soldier Quiz</h2>
+  <h2>Soldier Life Quiz</h2>
 
   <div class="quiz-wrapper">
     <div id="quiz-container">
       <div id="question"></div>
       <div class="answers" id="answers"></div>
       <p id="statusText">Choose one answer.</p>
-      <button class="next-btn" id="nextBtn">Next</button>
-      <div class="score">Score: <span id="score">0 / 10</span></div>
+      <button class="next-btn" id="nextBtn">Next Question</button>
+      <div>Score: <span id="score">0 / 10</span></div>
     </div>
   </div>
 </section>
 
 <script>
 const quizData = [
-  {
-    question: "1. Why was training essential for soldiers?",
-    answers: [
-      "A. Entertainment",
-      "B. Discipline, strength, teamwork",
-      "C. Avoiding war",
-      "D. Free time"
-    ],
-    correct: 1
-  },
-  {
-    question: "2. What impact did limited food have?",
-    answers: [
-      "A. Made them stronger",
-      "B. No effect",
-      "C. Reduced energy & morale",
-      "D. Improved diet"
-    ],
-    correct: 2
-  },
-  {
-    question: "3. Why were trenches dangerous?",
-    answers: [
-      "A. Too comfortable",
-      "B. Disease, mud, enemy fire",
-      "C. Too much food",
-      "D. Used for rest"
-    ],
-    correct: 1
-  },
-  {
-    question: "4. What emotional struggle was common?",
-    answers: [
-      "A. Happiness",
-      "B. Homesickness",
-      "C. No emotions",
-      "D. Excitement"
-    ],
-    correct: 1
-  },
-  {
-    question: "5. Why were letters important?",
-    answers: [
-      "A. Emotional support",
-      "B. Orders",
-      "C. Maps",
-      "D. Food"
-    ],
-    correct: 0
-  },
-  {
-    question: "6. Why is teamwork important?",
-    answers: [
-      "A. No reason",
-      "B. Slows soldiers",
-      "C. Helps survival",
-      "D. Reduces discipline"
-    ],
-    correct: 2
-  },
-  {
-    question: "7. What does endurance mean?",
-    answers: [
-      "A. Giving up",
-      "B. Avoiding work",
-      "C. Surviving hardship",
-      "D. Comfort"
-    ],
-    correct: 2
-  },
-  {
-    question: "8. How did modern tech affect soldiers?",
-    answers: [
-      "A. Removed danger",
-      "B. No training needed",
-      "C. Advanced weapons/tools",
-      "D. Reduced teamwork"
-    ],
-    correct: 2
-  },
-  {
-    question: "9. Why are friendships important?",
-    answers: [
-      "A. Avoid work",
-      "B. Compete",
-      "C. Support each other",
-      "D. Replace training"
-    ],
-    correct: 2
-  },
-  {
-    question: "10. What describes soldier life best?",
-    answers: [
-      "A. Easy",
-      "B. Luxury",
-      "C. Sacrifice & challenge",
-      "D. Entertainment"
-    ],
-    correct: 2
-  }
+  { question: "1. Why was training essential for soldiers?", answers: ["A. Entertainment","B. Discipline & teamwork","C. Free time","D. Avoid war"], correct: 1 },
+  { question: "2. Limited food affected soldiers by:", answers: ["A. Improving strength","B. No effect","C. Lowering energy","D. Making them faster"], correct: 2 },
+  { question: "3. Trench warfare was dangerous because:", answers: ["A. Comfort","B. Disease & attacks","C. Safety","D. Food supply"], correct: 1 },
+  { question: "4. Common emotional struggle:", answers: ["A. Happiness","B. Homesickness","C. No emotion","D. Excitement"], correct: 1 },
+  { question: "5. Letters from home:", answers: ["A. Orders","B. Emotional support","C. Weapons","D. Maps"], correct: 1 },
+  { question: "6. Teamwork helped soldiers:", answers: ["A. Fail","B. Survive","C. Relax","D. Compete"], correct: 1 },
+  { question: "7. Endurance means:", answers: ["A. Giving up","B. Surviving hardship","C. Comfort","D. Avoiding work"], correct: 1 },
+  { question: "8. Modern tech:", answers: ["A. Removes danger","B. Advanced tools","C. No training","D. Less teamwork"], correct: 1 },
+  { question: "9. Friendships:", answers: ["A. Competition","B. Support","C. Avoid work","D. Replace training"], correct: 1 },
+  { question: "10. Soldier life:", answers: ["A. Easy","B. Luxury","C. Sacrifice","D. Fun"], correct: 2 }
 ];
 
 let currentQuestion = 0;
@@ -264,9 +167,26 @@ nextBtn.onclick = () => {
   if (currentQuestion < quizData.length) {
     loadQuestion();
   } else {
-    quizContainer.innerHTML = `<h2>Final Score: ${score}/10</h2>`;
+    showResult();
   }
 };
+
+function showResult() {
+  let achievement = "";
+
+  if (score === 10) {
+    achievement = "🏆 History Teacher Achievement Unlocked!";
+  }
+
+  quizContainer.innerHTML = `
+    <div class="result-box">
+      <h2>Quiz Complete</h2>
+      <p>You got <strong>${score}</strong> out of <strong>10</strong>.</p>
+      ${achievement ? `<h3 style="color:gold;">${achievement}</h3>` : ""}
+      <button class="restart-btn" onclick="location.reload()">Restart Quiz</button>
+    </div>
+  `;
+}
 
 loadQuestion();
 </script>
