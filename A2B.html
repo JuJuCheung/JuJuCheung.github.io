@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>A2B Subject</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
     body {
       background: #f4f1ea;
@@ -24,9 +29,19 @@
       text-align: center;
     }
 
-    .hero-text { max-width: 800px; padding: 20px; }
-    .hero-text h1 { font-size: 3rem; margin-bottom: 10px; }
-    .hero-text p { font-size: 1.2rem; }
+    .hero-text {
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+    }
 
     nav {
       background: #2f3b2f;
@@ -41,7 +56,9 @@
       font-weight: bold;
     }
 
-    nav a:hover { color: #d4b483; }
+    nav a:hover {
+      color: #d4b483;
+    }
 
     section {
       padding: 50px 20px;
@@ -68,11 +85,31 @@
       border-radius: 10px;
       padding: 20px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #7a4e2d;
     }
 
     .timeline {
       border-left: 4px solid #7a4e2d;
+      margin-top: 20px;
       padding-left: 20px;
+    }
+
+    .timeline-item {
+      margin-bottom: 25px;
+    }
+
+    .timeline-item h4 {
+      color: #2f3b2f;
+      margin-bottom: 5px;
     }
 
     .quote {
@@ -82,6 +119,24 @@
       text-align: center;
       border-radius: 10px;
       margin-top: 30px;
+      font-style: italic;
+      font-size: 1.2rem;
+    }
+
+    footer {
+      background: #1e261e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    .quiz-top-text {
+      max-width: 650px;
+      margin: 0 auto 10px;
+      font-size: 16px;
+      color: #222;
+      text-align: left;
     }
 
     .quiz-wrapper {
@@ -90,13 +145,22 @@
       background: #f3f4f7;
       padding: 18px;
       border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .question {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 18px;
+      line-height: 1.5;
+      color: #111;
     }
 
     .answers {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 14px;
-      margin-bottom: 20px;
+      margin-bottom: 26px;
     }
 
     .answer-btn {
@@ -104,20 +168,77 @@
       color: white;
       border: none;
       border-radius: 12px;
-      padding: 14px;
+      padding: 14px 10px;
+      font-size: 15px;
       cursor: pointer;
+      transition: 0.2s;
     }
 
-    .answer-btn.correct { background: green; }
-    .answer-btn.wrong { background: crimson; }
+    .answer-btn:hover {
+      opacity: 0.9;
+    }
+
+    .answer-btn:disabled {
+      opacity: 1;
+      cursor: default;
+    }
+
+    .answer-btn.correct {
+      background: green;
+    }
+
+    .answer-btn.wrong {
+      background: crimson;
+    }
+
+    .status-text {
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 18px;
+      color: #111;
+    }
 
     .next-btn {
-      padding: 12px 20px;
-      background: black;
+      background: #0b0b0b;
       color: white;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
+      padding: 14px 24px;
+      font-size: 15px;
       cursor: pointer;
+      margin-bottom: 18px;
+    }
+
+    .score {
+      font-size: 16px;
+      font-weight: bold;
+      color: #111;
+    }
+
+    .score span {
+      color: #1a3d8f;
+    }
+
+    .result-box {
+      text-align: center;
+      padding: 20px 10px;
+      color: #111;
+    }
+
+    .result-box h2 {
+      margin-bottom: 10px;
+      color: #2f3b2f;
+    }
+
+    .restart-btn {
+      background: #0b0b0b;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 24px;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 15px;
     }
 
     .achievement {
@@ -126,157 +247,291 @@
       border-radius: 12px;
       background: #fff4cc;
       border: 2px solid #d4b483;
+      color: #222;
       font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-text p {
+        font-size: 1rem;
+      }
+
+      .answers {
+        grid-template-columns: 1fr 1fr;
+      }
     }
   </style>
 </head>
-
 <body>
 
-<header>
-  <div class="hero-text">
-    <h1>A2B Subject</h1>
-    <p>Exploring online safety and digital responsibility.</p>
-  </div>
-</header>
-
-<section id="quiz">
-  <h2>A2B Quiz</h2>
-
-  <div class="quiz-wrapper">
-    <div id="quiz-container">
-      <div id="question"></div>
-      <div class="answers" id="answers"></div>
-      <p id="statusText">Choose one answer.</p>
-      <button class="next-btn" id="nextBtn">Next Question</button>
-      <div>Score: <span id="score">0 / 10</span></div>
+  <header>
+    <div class="hero-text">
+      <h1>A2B Subject</h1>
+      <p>Exploring online safety, digital skills, and responsible use of technology.</p>
     </div>
-  </div>
-</section>
+  </header>
 
-<script>
-const quizData = [
-  {
-    question: "1. Why is keeping your password private important?",
-    answers: ["A. It protects your account from being accessed by others", "B. It makes your computer faster", "C. It helps websites look better", "D. It makes games easier"],
-    correct: 0
-  },
-  {
-    question: "2. Which password is the safest choice?",
-    answers: ["A. password123", "B. 123456", "C. BlueTiger!47", "D. yourname"],
-    correct: 2
-  },
-  {
-    question: "3. What should you do if a stranger online asks where you live?",
-    answers: ["A. Tell them your address", "B. Block/report them and tell a trusted adult", "C. Ask where they live first", "D. Send a photo instead"],
-    correct: 1
-  },
-  {
-    question: "4. Why should you be careful with personal information online?",
-    answers: ["A. It can be copied or misused", "B. It disappears immediately", "C. Only friends see it", "D. It improves security"],
-    correct: 0
-  },
-  {
-    question: "5. What is the safest action before clicking a link?",
-    answers: ["A. Click quickly", "B. Check if it’s from a trusted source", "C. Share it", "D. Ignore all links"],
-    correct: 1
-  },
-  {
-    question: "6. Which is cyberbullying?",
-    answers: ["A. Helping online", "B. Sending hurtful messages repeatedly", "C. Homework search", "D. Playing games"],
-    correct: 1
-  },
-  {
-    question: "7. Best response to bullying?",
-    answers: ["A. Reply back", "B. Block/report and tell an adult", "C. Share publicly", "D. Ignore forever"],
-    correct: 1
-  },
-  {
-    question: "8. How check info is reliable?",
-    answers: ["A. Likes", "B. First result", "C. Check sources and compare", "D. Pictures"],
-    correct: 2
-  },
-  {
-    question: "9. Why think before posting?",
-    answers: ["A. Posts stay online", "B. Disappear fast", "C. Private always", "D. Only friends see"],
-    correct: 0
-  },
-  {
-    question: "10. Unsafe situation?",
-    answers: ["A. Keep secret", "B. Investigate", "C. Tell trusted adult", "D. Share it"],
-    correct: 2
-  }
-];
+  <nav>
+    <a href="#about">About</a>
+    <a href="#learning">Learning</a>
+    <a href="#timeline">Topics</a>
+    <a href="#skills">Skills</a>
+    <a href="#quiz">Quiz</a>
+  </nav>
 
-let currentQuestion = 0;
-let score = 0;
-let answered = false;
+  <section id="about">
+    <h2>About A2B</h2>
+    <p style="text-align:center; max-width:800px; margin:auto;">
+      A2B is a subject that helps students build important digital knowledge and online safety skills.
+      It teaches how to stay safe online, use technology responsibly, and make smart choices when working,
+      communicating, and learning on the internet.
+    </p>
+  </section>
 
-const questionEl = document.getElementById("question");
-const answersEl = document.getElementById("answers");
-const nextBtn = document.getElementById("nextBtn");
-const scoreEl = document.getElementById("score");
-const quizContainer = document.getElementById("quiz-container");
+  <section id="learning">
+    <h2>What Students Learn</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Online Safety</h3>
+        <p>Students learn how to protect personal information, use strong passwords, and stay safe when using websites and apps.</p>
+      </div>
+      <div class="card">
+        <h3>Digital Communication</h3>
+        <p>Students explore how to communicate respectfully online and understand how messages, posts, and comments affect others.</p>
+      </div>
+      <div class="card">
+        <h3>Research Skills</h3>
+        <p>Students practise finding reliable information online and learn that not everything on the internet is true or trustworthy.</p>
+      </div>
+      <div class="card">
+        <h3>Responsible Use</h3>
+        <p>Students learn how to use devices, websites, and digital tools in a safe, sensible, and respectful way.</p>
+      </div>
+    </div>
+  </section>
 
-function loadQuestion() {
-  const q = quizData[currentQuestion];
-  questionEl.textContent = q.question;
-  answersEl.innerHTML = "";
-  answered = false;
+  <section id="timeline">
+    <h2>Main Topics</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h4>Staying Safe</h4>
+        <p>Learning how to keep passwords secure, protect private information, and avoid online risks.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Smart Choices</h4>
+        <p>Understanding how to make good decisions online and think carefully before clicking, posting, or sharing.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Respect Online</h4>
+        <p>Exploring how to behave kindly and responsibly online, including how to deal with cyberbullying.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Trusted Information</h4>
+        <p>Finding out how to check if information online is accurate, reliable, and safe to use.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Digital Confidence</h4>
+        <p>Using technology with confidence while staying aware of dangers, responsibilities, and online rules.</p>
+      </div>
+    </div>
+  </section>
 
-  q.answers.forEach((a,i)=>{
-    const btn=document.createElement("button");
-    btn.textContent=a;
-    btn.classList.add("answer-btn");
-    btn.onclick=()=>selectAnswer(i);
-    answersEl.appendChild(btn);
-  });
-}
+  <section id="skills">
+    <h2>Important A2B Skills</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Password Safety</h3>
+        <p>Using strong passwords and keeping account details private.</p>
+      </div>
+      <div class="card">
+        <h3>Reporting Problems</h3>
+        <p>Knowing when to block, report, and tell a trusted adult if something goes wrong online.</p>
+      </div>
+      <div class="card">
+        <h3>Thinking Before Posting</h3>
+        <p>Understanding that photos, comments, and posts can have lasting effects.</p>
+      </div>
+    </div>
 
-function selectAnswer(i){
-  if(answered) return;
-  answered=true;
+    <div class="quote">
+      “A2B helps students become safe, smart, and responsible users of technology.”
+    </div>
+  </section>
 
-  const correct=quizData[currentQuestion].correct;
-  const buttons=document.querySelectorAll(".answer-btn");
+  <section id="quiz">
+    <h2>A2B Quiz</h2>
 
-  buttons.forEach((b,idx)=>{
-    b.disabled=true;
-    if(idx===correct) b.classList.add("correct");
-    if(idx===i && i!==correct) b.classList.add("wrong");
-  });
+    <div class="quiz-top-text">Test your knowledge about online safety and digital responsibility.</div>
 
-  if(i===correct) score++;
-  scoreEl.textContent=score+" / 10";
-}
+    <div class="quiz-wrapper">
+      <div id="quiz-container">
+        <div class="question" id="question">Question text</div>
+        <div class="answers" id="answers"></div>
+        <div class="status-text" id="statusText">Choose one answer.</div>
+        <button class="next-btn" id="nextBtn">Next Question</button>
+        <div class="score">Score: <span id="score">0 / 10</span></div>
+      </div>
+    </div>
+  </section>
 
-nextBtn.onclick=()=>{
-  if(!answered) return;
+  <footer>
+    <p>&copy; 2026 A2B Subject | School Website Project</p>
+  </footer>
 
-  currentQuestion++;
-  if(currentQuestion<quizData.length) loadQuestion();
-  else showResult();
-};
+  <script>
+    const quizData = [
+      {
+        question: "1. Why is it important to keep your password private?",
+        answers: ["A. It prevents others from accessing your personal accounts", "B. It makes your internet faster", "C. It improves website design", "D. It helps you remember it better"],
+        correct: 0
+      },
+      {
+        question: "2. Which option best explains why strong passwords are important?",
+        answers: ["A. They make logging in easier", "B. They help protect accounts from being hacked", "C. They reduce internet costs", "D. They are required for games only"],
+        correct: 1
+      },
+      {
+        question: "3. What is the safest action if a stranger asks for personal information online?",
+        answers: ["A. Give limited information", "B. Ignore them and tell a trusted adult", "C. Ask them questions first", "D. Send something else instead"],
+        correct: 1
+      },
+      {
+        question: "4. Why should personal information be protected online?",
+        answers: ["A. It can be shared or misused without your permission", "B. It disappears quickly anyway", "C. Only strangers can see it", "D. It improves online games"],
+        correct: 0
+      },
+      {
+        question: "5. What should you consider before clicking a link?",
+        answers: ["A. Whether it looks interesting", "B. Whether it comes from a trusted and safe source", "C. Whether your friends clicked it", "D. Whether it loads quickly"],
+        correct: 1
+      },
+      {
+        question: "6. What is the main problem with cyberbullying?",
+        answers: ["A. It uses technology too much", "B. It can harm someone's feelings and well-being", "C. It makes the internet slower", "D. It only happens in games"],
+        correct: 1
+      },
+      {
+        question: "7. What is the most responsible way to deal with mean online messages?",
+        answers: ["A. Reply angrily", "B. Ignore them forever", "C. Block, report, and tell a trusted adult", "D. Share them with others"],
+        correct: 2
+      },
+      {
+        question: "8. Why is it important to check if information online is reliable?",
+        answers: ["A. Not all information online is true or trustworthy", "B. It helps websites load faster", "C. It makes searching easier", "D. It is only needed for homework"],
+        correct: 0
+      },
+      {
+        question: "9. Why should you think carefully before posting online?",
+        answers: ["A. Posts can be shared and may stay online permanently", "B. Posts are always deleted quickly", "C. Only friends can see posts", "D. The internet is always private"],
+        correct: 0
+      },
+      {
+        question: "10. What is the best response if something online feels unsafe?",
+        answers: ["A. Keep it secret", "B. Try to solve it alone", "C. Tell a trusted adult and use report/block tools", "D. Share it with friends"],
+        correct: 2
+      }
+    ];
 
-function showResult(){
-  if(score===10){
-    quizContainer.innerHTML=`
-      <h2>Quiz Complete</h2>
-      <p>${score}/10</p>
-      <div class="achievement">🏆 Achievement Unlocked: A2B Teacher</div>
-      <button onclick="location.reload()">Restart</button>
-    `;
-  } else {
-    quizContainer.innerHTML=`
-      <h2>Quiz Complete</h2>
-      <p>${score}/10</p>
-      <button onclick="location.reload()">Restart</button>
-    `;
-  }
-}
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
 
-loadQuestion();
-</script>
+    const questionEl = document.getElementById("question");
+    const answersEl = document.getElementById("answers");
+    const statusText = document.getElementById("statusText");
+    const nextBtn = document.getElementById("nextBtn");
+    const scoreEl = document.getElementById("score");
+    const quizContainer = document.getElementById("quiz-container");
+
+    function loadQuestion() {
+      const q = quizData[currentQuestion];
+      questionEl.textContent = q.question;
+      answersEl.innerHTML = "";
+      statusText.textContent = "Choose one answer.";
+      answered = false;
+      nextBtn.textContent = currentQuestion === quizData.length - 1 ? "Show Result" : "Next Question";
+
+      q.answers.forEach((answer, index) => {
+        const button = document.createElement("button");
+        button.classList.add("answer-btn");
+        button.textContent = answer;
+        button.type = "button";
+        button.addEventListener("click", () => selectAnswer(index));
+        answersEl.appendChild(button);
+      });
+    }
+
+    function selectAnswer(index) {
+      if (answered) return;
+
+      answered = true;
+      const correctIndex = quizData[currentQuestion].correct;
+      const allButtons = document.querySelectorAll(".answer-btn");
+
+      allButtons.forEach((btn, i) => {
+        btn.disabled = true;
+
+        if (i === correctIndex) {
+          btn.classList.add("correct");
+        }
+
+        if (i === index && i !== correctIndex) {
+          btn.classList.add("wrong");
+        }
+      });
+
+      if (index === correctIndex) {
+        score++;
+        statusText.textContent = "Correct!";
+      } else {
+        statusText.textContent = "Wrong answer.";
+      }
+
+      scoreEl.textContent = score + " / 10";
+    }
+
+    nextBtn.addEventListener("click", () => {
+      if (!answered) {
+        statusText.textContent = "Choose one answer.";
+        return;
+      }
+
+      currentQuestion++;
+
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    });
+
+    function showResult() {
+      if (score === 10) {
+        quizContainer.innerHTML = `
+          <div class="result-box">
+            <h2>Quiz Complete</h2>
+            <p>You got <strong>${score}</strong> out of <strong>10</strong>.</p>
+            <div class="achievement">🏆 Achievement Unlocked: A2B Teacher</div>
+            <button class="restart-btn" onclick="location.reload()">Restart Quiz</button>
+          </div>
+        `;
+      } else {
+        quizContainer.innerHTML = `
+          <div class="result-box">
+            <h2>Quiz Complete</h2>
+            <p>You got <strong>${score}</strong> out of <strong>10</strong>.</p>
+            <button class="restart-btn" onclick="location.reload()">Restart Quiz</button>
+          </div>
+        `;
+      }
+    }
+
+    loadQuestion();
+  </script>
 
 </body>
 </html>
