@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mental Health Flowchart</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:linear-gradient(-45deg,#74ebd5,#9face6,#89f7fe,#66a6ff);
+background-size:400% 400%;
+animation:gradient 15s ease infinite;
+min-height:100vh;
+padding:40px;
+overflow-x:hidden;
+position:relative;
+}
+
+@keyframes gradient{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.circle{
+position:absolute;
+border-radius:50%;
+background:rgba(255,255,255,.18);
+animation:float 20s infinite linear;
+backdrop-filter:blur(2px);
+}
+
+.circle:nth-child(1){width:90px;height:90px;left:5%;top:80%;animation-duration:22s;}
+.circle:nth-child(2){width:140px;height:140px;right:8%;top:70%;animation-duration:30s;}
+.circle:nth-child(3){width:60px;height:60px;left:20%;top:20%;animation-duration:18s;}
+.circle:nth-child(4){width:110px;height:110px;right:25%;top:15%;animation-duration:26s;}
+.circle:nth-child(5){width:80px;height:80px;left:75%;top:85%;animation-duration:24s;}
+
+@keyframes float{
+0%{transform:translateY(0px);}
+100%{transform:translateY(-120vh);}
+}
+
+.container{
+max-width:760px;
+margin:auto;
+padding:35px;
+border-radius:25px;
+background:rgba(255,255,255,.25);
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+box-shadow:0 20px 50px rgba(0,0,0,.25);
+position:relative;
+z-index:2;
+text-align:center;
+}
+
+h1{
+font-size:40px;
+margin-bottom:20px;
+color:#003c8f;
+}
+
+.box{
+background:white;
+border:3px solid #2196f3;
+border-radius:18px;
+padding:22px;
+margin:20px auto;
+width:85%;
+font-size:24px;
+font-weight:bold;
+box-shadow:0 8px 18px rgba(0,0,0,.15);
+animation:fade .5s;
+}
+
+.solution{
+background:#e8ffe8;
+border-color:#4CAF50;
+color:#146d1b;
+}
+
+.arrow{
+font-size:42px;
+margin:8px;
+color:#1976d2;
+font-weight:bold;
+animation:slide .5s;
+}
+
+@keyframes slide{
+from{opacity:0;transform:translateY(-20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes fade{
+from{opacity:0;transform:scale(.95);}
+to{opacity:1;transform:scale(1);}
+}
+
+button{
+padding:14px 40px;
+margin:12px;
+font-size:20px;
+border:none;
+border-radius:50px;
+cursor:pointer;
+font-weight:bold;
+transition:.3s;
+color:white;
+box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+button:hover{
+transform:translateY(-4px) scale(1.05);
+}
+
+.yes{background:#43a047;}
+.no{background:#e53935;}
+.restart{display:none;background:#1565c0;}
+
+.footer{
+margin-top:25px;
+font-size:15px;
+color:#003c8f;
+font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+<div class="circle"></div>
+
+<div class="container">
+
+<h1>🧠 Mental Health Flowchart</h1>
+
+<div id="flowArea">
+<div class="box">
+Are you feeling stressed, sad or worried?
+</div>
+</div>
+
+<div id="buttonArea">
+<button class="yes" onclick="choose('yes')">✔ Yes</button>
+<button class="no" onclick="choose('no')">✖ No</button>
+</div>
+
+<button class="restart" id="restartBtn" onclick="restartFlow()">🔄 Restart</button>
+
+<div class="footer">
+Every answer helps you find the best support 💙
+</div>
+
+</div>
+
+<script>
+
+let current="q1";
+
+const flow={
+
+q1:{
+question:"Are you feeling stressed, sad or worried?",
+yes:"q2",
+no:"q3"
+},
+
+q2:{
+question:"Is it because of school, homework or exams?",
+yes:"q4",
+no:"q5"
+},
+
+q3:{
+question:"Do you still want to check your mental wellbeing?",
+yes:"q6",
+no:"s1"
+},
+
+q4:{
+question:"Have you made a plan for your school work?",
+yes:"q7",
+no:"s2"
+},
+
+q5:{
+question:"Is it about food, body image or eating habits?",
+yes:"q8",
+no:"q9"
+},
+
+q6:{
+question:"Are you sleeping and eating properly?",
+yes:"s3",
+no:"s4"
+},
+
+q7:{
+question:"Do you still feel overwhelmed even with a plan?",
+yes:"s5",
+no:"s6"
+},
+
+q8:{
+question:"Are you skipping meals or worrying a lot about what you eat?",
+yes:"s7",
+no:"s8"
+},
+
+q9:{
+question:"Is it because of friends, family or relationships?",
+yes:"s9",
+no:"s10"
+},
+
+s1:{
+solution:"That is good. Keep looking after yourself by resting, staying active, eating well and talking to people you trust."
+},
+
+s2:{
+solution:"Try making a simple study plan. Break your work into small tasks, do one thing at a time, and ask a teacher if you feel stuck."
+},
+
+s3:{
+solution:"Great. Keep your healthy routine going and check in with yourself regularly."
+},
+
+s4:{
+solution:"Focus on your basic routine first: sleep enough, eat proper meals, drink water and take short breaks from screens."
+},
+
+s5:{
+solution:"Speak to a teacher, parent or trusted adult. They can help you reduce pressure, organise homework and make things feel more manageable."
+},
+
+s6:{
+solution:"Good. Keep using your plan and remember to take breaks so you do not burn out."
+},
+
+s7:{
+solution:"Talk to a trusted adult, school counsellor or GP. Food and body worries can become serious, so you should not deal with them alone."
+},
+
+s8:{
+solution:"Try to build a balanced routine with regular meals, water, rest and positive self-talk. Avoid comparing yourself to others."
+},
+
+s9:{
+solution:"Talk to someone you trust about what happened. If it involves bullying or pressure from others, tell a teacher or trusted adult."
+},
+
+s10:{
+solution:"If you are not sure why you feel this way, write down your feelings, take a short break, and speak to someone you trust."
+}
+
+};
+
+function choose(answer){
+
+let next=flow[current][answer];
+
+let flowArea=document.getElementById("flowArea");
+
+let arrow=document.createElement("div");
+arrow.className="arrow";
+arrow.innerHTML="⬇ "+answer.toUpperCase();
+
+flowArea.appendChild(arrow);
+
+let box=document.createElement("div");
+
+if(flow[next].solution){
+
+box.className="box solution";
+box.innerHTML="✅ "+flow[next].solution;
+
+document.getElementById("buttonArea").style.display="none";
+document.getElementById("restartBtn").style.display="inline-block";
+
+}else{
+
+box.className="box";
+box.innerHTML=flow[next].question;
+
+}
+
+flowArea.appendChild(box);
+
+current=next;
+
+box.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+function restartFlow(){
+
+current="q1";
+
+document.getElementById("flowArea").innerHTML=`
+<div class="box">
+Are you feeling stressed, sad or worried?
+</div>
+`;
+
+document.getElementById("buttonArea").style.display="block";
+document.getElementById("restartBtn").style.display="none";
+
+}
+
+</script>
+
+</body>
+</html>
