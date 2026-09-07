@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World War II History</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f1ea;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80')
+        center/cover no-repeat;
+
+      height: 60vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-text {
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+    }
+
+    nav {
+      background: #2f3b2f;
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #d4b483;
+    }
+
+    section {
+      padding: 50px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2f3b2f;
+      font-size: 2rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #7a4e2d;
+    }
+
+    .timeline {
+      border-left: 4px solid #7a4e2d;
+      margin-top: 20px;
+      padding-left: 20px;
+    }
+
+    .timeline-item {
+      margin-bottom: 25px;
+    }
+
+    .timeline-item h4 {
+      color: #2f3b2f;
+      margin-bottom: 5px;
+    }
+
+    .quote {
+      background: #2f3b2f;
+      color: white;
+      padding: 40px;
+      text-align: center;
+      border-radius: 10px;
+      margin-top: 30px;
+      font-style: italic;
+      font-size: 1.2rem;
+    }
+
+    footer {
+      background: #1e261e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    /* QUIZ */
+
+    .quiz-top-text {
+      max-width: 650px;
+      margin: 0 auto 10px;
+      font-size: 16px;
+      color: #222;
+      text-align: left;
+    }
+
+    .quiz-wrapper {
+      max-width: 650px;
+      margin: 20px auto;
+      background: #f3f4f7;
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .question {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 18px;
+      line-height: 1.5;
+      color: #111;
+    }
+
+    .answers {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .answer-btn {
+      background: #0b0b0b;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 10px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .answer-btn:hover {
+      opacity: 0.9;
+    }
+
+    .answer-btn:disabled {
+      opacity: 1;
+      cursor: default;
+    }
+
+    .answer-btn.correct {
+      background: green;
+    }
+
+    .answer-btn.wrong {
+      background: crimson;
+    }
+
+    .status-text {
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .next-btn {
+      background: #0b0b0b;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 24px;
+      font-size: 15px;
+      cursor: pointer;
+      margin-bottom: 18px;
+    }
+
+    .score {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .score span {
+      color: #1a3d8f;
+    }
+
+    .result-box {
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    .restart-btn {
+      background: #0b0b0b;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 24px;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+
+      .answers {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="hero-text">
+    <h1>World War II History</h1>
+
+    <p>
+      Learning about Winston Churchill, Adolf Hitler, the Battle of Britain,
+      D-Day, Britain in WWII, the Holocaust, and the beginning of the Cold War.
+    </p>
+  </div>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#daily-life">Key Topics</a>
+  <a href="#timeline">Timeline</a>
+  <a href="#stories">Stories</a>
+  <a href="#quiz">Quiz</a>
+</nav>
+
+<section id="about">
+
+<h2>About World War II</h2>
+
+<p style="text-align:center; max-width:800px; margin:auto;">
+
+World War II was a major global conflict from 1939 to 1945.
+
+It changed the world politically, socially, and economically.
+
+Britain played an important role in resisting Nazi Germany,
+especially during the Battle of Britain and D-Day.
+
+The war also included the Holocaust, where millions of Jewish
+people and other groups were murdered by the Nazis.
+
+After the war, tensions between the United States and the Soviet
+Union helped begin the Cold War.
+
+</p>
+
+</section>
+
+
+<section id="daily-life">
+
+<h2>Key WWII Topics</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>🇬🇧 Winston Churchill</h3>
+
+<p>
+Winston Churchill became British Prime Minister in 1940.
+
+He is remembered for his strong speeches, determination,
+and leadership during Britain's darkest moments in World War II.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🇩🇪 Adolf Hitler</h3>
+
+<p>
+Adolf Hitler was the dictator of Nazi Germany.
+
+His aggressive foreign policy, racism, and invasion of other
+countries helped cause World War II and brought great suffering
+across Europe.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>✈️ Battle of Britain</h3>
+
+<p>
+The Battle of Britain took place in 1940.
+
+The RAF defended Britain from German air attacks.
+
+Radar, skilled pilots, and strong morale helped Britain avoid invasion.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>⚔️ D-Day</h3>
+
+<p>
+D-Day happened on 6 June 1944.
+
+Allied forces landed in Normandy, France.
+
+It was a major step towards freeing Western Europe from Nazi control.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🇬🇧 Britain in WWII</h3>
+
+<p>
+Britain experienced bombing, rationing, evacuation, and fear of invasion.
+
+Many civilians helped the war effort through factory work,
+the Home Guard, and keeping morale strong.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🕊️ The Holocaust</h3>
+
+<p>
+The Holocaust was the systematic murder of six million Jewish people
+by the Nazis.
+
+Other groups were also persecuted.
+
+It is important to study this respectfully and remember the victims.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>📜 Beginning of the Cold War</h3>
+
+<p>
+After World War II, the USA and USSR became rivals.
+
+Disagreements over Germany, Eastern Europe, capitalism,
+and communism led to the start of the Cold War.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="timeline">
+
+<h2>History Timeline</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+
+<h4>1939 - World War II Begins</h4>
+
+<p>
+Germany invaded Poland in September 1939.
+
+Britain and France then declared war on Germany.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<h4>1940 - Churchill Becomes Prime Minister</h4>
+
+<p>
+Winston Churchill became Prime Minister and encouraged Britain
+to keep fighting against Nazi Germany.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<h4>1940 - Battle of Britain</h4>
+
+<p>
+The RAF defended Britain from the German Luftwaffe.
+
+Britain's victory stopped Hitler's plan to invade Britain.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<h4>1941-1945 - The Holocaust</h4>
+
+<p>
+The Nazis carried out the mass murder of Jewish people
+and other persecuted groups across Europe.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<h4>1944 - D-Day</h4>
+
+<p>
+Allied troops landed in Normandy and began the liberation
+of Western Europe from Nazi occupation.
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<h4>1945 - War Ends and Cold War Begins</h4>
+
+<p>
+Germany surrendered in May 1945.
+
+After the war, tensions between the USA and USSR increased.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="stories">
+
+<h2>Important History Stories</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Churchill's Leadership</h3>
+
+<p>
+Churchill used speeches to inspire the British people.
+
+He refused to surrender and helped build cooperation
+with the USA and other Allies.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Life in Wartime Britain</h3>
+
+<p>
+British people faced rationing, air raids, blackouts, and evacuation.
+
+Civilians played an important role in supporting the war effort.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Remembering the Holocaust</h3>
+
+<p>
+The Holocaust shows the dangers of hatred, racism,
+dictatorship, and propaganda.
+
+Remembering it helps people understand why human rights
+must be protected.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="quote">
+
+“World War II teaches us about courage, leadership, suffering,
+and the importance of standing against hatred and dictatorship.”
+
+</div>
+
+</section>
+
+
+<!-- UNIVERSITY LEVEL QUIZ -->
+
+<section id="quiz">
+
+<h2>University-Level History Quiz</h2>
+
+<div class="quiz-top-text">
+
+Test your knowledge with more challenging university-level
+questions about World War II.
+
+</div>
+
+
+<div class="quiz-wrapper">
+
+<div id="quiz-container">
+
+<div class="question" id="question">
+
+Question text
+
+</div>
+
+
+<div class="answers" id="answers"></div>
+
+
+<div class="status-text" id="statusText">
+
+Choose one answer.
+
+</div>
+
+
+<button class="next-btn" id="nextBtn">
+
+Next Question
+
+</button>
+
+
+<div class="score">
+
+Score:
+
+<span id="score">
+
+0 / 10
+
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<p>
+
+&copy; 2026 World War II History | History Website Project
+
+</p>
+
+</footer>
+
+
+<script>
+
+const quizData = [
+
+{
+question:
+"1. Why was the Battle of Britain strategically important in 1940?",
+
+answers: [
+
+"A. It forced Britain to surrender",
+
+"B. It prevented Germany from gaining air superiority needed for a possible invasion",
+
+"C. It ended the war in Western Europe",
+
+"D. It allowed Germany to invade the Soviet Union immediately"
+
+],
+
+correct: 1
+},
+
+
+{
+question:
+"2. Which factor best explains why Churchill rejected peace negotiations with Nazi Germany in 1940?",
+
+answers: [
+
+"A. He believed continued resistance offered Britain a better long-term chance of survival",
+
+"B. Britain had already defeated Germany on land",
+
+"C. The United States had already entered the war",
+
+"D. Germany had agreed to withdraw from France"
+
+],
+
+correct: 0
+},
+
+
+{
+question:
+"3. What was the main strategic purpose of Operation Overlord in June 1944?",
+
+answers: [
+
+"A. To invade Italy",
+
+"B. To open a major Western Front against Nazi Germany",
+
+"C. To capture Moscow",
+
+"D. To defend Britain from air attack"
+
+],
+
+correct: 1
+},
+
+
+{
+question:
+"4. Which interpretation best explains the importance of D-Day?",
+
+answers: [
+
+"A. It immediately ended the war in Europe",
+
+"B. It created a permanent Allied foothold in Western Europe and accelerated Germany's defeat",
+
+"C. It caused Japan to surrender",
+
+"D. It prevented the Holocaust from beginning"
+
+],
+
+correct: 1
+},
+
+
+{
+question:
+"5. Why was radar important to Britain's defence during the Battle of Britain?",
+
+answers: [
+
+"A. It allowed Britain to detect incoming German aircraft and use RAF fighters more efficiently",
+
+"B. It destroyed German aircraft automatically",
+
+"C. It prevented all bombing of British cities",
+
+"D. It allowed Britain to read every German message"
+
+],
+
+correct: 0
+},
+
+
+{
+question:
+"6. Which statement best describes the Holocaust in historical terms?",
+
+answers: [
+
+"A. A series of military battles between Germany and the Soviet Union",
+
+"B. The systematic persecution and murder of six million Jews by Nazi Germany and its collaborators",
+
+"C. The Allied bombing campaign against Germany",
+
+"D. The forced evacuation of British children"
+
+],
+
+correct: 1
+},
+
+
+{
+question:
+"7. How did Nazi ideology contribute to the Holocaust?",
+
+answers: [
+
+"A. It promoted racial antisemitism and defined Jews and other groups as enemies of the state",
+
+"B. It encouraged religious tolerance throughout Europe",
+
+"C. It rejected all forms of nationalism",
+
+"D. It focused only on economic reform"
+
+],
+
+correct: 0
+},
+
+
+{
+question:
+"8. Which development most directly contributed to the beginning of the Cold War after 1945?",
+
+answers: [
+
+"A. Cooperation between the USA and USSR increased permanently",
+
+"B. Ideological conflict and disagreement over the political future of Europe",
+
+"C. Britain became the world's only superpower",
+
+"D. Germany immediately reunited as one democratic state"
+
+],
+
+correct: 1
+},
+
+
+{
+question:
+"9. Why do historians often describe World War II as a 'total war'?",
+
+answers: [
+
+"A. Only professional soldiers were involved",
+
+"B. Governments mobilised military, economic and civilian resources on a very large scale",
+
+"C. Fighting took place only in Europe",
+
+"D. The war lasted less than one year"
+
+],
+
+correct: 1
+},
+
+
+{
+question:
+"10. Which factor most strengthened the Allied position against Nazi Germany by 1944?",
+
+answers: [
+
+"A. Germany gained complete control of the Atlantic",
+
+"B. The combined industrial, military and manpower resources of the USA, USSR and Britain",
+
+"C. Britain stopped receiving supplies from overseas",
+
+"D. The Soviet Union withdrew from the war"
+
+],
+
+correct: 1
+}
+
+];
+
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+
+const questionEl =
+document.getElementById("question");
+
+const answersEl =
+document.getElementById("answers");
+
+const statusText =
+document.getElementById("statusText");
+
+const nextBtn =
+document.getElementById("nextBtn");
+
+const scoreEl =
+document.getElementById("score");
+
+const quizContainer =
+document.getElementById("quiz-container");
+
+
+function loadQuestion() {
+
+const q =
+quizData[currentQuestion];
+
+questionEl.textContent =
+q.question;
+
+answersEl.innerHTML =
+"";
+
+statusText.textContent =
+"Choose one answer.";
+
+answered =
+false;
+
+
+nextBtn.textContent =
+
+currentQuestion === quizData.length - 1
+
+? "Show Result"
+
+: "Next Question";
+
+
+q.answers.forEach((answer, index) => {
+
+const button =
+document.createElement("button");
+
+button.classList.add("answer-btn");
+
+button.textContent =
+answer;
+
+button.type =
+"button";
+
+button.addEventListener(
+
+"click",
+
+() => selectAnswer(index)
+
+);
+
+answersEl.appendChild(button);
+
+});
+
+}
+
+
+function selectAnswer(index) {
+
+if (answered) return;
+
+answered = true;
+
+
+const correctIndex =
+quizData[currentQuestion].correct;
+
+
+const allButtons =
+document.querySelectorAll(".answer-btn");
+
+
+allButtons.forEach((btn, i) => {
+
+btn.disabled =
+true;
+
+
+if (i === correctIndex)
+
+btn.classList.add("correct");
+
+
+if (
+i === index &&
+i !== correctIndex
+)
+
+btn.classList.add("wrong");
+
+});
+
+
+if (index === correctIndex) {
+
+score++;
+
+statusText.textContent =
+"Correct!";
+
+}
+
+else {
+
+statusText.textContent =
+"Wrong answer.";
+
+}
+
+
+scoreEl.textContent =
+score + " / 10";
+
+}
+
+
+nextBtn.addEventListener(
+
+"click",
+
+() => {
+
+if (!answered) {
+
+statusText.textContent =
+"Choose one answer.";
+
+return;
+
+}
+
+
+currentQuestion++;
+
+
+if (
+currentQuestion <
+quizData.length
+)
+
+loadQuestion();
+
+else
+
+showResult();
+
+}
+
+);
+
+
+function showResult() {
+
+let achievement =
+"";
+
+
+if (score === 10) {
+
+achievement = `
+
+<h3 style="
+color:gold;
+font-size:28px;
+margin-top:20px;
+">
+
+🏆 University-Level History Expert Achievement
+
+</h3>
+
+
+<p style="
+font-size:20px;
+margin-top:10px;
+">
+
+🎖️ Outstanding World War II History Knowledge
+
+<br>
+
+<strong>
+
+Perfect Score (10/10)
+
+</strong>
+
+</p>
+
+`;
+
+}
+
+
+quizContainer.innerHTML = `
+
+<div class="result-box">
+
+<h2>
+
+Quiz Complete
+
+</h2>
+
+
+<p>
+
+You got
+
+<strong>${score}</strong>
+
+out of
+
+<strong>10</strong>.
+
+</p>
+
+
+${achievement}
+
+
+<button
+class="restart-btn"
+onclick="location.reload()"
+>
+
+Restart Quiz
+
+</button>
+
+</div>
+
+`;
+
+}
+
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
