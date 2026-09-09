@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>World War II History</title>
+  <title>American Civil War & Emu War History</title>
 
   <style>
     * {
@@ -24,7 +24,6 @@
         linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
         url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80')
         center/cover no-repeat;
-
       height: 60vh;
       color: white;
       display: flex;
@@ -135,14 +134,35 @@
       margin-top: 40px;
     }
 
-    /* QUIZ */
-
     .quiz-top-text {
       max-width: 650px;
       margin: 0 auto 10px;
       font-size: 16px;
       color: #222;
       text-align: left;
+    }
+
+    .quiz-set-buttons {
+      max-width: 650px;
+      margin: 20px auto 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .set-btn {
+      background: #0b0b0b;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .set-btn.active {
+      background: #7a4e2d;
     }
 
     .quiz-wrapper {
@@ -154,12 +174,18 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
+    .quiz-set-title {
+      color: #7a4e2d;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
     .question {
       font-size: 16px;
       font-weight: bold;
       margin-bottom: 18px;
       line-height: 1.5;
-      color: #111;
     }
 
     .answers {
@@ -177,16 +203,6 @@
       padding: 14px 10px;
       font-size: 15px;
       cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .answer-btn:hover {
-      opacity: 0.9;
-    }
-
-    .answer-btn:disabled {
-      opacity: 1;
-      cursor: default;
     }
 
     .answer-btn.correct {
@@ -197,13 +213,19 @@
       background: crimson;
     }
 
+    .answer-btn:disabled {
+      opacity: 1;
+      cursor: default;
+    }
+
     .status-text {
       font-size: 15px;
       font-weight: bold;
       margin-bottom: 18px;
     }
 
-    .next-btn {
+    .next-btn,
+    .restart-btn {
       background: #0b0b0b;
       color: white;
       border: none;
@@ -228,15 +250,29 @@
       padding: 20px 10px;
     }
 
-    .restart-btn {
-      background: #0b0b0b;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      padding: 14px 24px;
-      font-size: 15px;
-      cursor: pointer;
-      margin-top: 15px;
+    .teacher-award {
+      margin: 30px auto;
+      padding: 25px;
+      max-width: 500px;
+      border: 4px solid #d4af37;
+      border-radius: 20px;
+      background: #fff8dc;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    }
+
+    .teacher-award h3 {
+      font-size: 30px;
+      color: #b8860b;
+      margin-bottom: 10px;
+    }
+
+    .teacher-award .trophy {
+      font-size: 60px;
+    }
+
+    .teacher-award p {
+      font-size: 19px;
+      color: #222;
     }
 
     @media (max-width: 768px) {
@@ -247,6 +283,10 @@
       .answers {
         grid-template-columns: 1fr 1fr;
       }
+
+      .quiz-set-buttons {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -255,11 +295,10 @@
 
 <header>
   <div class="hero-text">
-    <h1>World War II History</h1>
-
+    <h1>American Civil War & Emu War History</h1>
     <p>
-      Learning about Winston Churchill, Adolf Hitler, the Battle of Britain,
-      D-Day, Britain in WWII, the Holocaust, and the beginning of the Cold War.
+      Exploring the causes, turning points and consequences of the American Civil War,
+      together with Australia's unusual 1932 military campaign against emus.
     </p>
   </div>
 </header>
@@ -273,827 +312,880 @@
 </nav>
 
 <section id="about">
+  <h2>About These Conflicts</h2>
 
-<h2>About World War II</h2>
+  <p style="text-align:center; max-width:800px; margin:auto;">
+    The American Civil War was fought from 1861 to 1865 between the United States
+    and eleven seceded Southern states that formed the Confederacy. Slavery was the
+    central issue in the sectional crisis that produced secession.
 
-<p style="text-align:center; max-width:800px; margin:auto;">
-
-World War II was a major global conflict from 1939 to 1945.
-
-It changed the world politically, socially, and economically.
-
-Britain played an important role in resisting Nazi Germany,
-especially during the Battle of Britain and D-Day.
-
-The war also included the Holocaust, where millions of Jewish
-people and other groups were murdered by the Nazis.
-
-After the war, tensions between the United States and the Soviet
-Union helped begin the Cold War.
-
-</p>
-
+    Decades later, in 1932, the Australian government used soldiers with Lewis guns
+    in Western Australia to help farmers reduce large numbers of emus damaging wheat crops.
+    The so-called Emu War was not a formal war, but became famous because military
+    firepower was poorly suited to controlling fast-moving wildlife.
+  </p>
 </section>
-
 
 <section id="daily-life">
+  <h2>Key History Topics</h2>
 
-<h2>Key WWII Topics</h2>
+  <div class="cards">
 
-<div class="cards">
+    <div class="card">
+      <h3>🇺🇸 Slavery and Secession</h3>
+      <p>
+        Conflict over slavery became increasingly serious as the United States
+        expanded westward. After Abraham Lincoln's election in 1860,
+        eleven Southern states eventually seceded.
+      </p>
+    </div>
 
-<div class="card">
+    <div class="card">
+      <h3>🎩 Abraham Lincoln</h3>
+      <p>
+        Lincoln originally focused on preserving the Union.
+        During the war, emancipation became increasingly important
+        as both a moral and military objective.
+      </p>
+    </div>
 
-<h3>🇬🇧 Winston Churchill</h3>
+    <div class="card">
+      <h3>📜 Emancipation</h3>
+      <p>
+        The Emancipation Proclamation came into effect on
+        1 January 1863 and declared enslaved people in areas
+        still in rebellion to be free.
+      </p>
+    </div>
 
-<p>
-Winston Churchill became British Prime Minister in 1940.
+    <div class="card">
+      <h3>⚔️ Gettysburg & Vicksburg</h3>
+      <p>
+        Union victories at Gettysburg and Vicksburg in July 1863
+        significantly weakened Confederate military power.
+      </p>
+    </div>
 
-He is remembered for his strong speeches, determination,
-and leadership during Britain's darkest moments in World War II.
-</p>
+    <div class="card">
+      <h3>🏛️ Reconstruction</h3>
+      <p>
+        Reconstruction attempted to rebuild the United States
+        and determine the legal and political rights of formerly
+        enslaved people.
+      </p>
+    </div>
 
-</div>
+    <div class="card">
+      <h3>🇦🇺 Why the Emu War Happened</h3>
+      <p>
+        Drought and migration brought large groups of emus
+        into farming regions of Western Australia, where they
+        damaged wheat fields and fences.
+      </p>
+    </div>
 
+    <div class="card">
+      <h3>🔫 The Military Campaign</h3>
+      <p>
+        Major G. P. W. Meredith led a small military group
+        armed with two Lewis machine guns to reduce the emu population.
+      </p>
+    </div>
 
-<div class="card">
+    <div class="card">
+      <h3>🪶 Outcome</h3>
+      <p>
+        The military campaign achieved limited results.
+        Later methods such as fencing and bounty programmes
+        became more important.
+      </p>
+    </div>
 
-<h3>🇩🇪 Adolf Hitler</h3>
-
-<p>
-Adolf Hitler was the dictator of Nazi Germany.
-
-His aggressive foreign policy, racism, and invasion of other
-countries helped cause World War II and brought great suffering
-across Europe.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>✈️ Battle of Britain</h3>
-
-<p>
-The Battle of Britain took place in 1940.
-
-The RAF defended Britain from German air attacks.
-
-Radar, skilled pilots, and strong morale helped Britain avoid invasion.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>⚔️ D-Day</h3>
-
-<p>
-D-Day happened on 6 June 1944.
-
-Allied forces landed in Normandy, France.
-
-It was a major step towards freeing Western Europe from Nazi control.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>🇬🇧 Britain in WWII</h3>
-
-<p>
-Britain experienced bombing, rationing, evacuation, and fear of invasion.
-
-Many civilians helped the war effort through factory work,
-the Home Guard, and keeping morale strong.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>🕊️ The Holocaust</h3>
-
-<p>
-The Holocaust was the systematic murder of six million Jewish people
-by the Nazis.
-
-Other groups were also persecuted.
-
-It is important to study this respectfully and remember the victims.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>📜 Beginning of the Cold War</h3>
-
-<p>
-After World War II, the USA and USSR became rivals.
-
-Disagreements over Germany, Eastern Europe, capitalism,
-and communism led to the start of the Cold War.
-</p>
-
-</div>
-
-</div>
-
+  </div>
 </section>
-
 
 <section id="timeline">
+  <h2>History Timeline</h2>
 
-<h2>History Timeline</h2>
+  <div class="timeline">
 
-<div class="timeline">
+    <div class="timeline-item">
+      <h4>1860 - Lincoln Elected</h4>
+      <p>
+        Abraham Lincoln won the presidential election,
+        accelerating the Southern secession crisis.
+      </p>
+    </div>
 
-<div class="timeline-item">
+    <div class="timeline-item">
+      <h4>1861 - Civil War Begins</h4>
+      <p>
+        Confederate forces attacked Fort Sumter in April 1861.
+      </p>
+    </div>
 
-<h4>1939 - World War II Begins</h4>
+    <div class="timeline-item">
+      <h4>1863 - Major Turning Point</h4>
+      <p>
+        The Emancipation Proclamation took effect,
+        while Union victories occurred at Gettysburg and Vicksburg.
+      </p>
+    </div>
 
-<p>
-Germany invaded Poland in September 1939.
+    <div class="timeline-item">
+      <h4>1865 - Confederate Defeat</h4>
+      <p>
+        Robert E. Lee surrendered at Appomattox Court House.
+        Slavery was later abolished through the Thirteenth Amendment.
+      </p>
+    </div>
 
-Britain and France then declared war on Germany.
-</p>
+    <div class="timeline-item">
+      <h4>1865-1877 - Reconstruction</h4>
+      <p>
+        The United States attempted to rebuild the South
+        and establish new citizenship and political rights.
+      </p>
+    </div>
 
-</div>
+    <div class="timeline-item">
+      <h4>1932 - Emu Crisis</h4>
+      <p>
+        Large groups of emus damaged farmland in Western Australia.
+      </p>
+    </div>
 
+    <div class="timeline-item">
+      <h4>2 November 1932 - Emu War Begins</h4>
+      <p>
+        Meredith's military unit began operations using Lewis guns.
+      </p>
+    </div>
 
-<div class="timeline-item">
+    <div class="timeline-item">
+      <h4>December 1932 - Campaign Ends</h4>
+      <p>
+        Military operations ended without completely solving
+        the agricultural problem.
+      </p>
+    </div>
 
-<h4>1940 - Churchill Becomes Prime Minister</h4>
-
-<p>
-Winston Churchill became Prime Minister and encouraged Britain
-to keep fighting against Nazi Germany.
-</p>
-
-</div>
-
-
-<div class="timeline-item">
-
-<h4>1940 - Battle of Britain</h4>
-
-<p>
-The RAF defended Britain from the German Luftwaffe.
-
-Britain's victory stopped Hitler's plan to invade Britain.
-</p>
-
-</div>
-
-
-<div class="timeline-item">
-
-<h4>1941-1945 - The Holocaust</h4>
-
-<p>
-The Nazis carried out the mass murder of Jewish people
-and other persecuted groups across Europe.
-</p>
-
-</div>
-
-
-<div class="timeline-item">
-
-<h4>1944 - D-Day</h4>
-
-<p>
-Allied troops landed in Normandy and began the liberation
-of Western Europe from Nazi occupation.
-</p>
-
-</div>
-
-
-<div class="timeline-item">
-
-<h4>1945 - War Ends and Cold War Begins</h4>
-
-<p>
-Germany surrendered in May 1945.
-
-After the war, tensions between the USA and USSR increased.
-</p>
-
-</div>
-
-</div>
-
+  </div>
 </section>
-
 
 <section id="stories">
 
-<h2>Important History Stories</h2>
+  <h2>Important History Stories</h2>
 
-<div class="cards">
+  <div class="cards">
 
-<div class="card">
+    <div class="card">
+      <h3>From Union to Emancipation</h3>
+      <p>
+        The Union originally fought mainly to preserve the nation.
+        By 1863, ending slavery had become closely connected to Union victory.
+      </p>
+    </div>
 
-<h3>Churchill's Leadership</h3>
+    <div class="card">
+      <h3>Why the Union Won</h3>
+      <p>
+        Greater population, industry, railways, naval strength,
+        financial resources and military adaptation all contributed
+        to Union victory.
+      </p>
+    </div>
 
-<p>
-Churchill used speeches to inspire the British people.
+    <div class="card">
+      <h3>The Memory of the Emu War</h3>
+      <p>
+        The expression "Emu War" turned a small pest-control operation
+        into one of Australia's most unusual historical stories.
+      </p>
+    </div>
 
-He refused to surrender and helped build cooperation
-with the USA and other Allies.
-</p>
+  </div>
 
-</div>
-
-
-<div class="card">
-
-<h3>Life in Wartime Britain</h3>
-
-<p>
-British people faced rationing, air raids, blackouts, and evacuation.
-
-Civilians played an important role in supporting the war effort.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>Remembering the Holocaust</h3>
-
-<p>
-The Holocaust shows the dangers of hatred, racism,
-dictatorship, and propaganda.
-
-Remembering it helps people understand why human rights
-must be protected.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="quote">
-
-“World War II teaches us about courage, leadership, suffering,
-and the importance of standing against hatred and dictatorship.”
-
-</div>
+  <div class="quote">
+    “History is not only about battles. It is also about political choices,
+    social structures, environmental pressures and interpretation.”
+  </div>
 
 </section>
-
-
-<!-- UNIVERSITY LEVEL QUIZ -->
 
 <section id="quiz">
 
-<h2>University-Level History Quiz</h2>
+  <h2>University-Level History Quiz</h2>
 
-<div class="quiz-top-text">
+  <div class="quiz-top-text">
+    Choose one of the two university-level question sets.
+    Each set contains 10 questions.
+    <strong>Get 10/10 to earn the History Teacher Award!</strong>
+  </div>
 
-Test your knowledge with more challenging university-level
-questions about World War II.
+  <div class="quiz-set-buttons">
 
-</div>
+    <button
+      class="set-btn active"
+      id="civilWarBtn"
+      onclick="startQuiz('civilWar')">
+      Set 1: American Civil War
+    </button>
 
+    <button
+      class="set-btn"
+      id="emuWarBtn"
+      onclick="startQuiz('emuWar')">
+      Set 2: Emu War
+    </button>
 
-<div class="quiz-wrapper">
+  </div>
 
-<div id="quiz-container">
+  <div class="quiz-wrapper">
 
-<div class="question" id="question">
+    <div id="quiz-container">
 
-Question text
+      <div class="quiz-set-title" id="quizSetTitle">
+        Set 1: American Civil War
+      </div>
 
-</div>
+      <div class="question" id="question"></div>
 
+      <div class="answers" id="answers"></div>
 
-<div class="answers" id="answers"></div>
+      <div class="status-text" id="statusText">
+        Choose one answer.
+      </div>
 
+      <button class="next-btn" id="nextBtn">
+        Next Question
+      </button>
 
-<div class="status-text" id="statusText">
+      <div class="score">
+        Score:
+        <span id="score">0 / 10</span>
+      </div>
 
-Choose one answer.
+    </div>
 
-</div>
-
-
-<button class="next-btn" id="nextBtn">
-
-Next Question
-
-</button>
-
-
-<div class="score">
-
-Score:
-
-<span id="score">
-
-0 / 10
-
-</span>
-
-</div>
-
-</div>
-
-</div>
+  </div>
 
 </section>
 
-
 <footer>
-
-<p>
-
-&copy; 2026 World War II History | History Website Project
-
-</p>
-
+  <p>
+    &copy; 2026 American Civil War & Emu War History |
+    History Website Project
+  </p>
 </footer>
 
 
 <script>
 
-const quizData = [
+const quizSets = {
+
+  civilWar: {
+
+    title: "Set 1: American Civil War",
+
+    questions: [
+
+      {
+        question:
+        "1. Which interpretation is best supported by the secession crisis of 1860-61?",
+
+        answers: [
+          "A. Secession was caused mainly by disagreement over foreign policy",
+          "B. The protection and future expansion of slavery was central to the secession movement",
+          "C. Congress had already abolished slavery nationwide",
+          "D. Secession was mainly caused by European immigration"
+        ],
+
+        correct: 1
+      },
+
+      {
+        question:
+        "2. Why did Lincoln's election in 1860 accelerate secession?",
+
+        answers: [
+          "A. Southern leaders feared restrictions on slavery would weaken its future political position",
+          "B. Lincoln promised to immediately confiscate all Southern land",
+          "C. Lincoln had already arrested Confederate leaders",
+          "D. Republicans supported Southern independence"
+        ],
+
+        correct: 0
+      },
+
+      {
+        question:
+        "3. What was the strategic purpose of the Union's Anaconda Plan?",
+
+        answers: [
+          "A. Fight only at sea",
+          "B. Blockade the Confederacy and control major rivers",
+          "C. Capture Canada",
+          "D. Depend on one battle near Washington"
+        ],
+
+        correct: 1
+      },
+
+      {
+        question:
+        "4. What was the major historical significance of the Emancipation Proclamation?",
+
+        answers: [
+          "A. It immediately abolished slavery everywhere",
+          "B. It made emancipation an explicit Union war objective and allowed Black enlistment",
+          "C. It restored slavery in border states",
+          "D. It ended the war in 1863"
+        ],
 
-{
-question:
-"1. Why was the Battle of Britain strategically important in 1940?",
+        correct: 1
+      },
 
-answers: [
+      {
+        question:
+        "5. Why are Gettysburg and Vicksburg often considered major turning points?",
+
+        answers: [
+          "A. Britain joined the Union",
+          "B. Confederate resistance ended immediately",
+          "C. Lee's invasion was stopped and the Union gained control of the Mississippi River",
+          "D. Lincoln abandoned emancipation"
+        ],
+
+        correct: 2
+      },
+
+      {
+        question:
+        "6. Which explanation best accounts for Union victory by 1865?",
+
+        answers: [
+          "A. Greater resources combined with increasingly effective military and political strategy",
+          "B. The Confederacy had no trained soldiers",
+          "C. European armies defeated the Confederacy",
+          "D. No major battles occurred after 1862"
+        ],
+
+        correct: 0
+      },
+
+      {
+        question:
+        "7. How did African American enlistment affect the Union war effort?",
+
+        answers: [
+          "A. It had only symbolic importance",
+          "B. It increased Union manpower and connected military victory with Black citizenship",
+          "C. It caused the Union to abandon emancipation",
+          "D. It was prohibited by Lincoln"
+        ],
 
-"A. It forced Britain to surrender",
+        correct: 1
+      },
 
-"B. It prevented Germany from gaining air superiority needed for a possible invasion",
+      {
+        question:
+        "8. What is meant by the Union's movement toward 'hard war'?",
+
+        answers: [
+          "A. Destroying Confederate military resources and infrastructure",
+          "B. Fighting only small ceremonial battles",
+          "C. Protecting Confederate railway systems",
+          "D. Avoiding Confederate territory"
+        ],
 
-"C. It ended the war in Western Europe",
+        correct: 0
+      },
 
-"D. It allowed Germany to invade the Soviet Union immediately"
-
-],
-
-correct: 1
-},
-
-
-{
-question:
-"2. Which factor best explains why Churchill rejected peace negotiations with Nazi Germany in 1940?",
-
-answers: [
-
-"A. He believed continued resistance offered Britain a better long-term chance of survival",
-
-"B. Britain had already defeated Germany on land",
-
-"C. The United States had already entered the war",
-
-"D. Germany had agreed to withdraw from France"
-
-],
-
-correct: 0
-},
-
-
-{
-question:
-"3. What was the main strategic purpose of Operation Overlord in June 1944?",
-
-answers: [
-
-"A. To invade Italy",
-
-"B. To open a major Western Front against Nazi Germany",
-
-"C. To capture Moscow",
-
-"D. To defend Britain from air attack"
-
-],
-
-correct: 1
-},
-
-
-{
-question:
-"4. Which interpretation best explains the importance of D-Day?",
-
-answers: [
-
-"A. It immediately ended the war in Europe",
-
-"B. It created a permanent Allied foothold in Western Europe and accelerated Germany's defeat",
-
-"C. It caused Japan to surrender",
-
-"D. It prevented the Holocaust from beginning"
-
-],
-
-correct: 1
-},
-
-
-{
-question:
-"5. Why was radar important to Britain's defence during the Battle of Britain?",
-
-answers: [
-
-"A. It allowed Britain to detect incoming German aircraft and use RAF fighters more efficiently",
-
-"B. It destroyed German aircraft automatically",
-
-"C. It prevented all bombing of British cities",
-
-"D. It allowed Britain to read every German message"
-
-],
-
-correct: 0
-},
-
-
-{
-question:
-"6. Which statement best describes the Holocaust in historical terms?",
-
-answers: [
-
-"A. A series of military battles between Germany and the Soviet Union",
-
-"B. The systematic persecution and murder of six million Jews by Nazi Germany and its collaborators",
-
-"C. The Allied bombing campaign against Germany",
-
-"D. The forced evacuation of British children"
-
-],
-
-correct: 1
-},
-
-
-{
-question:
-"7. How did Nazi ideology contribute to the Holocaust?",
-
-answers: [
-
-"A. It promoted racial antisemitism and defined Jews and other groups as enemies of the state",
-
-"B. It encouraged religious tolerance throughout Europe",
-
-"C. It rejected all forms of nationalism",
-
-"D. It focused only on economic reform"
-
-],
-
-correct: 0
-},
-
-
-{
-question:
-"8. Which development most directly contributed to the beginning of the Cold War after 1945?",
-
-answers: [
-
-"A. Cooperation between the USA and USSR increased permanently",
-
-"B. Ideological conflict and disagreement over the political future of Europe",
-
-"C. Britain became the world's only superpower",
-
-"D. Germany immediately reunited as one democratic state"
-
-],
-
-correct: 1
-},
-
-
-{
-question:
-"9. Why do historians often describe World War II as a 'total war'?",
-
-answers: [
-
-"A. Only professional soldiers were involved",
-
-"B. Governments mobilised military, economic and civilian resources on a very large scale",
-
-"C. Fighting took place only in Europe",
-
-"D. The war lasted less than one year"
-
-],
-
-correct: 1
-},
-
-
-{
-question:
-"10. Which factor most strengthened the Allied position against Nazi Germany by 1944?",
-
-answers: [
-
-"A. Germany gained complete control of the Atlantic",
-
-"B. The combined industrial, military and manpower resources of the USA, USSR and Britain",
-
-"C. Britain stopped receiving supplies from overseas",
-
-"D. The Soviet Union withdrew from the war"
-
-],
-
-correct: 1
-}
-
-];
-
-
+      {
+        question:
+        "9. Why was the Thirteenth Amendment still necessary?",
+
+        answers: [
+          "A. It constitutionally abolished slavery throughout the United States",
+          "B. The Emancipation Proclamation had already permanently abolished slavery everywhere",
+          "C. It restored slavery",
+          "D. It applied only to soldiers"
+        ],
+
+        correct: 0
+      },
+
+      {
+        question:
+        "10. Which statement best describes the central problem of Reconstruction?",
+
+        answers: [
+          "A. Reuniting the nation while defining freedom, citizenship and political rights",
+          "B. Returning America to British control",
+          "C. Rebuilding the Confederate army",
+          "D. Removing the constitutional amendments"
+        ],
+
+        correct: 0
+      }
+
+    ]
+
+  },
+
+
+  emuWar: {
+
+    title: "Set 2: Emu War",
+
+    questions: [
+
+      {
+        question:
+        "1. Which combination of factors best explains why the Emu War occurred?",
+
+        answers: [
+          "A. International invasion and naval blockade",
+          "B. Drought, migration, crop damage and economic pressure on farmers",
+          "C. A dispute with New Zealand",
+          "D. A plan to use emus as cavalry"
+        ],
+
+        correct: 1
+      },
+
+      {
+        question:
+        "2. Why is the term 'Emu War' historically misleading?",
+
+        answers: [
+          "A. No emus were involved",
+          "B. It was a pest-control operation rather than a formal war between political states",
+          "C. It happened during World War I",
+          "D. Australia declared war on every bird species"
+        ],
+
+        correct: 1
+      },
+
+      {
+        question:
+        "3. What does the use of a small military unit with two Lewis guns suggest?",
+
+        answers: [
+          "A. Australia had fully mobilised for war",
+          "B. It was a limited government intervention",
+          "C. Australia had no other soldiers",
+          "D. Australia planned to invade another country"
+        ],
+
+        correct: 1
+      },
+
+      {
+        question:
+        "4. Why were machine guns less effective than expected?",
+
+        answers: [
+          "A. Emus fought from trenches",
+          "B. The birds were fast, mobile and dispersed",
+          "C. Lewis guns fired only once per hour",
+          "D. Ammunition was completely prohibited"
+        ],
+
+        correct: 1
+      },
+
+      {
+        question:
+        "5. Why is the Emu War useful to environmental historians?",
+
+        answers: [
+          "A. It shows how farming, wildlife, government policy and environmental pressures interact",
+          "B. It proves military weapons always solve environmental problems",
+          "C. It has no connection to agriculture",
+          "D. Drought has no effect on animal migration"
+        ],
+
+        correct: 0
+      },
+
+      {
+        question:
+        "6. Which interpretation best explains the campaign's limited success?",
+
+        answers: [
+          "A. Military weapons designed for concentrated targets were poorly suited to dispersed wildlife",
+          "B. Emus possessed artillery",
+          "C. Australia did not understand machine guns",
+          "D. Farmers refused to report emus"
+        ],
+
+        correct: 0
+      },
+
+      {
+        question:
+        "7. Why should historians treat exact Emu War casualty figures carefully?",
+
+        answers: [
+          "A. Every record was destroyed",
+          "B. Confirmed kills, estimates and later retellings use different kinds of evidence",
+          "C. Emus were officially soldiers",
+          "D. No numerical reports existed"
+        ],
+
+        correct: 1
+      },
+
+      {
+        question:
+        "8. What did the political and press attention surrounding the Emu War reveal?",
+
+        answers: [
+          "A. Small government actions can become famous through media framing and satire",
+          "B. Newspapers were banned from discussing it",
+          "C. Rural problems attracted no political interest",
+          "D. Australians believed it was an international war"
+        ],
+
+        correct: 0
+      },
+
+      {
+        question:
+        "9. Why is saying 'Australia lost a war to emus' an oversimplification?",
+
+        answers: [
+          "A. Australia surrendered territory to an emu government",
+          "B. It turns a limited wildlife-control campaign into a conventional military defeat",
+          "C. Emus became extinct afterwards",
+          "D. No soldiers were involved"
+        ],
+
+        correct: 1
+      },
+
+      {
+        question:
+        "10. Which broader historical lesson can be drawn from the Emu War?",
+
+        answers: [
+          "A. Technology works equally well for every problem",
+          "B. Government responses may fail when methods do not fit the environmental problem",
+          "C. Military force is always cheaper than fencing",
+          "D. Wildlife management has no connection with economic policy"
+        ],
+
+        correct: 1
+      }
+
+    ]
+
+  }
+
+};
+
+
+let activeSetKey = "civilWar";
 let currentQuestion = 0;
 let score = 0;
 let answered = false;
 
 
-const questionEl =
-document.getElementById("question");
+function currentSet() {
+  return quizSets[activeSetKey];
+}
 
-const answersEl =
-document.getElementById("answers");
 
-const statusText =
-document.getElementById("statusText");
+function startQuiz(setKey) {
 
-const nextBtn =
-document.getElementById("nextBtn");
+  activeSetKey = setKey;
+  currentQuestion = 0;
+  score = 0;
+  answered = false;
 
-const scoreEl =
-document.getElementById("score");
+  document
+    .getElementById("civilWarBtn")
+    .classList.toggle("active", setKey === "civilWar");
 
-const quizContainer =
-document.getElementById("quiz-container");
+  document
+    .getElementById("emuWarBtn")
+    .classList.toggle("active", setKey === "emuWar");
+
+  buildQuiz();
+
+}
+
+
+function buildQuiz() {
+
+  document.querySelector(".quiz-wrapper").innerHTML = `
+
+    <div id="quiz-container">
+
+      <div class="quiz-set-title" id="quizSetTitle"></div>
+
+      <div class="question" id="question"></div>
+
+      <div class="answers" id="answers"></div>
+
+      <div class="status-text" id="statusText">
+        Choose one answer.
+      </div>
+
+      <button class="next-btn" id="nextBtn">
+        Next Question
+      </button>
+
+      <div class="score">
+        Score:
+        <span id="score">0 / 10</span>
+      </div>
+
+    </div>
+
+  `;
+
+  document
+    .getElementById("nextBtn")
+    .addEventListener("click", handleNext);
+
+  loadQuestion();
+
+}
 
 
 function loadQuestion() {
 
-const q =
-quizData[currentQuestion];
+  const set = currentSet();
+  const q = set.questions[currentQuestion];
 
-questionEl.textContent =
-q.question;
+  const title = document.getElementById("quizSetTitle");
+  const question = document.getElementById("question");
+  const answers = document.getElementById("answers");
+  const status = document.getElementById("statusText");
+  const nextBtn = document.getElementById("nextBtn");
 
-answersEl.innerHTML =
-"";
+  title.textContent = set.title;
+  question.textContent = q.question;
 
-statusText.textContent =
-"Choose one answer.";
+  answers.innerHTML = "";
+  status.textContent = "Choose one answer.";
 
-answered =
-false;
+  answered = false;
 
-
-nextBtn.textContent =
-
-currentQuestion === quizData.length - 1
-
-? "Show Result"
-
-: "Next Question";
+  if (currentQuestion === set.questions.length - 1) {
+    nextBtn.textContent = "Show Result";
+  } else {
+    nextBtn.textContent = "Next Question";
+  }
 
 
-q.answers.forEach((answer, index) => {
+  q.answers.forEach((answer, index) => {
 
-const button =
-document.createElement("button");
+    const button = document.createElement("button");
 
-button.classList.add("answer-btn");
+    button.className = "answer-btn";
+    button.textContent = answer;
 
-button.textContent =
-answer;
+    button.addEventListener(
+      "click",
+      () => selectAnswer(index)
+    );
 
-button.type =
-"button";
+    answers.appendChild(button);
 
-button.addEventListener(
-
-"click",
-
-() => selectAnswer(index)
-
-);
-
-answersEl.appendChild(button);
-
-});
+  });
 
 }
 
 
 function selectAnswer(index) {
 
-if (answered) return;
+  if (answered) return;
 
-answered = true;
+  answered = true;
 
+  const q = currentSet().questions[currentQuestion];
 
-const correctIndex =
-quizData[currentQuestion].correct;
+  const buttons =
+    document.querySelectorAll(".answer-btn");
 
+  buttons.forEach((button, i) => {
 
-const allButtons =
-document.querySelectorAll(".answer-btn");
+    button.disabled = true;
 
+    if (i === q.correct) {
+      button.classList.add("correct");
+    }
 
-allButtons.forEach((btn, i) => {
+    if (i === index && index !== q.correct) {
+      button.classList.add("wrong");
+    }
 
-btn.disabled =
-true;
-
-
-if (i === correctIndex)
-
-btn.classList.add("correct");
-
-
-if (
-i === index &&
-i !== correctIndex
-)
-
-btn.classList.add("wrong");
-
-});
+  });
 
 
-if (index === correctIndex) {
+  if (index === q.correct) {
 
-score++;
+    score++;
 
-statusText.textContent =
-"Correct!";
+    document.getElementById("statusText")
+      .textContent = "Correct!";
 
-}
+  } else {
 
-else {
+    document.getElementById("statusText")
+      .textContent = "Wrong answer.";
 
-statusText.textContent =
-"Wrong answer.";
+  }
+
+
+  document.getElementById("score")
+    .textContent = score + " / 10";
 
 }
 
 
-scoreEl.textContent =
-score + " / 10";
+function handleNext() {
+
+  if (!answered) {
+
+    document.getElementById("statusText")
+      .textContent = "Choose one answer first.";
+
+    return;
+
+  }
+
+  currentQuestion++;
+
+  if (currentQuestion < currentSet().questions.length) {
+
+    loadQuestion();
+
+  } else {
+
+    showResult();
+
+  }
 
 }
-
-
-nextBtn.addEventListener(
-
-"click",
-
-() => {
-
-if (!answered) {
-
-statusText.textContent =
-"Choose one answer.";
-
-return;
-
-}
-
-
-currentQuestion++;
-
-
-if (
-currentQuestion <
-quizData.length
-)
-
-loadQuestion();
-
-else
-
-showResult();
-
-}
-
-);
 
 
 function showResult() {
 
-let achievement =
-"";
+  const set = currentSet();
+
+  let award = "";
 
 
-if (score === 10) {
+  /*
+    HISTORY TEACHER AWARD
+    Only appears if the player gets 10/10
+  */
 
-achievement = `
+  if (score === 10) {
 
-<h3 style="
-color:gold;
-font-size:28px;
-margin-top:20px;
-">
+    award = `
 
-🏆 University-Level History Expert Achievement
+      <div class="teacher-award">
 
-</h3>
+        <div class="trophy">
+          🏆
+        </div>
+
+        <h3>
+          History Teacher Award
+        </h3>
+
+        <p>
+          🎓 Congratulations!
+          <br><br>
+
+          You earned the
+          <strong>History Teacher Award!</strong>
+
+          <br><br>
+
+          <strong>
+            Perfect Score: 10/10
+          </strong>
+        </p>
+
+      </div>
+
+    `;
+
+  }
 
 
-<p style="
-font-size:20px;
-margin-top:10px;
-">
+  document.getElementById("quiz-container")
+    .innerHTML = `
 
-🎖️ Outstanding World War II History Knowledge
+      <div class="result-box">
 
-<br>
+        <h2>
+          Quiz Complete
+        </h2>
 
-<strong>
+        <p style="font-size:20px;">
 
-Perfect Score (10/10)
+          You got
 
-</strong>
+          <strong>${score}</strong>
 
-</p>
+          out of
 
-`;
+          <strong>10</strong>
+
+          in
+
+          <strong>${set.title}</strong>.
+
+        </p>
+
+
+        ${award}
+
+
+        <button
+          class="restart-btn"
+          onclick="startQuiz('${activeSetKey}')">
+
+          Restart This Quiz
+
+        </button>
+
+      </div>
+
+    `;
 
 }
 
 
-quizContainer.innerHTML = `
-
-<div class="result-box">
-
-<h2>
-
-Quiz Complete
-
-</h2>
-
-
-<p>
-
-You got
-
-<strong>${score}</strong>
-
-out of
-
-<strong>10</strong>.
-
-</p>
-
-
-${achievement}
-
-
-<button
-class="restart-btn"
-onclick="location.reload()"
->
-
-Restart Quiz
-
-</button>
-
-</div>
-
-`;
-
-}
-
-
-loadQuestion();
+startQuiz("civilWar");
 
 </script>
 
 </body>
 </html>
+if (score === 10) {
+  award = `
+    <div class="teacher-award">
+      <div class="trophy">🏆</div>
+
+      <h3>History Teacher Award</h3>
+
+      <p>
+        🎓 Congratulations!
+        <br><br>
+        You earned the <strong>History Teacher Award!</strong>
+        <br><br>
+        <strong>Perfect Score: 10/10</strong>
+      </p>
+    </div>
+  `;
+}
