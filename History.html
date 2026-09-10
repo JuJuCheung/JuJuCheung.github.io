@@ -1,1149 +1,2499 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>American Civil War & Emu War History</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+<title>Year 11 History</title>
 
-    body {
-      background: #f4f1ea;
-      color: #222;
-      line-height: 1.6;
-    }
+<style>
 
-    header {
-      background:
-        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-        url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80')
-        center/cover no-repeat;
-      height: 60vh;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 
-    .hero-text {
-      max-width: 800px;
-      padding: 20px;
-    }
+body {
+    background: #f4f1ea;
+    color: #222;
+    line-height: 1.6;
+}
+
+/* HERO */
+
+header {
+    background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80")
+    center/cover no-repeat;
+
+    height: 60vh;
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.hero-text {
+    max-width: 850px;
+    padding: 20px;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+}
+
+
+/* NAVIGATION */
+
+nav {
+    background: #2f3b2f;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #d4b483;
+}
+
+
+/* SECTIONS */
+
+section {
+    padding: 50px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2f3b2f;
+    font-size: 2rem;
+}
+
+
+/* CARDS */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 20px;
+
+    margin-top: 30px;
+}
+
+.card {
+    background: white;
+
+    border-radius: 10px;
+
+    padding: 20px;
+
+    box-shadow:
+    0 4px 10px rgba(0,0,0,0.1);
+
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: #7a4e2d;
+}
+
+
+/* TIMELINE */
+
+.timeline {
+    border-left: 4px solid #7a4e2d;
+
+    margin-top: 20px;
+
+    padding-left: 20px;
+}
+
+.timeline-item {
+    margin-bottom: 25px;
+}
+
+.timeline-item h4 {
+    color: #2f3b2f;
+
+    margin-bottom: 5px;
+}
+
+
+/* QUOTE */
+
+.quote {
+    background: #2f3b2f;
+
+    color: white;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    margin-top: 30px;
+
+    font-style: italic;
+
+    font-size: 1.2rem;
+}
+
+
+/* QUIZ */
+
+.quiz-intro {
+    max-width: 700px;
+
+    margin: auto;
+
+    text-align: center;
+
+    font-size: 17px;
+}
+
+
+.quiz-set-buttons {
+    max-width: 700px;
+
+    margin: 25px auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 14px;
+}
+
+
+.set-btn {
+    background: #111;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.set-btn:hover {
+    background: #444;
+}
+
+.set-btn.active {
+    background: #7a4e2d;
+}
+
+
+/* QUIZ BOX */
+
+.quiz-wrapper {
+
+    max-width: 700px;
+
+    margin: 20px auto;
+
+    background: #f3f4f7;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    box-shadow:
+    0 4px 10px rgba(0,0,0,0.1);
+}
+
+
+.quiz-set-title {
+
+    color: #7a4e2d;
+
+    font-size: 19px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+
+.question {
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+
+/* ANSWERS */
+
+.answers {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+
+.answer-btn {
+
+    background: #111;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 14px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+.answer-btn:hover {
+
+    background: #444;
+}
+
+
+.answer-btn.correct {
+
+    background: green;
+}
+
+
+.answer-btn.wrong {
+
+    background: crimson;
+}
+
+
+.answer-btn:disabled {
+
+    opacity: 1;
+
+    cursor: default;
+}
+
+
+/* STATUS */
+
+.status-text {
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+
+/* NEXT BUTTON */
+
+.next-btn,
+.restart-btn {
+
+    background: #111;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 14px 24px;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    margin-bottom: 15px;
+}
+
+
+.next-btn:hover,
+.restart-btn:hover {
+
+    background: #444;
+}
+
+
+.score {
+
+    font-weight: bold;
+
+    font-size: 17px;
+}
+
+
+.score span {
+
+    color: #1a3d8f;
+}
+
+
+/* AWARD */
+
+.teacher-award {
+
+    margin: 30px auto;
+
+    padding: 30px;
+
+    max-width: 500px;
+
+    border: 5px solid #d4af37;
+
+    border-radius: 20px;
+
+    background: #fff8dc;
+
+    box-shadow:
+    0 6px 18px rgba(0,0,0,0.18);
+}
+
+
+.teacher-award .trophy {
+
+    font-size: 70px;
+}
+
+
+.teacher-award h3 {
+
+    font-size: 30px;
+
+    color: #b8860b;
+
+    margin-bottom: 10px;
+}
+
+
+.teacher-award p {
+
+    font-size: 19px;
+}
+
+
+.result-box {
+
+    text-align: center;
+}
+
+
+/* FOOTER */
+
+footer {
+
+    background: #1e261e;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 20px;
+
+    margin-top: 40px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px) {
 
     .hero-text h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
 
-    .hero-text p {
-      font-size: 1.2rem;
-    }
-
-    nav {
-      background: #2f3b2f;
-      padding: 15px;
-      text-align: center;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #d4b483;
-    }
-
-    section {
-      padding: 50px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #2f3b2f;
-      font-size: 2rem;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      color: #7a4e2d;
-    }
-
-    .timeline {
-      border-left: 4px solid #7a4e2d;
-      margin-top: 20px;
-      padding-left: 20px;
-    }
-
-    .timeline-item {
-      margin-bottom: 25px;
-    }
-
-    .timeline-item h4 {
-      color: #2f3b2f;
-      margin-bottom: 5px;
-    }
-
-    .quote {
-      background: #2f3b2f;
-      color: white;
-      padding: 40px;
-      text-align: center;
-      border-radius: 10px;
-      margin-top: 30px;
-      font-style: italic;
-      font-size: 1.2rem;
-    }
-
-    footer {
-      background: #1e261e;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
-
-    .quiz-top-text {
-      max-width: 650px;
-      margin: 0 auto 10px;
-      font-size: 16px;
-      color: #222;
-      text-align: left;
-    }
-
-    .quiz-set-buttons {
-      max-width: 650px;
-      margin: 20px auto 10px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .set-btn {
-      background: #0b0b0b;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      padding: 14px 18px;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .set-btn.active {
-      background: #7a4e2d;
-    }
-
-    .quiz-wrapper {
-      max-width: 650px;
-      margin: 20px auto;
-      background: #f3f4f7;
-      padding: 18px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .quiz-set-title {
-      color: #7a4e2d;
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
-
-    .question {
-      font-size: 16px;
-      font-weight: bold;
-      margin-bottom: 18px;
-      line-height: 1.5;
+        font-size: 2.2rem;
     }
 
     .answers {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-bottom: 26px;
-    }
 
-    .answer-btn {
-      background: #0b0b0b;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      padding: 14px 10px;
-      font-size: 15px;
-      cursor: pointer;
-    }
-
-    .answer-btn.correct {
-      background: green;
-    }
-
-    .answer-btn.wrong {
-      background: crimson;
-    }
-
-    .answer-btn:disabled {
-      opacity: 1;
-      cursor: default;
-    }
-
-    .status-text {
-      font-size: 15px;
-      font-weight: bold;
-      margin-bottom: 18px;
-    }
-
-    .next-btn,
-    .restart-btn {
-      background: #0b0b0b;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      padding: 14px 24px;
-      font-size: 15px;
-      cursor: pointer;
-      margin-bottom: 18px;
-    }
-
-    .score {
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    .score span {
-      color: #1a3d8f;
-    }
-
-    .result-box {
-      text-align: center;
-      padding: 20px 10px;
-    }
-
-    .teacher-award {
-      margin: 30px auto;
-      padding: 25px;
-      max-width: 500px;
-      border: 4px solid #d4af37;
-      border-radius: 20px;
-      background: #fff8dc;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-    }
-
-    .teacher-award h3 {
-      font-size: 30px;
-      color: #b8860b;
-      margin-bottom: 10px;
-    }
-
-    .teacher-award .trophy {
-      font-size: 60px;
-    }
-
-    .teacher-award p {
-      font-size: 19px;
-      color: #222;
-    }
-
-    @media (max-width: 768px) {
-      .hero-text h1 {
-        font-size: 2.2rem;
-      }
-
-      .answers {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .quiz-set-buttons {
         grid-template-columns: 1fr;
-      }
     }
-  </style>
+
+    .quiz-set-buttons {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
+
 <header>
-  <div class="hero-text">
-    <h1>American Civil War & Emu War History</h1>
-    <p>
-      Exploring the causes, turning points and consequences of the American Civil War,
-      together with Australia's unusual 1932 military campaign against emus.
-    </p>
-  </div>
+
+<div class="hero-text">
+
+<h1>Year 11 History</h1>
+
+<p>
+Crime & Punishment • Elizabethan England •
+The Cold War • Medicine Through Time
+</p>
+
+</div>
+
 </header>
 
+
+
 <nav>
-  <a href="#about">About</a>
-  <a href="#daily-life">Key Topics</a>
-  <a href="#timeline">Timeline</a>
-  <a href="#stories">Stories</a>
-  <a href="#quiz">Quiz</a>
+
+<a href="#about">About</a>
+
+<a href="#topics">Topics</a>
+
+<a href="#timeline">Timeline</a>
+
+<a href="#stories">Interpretations</a>
+
+<a href="#quiz">Quiz</a>
+
 </nav>
 
+
+
 <section id="about">
-  <h2>About These Conflicts</h2>
 
-  <p style="text-align:center; max-width:800px; margin:auto;">
-    The American Civil War was fought from 1861 to 1865 between the United States
-    and eleven seceded Southern states that formed the Confederacy. Slavery was the
-    central issue in the sectional crisis that produced secession.
+<h2>Year 11 History</h2>
 
-    Decades later, in 1932, the Australian government used soldiers with Lewis guns
-    in Western Australia to help farmers reduce large numbers of emus damaging wheat crops.
-    The so-called Emu War was not a formal war, but became famous because military
-    firepower was poorly suited to controlling fast-moving wildlife.
-  </p>
+<p style="text-align:center;max-width:850px;margin:auto;">
+
+Explore four major areas of history.
+
+Study how crime and punishment changed,
+how Elizabeth I ruled England,
+why the Cold War developed,
+and how medicine changed from the medieval
+period to the modern world.
+
+</p>
+
 </section>
 
-<section id="daily-life">
-  <h2>Key History Topics</h2>
 
-  <div class="cards">
 
-    <div class="card">
-      <h3>🇺🇸 Slavery and Secession</h3>
-      <p>
-        Conflict over slavery became increasingly serious as the United States
-        expanded westward. After Abraham Lincoln's election in 1860,
-        eleven Southern states eventually seceded.
-      </p>
-    </div>
+<section id="topics">
 
-    <div class="card">
-      <h3>🎩 Abraham Lincoln</h3>
-      <p>
-        Lincoln originally focused on preserving the Union.
-        During the war, emancipation became increasingly important
-        as both a moral and military objective.
-      </p>
-    </div>
+<h2>History Topics</h2>
 
-    <div class="card">
-      <h3>📜 Emancipation</h3>
-      <p>
-        The Emancipation Proclamation came into effect on
-        1 January 1863 and declared enslaved people in areas
-        still in rebellion to be free.
-      </p>
-    </div>
 
-    <div class="card">
-      <h3>⚔️ Gettysburg & Vicksburg</h3>
-      <p>
-        Union victories at Gettysburg and Vicksburg in July 1863
-        significantly weakened Confederate military power.
-      </p>
-    </div>
+<div class="cards">
 
-    <div class="card">
-      <h3>🏛️ Reconstruction</h3>
-      <p>
-        Reconstruction attempted to rebuild the United States
-        and determine the legal and political rights of formerly
-        enslaved people.
-      </p>
-    </div>
 
-    <div class="card">
-      <h3>🇦🇺 Why the Emu War Happened</h3>
-      <p>
-        Drought and migration brought large groups of emus
-        into farming regions of Western Australia, where they
-        damaged wheat fields and fences.
-      </p>
-    </div>
+<div class="card">
 
-    <div class="card">
-      <h3>🔫 The Military Campaign</h3>
-      <p>
-        Major G. P. W. Meredith led a small military group
-        armed with two Lewis machine guns to reduce the emu population.
-      </p>
-    </div>
+<h3>⚖️ Crime & Punishment</h3>
 
-    <div class="card">
-      <h3>🪶 Outcome</h3>
-      <p>
-        The military campaign achieved limited results.
-        Later methods such as fencing and bounty programmes
-        became more important.
-      </p>
-    </div>
+<p>
 
-  </div>
+Explore how crime, policing and punishment
+changed over hundreds of years.
+
+Study medieval law,
+the Bloody Code,
+transportation,
+prisons,
+professional policing
+and modern approaches to punishment.
+
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>👑 Elizabethan England</h3>
+
+<p>
+
+Study the reign of Elizabeth I,
+including religion,
+Mary Queen of Scots,
+Catholic threats,
+the Spanish Armada,
+poverty,
+exploration
+and Elizabethan society.
+
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>☢️ The Cold War</h3>
+
+<p>
+
+Explore the rivalry between the USA
+and the Soviet Union after World War II.
+
+Study Berlin,
+the Cuban Missile Crisis,
+Vietnam,
+détente,
+Afghanistan
+and the collapse of the Soviet Union.
+
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>🩺 Medicine Through Time</h3>
+
+<p>
+
+Discover how medicine developed from
+medieval ideas to modern science.
+
+Study Galen,
+Vesalius,
+Harvey,
+Pasteur,
+Lister,
+vaccination,
+antibiotics
+and public health.
+
+</p>
+
+</div>
+
+
+</div>
+
 </section>
+
+
 
 <section id="timeline">
-  <h2>History Timeline</h2>
 
-  <div class="timeline">
+<h2>History Timeline</h2>
 
-    <div class="timeline-item">
-      <h4>1860 - Lincoln Elected</h4>
-      <p>
-        Abraham Lincoln won the presidential election,
-        accelerating the Southern secession crisis.
-      </p>
-    </div>
 
-    <div class="timeline-item">
-      <h4>1861 - Civil War Begins</h4>
-      <p>
-        Confederate forces attacked Fort Sumter in April 1861.
-      </p>
-    </div>
+<div class="timeline">
 
-    <div class="timeline-item">
-      <h4>1863 - Major Turning Point</h4>
-      <p>
-        The Emancipation Proclamation took effect,
-        while Union victories occurred at Gettysburg and Vicksburg.
-      </p>
-    </div>
 
-    <div class="timeline-item">
-      <h4>1865 - Confederate Defeat</h4>
-      <p>
-        Robert E. Lee surrendered at Appomattox Court House.
-        Slavery was later abolished through the Thirteenth Amendment.
-      </p>
-    </div>
+<div class="timeline-item">
 
-    <div class="timeline-item">
-      <h4>1865-1877 - Reconstruction</h4>
-      <p>
-        The United States attempted to rebuild the South
-        and establish new citizenship and political rights.
-      </p>
-    </div>
+<h4>1348 – Black Death reaches England</h4>
 
-    <div class="timeline-item">
-      <h4>1932 - Emu Crisis</h4>
-      <p>
-        Large groups of emus damaged farmland in Western Australia.
-      </p>
-    </div>
+<p>
+The plague killed a large proportion
+of the population and exposed the limits
+of medieval medicine.
+</p>
 
-    <div class="timeline-item">
-      <h4>2 November 1932 - Emu War Begins</h4>
-      <p>
-        Meredith's military unit began operations using Lewis guns.
-      </p>
-    </div>
+</div>
 
-    <div class="timeline-item">
-      <h4>December 1932 - Campaign Ends</h4>
-      <p>
-        Military operations ended without completely solving
-        the agricultural problem.
-      </p>
-    </div>
 
-  </div>
+
+<div class="timeline-item">
+
+<h4>1543 – Vesalius publishes his anatomical studies</h4>
+
+<p>
+Vesalius used human dissection
+to challenge some of Galen's ideas.
+</p>
+
+</div>
+
+
+
+<div class="timeline-item">
+
+<h4>1558 – Elizabeth I becomes Queen</h4>
+
+<p>
+Elizabeth inherited a country divided
+by religious and political tensions.
+</p>
+
+</div>
+
+
+
+<div class="timeline-item">
+
+<h4>1559 – Religious Settlement</h4>
+
+<p>
+Elizabeth established a Protestant
+Church of England under royal authority.
+</p>
+
+</div>
+
+
+
+<div class="timeline-item">
+
+<h4>1587 – Mary Queen of Scots executed</h4>
+
+<p>
+Mary was executed after being linked
+to plots against Elizabeth.
+</p>
+
+</div>
+
+
+
+<div class="timeline-item">
+
+<h4>1588 – Spanish Armada</h4>
+
+<p>
+Philip II's invasion attempt was defeated
+by a combination of English resistance,
+Spanish problems and weather.
+</p>
+
+</div>
+
+
+
+<div class="timeline-item">
+
+<h4>1829 – Metropolitan Police established</h4>
+
+<p>
+Robert Peel's Metropolitan Police Act
+created a professional London police force.
+</p>
+
+</div>
+
+
+
+<div class="timeline-item">
+
+<h4>1861 – Pasteur and Germ Theory</h4>
+
+<p>
+Louis Pasteur demonstrated that microorganisms
+were involved in decay and disease.
+</p>
+
+</div>
+
+
+
+<div class="timeline-item">
+
+<h4>1867 – Lister and antiseptic surgery</h4>
+
+<p>
+Joseph Lister used antiseptic techniques
+to reduce infections during surgery.
+</p>
+
+</div>
+
+
+
+<div class="timeline-item">
+
+<h4>1948–49 – Berlin Blockade</h4>
+
+<p>
+The Soviet Union blocked Western access
+to West Berlin,
+leading to the Berlin Airlift.
+</p>
+
+</div>
+
+
+
+<div class="timeline-item">
+
+<h4>1962 – Cuban Missile Crisis</h4>
+
+<p>
+The USA and USSR came extremely close
+to nuclear conflict.
+</p>
+
+</div>
+
+
+
+<div class="timeline-item">
+
+<h4>1989 – Berlin Wall falls</h4>
+
+<p>
+The collapse of communist governments
+in Eastern Europe transformed the Cold War.
+</p>
+
+</div>
+
+
+
+<div class="timeline-item">
+
+<h4>1991 – Soviet Union collapses</h4>
+
+<p>
+The dissolution of the USSR marked
+the end of the Cold War era.
+</p>
+
+</div>
+
+
+</div>
+
 </section>
+
+
 
 <section id="stories">
 
-  <h2>Important History Stories</h2>
+<h2>Historical Interpretations</h2>
 
-  <div class="cards">
 
-    <div class="card">
-      <h3>From Union to Emancipation</h3>
-      <p>
-        The Union originally fought mainly to preserve the nation.
-        By 1863, ending slavery had become closely connected to Union victory.
-      </p>
-    </div>
+<div class="cards">
 
-    <div class="card">
-      <h3>Why the Union Won</h3>
-      <p>
-        Greater population, industry, railways, naval strength,
-        financial resources and military adaptation all contributed
-        to Union victory.
-      </p>
-    </div>
 
-    <div class="card">
-      <h3>The Memory of the Emu War</h3>
-      <p>
-        The expression "Emu War" turned a small pest-control operation
-        into one of Australia's most unusual historical stories.
-      </p>
-    </div>
+<div class="card">
 
-  </div>
+<h3>⚖️ Why did punishment change?</h3>
 
-  <div class="quote">
-    “History is not only about battles. It is also about political choices,
-    social structures, environmental pressures and interpretation.”
-  </div>
+<p>
+
+Punishment did not simply become
+more humane over time.
+
+Government,
+religion,
+social attitudes,
+technology,
+crime levels
+and ideas about rehabilitation
+all influenced change.
+
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>👑 Was Elizabeth successful?</h3>
+
+<p>
+
+Historians debate how far Elizabeth's
+success came from her own political skill
+and how far it depended on advisers,
+Parliament,
+local government
+and the weakness of her enemies.
+
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>☢️ Who caused the Cold War?</h3>
+
+<p>
+
+Historians disagree about responsibility.
+
+Some emphasise Soviet expansion,
+others American economic and strategic policy,
+while post-revisionist historians examine
+fear,
+ideology
+and misunderstandings on both sides.
+
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>🩺 Why did medicine improve?</h3>
+
+<p>
+
+Medical progress depended on more than
+individual scientists.
+
+Technology,
+war,
+government,
+communication,
+scientific knowledge
+and public attitudes
+all contributed to change.
+
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="quote">
+
+“History is not simply remembering facts.
+It is explaining change,
+evaluating evidence
+and judging different interpretations.”
+
+</div>
 
 </section>
+
+
 
 <section id="quiz">
 
-  <h2>University-Level History Quiz</h2>
+<h2>🎓 University-Level History Quiz</h2>
 
-  <div class="quiz-top-text">
-    Choose one of the two university-level question sets.
-    Each set contains 10 questions.
-    <strong>Get 10/10 to earn the History Teacher Award!</strong>
-  </div>
 
-  <div class="quiz-set-buttons">
+<p class="quiz-intro">
 
-    <button
-      class="set-btn active"
-      id="civilWarBtn"
-      onclick="startQuiz('civilWar')">
-      Set 1: American Civil War
-    </button>
+Choose a topic below.
 
-    <button
-      class="set-btn"
-      id="emuWarBtn"
-      onclick="startQuiz('emuWar')">
-      Set 2: Emu War
-    </button>
+Each quiz contains
+<strong>10 university-level questions.</strong>
 
-  </div>
+<br><br>
 
-  <div class="quiz-wrapper">
+🏆 Get
+<strong>10 / 10</strong>
+to earn the
 
-    <div id="quiz-container">
+<strong>History Teacher Award!</strong>
 
-      <div class="quiz-set-title" id="quizSetTitle">
-        Set 1: American Civil War
-      </div>
+</p>
 
-      <div class="question" id="question"></div>
 
-      <div class="answers" id="answers"></div>
 
-      <div class="status-text" id="statusText">
-        Choose one answer.
-      </div>
+<div class="quiz-set-buttons">
 
-      <button class="next-btn" id="nextBtn">
-        Next Question
-      </button>
 
-      <div class="score">
-        Score:
-        <span id="score">0 / 10</span>
-      </div>
+<button
+class="set-btn active"
+id="crimeBtn"
+onclick="startQuiz('crime')">
 
-    </div>
+⚖️ Crime & Punishment
 
-  </div>
+</button>
+
+
+<button
+class="set-btn"
+id="elizabethBtn"
+onclick="startQuiz('elizabeth')">
+
+👑 Elizabethan England
+
+</button>
+
+
+<button
+class="set-btn"
+id="coldWarBtn"
+onclick="startQuiz('coldWar')">
+
+☢️ Cold War
+
+</button>
+
+
+<button
+class="set-btn"
+id="medicineBtn"
+onclick="startQuiz('medicine')">
+
+🩺 Medicine Through Time
+
+</button>
+
+
+</div>
+
+
+
+<div class="quiz-wrapper">
+
+<div id="quiz-container">
+
+<div
+class="quiz-set-title"
+id="quizSetTitle">
+</div>
+
+
+<div
+class="question"
+id="question">
+</div>
+
+
+<div
+class="answers"
+id="answers">
+</div>
+
+
+<div
+class="status-text"
+id="statusText">
+
+Choose one answer.
+
+</div>
+
+
+<button
+class="next-btn"
+id="nextBtn">
+
+Next Question
+
+</button>
+
+
+<div class="score">
+
+Score:
+
+<span id="score">
+
+0 / 10
+
+</span>
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
+
+
 <footer>
-  <p>
-    &copy; 2026 American Civil War & Emu War History |
-    History Website Project
-  </p>
+
+<p>
+
+© 2026 Year 11 History |
+History Learning Website
+
+</p>
+
 </footer>
+
 
 
 <script>
 
+
 const quizSets = {
 
-  civilWar: {
-
-    title: "Set 1: American Civil War",
-
-    questions: [
-
-      {
-        question:
-        "1. Which interpretation is best supported by the secession crisis of 1860-61?",
-
-        answers: [
-          "A. Secession was caused mainly by disagreement over foreign policy",
-          "B. The protection and future expansion of slavery was central to the secession movement",
-          "C. Congress had already abolished slavery nationwide",
-          "D. Secession was mainly caused by European immigration"
-        ],
-
-        correct: 1
-      },
-
-      {
-        question:
-        "2. Why did Lincoln's election in 1860 accelerate secession?",
-
-        answers: [
-          "A. Southern leaders feared restrictions on slavery would weaken its future political position",
-          "B. Lincoln promised to immediately confiscate all Southern land",
-          "C. Lincoln had already arrested Confederate leaders",
-          "D. Republicans supported Southern independence"
-        ],
-
-        correct: 0
-      },
-
-      {
-        question:
-        "3. What was the strategic purpose of the Union's Anaconda Plan?",
-
-        answers: [
-          "A. Fight only at sea",
-          "B. Blockade the Confederacy and control major rivers",
-          "C. Capture Canada",
-          "D. Depend on one battle near Washington"
-        ],
-
-        correct: 1
-      },
-
-      {
-        question:
-        "4. What was the major historical significance of the Emancipation Proclamation?",
-
-        answers: [
-          "A. It immediately abolished slavery everywhere",
-          "B. It made emancipation an explicit Union war objective and allowed Black enlistment",
-          "C. It restored slavery in border states",
-          "D. It ended the war in 1863"
-        ],
-
-        correct: 1
-      },
-
-      {
-        question:
-        "5. Why are Gettysburg and Vicksburg often considered major turning points?",
-
-        answers: [
-          "A. Britain joined the Union",
-          "B. Confederate resistance ended immediately",
-          "C. Lee's invasion was stopped and the Union gained control of the Mississippi River",
-          "D. Lincoln abandoned emancipation"
-        ],
-
-        correct: 2
-      },
-
-      {
-        question:
-        "6. Which explanation best accounts for Union victory by 1865?",
-
-        answers: [
-          "A. Greater resources combined with increasingly effective military and political strategy",
-          "B. The Confederacy had no trained soldiers",
-          "C. European armies defeated the Confederacy",
-          "D. No major battles occurred after 1862"
-        ],
-
-        correct: 0
-      },
-
-      {
-        question:
-        "7. How did African American enlistment affect the Union war effort?",
-
-        answers: [
-          "A. It had only symbolic importance",
-          "B. It increased Union manpower and connected military victory with Black citizenship",
-          "C. It caused the Union to abandon emancipation",
-          "D. It was prohibited by Lincoln"
-        ],
-
-        correct: 1
-      },
 
-      {
-        question:
-        "8. What is meant by the Union's movement toward 'hard war'?",
+/* ==================================
+   CRIME AND PUNISHMENT
+================================== */
 
-        answers: [
-          "A. Destroying Confederate military resources and infrastructure",
-          "B. Fighting only small ceremonial battles",
-          "C. Protecting Confederate railway systems",
-          "D. Avoiding Confederate territory"
-        ],
 
-        correct: 0
-      },
+crime: {
 
-      {
-        question:
-        "9. Why was the Thirteenth Amendment still necessary?",
-
-        answers: [
-          "A. It constitutionally abolished slavery throughout the United States",
-          "B. The Emancipation Proclamation had already permanently abolished slavery everywhere",
-          "C. It restored slavery",
-          "D. It applied only to soldiers"
-        ],
+title:
+"⚖️ Crime & Punishment — University Level",
 
-        correct: 0
-      },
+questions: [
 
-      {
-        question:
-        "10. Which statement best describes the central problem of Reconstruction?",
-
-        answers: [
-          "A. Reuniting the nation while defining freedom, citizenship and political rights",
-          "B. Returning America to British control",
-          "C. Rebuilding the Confederate army",
-          "D. Removing the constitutional amendments"
-        ],
-
-        correct: 0
-      }
-
-    ]
-
-  },
-
-
-  emuWar: {
-
-    title: "Set 2: Emu War",
-
-    questions: [
-
-      {
-        question:
-        "1. Which combination of factors best explains why the Emu War occurred?",
-
-        answers: [
-          "A. International invasion and naval blockade",
-          "B. Drought, migration, crop damage and economic pressure on farmers",
-          "C. A dispute with New Zealand",
-          "D. A plan to use emus as cavalry"
-        ],
-
-        correct: 1
-      },
-
-      {
-        question:
-        "2. Why is the term 'Emu War' historically misleading?",
-
-        answers: [
-          "A. No emus were involved",
-          "B. It was a pest-control operation rather than a formal war between political states",
-          "C. It happened during World War I",
-          "D. Australia declared war on every bird species"
-        ],
-
-        correct: 1
-      },
-
-      {
-        question:
-        "3. What does the use of a small military unit with two Lewis guns suggest?",
-
-        answers: [
-          "A. Australia had fully mobilised for war",
-          "B. It was a limited government intervention",
-          "C. Australia had no other soldiers",
-          "D. Australia planned to invade another country"
-        ],
-
-        correct: 1
-      },
-
-      {
-        question:
-        "4. Why were machine guns less effective than expected?",
-
-        answers: [
-          "A. Emus fought from trenches",
-          "B. The birds were fast, mobile and dispersed",
-          "C. Lewis guns fired only once per hour",
-          "D. Ammunition was completely prohibited"
-        ],
-
-        correct: 1
-      },
-
-      {
-        question:
-        "5. Why is the Emu War useful to environmental historians?",
-
-        answers: [
-          "A. It shows how farming, wildlife, government policy and environmental pressures interact",
-          "B. It proves military weapons always solve environmental problems",
-          "C. It has no connection to agriculture",
-          "D. Drought has no effect on animal migration"
-        ],
-
-        correct: 0
-      },
-
-      {
-        question:
-        "6. Which interpretation best explains the campaign's limited success?",
-
-        answers: [
-          "A. Military weapons designed for concentrated targets were poorly suited to dispersed wildlife",
-          "B. Emus possessed artillery",
-          "C. Australia did not understand machine guns",
-          "D. Farmers refused to report emus"
-        ],
-
-        correct: 0
-      },
-
-      {
-        question:
-        "7. Why should historians treat exact Emu War casualty figures carefully?",
-
-        answers: [
-          "A. Every record was destroyed",
-          "B. Confirmed kills, estimates and later retellings use different kinds of evidence",
-          "C. Emus were officially soldiers",
-          "D. No numerical reports existed"
-        ],
-
-        correct: 1
-      },
-
-      {
-        question:
-        "8. What did the political and press attention surrounding the Emu War reveal?",
-
-        answers: [
-          "A. Small government actions can become famous through media framing and satire",
-          "B. Newspapers were banned from discussing it",
-          "C. Rural problems attracted no political interest",
-          "D. Australians believed it was an international war"
-        ],
-
-        correct: 0
-      },
-
-      {
-        question:
-        "9. Why is saying 'Australia lost a war to emus' an oversimplification?",
-
-        answers: [
-          "A. Australia surrendered territory to an emu government",
-          "B. It turns a limited wildlife-control campaign into a conventional military defeat",
-          "C. Emus became extinct afterwards",
-          "D. No soldiers were involved"
-        ],
-
-        correct: 1
-      },
-
-      {
-        question:
-        "10. Which broader historical lesson can be drawn from the Emu War?",
-
-        answers: [
-          "A. Technology works equally well for every problem",
-          "B. Government responses may fail when methods do not fit the environmental problem",
-          "C. Military force is always cheaper than fencing",
-          "D. Wildlife management has no connection with economic policy"
-        ],
-
-        correct: 1
-      }
-
-    ]
-
-  }
+
+{
+
+question:
+"1. Which interpretation best explains why definitions of crime change over time?",
+
+answers: [
+
+"A. Criminal behaviour is biologically fixed",
+
+"B. Definitions of crime reflect changing political authority, social values, religion and property relations",
+
+"C. Governments have always defined the same acts as crimes",
+
+"D. Crime changes only because of technology"
+
+],
+
+correct: 1
+
+},
+
+
+{
+
+question:
+"2. Why is Norman forest law historically significant?",
+
+answers: [
+
+"A. It abolished royal authority",
+
+"B. It shows how conquest could create new crimes to protect royal power and property",
+
+"C. It created modern policing",
+
+"D. It ended corporal punishment"
+
+],
+
+correct: 1
+
+},
+
+
+{
+
+question:
+"3. Why did trial by ordeal decline after 1215?",
+
+answers: [
+
+"A. The Church withdrew its support for clerical involvement in ordeals",
+
+"B. Parliament created the Metropolitan Police",
+
+"C. Transportation replaced trials",
+
+"D. Juries were abolished"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"4. What does the Bloody Code reveal about eighteenth-century society?",
+
+answers: [
+
+"A. Property offences were unimportant",
+
+"B. Criminal law was partly used to defend property and social hierarchy",
+
+"C. Theft was no longer illegal",
+
+"D. Capital punishment was limited to murder"
+
+],
+
+correct: 1
+
+},
+
+
+{
+
+question:
+"5. Why should professional policing not be viewed as inevitable?",
+
+answers: [
+
+"A. Police reform faced political and public resistance",
+
+"B. Britain already had modern police in medieval times",
+
+"C. Crime disappeared before 1829",
+
+"D. Parliament rejected all policing"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"6. Why did prisons become more important during the nineteenth century?",
+
+answers: [
+
+"A. Changing ideas about discipline, deterrence and reform",
+
+"B. Prison was always cheaper than every other punishment",
+
+"C. Rehabilitation was rejected",
+
+"D. Public execution became more common"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"7. Why is the claim that punishment steadily became more humane problematic?",
+
+answers: [
+
+"A. Physical punishment disappeared immediately",
+
+"B. New prisons could impose severe discipline even when public punishments declined",
+
+"C. Punishment became voluntary",
+
+"D. Deterrence disappeared"
+
+],
+
+correct: 1
+
+},
+
+
+{
+
+question:
+"8. Why are conscientious objectors important when studying definitions of crime?",
+
+answers: [
+
+"A. They show that criminalisation can reflect political definitions of duty",
+
+"B. Military service was never compulsory",
+
+"C. Religion had no effect",
+
+"D. All objectors received identical treatment"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"9. How should historians evaluate claims that recorded crime increased?",
+
+answers: [
+
+"A. Use police statistics without criticism",
+
+"B. Compare statistics with reporting, policing, legislation and court records",
+
+"C. Assume unreported crime remained constant",
+
+"D. Rely only on newspapers"
+
+],
+
+correct: 1
+
+},
+
+
+{
+
+question:
+"10. Which statement best identifies continuity in punishment?",
+
+answers: [
+
+"A. Governments repeatedly used punishment to deter behaviour and maintain social order",
+
+"B. Rehabilitation has always been the only purpose",
+
+"C. Capital punishment was the only historical punishment",
+
+"D. Punishment developed independently from government"
+
+],
+
+correct: 0
+
+}
+
+
+]
+
+},
+
+
+
+/* ==================================
+   ELIZABETHAN ENGLAND
+================================== */
+
+
+elizabeth: {
+
+title:
+"👑 Elizabethan England — University Level",
+
+questions: [
+
+
+{
+
+question:
+"1. What was the main political purpose of Elizabeth's 1559 Religious Settlement?",
+
+answers: [
+
+"A. Restore Mary's Catholic system completely",
+
+"B. Establish royal control over a Protestant Church while reducing religious instability",
+
+"C. Allow each parish to choose its religion",
+
+"D. Separate monarchy from religion"
+
+],
+
+correct: 1
+
+},
+
+
+{
+
+question:
+"2. Why was Elizabeth's legitimacy politically sensitive?",
+
+answers: [
+
+"A. Questions surrounding Henry VIII's marriage to Anne Boleyn allowed opponents to challenge her legitimacy",
+
+"B. Elizabeth had never lived in England",
+
+"C. Parliament had crowned Mary Queen of Scots",
+
+"D. Elizabeth could not legally inherit"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"3. What transformed Mary Queen of Scots into a serious political threat?",
+
+answers: [
+
+"A. Her association with Catholic plots against Elizabeth",
+
+"B. Her command of the Royal Navy",
+
+"C. Her conversion to Puritanism",
+
+"D. Her victory over Spain"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"4. Why is the Northern Rebellion of 1569 historically important?",
+
+answers: [
+
+"A. It demonstrates how Catholicism and regional noble power could challenge Elizabeth",
+
+"B. It immediately removed Elizabeth",
+
+"C. It abolished Protestantism",
+
+"D. It was caused by factory conditions"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"5. Why did Anglo-Spanish relations deteriorate?",
+
+answers: [
+
+"A. A disagreement over clothing",
+
+"B. Religion, the Netherlands, privateering, trade and dynastic rivalry",
+
+"C. Spain supported English Protestant rebels",
+
+"D. Elizabeth invaded Madrid"
+
+],
+
+correct: 1
+
+},
+
+
+{
+
+question:
+"6. Why is it too simple to say the Spanish Armada failed because England was stronger?",
+
+answers: [
+
+"A. Strategy, logistics, English tactics and weather all influenced the result",
+
+"B. England did not fight",
+
+"C. Spain deliberately surrendered",
+
+"D. Weather alone defeated Spain"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"7. What do recusancy fines reveal about religious policy?",
+
+answers: [
+
+"A. Government increasingly used financial and legal pressure to enforce conformity",
+
+"B. Catholicism became official",
+
+"C. Religion became completely private",
+
+"D. Parliament stopped regulating religion"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"8. Why was patronage important at Elizabeth's court?",
+
+answers: [
+
+"A. Access to Elizabeth could lead to offices, influence and political loyalty",
+
+"B. It existed only for foreign diplomats",
+
+"C. Court offices had no value",
+
+"D. Elizabeth refused to distribute positions"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"9. Why were exploration and privateering political as well as economic?",
+
+answers: [
+
+"A. They could create profit while challenging Spanish power",
+
+"B. They had no connection with trade",
+
+"C. They happened only inside England",
+
+"D. Spain financed English privateers"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"10. What best explains Elizabethan political stability?",
+
+answers: [
+
+"A. Political skill, institutions, local government, conformity and defeat of major threats",
+
+"B. Elizabeth faced no opposition",
+
+"C. Religious conflict ended completely",
+
+"D. Victory over the Armada alone"
+
+],
+
+correct: 0
+
+}
+
+
+]
+
+},
+
+
+
+/* ==================================
+   COLD WAR
+================================== */
+
+
+coldWar: {
+
+title:
+"☢️ Cold War — University Level",
+
+questions: [
+
+
+{
+
+question:
+"1. Which answer best represents a post-revisionist interpretation of the origins of the Cold War?",
+
+answers: [
+
+"A. The USSR alone caused the Cold War",
+
+"B. The USA alone caused the Cold War",
+
+"C. Security fears, ideology, power politics and mutual suspicion interacted",
+
+"D. Ideology was irrelevant"
+
+],
+
+correct: 2
+
+},
+
+
+{
+
+question:
+"2. Why was Germany central to early Cold War tensions?",
+
+answers: [
+
+"A. Occupation zones became a direct conflict between Soviet and Western priorities",
+
+"B. Germany remained neutral",
+
+"C. Germany controlled the superpowers",
+
+"D. Yalta permanently settled Germany"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"3. How should historians interpret the Marshall Plan?",
+
+answers: [
+
+"A. Purely humanitarian aid",
+
+"B. Economic reconstruction that also strengthened Western political and economic influence",
+
+"C. A Soviet economic programme",
+
+"D. A military invasion plan"
+
+],
+
+correct: 1
+
+},
+
+
+{
+
+question:
+"4. Why was the Berlin Blockade important?",
+
+answers: [
+
+"A. It demonstrated confrontation without direct superpower war and strengthened rival blocs",
+
+"B. It destroyed NATO",
+
+"C. It reunited Germany",
+
+"D. It gave the USSR complete control of Berlin"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"5. Why was the Cuban Missile Crisis particularly dangerous?",
+
+answers: [
+
+"A. Nuclear weapons, limited decision time and uncertainty created major risks of escalation",
+
+"B. Neither side had nuclear weapons",
+
+"C. Leaders had complete information",
+
+"D. Superpowers were not involved"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"6. What does mutually assured destruction help explain?",
+
+answers: [
+
+"A. Nuclear weapons discouraged direct war while making crises extremely dangerous",
+
+"B. Nuclear weapons ended diplomacy",
+
+"C. Arms production stopped",
+
+"D. Conventional warfare disappeared"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"7. Why is Vietnam important to understanding the Cold War?",
+
+answers: [
+
+"A. It shows how superpower rivalry interacted with nationalism and decolonisation",
+
+"B. It occurred entirely in Europe",
+
+"C. It was unrelated to containment",
+
+"D. It ended Cold War rivalry"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"8. What best describes détente?",
+
+answers: [
+
+"A. The end of superpower rivalry",
+
+"B. An attempt to manage rivalry through negotiation and arms control",
+
+"C. The dissolution of NATO",
+
+"D. A Soviet-American military alliance"
+
+],
+
+correct: 1
+
+},
+
+
+{
+
+question:
+"9. Why did Gorbachev contribute to the end of the Cold War?",
+
+answers: [
+
+"A. His reforms reduced Soviet willingness to enforce the old Eastern European order",
+
+"B. He restored Stalinism",
+
+"C. He expanded Soviet occupation",
+
+"D. He created one European country"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"10. Which explanation best explains the end of the Cold War?",
+
+answers: [
+
+"A. One event explains everything",
+
+"B. Economic pressure, reform, popular movements and changing Soviet policy interacted",
+
+"C. Nuclear weapons disappeared",
+
+"D. Eastern Europe remained politically unchanged"
+
+],
+
+correct: 1
+
+}
+
+
+]
+
+},
+
+
+
+/* ==================================
+   MEDICINE
+================================== */
+
+
+medicine: {
+
+title:
+"🩺 Medicine Through Time — University Level",
+
+questions: [
+
+
+{
+
+question:
+"1. Why is it misleading to describe medieval medicine as simply unscientific?",
+
+answers: [
+
+"A. Practitioners used inherited theories alongside observation and practical remedies",
+
+"B. Medieval doctors understood bacteria",
+
+"C. Every medieval treatment worked",
+
+"D. Universities rejected ancient medicine"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"2. Why did Galen remain influential for so long?",
+
+answers: [
+
+"A. His work became deeply embedded in learned medicine and education",
+
+"B. He invented antibiotics",
+
+"C. Nobody knew his work before 1900",
+
+"D. Every treatment was legally required"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"3. Why was Vesalius historically important?",
+
+answers: [
+
+"A. He demonstrated the importance of direct observation and corrected anatomical errors",
+
+"B. He discovered penicillin",
+
+"C. He proved germ theory",
+
+"D. He created the NHS"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"4. Why was Harvey's theory of blood circulation important?",
+
+answers: [
+
+"A. It challenged important Galenic assumptions about how the body worked",
+
+"B. It discovered microorganisms",
+
+"C. It immediately created antibiotics",
+
+"D. It eliminated surgery"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"5. Why was germ theory so important?",
+
+answers: [
+
+"A. It gave medicine a scientific explanation that influenced prevention, surgery and public health",
+
+"B. It proved bad smells caused all disease",
+
+"C. It made sanitation unnecessary",
+
+"D. It immediately cured every disease"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"6. What does Lister's antiseptic surgery demonstrate?",
+
+answers: [
+
+"A. Scientific theories become influential when translated into practical methods",
+
+"B. Surgery developed without science",
+
+"C. Anaesthesia and infection were the same problem",
+
+"D. Anatomy was unnecessary"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"7. Why was John Snow's cholera investigation important?",
+
+answers: [
+
+"A. Mapping and observation identified transmission patterns before the biological mechanism was fully understood",
+
+"B. Snow discovered antibiotics",
+
+"C. Snow proved cold weather caused cholera",
+
+"D. His work was unrelated to public health"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"8. Why was government important to nineteenth-century public health?",
+
+answers: [
+
+"A. Science automatically built sewers",
+
+"B. Legislation helped turn scientific knowledge and public concern into reform",
+
+"C. Government involvement declined throughout the century",
+
+"D. Doctors alone controlled sanitation"
+
+],
+
+correct: 1
+
+},
+
+
+{
+
+question:
+"9. Why is penicillin an example of multi-causal medical progress?",
+
+answers: [
+
+"A. Discovery, research, industry, government and wartime demand all contributed",
+
+"B. Fleming personally mass-produced all penicillin",
+
+"C. Penicillin existed before Fleming",
+
+"D. War stopped medical research"
+
+],
+
+correct: 0
+
+},
+
+
+{
+
+question:
+"10. What best explains long-term medical progress?",
+
+answers: [
+
+"A. Individual genius alone",
+
+"B. Interaction between ideas, evidence, technology, government, institutions and society",
+
+"C. Medicine improved at exactly the same speed every century",
+
+"D. New treatments were always immediately accepted"
+
+],
+
+correct: 1
+
+}
+
+
+]
+
+}
 
 };
 
 
-let activeSetKey = "civilWar";
+
+let activeSetKey = "crime";
+
 let currentQuestion = 0;
+
 let score = 0;
+
 let answered = false;
 
 
+
 function currentSet() {
-  return quizSets[activeSetKey];
+
+    return quizSets[activeSetKey];
+
 }
+
 
 
 function startQuiz(setKey) {
 
-  activeSetKey = setKey;
-  currentQuestion = 0;
-  score = 0;
-  answered = false;
+    activeSetKey = setKey;
 
-  document
-    .getElementById("civilWarBtn")
-    .classList.toggle("active", setKey === "civilWar");
+    currentQuestion = 0;
 
-  document
-    .getElementById("emuWarBtn")
-    .classList.toggle("active", setKey === "emuWar");
+    score = 0;
 
-  buildQuiz();
+    answered = false;
+
+
+    const buttons = {
+
+        crime: "crimeBtn",
+
+        elizabeth: "elizabethBtn",
+
+        coldWar: "coldWarBtn",
+
+        medicine: "medicineBtn"
+
+    };
+
+
+    for (const key in buttons) {
+
+        document
+        .getElementById(buttons[key])
+        .classList.toggle(
+            "active",
+            key === setKey
+        );
+
+    }
+
+
+    buildQuiz();
 
 }
+
 
 
 function buildQuiz() {
 
-  document.querySelector(".quiz-wrapper").innerHTML = `
+    document.querySelector(".quiz-wrapper").innerHTML = `
 
     <div id="quiz-container">
 
-      <div class="quiz-set-title" id="quizSetTitle"></div>
+        <div
+        class="quiz-set-title"
+        id="quizSetTitle">
+        </div>
 
-      <div class="question" id="question"></div>
+        <div
+        class="question"
+        id="question">
+        </div>
 
-      <div class="answers" id="answers"></div>
+        <div
+        class="answers"
+        id="answers">
+        </div>
 
-      <div class="status-text" id="statusText">
+        <div
+        class="status-text"
+        id="statusText">
+
         Choose one answer.
-      </div>
 
-      <button class="next-btn" id="nextBtn">
+        </div>
+
+        <button
+        class="next-btn"
+        id="nextBtn">
+
         Next Question
-      </button>
 
-      <div class="score">
+        </button>
+
+        <div class="score">
+
         Score:
-        <span id="score">0 / 10</span>
-      </div>
+
+        <span id="score">
+
+        0 / 10
+
+        </span>
+
+        </div>
 
     </div>
 
-  `;
+    `;
 
-  document
+
+    document
     .getElementById("nextBtn")
-    .addEventListener("click", handleNext);
+    .addEventListener(
+        "click",
+        handleNext
+    );
 
-  loadQuestion();
+
+    loadQuestion();
 
 }
+
 
 
 function loadQuestion() {
 
-  const set = currentSet();
-  const q = set.questions[currentQuestion];
+    const set =
+    currentSet();
 
-  const title = document.getElementById("quizSetTitle");
-  const question = document.getElementById("question");
-  const answers = document.getElementById("answers");
-  const status = document.getElementById("statusText");
-  const nextBtn = document.getElementById("nextBtn");
-
-  title.textContent = set.title;
-  question.textContent = q.question;
-
-  answers.innerHTML = "";
-  status.textContent = "Choose one answer.";
-
-  answered = false;
-
-  if (currentQuestion === set.questions.length - 1) {
-    nextBtn.textContent = "Show Result";
-  } else {
-    nextBtn.textContent = "Next Question";
-  }
+    const q =
+    set.questions[currentQuestion];
 
 
-  q.answers.forEach((answer, index) => {
+    document
+    .getElementById("quizSetTitle")
+    .textContent =
+    set.title;
 
-    const button = document.createElement("button");
 
-    button.className = "answer-btn";
-    button.textContent = answer;
+    document
+    .getElementById("question")
+    .textContent =
+    q.question;
 
-    button.addEventListener(
-      "click",
-      () => selectAnswer(index)
-    );
 
-    answers.appendChild(button);
+    const answers =
+    document.getElementById("answers");
 
-  });
+
+    answers.innerHTML =
+    "";
+
+
+    document
+    .getElementById("statusText")
+    .textContent =
+    "Choose one answer.";
+
+
+    answered =
+    false;
+
+
+    const nextBtn =
+    document.getElementById("nextBtn");
+
+
+    if (
+        currentQuestion ===
+        set.questions.length - 1
+    ) {
+
+        nextBtn.textContent =
+        "Show Result";
+
+    }
+
+    else {
+
+        nextBtn.textContent =
+        "Next Question";
+
+    }
+
+
+    q.answers.forEach(
+        (answer,index) => {
+
+        const button =
+        document.createElement("button");
+
+
+        button.className =
+        "answer-btn";
+
+
+        button.textContent =
+        answer;
+
+
+        button.onclick =
+        () => selectAnswer(index);
+
+
+        answers.appendChild(button);
+
+    });
 
 }
+
 
 
 function selectAnswer(index) {
 
-  if (answered) return;
+    if (answered)
+        return;
 
-  answered = true;
 
-  const q = currentSet().questions[currentQuestion];
+    answered =
+    true;
 
-  const buttons =
-    document.querySelectorAll(".answer-btn");
 
-  buttons.forEach((button, i) => {
+    const q =
+    currentSet()
+    .questions[currentQuestion];
 
-    button.disabled = true;
 
-    if (i === q.correct) {
-      button.classList.add("correct");
+    const buttons =
+    document.querySelectorAll(
+        ".answer-btn"
+    );
+
+
+    buttons.forEach(
+        (button,i) => {
+
+        button.disabled =
+        true;
+
+
+        if (
+            i === q.correct
+        ) {
+
+            button
+            .classList
+            .add("correct");
+
+        }
+
+
+        if (
+            i === index &&
+            index !== q.correct
+        ) {
+
+            button
+            .classList
+            .add("wrong");
+
+        }
+
+    });
+
+
+    if (
+        index === q.correct
+    ) {
+
+        score++;
+
+
+        document
+        .getElementById("statusText")
+        .textContent =
+        "✅ Correct!";
+
     }
 
-    if (i === index && index !== q.correct) {
-      button.classList.add("wrong");
+    else {
+
+        document
+        .getElementById("statusText")
+        .textContent =
+        "❌ Incorrect.";
+
     }
 
-  });
 
-
-  if (index === q.correct) {
-
-    score++;
-
-    document.getElementById("statusText")
-      .textContent = "Correct!";
-
-  } else {
-
-    document.getElementById("statusText")
-      .textContent = "Wrong answer.";
-
-  }
-
-
-  document.getElementById("score")
-    .textContent = score + " / 10";
+    document
+    .getElementById("score")
+    .textContent =
+    score + " / 10";
 
 }
+
 
 
 function handleNext() {
 
-  if (!answered) {
+    if (!answered) {
 
-    document.getElementById("statusText")
-      .textContent = "Choose one answer first.";
+        document
+        .getElementById("statusText")
+        .textContent =
+        "Please choose an answer first.";
 
-    return;
+        return;
 
-  }
+    }
 
-  currentQuestion++;
 
-  if (currentQuestion < currentSet().questions.length) {
+    currentQuestion++;
 
-    loadQuestion();
 
-  } else {
+    if (
+        currentQuestion <
+        currentSet().questions.length
+    ) {
 
-    showResult();
+        loadQuestion();
 
-  }
+    }
+
+    else {
+
+        showResult();
+
+    }
 
 }
 
 
+
 function showResult() {
 
-  const set = currentSet();
+    const set =
+    currentSet();
 
-  let award = "";
+
+    let award =
+    "";
 
 
-  /*
-    HISTORY TEACHER AWARD
-    Only appears if the player gets 10/10
-  */
+    if (
+        score === 10
+    ) {
 
-  if (score === 10) {
+        award = `
 
-    award = `
+        <div class="teacher-award">
 
-      <div class="teacher-award">
+            <div class="trophy">
+            🏆
+            </div>
 
-        <div class="trophy">
-          🏆
+            <h3>
+            HISTORY TEACHER AWARD
+            </h3>
+
+            <p>
+
+            🎓 Outstanding!
+
+            <br><br>
+
+            You achieved a
+
+            <strong>
+            PERFECT SCORE
+            </strong>
+
+            <br>
+
+            10 / 10
+
+            <br><br>
+
+            You have earned the
+
+            <strong>
+            History Teacher Award!
+            </strong>
+
+            </p>
+
         </div>
 
-        <h3>
-          History Teacher Award
-        </h3>
+        `;
 
-        <p>
-          🎓 Congratulations!
-          <br><br>
-
-          You earned the
-          <strong>History Teacher Award!</strong>
-
-          <br><br>
-
-          <strong>
-            Perfect Score: 10/10
-          </strong>
-        </p>
-
-      </div>
-
-    `;
-
-  }
+    }
 
 
-  document.getElementById("quiz-container")
+    let message =
+    "";
+
+
+    if (
+        score === 10
+    ) {
+
+        message =
+        "Outstanding historical knowledge!";
+
+    }
+
+    else if (
+        score >= 8
+    ) {
+
+        message =
+        "Excellent work — almost History Teacher level!";
+
+    }
+
+    else if (
+        score >= 6
+    ) {
+
+        message =
+        "Good historical knowledge.";
+
+    }
+
+    else {
+
+        message =
+        "Keep studying and try again!";
+
+    }
+
+
+
+    document
+    .getElementById("quiz-container")
     .innerHTML = `
 
-      <div class="result-box">
+
+    <div class="result-box">
+
 
         <h2>
-          Quiz Complete
+        Quiz Complete
         </h2>
 
-        <p style="font-size:20px;">
 
-          You got
+        <p style="font-size:21px">
 
-          <strong>${score}</strong>
+        You scored
 
-          out of
+        <strong>
+        ${score} / 10
+        </strong>
 
-          <strong>10</strong>
+        </p>
 
-          in
 
-          <strong>${set.title}</strong>.
+        <br>
+
+
+        <p>
+
+        ${message}
 
         </p>
 
@@ -1152,40 +2502,28 @@ function showResult() {
 
 
         <button
-          class="restart-btn"
-          onclick="startQuiz('${activeSetKey}')">
+        class="restart-btn"
+        onclick="startQuiz('${activeSetKey}')">
 
-          Restart This Quiz
+        🔄 Restart Quiz
 
         </button>
 
-      </div>
+
+    </div>
+
 
     `;
 
 }
 
 
-startQuiz("civilWar");
+
+startQuiz("crime");
+
 
 </script>
 
+
 </body>
 </html>
-if (score === 10) {
-  award = `
-    <div class="teacher-award">
-      <div class="trophy">🏆</div>
-
-      <h3>History Teacher Award</h3>
-
-      <p>
-        🎓 Congratulations!
-        <br><br>
-        You earned the <strong>History Teacher Award!</strong>
-        <br><br>
-        <strong>Perfect Score: 10/10</strong>
-      </p>
-    </div>
-  `;
-}
