@@ -1,13 +1,30 @@
+https://jujucheung.github.io/History.html keep the format the same but one quize about queen elezbath, so thr first quize if they get 10/10 the main quize will be university level, if lower easy problunm
+
+Done. I kept the same overall style as your current History page—same colours, cards, quiz box, buttons and 10/10 award design.
+
+The new Queen Elizabeth I quiz works like this:
+
+👑 First: Entry Quiz — 10 questions.
+10/10 → unlocks University-Level Quiz.
+Below 10/10 → Easier Practice Quiz.
+After Easy Practice → student retries the Entry Quiz.
+🎓 University quiz has much harder questions about religion, Mary Queen of Scots, patronage, Parliament, Spain, the Armada and historical interpretations.
+🏆 10/10 at University Level → History Teacher Award.
+
+You can replace your current GitHub History.html with this file:
+
+Download the new History.html
+
+I interpreted “Queen Elizabeth” as Queen Elizabeth I / Elizabethan England, matching the topic already on your Year 11 History website.
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Year 11 History</title>
+<title>Queen Elizabeth I History</title>
 
 <style>
-
 * {
     margin: 0;
     padding: 0;
@@ -22,21 +39,16 @@ body {
 }
 
 /* HERO */
-
 header {
     background:
     linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
     url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80")
     center/cover no-repeat;
-
     height: 60vh;
-
     color: white;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     text-align: center;
 }
 
@@ -54,9 +66,7 @@ header {
     font-size: 1.2rem;
 }
 
-
 /* NAVIGATION */
-
 nav {
     background: #2f3b2f;
     padding: 15px;
@@ -74,9 +84,7 @@ nav a:hover {
     color: #d4b483;
 }
 
-
 /* SECTIONS */
-
 section {
     padding: 50px 20px;
     max-width: 1100px;
@@ -90,30 +98,19 @@ h2 {
     font-size: 2rem;
 }
 
-
 /* CARDS */
-
 .cards {
     display: grid;
-
-    grid-template-columns:
-    repeat(auto-fit, minmax(250px, 1fr));
-
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-
     margin-top: 30px;
 }
 
 .card {
     background: white;
-
     border-radius: 10px;
-
     padding: 20px;
-
-    box-shadow:
-    0 4px 10px rgba(0,0,0,0.1);
-
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     transition: 0.3s;
 }
 
@@ -126,14 +123,10 @@ h2 {
     color: #7a4e2d;
 }
 
-
 /* TIMELINE */
-
 .timeline {
     border-left: 4px solid #7a4e2d;
-
     margin-top: 20px;
-
     padding-left: 20px;
 }
 
@@ -143,73 +136,45 @@ h2 {
 
 .timeline-item h4 {
     color: #2f3b2f;
-
     margin-bottom: 5px;
 }
 
-
 /* QUOTE */
-
 .quote {
     background: #2f3b2f;
-
     color: white;
-
     padding: 40px;
-
     text-align: center;
-
     border-radius: 10px;
-
     margin-top: 30px;
-
     font-style: italic;
-
     font-size: 1.2rem;
 }
 
-
 /* QUIZ */
-
 .quiz-intro {
     max-width: 700px;
-
     margin: auto;
-
     text-align: center;
-
     font-size: 17px;
 }
 
-
 .quiz-set-buttons {
     max-width: 700px;
-
     margin: 25px auto;
-
     display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
+    grid-template-columns: 1fr;
     gap: 14px;
 }
 
-
 .set-btn {
     background: #111;
-
     color: white;
-
     border: none;
-
     border-radius: 12px;
-
     padding: 15px;
-
     font-size: 15px;
-
     font-weight: bold;
-
     cursor: pointer;
 }
 
@@ -221,2309 +186,766 @@ h2 {
     background: #7a4e2d;
 }
 
-
 /* QUIZ BOX */
-
 .quiz-wrapper {
-
     max-width: 700px;
-
     margin: 20px auto;
-
     background: #f3f4f7;
-
     padding: 25px;
-
     border-radius: 12px;
-
-    box-shadow:
-    0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-
 .quiz-set-title {
-
     color: #7a4e2d;
-
     font-size: 19px;
-
     font-weight: bold;
-
     margin-bottom: 15px;
 }
 
-
 .question {
-
     font-size: 17px;
-
     font-weight: bold;
-
     margin-bottom: 20px;
 }
-
 
 /* ANSWERS */
-
 .answers {
-
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
     gap: 12px;
-
     margin-bottom: 20px;
 }
 
-
 .answer-btn {
-
     background: #111;
-
     color: white;
-
     border: none;
-
     border-radius: 12px;
-
     padding: 14px;
-
     font-size: 14px;
-
     cursor: pointer;
 }
 
-
 .answer-btn:hover {
-
     background: #444;
 }
 
-
 .answer-btn.correct {
-
     background: green;
 }
 
-
 .answer-btn.wrong {
-
     background: crimson;
 }
 
-
 .answer-btn:disabled {
-
     opacity: 1;
-
     cursor: default;
 }
 
-
 /* STATUS */
-
 .status-text {
-
     font-weight: bold;
-
     margin-bottom: 15px;
 }
-
 
 /* NEXT BUTTON */
-
 .next-btn,
 .restart-btn {
-
     background: #111;
-
     color: white;
-
     border: none;
-
     border-radius: 12px;
-
     padding: 14px 24px;
-
     font-size: 15px;
-
     cursor: pointer;
-
     margin-bottom: 15px;
 }
-
 
 .next-btn:hover,
 .restart-btn:hover {
-
     background: #444;
 }
 
-
 .score {
-
     font-weight: bold;
-
     font-size: 17px;
 }
 
-
 .score span {
-
     color: #1a3d8f;
 }
 
-
 /* AWARD */
-
 .teacher-award {
-
     margin: 30px auto;
-
     padding: 30px;
-
     max-width: 500px;
-
     border: 5px solid #d4af37;
-
     border-radius: 20px;
-
     background: #fff8dc;
-
-    box-shadow:
-    0 6px 18px rgba(0,0,0,0.18);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
 }
 
-
 .teacher-award .trophy {
-
     font-size: 70px;
 }
 
-
 .teacher-award h3 {
-
     font-size: 30px;
-
     color: #b8860b;
-
     margin-bottom: 10px;
 }
 
-
 .teacher-award p {
-
     font-size: 19px;
 }
 
-
 .result-box {
-
     text-align: center;
 }
 
+.level-badge {
+    display: inline-block;
+    background: #7a4e2d;
+    color: white;
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
 
 /* FOOTER */
-
 footer {
-
     background: #1e261e;
-
     color: white;
-
     text-align: center;
-
     padding: 20px;
-
     margin-top: 40px;
 }
 
-
 /* MOBILE */
-
 @media(max-width:700px) {
-
     .hero-text h1 {
-
         font-size: 2.2rem;
     }
 
     .answers {
-
         grid-template-columns: 1fr;
     }
 
     .quiz-set-buttons {
-
         grid-template-columns: 1fr;
     }
-
 }
-
 </style>
-
 </head>
-
 
 <body>
 
-
 <header>
-
-<div class="hero-text">
-
-<h1>Year 11 History</h1>
-
-<p>
-Crime & Punishment • Elizabethan England •
-The Cold War • Medicine Through Time
-</p>
-
-</div>
-
+    <div class="hero-text">
+        <h1>Queen Elizabeth I</h1>
+        <p>Religion • Mary Queen of Scots • Catholic Threats • Spanish Armada • Government • Society</p>
+    </div>
 </header>
 
-
-
 <nav>
-
-<a href="#about">About</a>
-
-<a href="#topics">Topics</a>
-
-<a href="#timeline">Timeline</a>
-
-<a href="#stories">Interpretations</a>
-
-<a href="#quiz">Quiz</a>
-
+    <a href="#about">About</a>
+    <a href="#topics">Topics</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#stories">Interpretations</a>
+    <a href="#quiz">Quiz</a>
 </nav>
 
-
-
 <section id="about">
-
-<h2>Year 11 History</h2>
-
-<p style="text-align:center;max-width:850px;margin:auto;">
-
-Explore four major areas of history.
-
-Study how crime and punishment changed,
-how Elizabeth I ruled England,
-why the Cold War developed,
-and how medicine changed from the medieval
-period to the modern world.
-
-</p>
-
+    <h2>Elizabethan England</h2>
+    <p style="text-align:center;max-width:850px;margin:auto;">
+        Elizabeth I ruled England from 1558 to 1603. Her reign was shaped by religious division,
+        challenges to her authority, the threat from Mary Queen of Scots, conflict with Spain,
+        poverty, exploration and the problem of succession.
+    </p>
 </section>
-
-
 
 <section id="topics">
+    <h2>Key Topics</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>⛪ Religious Settlement</h3>
+            <p>Study the Acts of Supremacy and Uniformity, the Church of England, Catholics, Puritans and the government's attempts to create religious stability.</p>
+        </div>
 
-<h2>History Topics</h2>
+        <div class="card">
+            <h3>👑 Mary Queen of Scots</h3>
+            <p>Explore why Mary was a threat to Elizabeth, her connection to Catholic plots, and why Elizabeth finally agreed to her execution in 1587.</p>
+        </div>
 
+        <div class="card">
+            <h3>⚓ Spain & the Armada</h3>
+            <p>Study worsening relations with Philip II, privateering, the Netherlands, religion, and the reasons the Spanish Armada failed in 1588.</p>
+        </div>
 
-<div class="cards">
-
-
-<div class="card">
-
-<h3>⚖️ Crime & Punishment</h3>
-
-<p>
-
-Explore how crime, policing and punishment
-changed over hundreds of years.
-
-Study medieval law,
-the Bloody Code,
-transportation,
-prisons,
-professional policing
-and modern approaches to punishment.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>👑 Elizabethan England</h3>
-
-<p>
-
-Study the reign of Elizabeth I,
-including religion,
-Mary Queen of Scots,
-Catholic threats,
-the Spanish Armada,
-poverty,
-exploration
-and Elizabethan society.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>☢️ The Cold War</h3>
-
-<p>
-
-Explore the rivalry between the USA
-and the Soviet Union after World War II.
-
-Study Berlin,
-the Cuban Missile Crisis,
-Vietnam,
-détente,
-Afghanistan
-and the collapse of the Soviet Union.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>🩺 Medicine Through Time</h3>
-
-<p>
-
-Discover how medicine developed from
-medieval ideas to modern science.
-
-Study Galen,
-Vesalius,
-Harvey,
-Pasteur,
-Lister,
-vaccination,
-antibiotics
-and public health.
-
-</p>
-
-</div>
-
-
-</div>
-
+        <div class="card">
+            <h3>🏛️ Government & Society</h3>
+            <p>Learn about the Privy Council, Parliament, patronage, local government, poverty, exploration and the challenges of ruling Tudor England.</p>
+        </div>
+    </div>
 </section>
-
-
 
 <section id="timeline">
-
-<h2>History Timeline</h2>
-
-
-<div class="timeline">
-
-
-<div class="timeline-item">
-
-<h4>1348 – Black Death reaches England</h4>
-
-<p>
-The plague killed a large proportion
-of the population and exposed the limits
-of medieval medicine.
-</p>
-
-</div>
-
-
-
-<div class="timeline-item">
-
-<h4>1543 – Vesalius publishes his anatomical studies</h4>
-
-<p>
-Vesalius used human dissection
-to challenge some of Galen's ideas.
-</p>
-
-</div>
-
-
-
-<div class="timeline-item">
-
-<h4>1558 – Elizabeth I becomes Queen</h4>
-
-<p>
-Elizabeth inherited a country divided
-by religious and political tensions.
-</p>
-
-</div>
-
-
-
-<div class="timeline-item">
-
-<h4>1559 – Religious Settlement</h4>
-
-<p>
-Elizabeth established a Protestant
-Church of England under royal authority.
-</p>
-
-</div>
-
-
-
-<div class="timeline-item">
-
-<h4>1587 – Mary Queen of Scots executed</h4>
-
-<p>
-Mary was executed after being linked
-to plots against Elizabeth.
-</p>
-
-</div>
-
-
-
-<div class="timeline-item">
-
-<h4>1588 – Spanish Armada</h4>
-
-<p>
-Philip II's invasion attempt was defeated
-by a combination of English resistance,
-Spanish problems and weather.
-</p>
-
-</div>
-
-
-
-<div class="timeline-item">
-
-<h4>1829 – Metropolitan Police established</h4>
-
-<p>
-Robert Peel's Metropolitan Police Act
-created a professional London police force.
-</p>
-
-</div>
-
-
-
-<div class="timeline-item">
-
-<h4>1861 – Pasteur and Germ Theory</h4>
-
-<p>
-Louis Pasteur demonstrated that microorganisms
-were involved in decay and disease.
-</p>
-
-</div>
-
-
-
-<div class="timeline-item">
-
-<h4>1867 – Lister and antiseptic surgery</h4>
-
-<p>
-Joseph Lister used antiseptic techniques
-to reduce infections during surgery.
-</p>
-
-</div>
-
-
-
-<div class="timeline-item">
-
-<h4>1948–49 – Berlin Blockade</h4>
-
-<p>
-The Soviet Union blocked Western access
-to West Berlin,
-leading to the Berlin Airlift.
-</p>
-
-</div>
-
-
-
-<div class="timeline-item">
-
-<h4>1962 – Cuban Missile Crisis</h4>
-
-<p>
-The USA and USSR came extremely close
-to nuclear conflict.
-</p>
-
-</div>
-
-
-
-<div class="timeline-item">
-
-<h4>1989 – Berlin Wall falls</h4>
-
-<p>
-The collapse of communist governments
-in Eastern Europe transformed the Cold War.
-</p>
-
-</div>
-
-
-
-<div class="timeline-item">
-
-<h4>1991 – Soviet Union collapses</h4>
-
-<p>
-The dissolution of the USSR marked
-the end of the Cold War era.
-</p>
-
-</div>
-
-
-</div>
-
+    <h2>Elizabeth I Timeline</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <h4>1558 – Elizabeth I becomes Queen</h4>
+            <p>Elizabeth inherited a kingdom divided by religion and facing serious political and financial problems.</p>
+        </div>
+        <div class="timeline-item">
+            <h4>1559 – Religious Settlement</h4>
+            <p>The Acts of Supremacy and Uniformity established Elizabeth's authority over the Church of England and set a Protestant direction.</p>
+        </div>
+        <div class="timeline-item">
+            <h4>1568 – Mary Queen of Scots arrives in England</h4>
+            <p>Mary's presence created a focus for Catholic opposition because she had a strong claim to the English throne.</p>
+        </div>
+        <div class="timeline-item">
+            <h4>1569 – Northern Rebellion</h4>
+            <p>Catholic nobles in northern England rebelled against Elizabeth and hoped to restore Catholic influence.</p>
+        </div>
+        <div class="timeline-item">
+            <h4>1570 – Elizabeth is excommunicated</h4>
+            <p>Pope Pius V's action increased the political danger associated with Catholic opposition.</p>
+        </div>
+        <div class="timeline-item">
+            <h4>1586 – Babington Plot</h4>
+            <p>Evidence from the plot was used to show that Mary Queen of Scots had supported plans against Elizabeth.</p>
+        </div>
+        <div class="timeline-item">
+            <h4>1587 – Mary Queen of Scots executed</h4>
+            <p>After years of hesitation, Elizabeth signed Mary's death warrant.</p>
+        </div>
+        <div class="timeline-item">
+            <h4>1588 – Spanish Armada</h4>
+            <p>Philip II's invasion attempt failed because of strategy, logistics, English resistance and weather.</p>
+        </div>
+        <div class="timeline-item">
+            <h4>1601 – Poor Law</h4>
+            <p>Legislation organised local responsibility for poor relief and distinguished between different groups of poor people.</p>
+        </div>
+        <div class="timeline-item">
+            <h4>1603 – Elizabeth dies</h4>
+            <p>James VI of Scotland succeeded Elizabeth as James I of England, ending the Tudor dynasty.</p>
+        </div>
+    </div>
 </section>
-
-
 
 <section id="stories">
-
-<h2>Historical Interpretations</h2>
-
-
-<div class="cards">
-
-
-<div class="card">
-
-<h3>⚖️ Why did punishment change?</h3>
-
-<p>
-
-Punishment did not simply become
-more humane over time.
-
-Government,
-religion,
-social attitudes,
-technology,
-crime levels
-and ideas about rehabilitation
-all influenced change.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>👑 Was Elizabeth successful?</h3>
-
-<p>
-
-Historians debate how far Elizabeth's
-success came from her own political skill
-and how far it depended on advisers,
-Parliament,
-local government
-and the weakness of her enemies.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>☢️ Who caused the Cold War?</h3>
-
-<p>
-
-Historians disagree about responsibility.
-
-Some emphasise Soviet expansion,
-others American economic and strategic policy,
-while post-revisionist historians examine
-fear,
-ideology
-and misunderstandings on both sides.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>🩺 Why did medicine improve?</h3>
-
-<p>
-
-Medical progress depended on more than
-individual scientists.
-
-Technology,
-war,
-government,
-communication,
-scientific knowledge
-and public attitudes
-all contributed to change.
-
-</p>
-
-</div>
-
-
-</div>
-
-
-<div class="quote">
-
-“History is not simply remembering facts.
-It is explaining change,
-evaluating evidence
-and judging different interpretations.”
-
-</div>
-
-</section>
-
-
-
-<section id="quiz">
-
-<h2>🎓 University-Level History Quiz</h2>
-
-
-<p class="quiz-intro">
-
-Choose a topic below.
-
-Each quiz contains
-<strong>10 university-level questions.</strong>
-
-<br><br>
-
-🏆 Get
-<strong>10 / 10</strong>
-to earn the
-
-<strong>History Teacher Award!</strong>
-
-</p>
-
-
-
-<div class="quiz-set-buttons">
-
-
-<button
-class="set-btn active"
-id="crimeBtn"
-onclick="startQuiz('crime')">
-
-⚖️ Crime & Punishment
-
-</button>
-
-
-<button
-class="set-btn"
-id="elizabethBtn"
-onclick="startQuiz('elizabeth')">
-
-👑 Elizabethan England
-
-</button>
-
-
-<button
-class="set-btn"
-id="coldWarBtn"
-onclick="startQuiz('coldWar')">
-
-☢️ Cold War
-
-</button>
-
-
-<button
-class="set-btn"
-id="medicineBtn"
-onclick="startQuiz('medicine')">
-
-🩺 Medicine Through Time
-
-</button>
-
-
-</div>
-
-
-
-<div class="quiz-wrapper">
-
-<div id="quiz-container">
-
-<div
-class="quiz-set-title"
-id="quizSetTitle">
-</div>
-
-
-<div
-class="question"
-id="question">
-</div>
-
-
-<div
-class="answers"
-id="answers">
-</div>
-
-
-<div
-class="status-text"
-id="statusText">
-
-Choose one answer.
-
-</div>
-
-
-<button
-class="next-btn"
-id="nextBtn">
-
-Next Question
-
-</button>
-
-
-<div class="score">
-
-Score:
-
-<span id="score">
-
-0 / 10
-
-</span>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<footer>
-
-<p>
-
-© 2026 Year 11 History |
-History Learning Website
-
-</p>
-
-</footer>
-
-
-
-<script>
-
-
-const quizSets = {
-
-
-/* ==================================
-   CRIME AND PUNISHMENT
-================================== */
-
-
-crime: {
-
-title:
-"⚖️ Crime & Punishment — University Level",
-
-questions: [
-
-
-{
-
-question:
-"1. Which interpretation best explains why definitions of crime change over time?",
-
-answers: [
-
-"A. Criminal behaviour is biologically fixed",
-
-"B. Definitions of crime reflect changing political authority, social values, religion and property relations",
-
-"C. Governments have always defined the same acts as crimes",
-
-"D. Crime changes only because of technology"
-
-],
-
-correct: 1
-
-},
-
-
-{
-
-question:
-"2. Why is Norman forest law historically significant?",
-
-answers: [
-
-"A. It abolished royal authority",
-
-"B. It shows how conquest could create new crimes to protect royal power and property",
-
-"C. It created modern policing",
-
-"D. It ended corporal punishment"
-
-],
-
-correct: 1
-
-},
-
-
-{
-
-question:
-"3. Why did trial by ordeal decline after 1215?",
-
-answers: [
-
-"A. The Church withdrew its support for clerical involvement in ordeals",
-
-"B. Parliament created the Metropolitan Police",
-
-"C. Transportation replaced trials",
-
-"D. Juries were abolished"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"4. What does the Bloody Code reveal about eighteenth-century society?",
-
-answers: [
-
-"A. Property offences were unimportant",
-
-"B. Criminal law was partly used to defend property and social hierarchy",
-
-"C. Theft was no longer illegal",
-
-"D. Capital punishment was limited to murder"
-
-],
-
-correct: 1
-
-},
-
-
-{
-
-question:
-"5. Why should professional policing not be viewed as inevitable?",
-
-answers: [
-
-"A. Police reform faced political and public resistance",
-
-"B. Britain already had modern police in medieval times",
-
-"C. Crime disappeared before 1829",
-
-"D. Parliament rejected all policing"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"6. Why did prisons become more important during the nineteenth century?",
-
-answers: [
-
-"A. Changing ideas about discipline, deterrence and reform",
-
-"B. Prison was always cheaper than every other punishment",
-
-"C. Rehabilitation was rejected",
-
-"D. Public execution became more common"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"7. Why is the claim that punishment steadily became more humane problematic?",
-
-answers: [
-
-"A. Physical punishment disappeared immediately",
-
-"B. New prisons could impose severe discipline even when public punishments declined",
-
-"C. Punishment became voluntary",
-
-"D. Deterrence disappeared"
-
-],
-
-correct: 1
-
-},
-
-
-{
-
-question:
-"8. Why are conscientious objectors important when studying definitions of crime?",
-
-answers: [
-
-"A. They show that criminalisation can reflect political definitions of duty",
-
-"B. Military service was never compulsory",
-
-"C. Religion had no effect",
-
-"D. All objectors received identical treatment"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"9. How should historians evaluate claims that recorded crime increased?",
-
-answers: [
-
-"A. Use police statistics without criticism",
-
-"B. Compare statistics with reporting, policing, legislation and court records",
-
-"C. Assume unreported crime remained constant",
-
-"D. Rely only on newspapers"
-
-],
-
-correct: 1
-
-},
-
-
-{
-
-question:
-"10. Which statement best identifies continuity in punishment?",
-
-answers: [
-
-"A. Governments repeatedly used punishment to deter behaviour and maintain social order",
-
-"B. Rehabilitation has always been the only purpose",
-
-"C. Capital punishment was the only historical punishment",
-
-"D. Punishment developed independently from government"
-
-],
-
-correct: 0
-
-}
-
-
-]
-
-},
-
-
-
-/* ==================================
-   ELIZABETHAN ENGLAND
-================================== */
-
-
-elizabeth: {
-
-title:
-"👑 Elizabethan England — University Level",
-
-questions: [
-
-
-{
-
-question:
-"1. What was the main political purpose of Elizabeth's 1559 Religious Settlement?",
-
-answers: [
-
-"A. Restore Mary's Catholic system completely",
-
-"B. Establish royal control over a Protestant Church while reducing religious instability",
-
-"C. Allow each parish to choose its religion",
-
-"D. Separate monarchy from religion"
-
-],
-
-correct: 1
-
-},
-
-
-{
-
-question:
-"2. Why was Elizabeth's legitimacy politically sensitive?",
-
-answers: [
-
-"A. Questions surrounding Henry VIII's marriage to Anne Boleyn allowed opponents to challenge her legitimacy",
-
-"B. Elizabeth had never lived in England",
-
-"C. Parliament had crowned Mary Queen of Scots",
-
-"D. Elizabeth could not legally inherit"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"3. What transformed Mary Queen of Scots into a serious political threat?",
-
-answers: [
-
-"A. Her association with Catholic plots against Elizabeth",
-
-"B. Her command of the Royal Navy",
-
-"C. Her conversion to Puritanism",
-
-"D. Her victory over Spain"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"4. Why is the Northern Rebellion of 1569 historically important?",
-
-answers: [
-
-"A. It demonstrates how Catholicism and regional noble power could challenge Elizabeth",
-
-"B. It immediately removed Elizabeth",
-
-"C. It abolished Protestantism",
-
-"D. It was caused by factory conditions"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"5. Why did Anglo-Spanish relations deteriorate?",
-
-answers: [
-
-"A. A disagreement over clothing",
-
-"B. Religion, the Netherlands, privateering, trade and dynastic rivalry",
-
-"C. Spain supported English Protestant rebels",
-
-"D. Elizabeth invaded Madrid"
-
-],
-
-correct: 1
-
-},
-
-
-{
-
-question:
-"6. Why is it too simple to say the Spanish Armada failed because England was stronger?",
-
-answers: [
-
-"A. Strategy, logistics, English tactics and weather all influenced the result",
-
-"B. England did not fight",
-
-"C. Spain deliberately surrendered",
-
-"D. Weather alone defeated Spain"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"7. What do recusancy fines reveal about religious policy?",
-
-answers: [
-
-"A. Government increasingly used financial and legal pressure to enforce conformity",
-
-"B. Catholicism became official",
-
-"C. Religion became completely private",
-
-"D. Parliament stopped regulating religion"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"8. Why was patronage important at Elizabeth's court?",
-
-answers: [
-
-"A. Access to Elizabeth could lead to offices, influence and political loyalty",
-
-"B. It existed only for foreign diplomats",
-
-"C. Court offices had no value",
-
-"D. Elizabeth refused to distribute positions"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"9. Why were exploration and privateering political as well as economic?",
-
-answers: [
-
-"A. They could create profit while challenging Spanish power",
-
-"B. They had no connection with trade",
-
-"C. They happened only inside England",
-
-"D. Spain financed English privateers"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"10. What best explains Elizabethan political stability?",
-
-answers: [
-
-"A. Political skill, institutions, local government, conformity and defeat of major threats",
-
-"B. Elizabeth faced no opposition",
-
-"C. Religious conflict ended completely",
-
-"D. Victory over the Armada alone"
-
-],
-
-correct: 0
-
-}
-
-
-]
-
-},
-
-
-
-/* ==================================
-   COLD WAR
-================================== */
-
-
-coldWar: {
-
-title:
-"☢️ Cold War — University Level",
-
-questions: [
-
-
-{
-
-question:
-"1. Which answer best represents a post-revisionist interpretation of the origins of the Cold War?",
-
-answers: [
-
-"A. The USSR alone caused the Cold War",
-
-"B. The USA alone caused the Cold War",
-
-"C. Security fears, ideology, power politics and mutual suspicion interacted",
-
-"D. Ideology was irrelevant"
-
-],
-
-correct: 2
-
-},
-
-
-{
-
-question:
-"2. Why was Germany central to early Cold War tensions?",
-
-answers: [
-
-"A. Occupation zones became a direct conflict between Soviet and Western priorities",
-
-"B. Germany remained neutral",
-
-"C. Germany controlled the superpowers",
-
-"D. Yalta permanently settled Germany"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"3. How should historians interpret the Marshall Plan?",
-
-answers: [
-
-"A. Purely humanitarian aid",
-
-"B. Economic reconstruction that also strengthened Western political and economic influence",
-
-"C. A Soviet economic programme",
-
-"D. A military invasion plan"
-
-],
-
-correct: 1
-
-},
-
-
-{
-
-question:
-"4. Why was the Berlin Blockade important?",
-
-answers: [
-
-"A. It demonstrated confrontation without direct superpower war and strengthened rival blocs",
-
-"B. It destroyed NATO",
-
-"C. It reunited Germany",
-
-"D. It gave the USSR complete control of Berlin"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"5. Why was the Cuban Missile Crisis particularly dangerous?",
-
-answers: [
-
-"A. Nuclear weapons, limited decision time and uncertainty created major risks of escalation",
-
-"B. Neither side had nuclear weapons",
-
-"C. Leaders had complete information",
-
-"D. Superpowers were not involved"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"6. What does mutually assured destruction help explain?",
-
-answers: [
-
-"A. Nuclear weapons discouraged direct war while making crises extremely dangerous",
-
-"B. Nuclear weapons ended diplomacy",
-
-"C. Arms production stopped",
-
-"D. Conventional warfare disappeared"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"7. Why is Vietnam important to understanding the Cold War?",
-
-answers: [
-
-"A. It shows how superpower rivalry interacted with nationalism and decolonisation",
-
-"B. It occurred entirely in Europe",
-
-"C. It was unrelated to containment",
-
-"D. It ended Cold War rivalry"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"8. What best describes détente?",
-
-answers: [
-
-"A. The end of superpower rivalry",
-
-"B. An attempt to manage rivalry through negotiation and arms control",
-
-"C. The dissolution of NATO",
-
-"D. A Soviet-American military alliance"
-
-],
-
-correct: 1
-
-},
-
-
-{
-
-question:
-"9. Why did Gorbachev contribute to the end of the Cold War?",
-
-answers: [
-
-"A. His reforms reduced Soviet willingness to enforce the old Eastern European order",
-
-"B. He restored Stalinism",
-
-"C. He expanded Soviet occupation",
-
-"D. He created one European country"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"10. Which explanation best explains the end of the Cold War?",
-
-answers: [
-
-"A. One event explains everything",
-
-"B. Economic pressure, reform, popular movements and changing Soviet policy interacted",
-
-"C. Nuclear weapons disappeared",
-
-"D. Eastern Europe remained politically unchanged"
-
-],
-
-correct: 1
-
-}
-
-
-]
-
-},
-
-
-
-/* ==================================
-   MEDICINE
-================================== */
-
-
-medicine: {
-
-title:
-"🩺 Medicine Through Time — University Level",
-
-questions: [
-
-
-{
-
-question:
-"1. Why is it misleading to describe medieval medicine as simply unscientific?",
-
-answers: [
-
-"A. Practitioners used inherited theories alongside observation and practical remedies",
-
-"B. Medieval doctors understood bacteria",
-
-"C. Every medieval treatment worked",
-
-"D. Universities rejected ancient medicine"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"2. Why did Galen remain influential for so long?",
-
-answers: [
-
-"A. His work became deeply embedded in learned medicine and education",
-
-"B. He invented antibiotics",
-
-"C. Nobody knew his work before 1900",
-
-"D. Every treatment was legally required"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"3. Why was Vesalius historically important?",
-
-answers: [
-
-"A. He demonstrated the importance of direct observation and corrected anatomical errors",
-
-"B. He discovered penicillin",
-
-"C. He proved germ theory",
-
-"D. He created the NHS"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"4. Why was Harvey's theory of blood circulation important?",
-
-answers: [
-
-"A. It challenged important Galenic assumptions about how the body worked",
-
-"B. It discovered microorganisms",
-
-"C. It immediately created antibiotics",
-
-"D. It eliminated surgery"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"5. Why was germ theory so important?",
-
-answers: [
-
-"A. It gave medicine a scientific explanation that influenced prevention, surgery and public health",
-
-"B. It proved bad smells caused all disease",
-
-"C. It made sanitation unnecessary",
-
-"D. It immediately cured every disease"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"6. What does Lister's antiseptic surgery demonstrate?",
-
-answers: [
-
-"A. Scientific theories become influential when translated into practical methods",
-
-"B. Surgery developed without science",
-
-"C. Anaesthesia and infection were the same problem",
-
-"D. Anatomy was unnecessary"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"7. Why was John Snow's cholera investigation important?",
-
-answers: [
-
-"A. Mapping and observation identified transmission patterns before the biological mechanism was fully understood",
-
-"B. Snow discovered antibiotics",
-
-"C. Snow proved cold weather caused cholera",
-
-"D. His work was unrelated to public health"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"8. Why was government important to nineteenth-century public health?",
-
-answers: [
-
-"A. Science automatically built sewers",
-
-"B. Legislation helped turn scientific knowledge and public concern into reform",
-
-"C. Government involvement declined throughout the century",
-
-"D. Doctors alone controlled sanitation"
-
-],
-
-correct: 1
-
-},
-
-
-{
-
-question:
-"9. Why is penicillin an example of multi-causal medical progress?",
-
-answers: [
-
-"A. Discovery, research, industry, government and wartime demand all contributed",
-
-"B. Fleming personally mass-produced all penicillin",
-
-"C. Penicillin existed before Fleming",
-
-"D. War stopped medical research"
-
-],
-
-correct: 0
-
-},
-
-
-{
-
-question:
-"10. What best explains long-term medical progress?",
-
-answers: [
-
-"A. Individual genius alone",
-
-"B. Interaction between ideas, evidence, technology, government, institutions and society",
-
-"C. Medicine improved at exactly the same speed every century",
-
-"D. New treatments were always immediately accepted"
-
-],
-
-correct: 1
-
-}
-
-
-]
-
-}
-
-};
-
-
-
-let activeSetKey = "crime";
-
-let currentQuestion = 0;
-
-let score = 0;
-
-let answered = false;
-
-
-
-function currentSet() {
-
-    return quizSets[activeSetKey];
-
-}
-
-
-
-function startQuiz(setKey) {
-
-    activeSetKey = setKey;
-
-    currentQuestion = 0;
-
-    score = 0;
-
-    answered = false;
-
-
-    const buttons = {
-
-        crime: "crimeBtn",
-
-        elizabeth: "elizabethBtn",
-
-        coldWar: "coldWarBtn",
-
-        medicine: "medicineBtn"
-
-    };
-
-
-    for (const key in buttons) {
-
-        document
-        .getElementById(buttons[key])
-        .classList.toggle(
-            "active",
-            key === setKey
-        );
-
-    }
-
-
-    buildQuiz();
-
-}
-
-
-
-function buildQuiz() {
-
-    document.querySelector(".quiz-wrapper").innerHTML = `
-
-    <div id="quiz-container">
-
-        <div
-        class="quiz-set-title"
-        id="quizSetTitle">
+    <h2>Historical Interpretations</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>👑 How powerful was Elizabeth?</h3>
+            <p>Elizabeth held great royal authority, but effective government also depended on advisers, Parliament, local officials and political cooperation.</p>
         </div>
-
-        <div
-        class="question"
-        id="question">
+        <div class="card">
+            <h3>⛪ Was the Religious Settlement successful?</h3>
+            <p>It created a lasting Protestant church, but Catholic resistance and Puritan pressure showed that religious conflict did not disappear.</p>
         </div>
-
-        <div
-        class="answers"
-        id="answers">
+        <div class="card">
+            <h3>⚓ Why did the Armada fail?</h3>
+            <p>Historians consider several factors together: Spanish planning, communication problems, English tactics, logistics and severe weather.</p>
         </div>
-
-        <div
-        class="status-text"
-        id="statusText">
-
-        Choose one answer.
-
+        <div class="card">
+            <h3>🏛️ Why was Elizabeth's reign stable?</h3>
+            <p>Stability can be linked to royal political skill, experienced advisers, local government, patronage and the defeat or containment of major threats.</p>
         </div>
-
-        <button
-        class="next-btn"
-        id="nextBtn">
-
-        Next Question
-
-        </button>
-
-        <div class="score">
-
-        Score:
-
-        <span id="score">
-
-        0 / 10
-
-        </span>
-
-        </div>
-
     </div>
 
+    <div class="quote">
+        “History is not simply remembering facts. It is explaining causes, weighing evidence and judging different interpretations.”
+    </div>
+</section>
+
+<section id="quiz">
+    <h2>👑 Queen Elizabeth I Adaptive Quiz</h2>
+
+    <p class="quiz-intro">
+        Start with the <strong>10-question Entry Quiz</strong>.<br><br>
+        🏆 Score <strong>10 / 10</strong> and the <strong>University-Level Quiz</strong> unlocks.<br>
+        📘 Score below 10 / 10 and you will receive an <strong>Easier Practice Quiz</strong> first.
+    </p>
+
+    <div class="quiz-set-buttons">
+        <button class="set-btn active" id="startBtn" onclick="startQuiz('entry')">
+            👑 Start Queen Elizabeth I Quiz
+        </button>
+    </div>
+
+    <div class="quiz-wrapper">
+        <div id="quiz-container">
+            <div class="level-badge" id="levelBadge">ENTRY LEVEL</div>
+            <div class="quiz-set-title" id="quizSetTitle"></div>
+            <div class="question" id="question"></div>
+            <div class="answers" id="answers"></div>
+            <div class="status-text" id="statusText">Choose one answer.</div>
+            <button class="next-btn" id="nextBtn">Next Question</button>
+            <div class="score">Score: <span id="score">0 / 10</span></div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Queen Elizabeth I History | History Learning Website</p>
+</footer>
+
+<script>
+const quizSets = {
+    entry: {
+        title: "👑 Queen Elizabeth I — Entry Quiz",
+        badge: "ENTRY LEVEL",
+        questions: [
+            {
+                question: "1. In which year did Elizabeth I become Queen of England?",
+                answers: ["A. 1533", "B. 1558", "C. 1569", "D. 1588"],
+                correct: 1
+            },
+            {
+                question: "2. What was one main aim of the 1559 Religious Settlement?",
+                answers: [
+                    "A. To restore full papal control",
+                    "B. To establish royal control over a Protestant Church of England",
+                    "C. To allow every parish to choose its own religion",
+                    "D. To remove religion from government"
+                ],
+                correct: 1
+            },
+            {
+                question: "3. Why was Mary Queen of Scots a threat to Elizabeth?",
+                answers: [
+                    "A. She commanded the English navy",
+                    "B. She had a strong claim to the English throne and became a focus for Catholic plots",
+                    "C. She was Elizabeth's chief minister",
+                    "D. She led the Spanish Armada"
+                ],
+                correct: 1
+            },
+            {
+                question: "4. What happened in the Northern Rebellion of 1569?",
+                answers: [
+                    "A. Catholic nobles rebelled against Elizabeth",
+                    "B. Spain invaded London",
+                    "C. Parliament removed Elizabeth",
+                    "D. Puritans crowned Mary Queen of Scots"
+                ],
+                correct: 0
+            },
+            {
+                question: "5. What did Pope Pius V do in 1570?",
+                answers: [
+                    "A. Crowned Elizabeth",
+                    "B. Excommunicated Elizabeth",
+                    "C. Supported the English navy",
+                    "D. Signed the Treaty of Nonsuch"
+                ],
+                correct: 1
+            },
+            {
+                question: "6. Which plot helped lead to Mary Queen of Scots being executed?",
+                answers: ["A. Gunpowder Plot", "B. Babington Plot", "C. Popish Plot", "D. Rye House Plot"],
+                correct: 1
+            },
+            {
+                question: "7. In which year was Mary Queen of Scots executed?",
+                answers: ["A. 1568", "B. 1570", "C. 1587", "D. 1603"],
+                correct: 2
+            },
+            {
+                question: "8. What happened in 1588?",
+                answers: [
+                    "A. Elizabeth became Queen",
+                    "B. The Spanish Armada attempted to invade England",
+                    "C. Mary arrived in England",
+                    "D. The Northern Rebellion began"
+                ],
+                correct: 1
+            },
+            {
+                question: "9. Which was an important reason for the failure of the Spanish Armada?",
+                answers: [
+                    "A. Spain had no ships",
+                    "B. English resistance, Spanish logistical problems and bad weather all mattered",
+                    "C. England refused to fight",
+                    "D. Philip II changed his mind before the fleet sailed"
+                ],
+                correct: 1
+            },
+            {
+                question: "10. Who succeeded Elizabeth I in 1603?",
+                answers: ["A. Henry VIII", "B. Edward VI", "C. James VI of Scotland / James I of England", "D. Philip II"],
+                correct: 2
+            }
+        ]
+    },
+
+    easy: {
+        title: "📘 Queen Elizabeth I — Easier Practice",
+        badge: "EASY PRACTICE",
+        questions: [
+            {
+                question: "1. Elizabeth I was the daughter of which king?",
+                answers: ["A. Henry VII", "B. Henry VIII", "C. James I", "D. Charles I"],
+                correct: 1
+            },
+            {
+                question: "2. Elizabeth I became Queen after the death of which half-sister?",
+                answers: ["A. Mary I", "B. Mary Queen of Scots", "C. Anne Boleyn", "D. Catherine of Aragon"],
+                correct: 0
+            },
+            {
+                question: "3. Elizabeth's Church of England was mainly what religion?",
+                answers: ["A. Protestant", "B. Hindu", "C. Orthodox", "D. Jewish"],
+                correct: 0
+            },
+            {
+                question: "4. Mary Queen of Scots was associated with which religion?",
+                answers: ["A. Catholicism", "B. Buddhism", "C. Sikhism", "D. Islam"],
+                correct: 0
+            },
+            {
+                question: "5. Which country sent the Armada against England?",
+                answers: ["A. France", "B. Spain", "C. Scotland", "D. Portugal"],
+                correct: 1
+            },
+            {
+                question: "6. Who was King of Spain during the Armada?",
+                answers: ["A. Philip II", "B. Louis XIV", "C. Charles II", "D. Ferdinand II"],
+                correct: 0
+            },
+            {
+                question: "7. Which English sailor is strongly associated with privateering against Spain?",
+                answers: ["A. Francis Drake", "B. Robert Peel", "C. Isaac Newton", "D. William Harvey"],
+                correct: 0
+            },
+            {
+                question: "8. Elizabeth I never married. What nickname is linked to this?",
+                answers: ["A. The Virgin Queen", "B. Bloody Mary", "C. The Conqueror", "D. The Merry Monarch"],
+                correct: 0
+            },
+            {
+                question: "9. What was the Privy Council?",
+                answers: [
+                    "A. A group of Elizabeth's most important advisers",
+                    "B. A Spanish army",
+                    "C. A group of Catholic priests only",
+                    "D. A court for sailors"
+                ],
+                correct: 0
+            },
+            {
+                question: "10. Elizabeth I died in which year?",
+                answers: ["A. 1558", "B. 1588", "C. 1601", "D. 1603"],
+                correct: 3
+            }
+        ]
+    },
+
+    university: {
+        title: "🎓 Elizabethan England — University Level",
+        badge: "UNIVERSITY LEVEL",
+        questions: [
+            {
+                question: "1. Which interpretation best explains the political purpose of the 1559 Religious Settlement?",
+                answers: [
+                    "A. It aimed only to reproduce Edward VI's church without compromise",
+                    "B. It combined Protestant doctrine with royal supremacy while seeking workable political conformity",
+                    "C. It restored papal jurisdiction but changed church decoration",
+                    "D. It removed the monarch from religious authority"
+                ],
+                correct: 1
+            },
+            {
+                question: "2. Why should Elizabeth's use of the title 'Supreme Governor' be treated as politically significant?",
+                answers: [
+                    "A. It had no connection to the Reformation",
+                    "B. It helped assert royal authority while avoiding some objections attached to the title 'Supreme Head'",
+                    "C. It transferred control of the English Church to Spain",
+                    "D. It made Parliament independent of the Crown"
+                ],
+                correct: 1
+            },
+            {
+                question: "3. Which explanation best accounts for the changing danger posed by English Catholicism after 1570?",
+                answers: [
+                    "A. Catholicism disappeared from England",
+                    "B. Excommunication, missionary activity and international conflict increasingly linked religion with questions of political loyalty",
+                    "C. Elizabeth converted to Catholicism",
+                    "D. Parliament stopped passing religious laws"
+                ],
+                correct: 1
+            },
+            {
+                question: "4. Why was Mary Queen of Scots difficult for Elizabeth to deal with before 1587?",
+                answers: [
+                    "A. Mary had no dynastic importance",
+                    "B. Executing an anointed queen raised dynastic and diplomatic risks, while keeping Mary alive also created a focus for plots",
+                    "C. Mary was protected by the English navy",
+                    "D. Elizabeth had no legal advisers"
+                ],
+                correct: 1
+            },
+            {
+                question: "5. Which interpretation best explains the deterioration of Anglo-Spanish relations by the mid-1580s?",
+                answers: [
+                    "A. A single personal quarrel between Elizabeth and Philip II",
+                    "B. The interaction of religion, Dutch revolt, English privateering, trade, diplomacy and dynastic security",
+                    "C. Spain rejected overseas trade completely",
+                    "D. England had already conquered the Netherlands"
+                ],
+                correct: 1
+            },
+            {
+                question: "6. Why is a monocausal explanation of the Armada's failure historically weak?",
+                answers: [
+                    "A. No weather records survive",
+                    "B. The outcome resulted from interacting factors including strategy, logistics, command, English tactics and weather",
+                    "C. The Spanish fleet never reached the Channel",
+                    "D. England won solely because it had more ships"
+                ],
+                correct: 1
+            },
+            {
+                question: "7. What does Elizabethan patronage reveal about the operation of political power?",
+                answers: [
+                    "A. Offices and access to the monarch could be used to bind elites to the regime and shape competition at court",
+                    "B. Patronage was unrelated to government",
+                    "C. Only merchants could receive office",
+                    "D. Elizabeth refused to reward political service"
+                ],
+                correct: 0
+            },
+            {
+                question: "8. Which statement best reflects the role of Parliament under Elizabeth I?",
+                answers: [
+                    "A. Parliament governed independently of the monarch",
+                    "B. Parliament was important for taxation and legislation, but its relationship with the Crown involved negotiation as well as limits",
+                    "C. Parliament never discussed religion",
+                    "D. Parliament selected every member of the Privy Council"
+                ],
+                correct: 1
+            },
+            {
+                question: "9. Why should the 1601 Poor Law be viewed as part of a longer development rather than a sudden invention?",
+                answers: [
+                    "A. It built on earlier Tudor legislation and local practices for categorising and relieving poverty",
+                    "B. England had no poverty before 1601",
+                    "C. It abolished local responsibility",
+                    "D. It ended taxation for poor relief"
+                ],
+                correct: 0
+            },
+            {
+                question: "10. Which explanation best accounts for the relative political stability of Elizabeth's reign?",
+                answers: [
+                    "A. Elizabeth faced no serious opposition",
+                    "B. Stability emerged from royal political management, capable advisers, local institutions, patronage and the containment of major threats",
+                    "C. The Spanish Armada was the only important issue of the reign",
+                    "D. Religious disagreement ended permanently in 1559"
+                ],
+                correct: 1
+            }
+        ]
+    }
+};
+
+let currentSet = "entry";
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+const quizContainer = document.getElementById("quiz-container");
+const quizSetTitle = document.getElementById("quizSetTitle");
+const levelBadge = document.getElementById("levelBadge");
+const questionEl = document.getElementById("question");
+const answersEl = document.getElementById("answers");
+const statusText = document.getElementById("statusText");
+const nextBtn = document.getElementById("nextBtn");
+const scoreEl = document.getElementById("score");
+const startBtn = document.getElementById("startBtn");
+
+function startQuiz(setName) {
+    currentSet = setName;
+    currentQuestion = 0;
+    score = 0;
+    answered = false;
+
+    quizContainer.innerHTML = `
+        <div class="level-badge" id="levelBadge"></div>
+        <div class="quiz-set-title" id="quizSetTitle"></div>
+        <div class="question" id="question"></div>
+        <div class="answers" id="answers"></div>
+        <div class="status-text" id="statusText">Choose one answer.</div>
+        <button class="next-btn" id="nextBtn">Next Question</button>
+        <div class="score">Score: <span id="score">0 / 10</span></div>
     `;
 
-
-    document
-    .getElementById("nextBtn")
-    .addEventListener(
-        "click",
-        handleNext
-    );
-
-
-    loadQuestion();
-
+    bindQuizElements();
+    renderQuestion();
 }
 
+function bindQuizElements() {
+    window.quizSetTitleRef = document.getElementById("quizSetTitle");
+    window.levelBadgeRef = document.getElementById("levelBadge");
+    window.questionRef = document.getElementById("question");
+    window.answersRef = document.getElementById("answers");
+    window.statusTextRef = document.getElementById("statusText");
+    window.nextBtnRef = document.getElementById("nextBtn");
+    window.scoreRef = document.getElementById("score");
 
-
-function loadQuestion() {
-
-    const set =
-    currentSet();
-
-    const q =
-    set.questions[currentQuestion];
-
-
-    document
-    .getElementById("quizSetTitle")
-    .textContent =
-    set.title;
-
-
-    document
-    .getElementById("question")
-    .textContent =
-    q.question;
-
-
-    const answers =
-    document.getElementById("answers");
-
-
-    answers.innerHTML =
-    "";
-
-
-    document
-    .getElementById("statusText")
-    .textContent =
-    "Choose one answer.";
-
-
-    answered =
-    false;
-
-
-    const nextBtn =
-    document.getElementById("nextBtn");
-
-
-    if (
-        currentQuestion ===
-        set.questions.length - 1
-    ) {
-
-        nextBtn.textContent =
-        "Show Result";
-
-    }
-
-    else {
-
-        nextBtn.textContent =
-        "Next Question";
-
-    }
-
-
-    q.answers.forEach(
-        (answer,index) => {
-
-        const button =
-        document.createElement("button");
-
-
-        button.className =
-        "answer-btn";
-
-
-        button.textContent =
-        answer;
-
-
-        button.onclick =
-        () => selectAnswer(index);
-
-
-        answers.appendChild(button);
-
-    });
-
+    window.nextBtnRef.addEventListener("click", nextQuestion);
 }
 
+function renderQuestion() {
+    const set = quizSets[currentSet];
+    const q = set.questions[currentQuestion];
 
+    window.quizSetTitleRef.textContent = set.title;
+    window.levelBadgeRef.textContent = set.badge;
+    window.questionRef.textContent = q.question;
+    window.answersRef.innerHTML = "";
+    window.statusTextRef.textContent = "Choose one answer.";
+    window.nextBtnRef.style.display = "none";
+    window.scoreRef.textContent = `${score} / 10`;
+    answered = false;
 
-function selectAnswer(index) {
-
-    if (answered)
-        return;
-
-
-    answered =
-    true;
-
-
-    const q =
-    currentSet()
-    .questions[currentQuestion];
-
-
-    const buttons =
-    document.querySelectorAll(
-        ".answer-btn"
-    );
-
-
-    buttons.forEach(
-        (button,i) => {
-
-        button.disabled =
-        true;
-
-
-        if (
-            i === q.correct
-        ) {
-
-            button
-            .classList
-            .add("correct");
-
-        }
-
-
-        if (
-            i === index &&
-            index !== q.correct
-        ) {
-
-            button
-            .classList
-            .add("wrong");
-
-        }
-
+    q.answers.forEach((answer, index) => {
+        const button = document.createElement("button");
+        button.className = "answer-btn";
+        button.textContent = answer;
+        button.addEventListener("click", () => selectAnswer(index, button));
+        window.answersRef.appendChild(button);
     });
+}
 
+function selectAnswer(index, selectedButton) {
+    if (answered) return;
+    answered = true;
 
-    if (
-        index === q.correct
-    ) {
+    const q = quizSets[currentSet].questions[currentQuestion];
+    const buttons = [...window.answersRef.querySelectorAll(".answer-btn")];
 
+    buttons.forEach(button => button.disabled = true);
+
+    if (index === q.correct) {
+        selectedButton.classList.add("correct");
+        window.statusTextRef.textContent = "✅ Correct!";
         score++;
-
-
-        document
-        .getElementById("statusText")
-        .textContent =
-        "✅ Correct!";
-
+    } else {
+        selectedButton.classList.add("wrong");
+        buttons[q.correct].classList.add("correct");
+        window.statusTextRef.textContent = "❌ Not quite. The correct answer is shown in green.";
     }
 
-    else {
+    window.scoreRef.textContent = `${score} / 10`;
+    window.nextBtnRef.style.display = "inline-block";
 
-        document
-        .getElementById("statusText")
-        .textContent =
-        "❌ Incorrect.";
-
+    if (currentQuestion === quizSets[currentSet].questions.length - 1) {
+        window.nextBtnRef.textContent = "See Result";
+    } else {
+        window.nextBtnRef.textContent = "Next Question";
     }
-
-
-    document
-    .getElementById("score")
-    .textContent =
-    score + " / 10";
-
 }
 
-
-
-function handleNext() {
-
-    if (!answered) {
-
-        document
-        .getElementById("statusText")
-        .textContent =
-        "Please choose an answer first.";
-
-        return;
-
-    }
-
+function nextQuestion() {
+    if (!answered) return;
 
     currentQuestion++;
 
-
-    if (
-        currentQuestion <
-        currentSet().questions.length
-    ) {
-
-        loadQuestion();
-
-    }
-
-    else {
-
+    if (currentQuestion < quizSets[currentSet].questions.length) {
+        renderQuestion();
+    } else {
         showResult();
-
     }
-
 }
-
-
 
 function showResult() {
+    if (currentSet === "entry") {
+        if (score === 10) {
+            quizContainer.innerHTML = `
+                <div class="result-box">
+                    <div class="level-badge">ENTRY QUIZ COMPLETE</div>
+                    <h3 style="color:#7a4e2d;font-size:28px;margin-bottom:12px;">Perfect score: 10 / 10!</h3>
+                    <p style="margin-bottom:20px;">
+                        🎓 You have unlocked the <strong>University-Level Queen Elizabeth I Quiz</strong>.
+                    </p>
+                    <button class="restart-btn" onclick="startQuiz('university')">Start University-Level Quiz</button>
+                </div>
+            `;
+        } else {
+            quizContainer.innerHTML = `
+                <div class="result-box">
+                    <div class="level-badge">ENTRY QUIZ COMPLETE</div>
+                    <h3 style="color:#7a4e2d;font-size:28px;margin-bottom:12px;">Score: ${score} / 10</h3>
+                    <p style="margin-bottom:20px;">
+                        📘 You need 10 / 10 to unlock the university quiz.<br>
+                        Try the easier practice questions, then come back and retry the Entry Quiz.
+                    </p>
+                    <button class="restart-btn" onclick="startQuiz('easy')">Start Easier Practice</button>
+                </div>
+            `;
+        }
+        return;
+    }
 
-    const set =
-    currentSet();
-
-
-    let award =
-    "";
-
-
-    if (
-        score === 10
-    ) {
-
-        award = `
-
-        <div class="teacher-award">
-
-            <div class="trophy">
-            🏆
+    if (currentSet === "easy") {
+        quizContainer.innerHTML = `
+            <div class="result-box">
+                <div class="level-badge">PRACTICE COMPLETE</div>
+                <h3 style="color:#7a4e2d;font-size:28px;margin-bottom:12px;">Practice score: ${score} / 10</h3>
+                <p style="margin-bottom:20px;">
+                    Good practice. Now retry the Entry Quiz.<br>
+                    You need <strong>10 / 10</strong> there to unlock university level.
+                </p>
+                <button class="restart-btn" onclick="startQuiz('entry')">Retry Entry Quiz</button>
+                <button class="restart-btn" onclick="startQuiz('easy')">Practice Again</button>
             </div>
-
-            <h3>
-            HISTORY TEACHER AWARD
-            </h3>
-
-            <p>
-
-            🎓 Outstanding!
-
-            <br><br>
-
-            You achieved a
-
-            <strong>
-            PERFECT SCORE
-            </strong>
-
-            <br>
-
-            10 / 10
-
-            <br><br>
-
-            You have earned the
-
-            <strong>
-            History Teacher Award!
-            </strong>
-
-            </p>
-
-        </div>
-
         `;
-
+        return;
     }
 
-
-    let message =
-    "";
-
-
-    if (
-        score === 10
-    ) {
-
-        message =
-        "Outstanding historical knowledge!";
-
+    if (currentSet === "university") {
+        if (score === 10) {
+            quizContainer.innerHTML = `
+                <div class="result-box">
+                    <div class="teacher-award">
+                        <div class="trophy">🏆</div>
+                        <h3>History Teacher Award</h3>
+                        <p>🎓 Congratulations!</p>
+                        <p>You completed the Queen Elizabeth I University Quiz with a perfect score.</p>
+                        <p><strong>10 / 10</strong></p>
+                    </div>
+                    <button class="restart-btn" onclick="startQuiz('university')">Try University Quiz Again</button>
+                </div>
+            `;
+        } else {
+            quizContainer.innerHTML = `
+                <div class="result-box">
+                    <div class="level-badge">UNIVERSITY LEVEL COMPLETE</div>
+                    <h3 style="color:#7a4e2d;font-size:28px;margin-bottom:12px;">Score: ${score} / 10</h3>
+                    <p style="margin-bottom:20px;">
+                        Strong attempt. A perfect 10 / 10 earns the History Teacher Award.
+                    </p>
+                    <button class="restart-btn" onclick="startQuiz('university')">Retry University Quiz</button>
+                    <button class="restart-btn" onclick="startQuiz('entry')">Back to Entry Quiz</button>
+                </div>
+            `;
+        }
     }
-
-    else if (
-        score >= 8
-    ) {
-
-        message =
-        "Excellent work — almost History Teacher level!";
-
-    }
-
-    else if (
-        score >= 6
-    ) {
-
-        message =
-        "Good historical knowledge.";
-
-    }
-
-    else {
-
-        message =
-        "Keep studying and try again!";
-
-    }
-
-
-
-    document
-    .getElementById("quiz-container")
-    .innerHTML = `
-
-
-    <div class="result-box">
-
-
-        <h2>
-        Quiz Complete
-        </h2>
-
-
-        <p style="font-size:21px">
-
-        You scored
-
-        <strong>
-        ${score} / 10
-        </strong>
-
-        </p>
-
-
-        <br>
-
-
-        <p>
-
-        ${message}
-
-        </p>
-
-
-        ${award}
-
-
-        <button
-        class="restart-btn"
-        onclick="startQuiz('${activeSetKey}')">
-
-        🔄 Restart Quiz
-
-        </button>
-
-
-    </div>
-
-
-    `;
-
 }
 
-
-
-startQuiz("crime");
-
-
+startQuiz("entry");
 </script>
-
 
 </body>
 </html>
+History.html
+HTML
