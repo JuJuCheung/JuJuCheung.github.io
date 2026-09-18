@@ -1,963 +1,1447 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>University Maths</title>
-  <meta name="description" content="University-level maths learning website with context-based quizzes." />
-  <style>
-    :root{
-      --navy:#34433a;
-      --blue:#8a5a3b;
-      --blue2:#6f452d;
-      --light:#f5f0e6;
-      --card:#fffdf8;
-      --text:#252525;
-      --muted:#666057;
-      --line:#ded5c8;
-      --good:#2f6b3b;
-      --bad:#a93838;
-      --gold:#c89b2b;
-      --shadow:0 7px 20px rgba(45,52,47,.10);
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Inter,Segoe UI,Arial,sans-serif;
-      color:var(--text);
-      background:var(--light);
-      line-height:1.65;
-    }
-    header{
-      background:linear-gradient(135deg,#34433a,#26342d);
-      color:#fff;
-      padding:46px 20px 36px;
-      text-align:center;
-    }
-    header h1{
-      margin:0 0 8px;
-      font-size:clamp(2.1rem,5vw,4rem);
-      letter-spacing:-1px;
-    }
-    header p{margin:0;opacity:.92;font-size:1.05rem}
-    nav{
-      position:sticky;
-      top:0;
-      z-index:10;
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      flex-wrap:wrap;
-      padding:12px 16px;
-      background:#34433a;
-      border-bottom:1px solid #26342d;
-    }
-    nav a{
-      color:#fff;
-      text-decoration:none;
-      font-weight:700;
-      padding:7px 11px;
-      border-radius:8px;
-    }
-    nav a:hover{background:#8a5a3b}
-    main{
-      width:min(1100px,92%);
-      margin:0 auto;
-      padding:34px 0 60px;
-    }
-    section{scroll-margin-top:82px;margin-bottom:45px}
-    h2{
-      color:#1a1a1a;
-      font-size:clamp(1.55rem,3vw,2.15rem);
-      margin:0 0 18px;
-    }
-    h3{color:var(--navy);margin-top:0}
-    .intro,.thinking,.quiz-shell{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:18px;
-      box-shadow:var(--shadow);
-      padding:26px;
-    }
-    .topic-grid,.idea-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:18px;
-    }
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:22px;
-      box-shadow:var(--shadow);
-    }
-    .topic-icon{font-size:2rem;display:block;margin-bottom:7px}
-    .idea{
-      border-left:5px solid #8a5a3b;
-    }
-    .quote{
-      background:#eef5ff;
-      border-left:5px solid var(--blue);
-      padding:16px 18px;
-      border-radius:10px;
-      font-weight:700;
-      color:#000000;
-      margin-top:18px;
-    }
-    .quiz-title{text-align:center;margin-bottom:6px}
-    .quiz-sub{text-align:center;color:var(--muted);margin-top:0}
-    .award{
-      text-align:center;
-      background:#fff4cf;
-      border:1px solid #d9b754;
-      color:#684b09;
-      padding:10px 14px;
-      border-radius:10px;
-      font-weight:800;
-      margin:14px auto 24px;
-      max-width:620px;
-    }
-    .topic-buttons{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:10px;
-      margin-bottom:22px;
-    }
-    button{
-      font:inherit;
-      cursor:pointer;
-    }
-    .topic-btn,.next-btn,.restart-btn{
-      border:0;
-      border-radius:10px;
-      padding:12px 14px;
-      font-weight:800;
-      transition:.18s ease;
-    }
-    .topic-btn{
-      background:#161616;
-      color:#fff;
-    }
-    .topic-btn:hover,.topic-btn.active{
-      background:#8a5a3b;
-      color:#fff;
-      transform:translateY(-1px);
-    }
-    .question-area{
-      display:none;
-      margin-top:12px;
-    }
-    .question-area.show{display:block}
-    .level-row{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-      color:var(--muted);
-      font-size:.92rem;
-      margin-bottom:10px;
-    }
-    .context-box{
-      background:#eff6ff;
-      border:1px solid #bfdbfe;
-      border-left:5px solid #8a5a3b;
-      border-radius:12px;
-      padding:16px 18px;
-      margin-bottom:16px;
-    }
-    .context-box strong{
-      color:var(--navy);
-      display:block;
-      margin-bottom:4px;
-    }
-    .question{
-      font-size:1.13rem;
-      font-weight:800;
-      color:var(--navy);
-      margin:10px 0 15px;
-    }
-    .answers{
-      display:grid;
-      gap:10px;
-    }
-    .answer-btn{
-      width:100%;
-      text-align:left;
-      background:#fff;
-      border:1px solid #cfd9e5;
-      border-radius:10px;
-      padding:12px 14px;
-      color:var(--text);
-    }
-    .answer-btn:hover:not(:disabled){
-      border-color:#8a5a3b;
-      background:#fff8ef;
-    }
-    .answer-btn.correct{
-      background:#ecfdf3;
-      border-color:#86d7a3;
-      color:#14532d;
-      font-weight:800;
-    }
-    .answer-btn.wrong{
-      background:#fff1f2;
-      border-color:#f5a4ab;
-      color:#7f1d1d;
-      font-weight:800;
-    }
-    .feedback{
-      min-height:32px;
-      margin:14px 0 4px;
-      font-weight:700;
-    }
-    .feedback.good{color:var(--good)}
-    .feedback.bad{color:var(--bad)}
-    .controls{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      margin-top:14px;
-      flex-wrap:wrap;
-    }
-    .score{font-weight:900;color:var(--navy)}
-    .next-btn,.restart-btn{
-      background:#161616;
-      color:#fff;
-    }
-    .next-btn:hover,.restart-btn:hover{background:#8a5a3b}
-    .next-btn:disabled{opacity:.45;cursor:not-allowed}
-    .result{
-      display:none;
-      text-align:center;
-      padding:24px 8px 8px;
-    }
-    .result.show{display:block}
-    .result h3{font-size:1.8rem}
-    .trophy{font-size:3.2rem}
-    .award-certificate{
-      display:none;
-      max-width:680px;
-      margin:24px auto 8px;
-      padding:34px 24px;
-      text-align:center;
-      background:linear-gradient(135deg,#fff9dd,#f4df98);
-      border:5px double #b88716;
-      border-radius:16px;
-      box-shadow:0 10px 30px rgba(104,75,9,.18);
-      color:#4d390b;
-    }
-    .award-certificate.show{display:block}
-    .award-certificate .medal{font-size:4rem;line-height:1}
-    .award-certificate h3{
-      margin:10px 0 4px;
-      color:#684b09;
-      font-size:2rem;
-    }
-    .award-certificate .award-name{
-      font-family:Georgia,serif;
-      font-size:1.55rem;
-      font-weight:800;
-      margin:12px 0;
-    }
-    .award-certificate p{margin:5px 0}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    footer{
-      text-align:center;
-      background:var(--navy);
-      color:#dbeafe;
-      padding:24px;
+<title>Master Maths</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f0e4;
+    color:#222;
+    line-height:1.6;
+}
+
+/* HEADER */
+
+header{
+    background:#173b32;
+    color:white;
+    text-align:center;
+    padding:55px 20px;
+}
+
+header h1{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+header p{
+    font-size:1.2rem;
+}
+
+/* NAVIGATION */
+
+nav{
+    background:#102c25;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    padding:16px 22px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    background:#805b3b;
+}
+
+/* MAIN */
+
+main{
+    max-width:1100px;
+    margin:auto;
+    padding:30px 20px 80px;
+}
+
+section{
+    margin-bottom:55px;
+}
+
+h2{
+    color:#173b32;
+    font-size:2rem;
+    margin-bottom:15px;
+    border-bottom:4px solid #805b3b;
+    padding-bottom:8px;
+}
+
+h3{
+    color:#173b32;
+    margin-top:20px;
+}
+
+/* INTRO */
+
+.hero-box{
+    background:white;
+    border-left:8px solid #805b3b;
+    padding:25px;
+    border-radius:8px;
+    box-shadow:0 3px 12px rgba(0,0,0,.12);
+    margin-bottom:35px;
+}
+
+.hero-box p{
+    margin-top:10px;
+}
+
+/* CONTEXT BOX */
+
+.context{
+    background:#e8e0ce;
+    padding:18px;
+    border-left:5px solid #805b3b;
+    margin:18px 0;
+    border-radius:6px;
+}
+
+.context strong{
+    color:#173b32;
+}
+
+/* TOPIC CARDS */
+
+.topic-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:25px;
+}
+
+.topic-card{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 3px 12px rgba(0,0,0,.12);
+}
+
+.topic-card h3{
+    margin-top:0;
+}
+
+.topic-card p{
+    margin:10px 0 20px;
+}
+
+/* BUTTONS */
+
+button{
+    background:#111;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:1rem;
+    font-weight:bold;
+    margin:5px;
+}
+
+button:hover{
+    background:#805b3b;
+}
+
+.restart{
+    background:#173b32;
+}
+
+/* QUIZ */
+
+.quiz-area{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 3px 15px rgba(0,0,0,.13);
+    margin-top:20px;
+}
+
+.question{
+    margin-bottom:25px;
+    padding-bottom:20px;
+    border-bottom:1px solid #ddd;
+}
+
+.question h3{
+    color:#222;
+    font-size:1.08rem;
+    margin-bottom:12px;
+}
+
+.option{
+    display:block;
+    background:#f5f5f5;
+    padding:11px 14px;
+    margin:7px 0;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.option:hover{
+    background:#e8e0ce;
+}
+
+.option input{
+    margin-right:9px;
+}
+
+.explanation{
+    margin-top:10px;
+    padding:12px;
+    border-radius:5px;
+    display:none;
+}
+
+.correct{
+    background:#e4f4e7;
+    border-left:5px solid #2e7d32;
+}
+
+.wrong{
+    background:#fae2e2;
+    border-left:5px solid #b71c1c;
+}
+
+/* SCORE */
+
+.score{
+    font-size:1.5rem;
+    text-align:center;
+    font-weight:bold;
+    margin:25px 0;
+}
+
+/* AWARD */
+
+.award{
+    display:none;
+    background:linear-gradient(135deg,#fff7c7,#d8ad35,#fff0a4);
+    color:#111;
+    border:9px double #8a6516;
+    padding:45px 25px;
+    margin:35px auto;
+    max-width:700px;
+    text-align:center;
+    border-radius:10px;
+    box-shadow:0 6px 18px rgba(0,0,0,.2);
+}
+
+.award h2{
+    color:#593c00;
+    border:none;
+    font-size:2.5rem;
+}
+
+.award h3{
+    color:#593c00;
+    font-size:1.7rem;
+}
+
+.award p{
+    font-size:1.1rem;
+    margin:12px 0;
+}
+
+.award .big{
+    font-size:4rem;
+}
+
+/* FOOTER */
+
+footer{
+    background:#173b32;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    header h1{
+        font-size:2.1rem;
     }
-    code.math{
-      font-family:"Cambria Math","Times New Roman",serif;
-      background:#edf2f7;
-      padding:1px 5px;
-      border-radius:5px;
-      color:#111827;
-      white-space:normal;
+
+    nav a{
+        padding:12px 10px;
+        font-size:.9rem;
     }
-    @media (max-width:820px){
-      .topic-buttons{grid-template-columns:repeat(2,1fr)}
+
+    h2{
+        font-size:1.6rem;
     }
-    @media (max-width:680px){
-      .topic-grid,.idea-grid{grid-template-columns:1fr}
-      main{width:min(94%,1100px)}
-      .intro,.thinking,.quiz-shell{padding:20px}
-    }
-  </style>
+
+}
+
+</style>
 </head>
+
 <body>
 
 <header>
-  <h1>University Maths</h1>
-  <p>Calculus • Linear Algebra • Probability & Statistics • Number Theory • A-Level Maths</p>
+
+<h1>📐 Master Maths</h1>
+
+<p>
+From A-Level Mathematics to University Mathematics
+</p>
+
 </header>
 
 <nav>
-  <a href="#about">About</a>
-  <a href="#topics">Topics</a>
-  <a href="#ideas">Key Ideas</a>
-  <a href="#thinking">Mathematical Thinking</a>
-  <a href="#quiz">Quiz</a>
+
+<a href="#home">Home</a>
+<a href="#alevel">A-Level</a>
+<a href="#university">University</a>
+
 </nav>
 
 <main>
-  <section id="about" class="intro">
-    <h2>University Maths</h2>
-    <p>
-      Explore four major areas of university mathematics. Learn how calculus describes change,
-      how linear algebra works with vectors and matrices, how probability models uncertainty,
-      and how number theory studies the hidden structure of integers.
-    </p>
-    <p>
-      In the quiz, every question starts with a short <strong>context box</strong>. Read the context first,
-      then use it to solve the university-level problem.
-    </p>
-  </section>
 
-  <section id="topics">
-    <h2>Maths Topics</h2>
-    <div class="topic-grid">
-      <article class="card">
-        <span class="topic-icon">∫</span>
-        <h3>Calculus</h3>
-        <p>Study limits, derivatives, integrals, infinite series, multivariable calculus and differential equations.</p>
-      </article>
-      <article class="card">
-        <span class="topic-icon">▦</span>
-        <h3>Linear Algebra</h3>
-        <p>Explore vectors, matrices, determinants, eigenvalues, vector spaces, rank, projections and transformations.</p>
-      </article>
-      <article class="card">
-        <span class="topic-icon">🎲</span>
-        <h3>Probability & Statistics</h3>
-        <p>Use probability distributions, conditional probability, expectation, variance, Bayes' theorem and sampling ideas.</p>
-      </article>
-      <article class="card">
-        <span class="topic-icon">ℤ</span>
-        <h3>Number Theory</h3>
-        <p>Investigate primes, divisibility, greatest common divisors, modular arithmetic and Diophantine equations.</p>
-      </article>
-    </div>
-  </section>
+<!-- HOME -->
 
-  <section id="ideas">
-    <h2>Key Mathematical Ideas</h2>
-    <div class="idea-grid">
-      <article class="card idea">
-        <h3>Limits and Change</h3>
-        <p>Calculus turns the idea of “getting closer” into a precise mathematical tool. Limits lead to derivatives and integrals.</p>
-      </article>
-      <article class="card idea">
-        <h3>Structure and Transformation</h3>
-        <p>Linear algebra studies spaces and transformations. Matrices give a compact way to represent and calculate them.</p>
-      </article>
-      <article class="card idea">
-        <h3>Uncertainty and Evidence</h3>
-        <p>Probability measures uncertainty, while statistics uses data to estimate, compare and make carefully justified conclusions.</p>
-      </article>
-      <article class="card idea">
-        <h3>Patterns in Integers</h3>
-        <p>Number theory asks simple-looking questions about whole numbers that can lead to deep ideas about primes and congruences.</p>
-      </article>
-    </div>
-  </section>
+<section id="home">
 
-  <section id="thinking" class="thinking">
-    <h2>Mathematical Thinking</h2>
-    <h3>Why is university maths different?</h3>
-    <p>
-      At university level, mathematics is not only about getting a numerical answer.
-      You also need to understand definitions, recognise useful structures, choose an appropriate theorem,
-      and explain why a method works.
-    </p>
-    <h3>What makes a strong solution?</h3>
-    <p>
-      A strong solution is logically organised. It states the important idea, shows the main steps,
-      checks assumptions where necessary, and reaches a conclusion that follows from the mathematics.
-    </p>
-    <div class="quote">
-      “Mathematics is not simply calculating. It is recognising structure, making logical arguments and explaining why a result must be true.”
-    </div>
-  </section>
+<div class="hero-box">
 
-  <section id="quiz" class="quiz-shell">
-    <h2 class="quiz-title">🎓 University-Level Maths Quiz</h2>
-    <p class="quiz-sub">Choose a topic below. University topics contain university-level questions, and A-Level Maths has its own 10-question quiz.</p>
-    <div class="award">🏆 Score 10 / 10 to unlock the Maths Teacher Award!</div>
+<h2>Welcome to Master Maths</h2>
 
-    <div class="topic-buttons">
-      <button class="topic-btn" data-topic="calculus">∫ Calculus</button>
-      <button class="topic-btn" data-topic="linear">▦ Linear Algebra</button>
-      <button class="topic-btn" data-topic="probability">🎲 Probability</button>
-      <button class="topic-btn" data-topic="number">ℤ Number Theory</button>
-      <button class="topic-btn" data-topic="alevel">📐 A-Level Maths</button>
-    </div>
+<p>
+Challenge your mathematical knowledge from A-Level to university level.
+Each quiz contains 10 questions and gives explanations after you submit
+your answers.
+</p>
 
-    <div id="questionArea" class="question-area">
-      <div class="level-row">
-        <span id="topicLabel"></span>
-        <span id="progressLabel"></span>
-      </div>
+<p>
+Score <strong>10/10</strong> to earn the special
+<strong>Maths Teacher Award</strong>.
+</p>
 
-      <div class="context-box">
-        <strong>Context</strong>
-        <span id="contextText"></span>
-      </div>
+</div>
 
-      <div id="questionText" class="question"></div>
-      <div id="answers" class="answers"></div>
-      <div id="feedback" class="feedback"></div>
+</section>
 
-      <div class="controls">
-        <div id="score" class="score">Score: 0 / 10</div>
-        <button id="nextBtn" class="next-btn" disabled>Next Question</button>
-      </div>
-    </div>
 
-    <div id="result" class="result">
-      <div id="resultTrophy" class="trophy">🎓</div>
-      <h3 id="resultTitle">Quiz complete!</h3>
-      <p id="resultText"></p>
-      <button id="restartBtn" class="restart-btn">Try This Topic Again</button>
-    </div>
+<!-- A LEVEL -->
 
-    <div id="certificate" class="award-certificate">
-      <div class="medal">🏆</div>
-      <h3>Achievement Unlocked</h3>
-      <div class="award-name">Maths Teacher Award</div>
-      <p>Awarded for achieving a perfect <strong>10 / 10</strong></p>
-      <p>University-Level Mathematics Quiz</p>
-    </div>
-  </section>
+<section id="alevel">
+
+<h2>📘 A-Level Maths Quiz for Mr Sharratt</h2>
+
+<div class="context">
+
+<strong>A-Level Challenge</strong>
+
+<p>
+This quiz covers algebra, differentiation, integration,
+trigonometry, sequences, probability, straight lines,
+quadratics, vectors and exponentials.
+</p>
+
+</div>
+
+<button onclick="startQuiz('alevel')">
+Start A-Level Quiz
+</button>
+
+<div id="alevelQuiz"></div>
+
+</section>
+
+
+<!-- UNIVERSITY -->
+
+<section id="university">
+
+<h2>🎓 University Maths Quiz for Mr Davidson</h2>
+
+<div class="context">
+
+<strong>University Challenge</strong>
+
+<p>
+Choose a university mathematics topic below.
+The questions are designed to be more challenging
+and require deeper mathematical understanding.
+</p>
+
+</div>
+
+<div class="topic-grid">
+
+<div class="topic-card">
+
+<h3>Calculus</h3>
+
+<p>
+Limits, derivatives, integration and differential equations.
+</p>
+
+<button onclick="startQuiz('calculus')">
+Start Quiz
+</button>
+
+</div>
+
+
+<div class="topic-card">
+
+<h3>Linear Algebra</h3>
+
+<p>
+Matrices, vectors, eigenvalues and vector spaces.
+</p>
+
+<button onclick="startQuiz('linear')">
+Start Quiz
+</button>
+
+</div>
+
+
+<div class="topic-card">
+
+<h3>Probability & Statistics</h3>
+
+<p>
+Probability distributions, expectation, variance and statistics.
+</p>
+
+<button onclick="startQuiz('probability')">
+Start Quiz
+</button>
+
+</div>
+
+
+<div class="topic-card">
+
+<h3>Number Theory</h3>
+
+<p>
+Prime numbers, divisibility, modular arithmetic and proofs.
+</p>
+
+<button onclick="startQuiz('number')">
+Start Quiz
+</button>
+
+</div>
+
+</div>
+
+<div id="universityQuiz"></div>
+
+</section>
+
 </main>
 
-<footer>© 2026 University Maths | Maths Learning Website</footer>
+
+<footer>
+
+<p>Master Maths • Learn • Challenge • Achieve</p>
+
+</footer>
+
 
 <script>
+
+/* =============================
+   QUESTION DATABASE
+============================= */
+
 const quizzes = {
-  calculus: {
-    name: "Calculus",
-    questions: [
-      {
-        context: "For a positive variable x, the function x^x is differentiated by first writing x^x = e^(x ln x). This allows the chain rule and product rule to be used.",
-        q: "If f(x) = x^x, what is f′(e)?",
-        options: ["e^e", "2e^e", "e^(2e)", "2e"],
-        answer: 1,
-        explain: "f′(x) = x^x(ln x + 1). At x = e, ln e = 1, so f′(e) = 2e^e."
-      },
-      {
-        context: "Improper integrals are used when an interval is infinite. The integral ∫₀^∞ x e^(-x) dx is also a Gamma-function value, Γ(2).",
-        q: "Evaluate ∫₀^∞ x e^(-x) dx.",
-        options: ["0", "1", "e", "∞"],
-        answer: 1,
-        explain: "Γ(2) = 1! = 1. Integration by parts gives the same result."
-      },
-      {
-        context: "The Maclaurin expansion is e^x = 1 + x + x²/2! + x³/3! + x⁴/4! + ···.",
-        q: "What is the coefficient of x⁴ in the Maclaurin series for e^x?",
-        options: ["1/4", "1/8", "1/24", "1/16"],
-        answer: 2,
-        explain: "The x⁴ term is x⁴/4!, and 4! = 24."
-      },
-      {
-        context: "For a twice-differentiable function of two variables, the Hessian matrix helps classify stationary points. A positive-definite Hessian gives a strict local minimum.",
-        q: "For f(x,y) = x² + xy + y², what type of stationary point is at (0,0)?",
-        options: ["Strict local minimum", "Strict local maximum", "Saddle point", "No stationary point"],
-        answer: 0,
-        explain: "The Hessian is [[2,1],[1,2]], whose eigenvalues are 3 and 1, both positive."
-      },
-      {
-        context: "A first-order differential equation y′ = ky models exponential growth or decay. Its general solution is y = Ce^(kx).",
-        q: "Solve y′ = 3y with y(0) = 2.",
-        options: ["y = 2e^x", "y = 3e^(2x)", "y = 2e^(3x)", "y = e^(6x)"],
-        answer: 2,
-        explain: "y = Ce^(3x). Using y(0)=2 gives C=2."
-      },
-      {
-        context: "A standard limit is ln(1+t)/t → 1 as t → 0. Setting t = 1/n converts many sequence limits into this form.",
-        q: "Find lim(n→∞) n ln(1 + 1/n).",
-        options: ["0", "1", "e", "∞"],
-        answer: 1,
-        explain: "Let t=1/n. Then n ln(1+1/n)=ln(1+t)/t → 1."
-      },
-      {
-        context: "Integrals containing a logarithm often simplify by integration by parts. For ∫x ln x dx, one can take u = ln x and dv = x dx.",
-        q: "Evaluate ∫₀¹ x ln x dx.",
-        options: ["-1/4", "-1/2", "0", "1/4"],
-        answer: 0,
-        explain: "Integration by parts gives [x² ln x/2]₀¹ - ∫₀¹ x/2 dx = -1/4."
-      },
-      {
-        context: "The directional derivative of f in a unit direction u is ∇f · u. The direction vector must first be normalised.",
-        q: "For f(x,y)=x²y at (1,2), find the directional derivative in the direction (3,4).",
-        options: ["3", "16/5", "5", "17/5"],
-        answer: 1,
-        explain: "∇f=(2xy,x²)=(4,1). The unit direction is (3/5,4/5), so the dot product is 16/5."
-      },
-      {
-        context: "A telescoping series is one in which most terms cancel after partial fractions. Here 1/[n(n+1)] = 1/n - 1/(n+1).",
-        q: "Evaluate Σ from n=1 to ∞ of 1/[n(n+1)].",
-        options: ["1/2", "1", "2", "Diverges"],
-        answer: 1,
-        explain: "The partial sums telescope to 1 - 1/(N+1), which tends to 1."
-      },
-      {
-        context: "The alternating harmonic series has terms that decrease to zero, so the alternating-series test gives convergence. But its absolute-value series is the harmonic series.",
-        q: "How does Σ from n=1 to ∞ of (-1)^(n+1)/n converge?",
-        options: ["Absolutely", "Conditionally", "It diverges", "Only for n > 10"],
-        answer: 1,
-        explain: "It converges by the alternating-series test, but not absolutely because Σ1/n diverges."
-      }
-    ]
-  },
 
-  linear: {
-    name: "Linear Algebra",
-    questions: [
-      {
-        context: "For a 2×2 matrix [[a,b],[c,d]], the determinant is ad - bc. A non-zero determinant means the matrix is invertible.",
-        q: "What is det([[1,2],[3,4]])?",
-        options: ["-2", "2", "10", "-10"],
-        answer: 0,
-        explain: "det = 1·4 - 2·3 = 4 - 6 = -2."
-      },
-      {
-        context: "Eigenvalues satisfy det(A - λI)=0. Symmetric matrices have real eigenvalues and orthogonal eigenvectors.",
-        q: "What are the eigenvalues of [[2,1],[1,2]]?",
-        options: ["2 and 2", "3 and 1", "4 and 0", "1 and -1"],
-        answer: 1,
-        explain: "The characteristic equation is (2-λ)² - 1 = 0, giving λ = 3 and 1."
-      },
-      {
-        context: "The rank-nullity theorem states: dimension of domain = rank + nullity.",
-        q: "A linear map T: R⁵ → R³ has rank 3. What is its nullity?",
-        options: ["1", "2", "3", "5"],
-        answer: 1,
-        explain: "5 = rank + nullity = 3 + nullity, so nullity = 2."
-      },
-      {
-        context: "The orthogonal projection of v onto a non-zero vector u is projᵤ(v) = [(v·u)/(u·u)]u.",
-        q: "Project v=(3,1) onto the line spanned by u=(1,1).",
-        options: ["(1,1)", "(2,2)", "(3,3)", "(4,4)"],
-        answer: 1,
-        explain: "(v·u)/(u·u) = 4/2 = 2, so the projection is (2,2)."
-      },
-      {
-        context: "An orthogonal matrix preserves lengths and angles. Its columns form an orthonormal basis.",
-        q: "If Q is an orthogonal matrix, which identity must hold?",
-        options: ["Q⁻¹ = Qᵀ", "Q⁻¹ = -Q", "Q² = 0", "det(Q)=0"],
-        answer: 0,
-        explain: "By definition QᵀQ=I, so Q⁻¹=Qᵀ."
-      },
-      {
-        context: "A square linear system Ax=b has a unique solution for every b exactly when A is invertible.",
-        q: "Which condition guarantees that Ax=b has a unique solution for every b in Rⁿ?",
-        options: ["det(A)=0", "rank(A)<n", "det(A)≠0", "A has a zero row"],
-        answer: 2,
-        explain: "For a square matrix, det(A)≠0 is equivalent to invertibility and a unique solution."
-      },
-      {
-        context: "The trace of a square matrix is the sum of its diagonal entries. Counting algebraic multiplicity, it is also the sum of the eigenvalues.",
-        q: "If a 3×3 matrix has eigenvalues 2, -1 and 5, what is its trace?",
-        options: ["6", "7", "8", "10"],
-        answer: 0,
-        explain: "Trace = 2 + (-1) + 5 = 6."
-      },
-      {
-        context: "The spectral theorem is a major result for real symmetric matrices.",
-        q: "Which statement is always true for a real symmetric matrix?",
-        options: ["It is singular", "It is orthogonally diagonalizable", "All eigenvalues are positive", "Its determinant is 1"],
-        answer: 1,
-        explain: "The real spectral theorem says every real symmetric matrix is diagonalizable by an orthogonal matrix."
-      },
-      {
-        context: "The vector space P₃ consists of all real polynomials of degree at most 3. A standard basis is {1,x,x²,x³}.",
-        q: "What is dim(P₃)?",
-        options: ["3", "4", "5", "Infinite"],
-        answer: 1,
-        explain: "The standard basis contains four linearly independent polynomials."
-      },
-      {
-        context: "Determinants are multiplicative: det(AB)=det(A)det(B) for square matrices of the same size.",
-        q: "If det(A)=3 and det(B)=-2, what is det(AB)?",
-        options: ["-6", "-1", "1", "6"],
-        answer: 0,
-        explain: "det(AB)=3×(-2)=-6."
-      }
-    ]
-  },
 
-  probability: {
-    name: "Probability & Statistics",
-    questions: [
-      {
-        context: "For X~Binomial(n,p), the expectation is E[X]=np.",
-        q: "If X~Binomial(10,0.2), what is E[X]?",
-        options: ["0.2", "1", "2", "5"],
-        answer: 2,
-        explain: "E[X]=np=10×0.2=2."
-      },
-      {
-        context: "A Bernoulli random variable takes value 1 with probability p and 0 with probability 1-p.",
-        q: "What is the variance of a Bernoulli(p) random variable?",
-        options: ["p", "1-p", "p(1-p)", "p²"],
-        answer: 2,
-        explain: "Var(X)=E[X²]-E[X]²=p-p²=p(1-p)."
-      },
-      {
-        context: "Conditional probability updates the probability of A when event B is known to have happened.",
-        q: "For P(B)>0, which formula defines P(A|B)?",
-        options: ["P(A)+P(B)", "P(A∩B)/P(B)", "P(A)/P(B)", "P(A∪B)/P(A)"],
-        answer: 1,
-        explain: "By definition P(A|B)=P(A∩B)/P(B)."
-      },
-      {
-        context: "For a normal distribution, about 68.27% of observations lie within one standard deviation of the mean.",
-        q: "Approximately what probability lies between μ-σ and μ+σ for a normal distribution?",
-        options: ["0.50", "0.6827", "0.95", "0.997"],
-        answer: 1,
-        explain: "The normal 68-95-99.7 rule gives about 0.6827 within one standard deviation."
-      },
-      {
-        context: "For X~Poisson(λ), P(X=k)=e^(-λ)λ^k/k!.",
-        q: "If X~Poisson(3), what is P(X=0)?",
-        options: ["e^-3", "3e^-3", "1-e^-3", "1/3"],
-        answer: 0,
-        explain: "P(X=0)=e^-3·3^0/0!=e^-3."
-      },
-      {
-        context: "Independence is stronger than zero covariance. Independent random variables with finite second moments have covariance zero.",
-        q: "Which statement is correct?",
-        options: [
-          "Zero covariance always implies independence",
-          "Independence implies zero covariance when moments exist",
-          "Covariance is always positive",
-          "Independent variables must have equal means"
-        ],
-        answer: 1,
-        explain: "Independence implies E[XY]=E[X]E[Y], hence covariance 0. The converse is not always true."
-      },
-      {
-        context: "A disease affects 1% of a population. A test has 90% sensitivity and a 5% false-positive rate. Bayes' theorem can find the probability of disease after a positive result.",
-        q: "Approximately what is P(disease | positive)?",
-        options: ["1.0%", "9.0%", "15.4%", "90.0%"],
-        answer: 2,
-        explain: "0.009 / (0.009 + 0.0495) ≈ 0.1538, or 15.4%."
-      },
-      {
-        context: "For an independent sample of size n from a population with standard deviation σ, the standard error of the sample mean is σ/√n.",
-        q: "If σ=12 and n=36, what is the standard error of the sample mean?",
-        options: ["1", "2", "3", "6"],
-        answer: 1,
-        explain: "SE=12/√36=12/6=2."
-      },
-      {
-        context: "A continuous uniform distribution on [a,b] assigns probability in proportion to interval length.",
-        q: "If X~Uniform(0,4), what is P(1<X<3)?",
-        options: ["1/4", "1/2", "3/4", "1"],
-        answer: 1,
-        explain: "The interval (1,3) has length 2 out of total length 4, so the probability is 1/2."
-      },
-      {
-        context: "For repeated independent Bernoulli trials, the waiting time until the first success has a geometric distribution with mean 1/p.",
-        q: "For a fair coin, what is the expected number of tosses until the first head?",
-        options: ["1", "2", "3", "4"],
-        answer: 1,
-        explain: "Here p=1/2, so the geometric mean is 1/p=2."
-      }
-    ]
-  },
+/* A LEVEL */
 
-  number: {
-    name: "Number Theory",
-    questions: [
-      {
-        context: "The Euclidean algorithm repeatedly replaces a pair of integers by the smaller number and the remainder.",
-        q: "What is gcd(252,105)?",
-        options: ["7", "14", "21", "35"],
-        answer: 2,
-        explain: "252=2·105+42, 105=2·42+21, and 42=2·21, so the gcd is 21."
-      },
-      {
-        context: "Euler's totient function φ(n) counts positive integers up to n that are coprime to n.",
-        q: "What is φ(10)?",
-        options: ["2", "4", "5", "8"],
-        answer: 1,
-        explain: "The numbers 1,3,7,9 are coprime to 10, so φ(10)=4."
-      },
-      {
-        context: "Modular arithmetic treats two integers as equivalent when they have the same remainder after division by the modulus.",
-        q: "What is 3⁴ mod 7?",
-        options: ["1", "2", "4", "6"],
-        answer: 2,
-        explain: "3⁴=81, and 81=77+4, so the remainder is 4."
-      },
-      {
-        context: "Fermat's little theorem says that if p is prime and p does not divide a, then a^(p-1) ≡ 1 (mod p).",
-        q: "Using Fermat's little theorem, what is 2¹⁰ mod 11?",
-        options: ["0", "1", "2", "10"],
-        answer: 1,
-        explain: "Because 11 is prime and gcd(2,11)=1, 2^10 ≡ 1 (mod 11)."
-      },
-      {
-        context: "A linear Diophantine equation ax+by=c has integer solutions exactly when gcd(a,b) divides c.",
-        q: "Does 6x + 9y = 30 have integer solutions?",
-        options: ["Yes", "No", "Only if x=y", "Only positive solutions"],
-        answer: 0,
-        explain: "gcd(6,9)=3 and 3 divides 30, so integer solutions exist."
-      },
-      {
-        context: "Euclid's proof of the infinitude of primes begins by assuming a finite list of all primes and considering one more than their product.",
-        q: "What central fact does Euclid's argument prove?",
-        options: [
-          "There are exactly 100 primes",
-          "Every odd number is prime",
-          "There are infinitely many primes",
-          "Every prime is one more than a product"
-        ],
-        answer: 2,
-        explain: "Any finite list of primes leads to a number not divisible by any prime on that list, producing a contradiction."
-      },
-      {
-        context: "The Chinese Remainder Theorem gives a unique solution modulo the product when the moduli are pairwise coprime.",
-        q: "Solve x≡2 (mod 3) and x≡3 (mod 5).",
-        options: ["x≡5 (mod 15)", "x≡8 (mod 15)", "x≡11 (mod 15)", "x≡13 (mod 15)"],
-        answer: 1,
-        explain: "8 leaves remainder 2 mod 3 and remainder 3 mod 5, so x≡8 mod 15."
-      },
-      {
-        context: "Prime factorisation expresses a positive integer as a product of primes. The Fundamental Theorem of Arithmetic says this factorisation is unique apart from order.",
-        q: "Which is the prime factorisation of 1001?",
-        options: ["7×11×13", "3×7×47", "5×11×19", "17×59"],
-        answer: 0,
-        explain: "7×11=77 and 77×13=1001."
-      },
-      {
-        context: "A modular inverse of a modulo m is a number b satisfying ab≡1 (mod m). It exists exactly when gcd(a,m)=1.",
-        q: "What is the inverse of 3 modulo 7?",
-        options: ["2", "3", "4", "5"],
-        answer: 3,
-        explain: "3×5=15≡1 (mod 7), so the inverse is 5."
-      },
-      {
-        context: "Any prime p>3 is odd and is not divisible by 3. These two facts strongly restrict p² modulo 8 and modulo 3.",
-        q: "For every prime p>3, which congruence is true?",
-        options: ["p²≡0 (mod 24)", "p²≡1 (mod 24)", "p²≡3 (mod 24)", "p²≡p (mod 24)"],
-        answer: 1,
-        explain: "For odd p, p²≡1 mod 8. Since p is not divisible by 3, p²≡1 mod 3. Therefore p²≡1 mod 24."
-      }
-    ]
-  },
-  alevel: {
-    name: "A-Level Maths",
-    questions: [
-      {
-        context: "A quadratic can be solved by factorising, completing the square, or using the quadratic formula. Here the expression factorises neatly.",
-        q: "Solve x² - 5x + 6 = 0.",
-        options: ["x = 1 or 6", "x = 2 or 3", "x = -2 or -3", "x = 3 only"],
-        answer: 1,
-        explain: "x² - 5x + 6 = (x-2)(x-3), so x = 2 or x = 3."
-      },
-      {
-        context: "For y = x^n, the derivative is dy/dx = nx^(n-1). This rule can be applied term by term.",
-        q: "Differentiate y = 3x⁴ - 5x² + 7.",
-        options: ["12x³ - 10x", "12x⁴ - 10x²", "3x³ - 5x", "4x³ - 2x"],
-        answer: 0,
-        explain: "Differentiate each term: 3x⁴ → 12x³, -5x² → -10x, and 7 → 0."
-      },
-      {
-        context: "Integration reverses differentiation. To integrate x^n, increase the power by 1 and divide by the new power.",
-        q: "Find ∫(6x² - 4x) dx.",
-        options: ["2x³ - 2x² + C", "6x³ - 4x² + C", "3x² - 4 + C", "2x³ - 4x + C"],
-        answer: 0,
-        explain: "∫6x² dx = 2x³ and ∫-4x dx = -2x², so the answer is 2x³ - 2x² + C."
-      },
-      {
-        context: "In trigonometry, sin²θ + cos²θ = 1 for every angle θ.",
-        q: "If sin θ = 3/5 and θ is acute, what is cos θ?",
-        options: ["2/5", "3/4", "4/5", "5/4"],
-        answer: 2,
-        explain: "cos²θ = 1 - 9/25 = 16/25, so cos θ = 4/5 because θ is acute."
-      },
-      {
-        context: "A geometric sequence has a constant ratio between consecutive terms. The nth term is ar^(n-1).",
-        q: "A geometric sequence starts 3, 6, 12, ... What is the 6th term?",
-        options: ["48", "96", "192", "384"],
-        answer: 1,
-        explain: "The common ratio is 2. The 6th term is 3×2⁵ = 96."
-      },
-      {
-        context: "For a binomial distribution X~B(n,p), the expected value is np.",
-        q: "If X~B(20,0.3), what is E(X)?",
-        options: ["3", "6", "10", "14"],
-        answer: 1,
-        explain: "E(X)=np=20×0.3=6."
-      },
-      {
-        context: "The equation of a straight line can be written as y = mx + c, where m is the gradient and c is the y-intercept.",
-        q: "What is the gradient of the line through (2,5) and (6,13)?",
-        options: ["1", "2", "3", "4"],
-        answer: 1,
-        explain: "Gradient = (13-5)/(6-2) = 8/4 = 2."
-      },
-      {
-        context: "The discriminant of ax²+bx+c is b²-4ac. It tells you how many real roots the quadratic has.",
-        q: "How many real roots does 2x² + 4x + 5 = 0 have?",
-        options: ["Two", "One repeated root", "None", "Infinitely many"],
-        answer: 2,
-        explain: "The discriminant is 4² - 4×2×5 = 16 - 40 = -24, so there are no real roots."
-      },
-      {
-        context: "For vectors a and b, the scalar product is a·b = |a||b|cosθ. It is also found by multiplying matching components and adding.",
-        q: "Find (2,3) · (4,-1).",
-        options: ["5", "8", "11", "-5"],
-        answer: 0,
-        explain: "2×4 + 3×(-1) = 8 - 3 = 5."
-      },
-      {
-        context: "For exponential growth y = Ae^(kt), the constant k controls how fast the quantity grows.",
-        q: "If y = 5e^(0.2t), what is y when t = 0?",
-        options: ["0", "1", "5", "e"],
-        answer: 2,
-        explain: "e^0 = 1, so y = 5×1 = 5."
-      }
-    ]
-  }
+alevel:[
+
+{
+q:"1. Solve: 3x² − 12 = 0",
+options:[
+"x = ±2",
+"x = 2",
+"x = ±4",
+"x = 4"
+],
+answer:0,
+explanation:
+"3x² − 12 = 0 → 3x² = 12 → x² = 4 → x = ±2."
+},
+
+{
+q:"2. Differentiate y = 4x³ − 5x² + 2.",
+options:[
+"12x² − 10x",
+"12x² − 5x",
+"4x² − 10x",
+"12x³ − 10x"
+],
+answer:0,
+explanation:
+"Using the power rule, d/dx(4x³) = 12x² and d/dx(−5x²) = −10x."
+},
+
+{
+q:"3. Evaluate ∫ 6x² dx.",
+options:[
+"2x³ + C",
+"6x³ + C",
+"3x² + C",
+"2x² + C"
+],
+answer:0,
+explanation:
+"Increase the power from 2 to 3 and divide by 3: 6x³/3 = 2x³ + C."
+},
+
+{
+q:"4. Which identity is correct?",
+options:[
+"sin²x + cos²x = 1",
+"sin x + cos x = 1",
+"tan²x + cos²x = 1",
+"sin²x − cos²x = 1"
+],
+answer:0,
+explanation:
+"The fundamental Pythagorean identity is sin²x + cos²x = 1."
+},
+
+{
+q:"5. An arithmetic sequence begins 5, 8, 11, 14... What is the nth term?",
+options:[
+"3n + 2",
+"3n + 5",
+"5n − 2",
+"2n + 3"
+],
+answer:0,
+explanation:
+"The common difference is 3. The nth term is 5 + (n−1)3 = 3n + 2."
+},
+
+{
+q:"6. A fair coin is tossed twice. What is the probability of getting exactly one head?",
+options:[
+"1/2",
+"1/4",
+"3/4",
+"1"
+],
+answer:0,
+explanation:
+"The outcomes are HH, HT, TH and TT. Exactly one head occurs in HT and TH, so the probability is 2/4 = 1/2."
+},
+
+{
+q:"7. Find the gradient of the line through (2,3) and (6,11).",
+options:[
+"2",
+"4",
+"1/2",
+"8"
+],
+answer:0,
+explanation:
+"Gradient = (11−3)/(6−2) = 8/4 = 2."
+},
+
+{
+q:"8. For x² − 6x + 5 = 0, what are the roots?",
+options:[
+"x = 1 and 5",
+"x = −1 and −5",
+"x = 2 and 3",
+"x = −2 and −3"
+],
+answer:0,
+explanation:
+"x² − 6x + 5 factors to (x−1)(x−5), so x = 1 or x = 5."
+},
+
+{
+q:"9. Vectors a = (2,3) and b = (4,−1). Find a + b.",
+options:[
+"(6,2)",
+"(2,4)",
+"(8,−3)",
+"(−2,4)"
+],
+answer:0,
+explanation:
+"Add corresponding components: (2+4, 3−1) = (6,2)."
+},
+
+{
+q:"10. Solve 2ˣ = 32.",
+options:[
+"x = 5",
+"x = 4",
+"x = 6",
+"x = 16"
+],
+answer:0,
+explanation:
+"32 = 2⁵, therefore x = 5."
+}
+
+],
+
+
+/* CALCULUS */
+
+calculus:[
+
+{
+q:"1. Evaluate lim(x→0) sin(x)/x.",
+options:[
+"1",
+"0",
+"∞",
+"Does not exist"
+],
+answer:0,
+explanation:
+"This is one of the fundamental limits of calculus: lim(x→0) sin(x)/x = 1."
+},
+
+{
+q:"2. Differentiate f(x) = e^(3x).",
+options:[
+"3e^(3x)",
+"e^(3x)",
+"3e^x",
+"e^(x³)"
+],
+answer:0,
+explanation:
+"Using the chain rule, d/dx[e^(3x)] = 3e^(3x)."
+},
+
+{
+q:"3. Evaluate ∫₀¹ x² dx.",
+options:[
+"1/3",
+"1/2",
+"1",
+"2/3"
+],
+answer:0,
+explanation:
+"∫x²dx = x³/3. Between 0 and 1 this gives 1/3."
+},
+
+{
+q:"4. If f(x)=ln(x), what is f'(x)?",
+options:[
+"1/x",
+"x",
+"ln(x)",
+"e^x"
+],
+answer:0,
+explanation:
+"The derivative of ln(x) is 1/x."
+},
+
+{
+q:"5. Find the second derivative of x⁴.",
+options:[
+"12x²",
+"4x³",
+"24x",
+"6x²"
+],
+answer:0,
+explanation:
+"First derivative = 4x³. Differentiating again gives 12x²."
+},
+
+{
+q:"6. Solve dy/dx = 3x².",
+options:[
+"y = x³ + C",
+"y = 3x³ + C",
+"y = 6x + C",
+"y = x² + C"
+],
+answer:0,
+explanation:
+"Integrating 3x² gives x³ + C."
+},
+
+{
+q:"7. What is the derivative of sin(x)?",
+options:[
+"cos(x)",
+"−cos(x)",
+"sin(x)",
+"−sin(x)"
+],
+answer:0,
+explanation:
+"d/dx[sin(x)] = cos(x)."
+},
+
+{
+q:"8. Evaluate ∫ eˣ dx.",
+options:[
+"eˣ + C",
+"xeˣ + C",
+"ln(x) + C",
+"1/eˣ + C"
+],
+answer:0,
+explanation:
+"The exponential function eˣ is its own derivative and antiderivative."
+},
+
+{
+q:"9. If f'(a)=0, what may occur at x=a?",
+options:[
+"A stationary point",
+"A vertical asymptote",
+"A discontinuity",
+"A root must occur"
+],
+answer:0,
+explanation:
+"A zero first derivative means the tangent is horizontal, so x=a may be a stationary point."
+},
+
+{
+q:"10. Which rule differentiates the product f(x)g(x)?",
+options:[
+"f'g + fg'",
+"f'g'",
+"f/g",
+"f' + g'"
+],
+answer:0,
+explanation:
+"The product rule is (fg)' = f'g + fg'."
+}
+
+],
+
+
+/* LINEAR ALGEBRA */
+
+linear:[
+
+{
+q:"1. What is the determinant of [[2,1],[3,4]]?",
+options:[
+"5",
+"8",
+"11",
+"−5"
+],
+answer:0,
+explanation:
+"For a 2×2 matrix, determinant = ad − bc = (2×4) − (1×3) = 5."
+},
+
+{
+q:"2. Which matrix acts as the multiplicative identity?",
+options:[
+"Identity matrix",
+"Zero matrix",
+"Diagonal matrix",
+"Transpose matrix"
+],
+answer:0,
+explanation:
+"The identity matrix I satisfies AI = IA = A."
+},
+
+{
+q:"3. A square matrix is invertible when:",
+options:[
+"Its determinant is non-zero",
+"Its determinant is zero",
+"All entries are positive",
+"It is symmetric"
+],
+answer:0,
+explanation:
+"A square matrix has an inverse exactly when its determinant is non-zero."
+},
+
+{
+q:"4. What is an eigenvector?",
+options:[
+"A non-zero vector whose direction is unchanged by a linear transformation",
+"Any vector of length one",
+"A zero vector",
+"A row of a matrix"
+],
+answer:0,
+explanation:
+"An eigenvector v satisfies Av = λv, so the transformation only scales its direction."
+},
+
+{
+q:"5. What is the dot product of (1,2) and (3,4)?",
+options:[
+"11",
+"10",
+"7",
+"14"
+],
+answer:0,
+explanation:
+"(1)(3) + (2)(4) = 3 + 8 = 11."
+},
+
+{
+q:"6. Two vectors are orthogonal when their dot product equals:",
+options:[
+"0",
+"1",
+"−1",
+"∞"
+],
+answer:0,
+explanation:
+"Perpendicular or orthogonal vectors have dot product zero."
+},
+
+{
+q:"7. The transpose of a matrix is formed by:",
+options:[
+"Interchanging rows and columns",
+"Changing every sign",
+"Finding the inverse",
+"Multiplying every entry by two"
+],
+answer:0,
+explanation:
+"The transpose Aᵀ is obtained by turning rows into columns."
+},
+
+{
+q:"8. If Ax=0 has a non-zero solution, then A is:",
+options:[
+"Singular",
+"Always diagonal",
+"An identity matrix",
+"Orthogonal"
+],
+answer:0,
+explanation:
+"A non-trivial solution to Ax=0 means A has a non-trivial null space and is singular."
+},
+
+{
+q:"9. What is the rank of a matrix?",
+options:[
+"The dimension of its column space",
+"The determinant",
+"The number of rows only",
+"The largest entry"
+],
+answer:0,
+explanation:
+"Rank is the dimension of the column space, equivalently the row space."
+},
+
+{
+q:"10. If λ is an eigenvalue of A, then:",
+options:[
+"det(A − λI)=0",
+"det(A)=1",
+"A=λ",
+"λ must equal zero"
+],
+answer:0,
+explanation:
+"Eigenvalues are found from the characteristic equation det(A − λI)=0."
+}
+
+],
+
+
+/* PROBABILITY */
+
+probability:[
+
+{
+q:"1. For independent events A and B, P(A∩B) equals:",
+options:[
+"P(A)P(B)",
+"P(A)+P(B)",
+"P(A)/P(B)",
+"1−P(A)"
+],
+answer:0,
+explanation:
+"For independent events, the probability that both occur is P(A)P(B)."
+},
+
+{
+q:"2. The expected value of a fair six-sided die is:",
+options:[
+"3.5",
+"3",
+"6",
+"2.5"
+],
+answer:0,
+explanation:
+"E(X) = (1+2+3+4+5+6)/6 = 21/6 = 3.5."
+},
+
+{
+q:"3. Variance measures:",
+options:[
+"Spread around the mean",
+"The maximum value",
+"The median only",
+"The sample size"
+],
+answer:0,
+explanation:
+"Variance measures how far values tend to spread from their mean."
+},
+
+{
+q:"4. The total probability across all possible outcomes equals:",
+options:[
+"1",
+"0",
+"100",
+"Depends on the experiment"
+],
+answer:0,
+explanation:
+"The probabilities of all mutually exclusive and exhaustive outcomes sum to 1."
+},
+
+{
+q:"5. A normal distribution is:",
+options:[
+"Symmetric about its mean",
+"Always positively skewed",
+"Always negatively skewed",
+"Discrete"
+],
+answer:0,
+explanation:
+"The normal distribution is continuous and symmetric about its mean."
+},
+
+{
+q:"6. If X~Binomial(n,p), its expected value is:",
+options:[
+"np",
+"n+p",
+"n/p",
+"p/n"
+],
+answer:0,
+explanation:
+"For a binomial random variable, E(X)=np."
+},
+
+{
+q:"7. The variance of a Binomial(n,p) variable is:",
+options:[
+"np(1−p)",
+"np",
+"n²p",
+"p(1−p)"
+],
+answer:0,
+explanation:
+"Var(X)=np(1−p)."
+},
+
+{
+q:"8. Conditional probability P(A|B) equals:",
+options:[
+"P(A∩B)/P(B)",
+"P(A)+P(B)",
+"P(A)P(B)",
+"P(B)/P(A)"
+],
+answer:0,
+explanation:
+"The definition is P(A|B)=P(A∩B)/P(B), provided P(B)>0."
+},
+
+{
+q:"9. The standard deviation is:",
+options:[
+"The square root of the variance",
+"The variance squared",
+"The mean divided by two",
+"The range"
+],
+answer:0,
+explanation:
+"Standard deviation σ is √variance."
+},
+
+{
+q:"10. A correlation coefficient of −1 represents:",
+options:[
+"Perfect negative linear correlation",
+"No correlation",
+"Perfect positive correlation",
+"A weak positive correlation"
+],
+answer:0,
+explanation:
+"A correlation coefficient of −1 means a perfect negative linear relationship."
+}
+
+],
+
+
+/* NUMBER THEORY */
+
+number:[
+
+{
+q:"1. Which number is prime?",
+options:[
+"29",
+"21",
+"39",
+"51"
+],
+answer:0,
+explanation:
+"29 has no positive divisors other than 1 and 29."
+},
+
+{
+q:"2. What is gcd(24,36)?",
+options:[
+"12",
+"6",
+"4",
+"18"
+],
+answer:0,
+explanation:
+"The greatest positive integer dividing both 24 and 36 is 12."
+},
+
+{
+q:"3. 17 mod 5 equals:",
+options:[
+"2",
+"3",
+"5",
+"12"
+],
+answer:0,
+explanation:
+"17 = 3×5 + 2, so the remainder is 2."
+},
+
+{
+q:"4. If a divides b, this means:",
+options:[
+"b = ak for some integer k",
+"a = b + 1",
+"a and b are prime",
+"a is larger than b"
+],
+answer:0,
+explanation:
+"a divides b means there exists an integer k such that b=ak."
+},
+
+{
+q:"5. Which theorem states that every integer greater than 1 has a unique prime factorisation?",
+options:[
+"Fundamental Theorem of Arithmetic",
+"Fermat's Last Theorem",
+"Bayes' Theorem",
+"Mean Value Theorem"
+],
+answer:0,
+explanation:
+"The Fundamental Theorem of Arithmetic gives existence and uniqueness of prime factorisation."
+},
+
+{
+q:"6. What is 2¹⁰?",
+options:[
+"1024",
+"512",
+"1000",
+"2048"
+],
+answer:0,
+explanation:
+"2¹⁰ = 1024."
+},
+
+{
+q:"7. Two integers are coprime if:",
+options:[
+"Their greatest common divisor is 1",
+"They are both prime",
+"They are equal",
+"Their product is prime"
+],
+answer:0,
+explanation:
+"Coprime integers have gcd equal to 1."
+},
+
+{
+q:"8. Which statement is true if n is even?",
+options:[
+"n = 2k for some integer k",
+"n = 2k + 1",
+"n must be prime",
+"n² must be odd"
+],
+answer:0,
+explanation:
+"By definition, every even integer can be written as 2k."
+},
+
+{
+q:"9. If a ≡ b (mod n), then:",
+options:[
+"n divides a−b",
+"a=b always",
+"a+b=n",
+"a and b must be prime"
+],
+answer:0,
+explanation:
+"Congruence modulo n means a−b is divisible by n."
+},
+
+{
+q:"10. Which proof technique assumes the opposite of what is to be proved?",
+options:[
+"Proof by contradiction",
+"Direct proof",
+"Proof by example",
+"Numerical approximation"
+],
+answer:0,
+explanation:
+"In proof by contradiction, the negation is assumed and shown to lead to an impossibility."
+}
+
+]
+
 };
 
-let currentTopic = null;
-let currentIndex = 0;
+
+/* =============================
+   TITLES
+============================= */
+
+const titles = {
+
+alevel:
+"📘 A-Level Maths Quiz for Mr Sharratt",
+
+calculus:
+"🎓 University Calculus Quiz for Mr Davidson",
+
+linear:
+"🎓 University Linear Algebra Quiz for Mr Davidson",
+
+probability:
+"🎓 University Probability & Statistics Quiz for Mr Davidson",
+
+number:
+"🎓 University Number Theory Quiz for Mr Davidson"
+
+};
+
+
+/* =============================
+   START QUIZ
+============================= */
+
+function startQuiz(type){
+
+const questions = quizzes[type];
+
+const target =
+type === "alevel"
+? document.getElementById("alevelQuiz")
+: document.getElementById("universityQuiz");
+
+let html = `
+
+<div class="quiz-area">
+
+<h2>${titles[type]}</h2>
+
+<form id="${type}Form">
+
+`;
+
+questions.forEach((item,index)=>{
+
+html += `
+
+<div class="question">
+
+<h3>${item.q}</h3>
+
+`;
+
+item.options.forEach((option,i)=>{
+
+html += `
+
+<label class="option">
+
+<input
+type="radio"
+name="${type}_${index}"
+value="${i}"
+>
+
+${option}
+
+</label>
+
+`;
+
+});
+
+html += `
+
+<div
+class="explanation"
+id="${type}_explanation_${index}">
+</div>
+
+</div>
+
+`;
+
+});
+
+html += `
+
+<button
+type="button"
+onclick="submitQuiz('${type}')">
+Submit Answers
+</button>
+
+<button
+type="button"
+class="restart"
+onclick="startQuiz('${type}')">
+Restart Quiz
+</button>
+
+</form>
+
+<div
+class="score"
+id="${type}Score">
+</div>
+
+<div
+class="award"
+id="${type}Award">
+
+<div class="big">🏆</div>
+
+<h2>Maths Teacher Award</h2>
+
+<h3>Perfect Score — 10 / 10</h3>
+
+<p>
+Awarded for outstanding mathematical knowledge,
+accuracy and problem-solving.
+</p>
+
+<p>
+<strong>
+${type === "alevel"
+? "A-Level Maths for Mr Sharratt"
+: "University Maths for Mr Davidson"}
+</strong>
+</p>
+
+<p>⭐ Mathematics Master ⭐</p>
+
+</div>
+
+</div>
+
+`;
+
+target.innerHTML = html;
+
+target.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+}
+
+
+/* =============================
+   SUBMIT QUIZ
+============================= */
+
+function submitQuiz(type){
+
+const questions = quizzes[type];
+
 let score = 0;
-let answered = false;
 
-const questionArea = document.getElementById("questionArea");
-const contextText = document.getElementById("contextText");
-const questionText = document.getElementById("questionText");
-const answers = document.getElementById("answers");
-const feedback = document.getElementById("feedback");
-const scoreEl = document.getElementById("score");
-const nextBtn = document.getElementById("nextBtn");
-const topicLabel = document.getElementById("topicLabel");
-const progressLabel = document.getElementById("progressLabel");
-const result = document.getElementById("result");
-const resultTitle = document.getElementById("resultTitle");
-const resultText = document.getElementById("resultText");
-const resultTrophy = document.getElementById("resultTrophy");
-const certificate = document.getElementById("certificate");
+questions.forEach((item,index)=>{
 
-document.querySelectorAll(".topic-btn").forEach(btn => {
-  btn.addEventListener("click", () => startQuiz(btn.dataset.topic));
+const selected =
+document.querySelector(
+`input[name="${type}_${index}"]:checked`
+);
+
+const explanation =
+document.getElementById(
+`${type}_explanation_${index}`
+);
+
+explanation.style.display="block";
+
+if(selected){
+
+const chosen = Number(selected.value);
+
+if(chosen === item.answer){
+
+score++;
+
+explanation.className =
+"explanation correct";
+
+explanation.innerHTML =
+"✅ <strong>Correct!</strong><br>" +
+item.explanation;
+
+}else{
+
+explanation.className =
+"explanation wrong";
+
+explanation.innerHTML =
+"❌ <strong>Not quite.</strong><br>" +
+"Correct answer: <strong>" +
+item.options[item.answer] +
+"</strong><br>" +
+item.explanation;
+
+}
+
+}else{
+
+explanation.className =
+"explanation wrong";
+
+explanation.innerHTML =
+"⚠️ <strong>No answer selected.</strong><br>" +
+"Correct answer: <strong>" +
+item.options[item.answer] +
+"</strong><br>" +
+item.explanation;
+
+}
+
 });
 
-function startQuiz(topic){
-  currentTopic = topic;
-  currentIndex = 0;
-  score = 0;
-  answered = false;
 
-  document.querySelectorAll(".topic-btn").forEach(b => b.classList.remove("active"));
-  document.querySelector(`[data-topic="${topic}"]`).classList.add("active");
+const scoreBox =
+document.getElementById(
+`${type}Score`
+);
 
-  result.classList.remove("show");
-  certificate.classList.remove("show");
-  questionArea.classList.add("show");
-  renderQuestion();
-  questionArea.scrollIntoView({behavior:"smooth", block:"nearest"});
+let message="";
+
+if(score===10){
+
+message="Outstanding! Perfect score! 🏆";
+
+}else if(score>=8){
+
+message="Excellent work! 🌟";
+
+}else if(score>=6){
+
+message="Good work — keep practising! 👍";
+
+}else if(score>=4){
+
+message="Good attempt. Review the explanations and try again.";
+
+}else{
+
+message="Keep practising — you can improve!";
+
 }
 
-function renderQuestion(){
-  answered = false;
-  nextBtn.disabled = true;
-  feedback.textContent = "";
-  feedback.className = "feedback";
+scoreBox.innerHTML =
+`Score: ${score} / 10<br>${message}`;
 
-  const quiz = quizzes[currentTopic];
-  const item = quiz.questions[currentIndex];
 
-  topicLabel.textContent = "Topic: " + quiz.name;
-  progressLabel.textContent = `Question ${currentIndex + 1} of ${quiz.questions.length}`;
-  contextText.textContent = item.context;
-  questionText.textContent = item.q;
-  scoreEl.textContent = `Score: ${score} / ${quiz.questions.length}`;
+/* AWARD */
 
-  answers.innerHTML = "";
-  item.options.forEach((option, i) => {
-    const btn = document.createElement("button");
-    btn.className = "answer-btn";
-    btn.textContent = option;
-    btn.addEventListener("click", () => chooseAnswer(i, btn));
-    answers.appendChild(btn);
-  });
+const award =
+document.getElementById(
+`${type}Award`
+);
 
-  nextBtn.textContent = currentIndex === quiz.questions.length - 1 ? "See Result" : "Next Question";
-}
+if(score===10){
 
-function chooseAnswer(index, clickedBtn){
-  if(answered) return;
-  answered = true;
+award.style.display="block";
 
-  const item = quizzes[currentTopic].questions[currentIndex];
-  const buttons = [...document.querySelectorAll(".answer-btn")];
+setTimeout(()=>{
 
-  buttons.forEach((btn, i) => {
-    btn.disabled = true;
-    if(i === item.answer) btn.classList.add("correct");
-  });
-
-  if(index === item.answer){
-    score++;
-    feedback.textContent = "✓ Correct! " + item.explain;
-    feedback.classList.add("good");
-  } else {
-    clickedBtn.classList.add("wrong");
-    feedback.textContent = "✗ Not quite. " + item.explain;
-    feedback.classList.add("bad");
-  }
-
-  scoreEl.textContent = `Score: ${score} / ${quizzes[currentTopic].questions.length}`;
-  nextBtn.disabled = false;
-}
-
-nextBtn.addEventListener("click", () => {
-  const quiz = quizzes[currentTopic];
-  if(currentIndex < quiz.questions.length - 1){
-    currentIndex++;
-    renderQuestion();
-  } else {
-    showResult();
-  }
+award.scrollIntoView({
+behavior:"smooth",
+block:"center"
 });
 
-function showResult(){
-  questionArea.classList.remove("show");
-  result.classList.add("show");
+},300);
 
-  if(score === 10){
-    certificate.classList.add("show");
-    resultTrophy.textContent = "🏆";
-    resultTitle.textContent = "Maths Teacher Award Unlocked!";
-    resultText.innerHTML = `<strong>Perfect score: ${score}/10.</strong><br>You have earned the <strong>Maths Teacher Award</strong> for outstanding mathematical reasoning.`;
-  } else if(score >= 8){
-    certificate.classList.remove("show");
-    resultTrophy.textContent = "🎓";
-    resultTitle.textContent = "Excellent university-level result!";
-    resultText.textContent = `You scored ${score}/10. Review the missed ideas and try for 10/10.`;
-  } else if(score >= 5){
-    certificate.classList.remove("show");
-    resultTrophy.textContent = "📘";
-    resultTitle.textContent = "Good progress!";
-    resultText.textContent = `You scored ${score}/10. Re-read the context boxes and try again.`;
-  } else {
-    certificate.classList.remove("show");
-    resultTrophy.textContent = "🧠";
-    resultTitle.textContent = "Keep building the ideas.";
-    resultText.textContent = `You scored ${score}/10. Use each context box as a clue, then try the topic again.`;
-  }
+}else{
+
+award.style.display="none";
+
 }
 
-document.getElementById("restartBtn").addEventListener("click", () => startQuiz(currentTopic));
+}
+
 </script>
 
 </body>
