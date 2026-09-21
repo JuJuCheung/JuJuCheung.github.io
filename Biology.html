@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Biology Learning Website</title>
+
+<style>
+:root{
+  --ink:#1f2937;
+  --muted:#64748b;
+  --navy:#0f2747;
+  --navy2:#173a65;
+  --paper:#f5f7fb;
+  --card:#ffffff;
+  --line:#dbe3ee;
+  --gold:#f5c451;
+  --green:#1f8f62;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.65;
+}
+
+/* HERO */
+
+.hero{
+  background:linear-gradient(135deg,var(--navy),var(--navy2));
+  color:white;
+  padding:72px 22px 60px;
+  text-align:center;
+}
+
+.hero h1{
+  margin:0;
+  font-size:clamp(2.3rem,6vw,4.6rem);
+}
+
+.hero p{
+  margin:10px auto 0;
+  max-width:900px;
+  font-size:1.08rem;
+  opacity:.94;
+}
+
+/* NAVIGATION */
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:5;
+  background:white;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  padding:10px;
+}
+
+nav a{
+  color:var(--navy);
+  text-decoration:none;
+  font-weight:700;
+  padding:8px 12px;
+  border-radius:999px;
+}
+
+nav a:hover{
+  background:#edf2f8;
+}
+
+/* MAIN */
+
+main{
+  max-width:1080px;
+  margin:auto;
+  padding:28px 18px 70px;
+}
+
+section{
+  scroll-margin-top:80px;
+  margin:26px 0 46px;
+}
+
+h2{
+  color:var(--navy);
+  font-size:2rem;
+  margin-bottom:14px;
+}
+
+h3{
+  color:var(--navy);
+  margin-top:0;
+}
+
+.lead{
+  font-size:1.08rem;
+  background:white;
+  border-left:5px solid var(--gold);
+  padding:20px 22px;
+  border-radius:12px;
+  box-shadow:0 8px 25px rgba(15,39,71,.06);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:16px;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:0 8px 22px rgba(15,39,71,.06);
+}
+
+.card .emoji{
+  font-size:1.9rem;
+}
+
+.quote{
+  background:var(--navy);
+  color:white;
+  padding:22px;
+  border-radius:16px;
+  font-size:1.08rem;
+  font-style:italic;
+}
+
+/* QUIZ */
+
+.quizbox{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:24px;
+  box-shadow:0 10px 30px rgba(15,39,71,.09);
+}
+
+.quizhead{
+  text-align:center;
+}
+
+.rules{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin:16px 0;
+}
+
+.rule{
+  background:#eef4fa;
+  border-radius:12px;
+  padding:10px 13px;
+  font-weight:700;
+}
+
+button{
+  cursor:pointer;
+  border:0;
+  border-radius:11px;
+  padding:11px 16px;
+  font-weight:800;
+  font-size:1rem;
+}
+
+.primary{
+  background:var(--navy);
+  color:white;
+}
+
+.primary:hover{
+  background:var(--navy2);
+}
+
+.secondary{
+  background:#e8eef6;
+  color:var(--navy);
+}
+
+.secondary:hover{
+  background:#dce6f2;
+}
+
+.quizarea{
+  margin-top:20px;
+}
+
+.level{
+  display:inline-block;
+  background:var(--gold);
+  color:#4d3900;
+  font-weight:900;
+  padding:5px 10px;
+  border-radius:999px;
+  font-size:.8rem;
+  letter-spacing:.5px;
+}
+
+.question{
+  font-size:1.2rem;
+  font-weight:800;
+  margin:15px 0;
+}
+
+.options{
+  display:grid;
+  gap:10px;
+}
+
+.option{
+  background:#f4f7fb;
+  border:2px solid transparent;
+  text-align:left;
+  color:var(--ink);
+}
+
+.option:hover{
+  border-color:#9eb4cf;
+}
+
+.option.correct{
+  background:#e7f7ef;
+  border-color:#55a97f;
+}
+
+.option.wrong{
+  background:#fdecec;
+  border-color:#dd7777;
+}
+
+.feedback{
+  margin:14px 0 0;
+  padding:12px 14px;
+  border-radius:10px;
+  background:#f7f9fc;
+  display:none;
+}
+
+.progress{
+  height:9px;
+  background:#e5eaf1;
+  border-radius:99px;
+  overflow:hidden;
+  margin:14px 0;
+}
+
+.bar{
+  height:100%;
+  width:0;
+  background:var(--navy);
+}
+
+.scoreline{
+  font-weight:800;
+  margin-top:12px;
+}
+
+/* ACHIEVEMENTS */
+
+.achievements{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:12px;
+}
+
+.badge{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:17px;
+  text-align:center;
+  opacity:.38;
+  filter:grayscale(1);
+  transition:.2s;
+}
+
+.badge.unlocked{
+  opacity:1;
+  filter:none;
+  box-shadow:0 8px 20px rgba(15,39,71,.08);
+}
+
+.badge .medal{
+  font-size:2.1rem;
+}
+
+.badge strong{
+  display:block;
+  color:var(--navy);
+}
+
+.small{
+  font-size:.9rem;
+  color:var(--muted);
+}
+
+.hidden{
+  display:none !important;
+}
+
+footer{
+  text-align:center;
+  background:var(--navy);
+  color:white;
+  padding:24px;
+}
+
+@media(max-width:600px){
+  .hero{
+    padding:50px 16px 42px;
+  }
+
+  .hero h1{
+    font-size:2.35rem;
+  }
+
+  .quizbox{
+    padding:17px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+  <h1>🧬 Biology</h1>
+  <p>
+    Cells • Organisation • Infection • Bioenergetics •
+    Homeostasis • Genetics • Ecology
+  </p>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#topics">Topics</a>
+  <a href="#revision">Revision</a>
+  <a href="#skills">Exam Skills</a>
+  <a href="#achievements">Achievements</a>
+  <a href="#quiz">Quiz</a>
+</nav>
+
+<main>
+
+<section id="about">
+
+<h2>Biology</h2>
+
+<div class="lead">
+Biology explains how living organisms are built, how they function,
+how they respond to change, and how organisms interact with one
+another and their environment.
+</div>
+
+</section>
+
+
+<section id="topics">
+
+<h2>Key Topics</h2>
+
+<div class="grid">
+
+<div class="card">
+<div class="emoji">🔬</div>
+<h3>Cell Biology</h3>
+<p>
+Cell structure, microscopy, cell division, transport across
+membranes and stem cells.
+</p>
+</div>
+
+<div class="card">
+<div class="emoji">🫀</div>
+<h3>Organisation</h3>
+<p>
+Digestive system, enzymes, heart and circulation,
+plant tissues and disease.
+</p>
+</div>
+
+<div class="card">
+<div class="emoji">🦠</div>
+<h3>Infection & Response</h3>
+<p>
+Pathogens, immune responses, vaccination,
+antibiotics and drug development.
+</p>
+</div>
+
+<div class="card">
+<div class="emoji">🌱</div>
+<h3>Bioenergetics</h3>
+<p>
+Photosynthesis, respiration, exercise and metabolism.
+</p>
+</div>
+
+<div class="card">
+<div class="emoji">🧠</div>
+<h3>Homeostasis</h3>
+<p>
+Nervous system, hormones, blood glucose,
+temperature and reproduction.
+</p>
+</div>
+
+<div class="card">
+<div class="emoji">🧬</div>
+<h3>Inheritance & Ecology</h3>
+<p>
+DNA, genetics, evolution, ecosystems,
+biodiversity and human impact.
+</p>
+</div>
+
+</div>
+</section>
+
+
+<section id="revision">
+
+<h2>Revision Guide</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Cell Processes</h3>
+<p>
+Link structure to function and practise microscopy,
+diffusion, osmosis and active transport.
+</p>
+</div>
+
+<div class="card">
+<h3>Body Systems</h3>
+<p>
+Explain digestion, circulation and plant transport
+as connected systems.
+</p>
+</div>
+
+<div class="card">
+<h3>Disease</h3>
+<p>
+Compare pathogen types and explain immune responses,
+vaccination and antibiotics.
+</p>
+</div>
+
+<div class="card">
+<h3>Energy</h3>
+<p>
+Know photosynthesis and respiration equations
+and understand limiting factors.
+</p>
+</div>
+
+<div class="card">
+<h3>Control</h3>
+<p>
+Use negative-feedback chains to explain
+nervous and hormonal control.
+</p>
+</div>
+
+<div class="card">
+<h3>Inheritance & Ecology</h3>
+<p>
+Use genetic diagrams, natural selection and
+ecosystem relationships accurately.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="skills">
+
+<h2>Exam Skills</h2>
+
+<div class="grid">
+
+<div class="card">
+<div class="emoji">📊</div>
+<h3>Data Analysis</h3>
+<p>
+Quote figures, calculate change, identify patterns
+and explain the biology behind them.
+</p>
+</div>
+
+<div class="card">
+<div class="emoji">🧪</div>
+<h3>Required Practicals</h3>
+<p>
+Know variables, controls, improvements,
+risks and how results should be processed.
+</p>
+</div>
+
+<div class="card">
+<div class="emoji">✍️</div>
+<h3>Linked Explanations</h3>
+<p>
+Use because and therefore links so every biological
+step leads clearly to the next.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<div class="quote">
+“Strong Biology answers do more than remember content:
+they use evidence, method and reasoning to explain why an answer works.”
+</div>
+
+
+<section id="achievements">
+
+<h2>🏆 Achievements</h2>
+
+<p class="small">
+Achievements are saved on this device.
+</p>
+
+<div class="achievements">
+
+<div class="badge" data-badge="starter">
+<div class="medal">🚀</div>
+<strong>First Steps</strong>
+<span class="small">Start the Entry Quiz</span>
+</div>
+
+<div class="badge" data-badge="practice">
+<div class="medal">📘</div>
+<strong>Practice Pro</strong>
+<span class="small">Complete the Practice Quiz</span>
+</div>
+
+<div class="badge" data-badge="perfectEntry">
+<div class="medal">💯</div>
+<strong>Perfect Entry</strong>
+<span class="small">Score 10/10 on Entry</span>
+</div>
+
+<div class="badge" data-badge="uniUnlocked">
+<div class="medal">🔓</div>
+<strong>University Unlocked</strong>
+<span class="small">Unlock University Level</span>
+</div>
+
+<div class="badge" data-badge="uniScholar">
+<div class="medal">🎓</div>
+<strong>University Scholar</strong>
+<span class="small">Score 7+/10 at University Level</span>
+</div>
+
+<div class="badge" data-badge="uniMaster">
+<div class="medal">🏅</div>
+<strong>University Master</strong>
+<span class="small">Score 10/10 at University Level</span>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="quiz">
+
+<div class="quizbox">
+
+<div class="quizhead">
+
+<h2>🧬 Biology Adaptive Quiz</h2>
+
+<p>
+Start with the 10-question Entry Quiz.
+</p>
+
+<div class="rules">
+
+<div class="rule">
+🏆 10 / 10 → University-Level Quiz unlocks
+</div>
+
+<div class="rule">
+📘 Below 10 / 10 → Practice Quiz first
+</div>
+
+<div class="rule">
+🎓 University Quiz uses undergraduate Biology
+</div>
+
+</div>
+
+<button class="primary" id="startBtn">
+Start Biology Quiz
+</button>
+
+</div>
+
+
+<div id="quizArea" class="quizarea hidden">
+
+<span class="level" id="levelLabel">
+ENTRY LEVEL
+</span>
+
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+
+<div class="small" id="qcount"></div>
+
+<div class="question" id="question"></div>
+
+<div class="options" id="options"></div>
+
+<div class="feedback" id="feedback"></div>
+
+<div class="scoreline" id="scoreline">
+Score: 0 / 10
+</div>
+
+<div style="margin-top:15px;display:flex;gap:10px;flex-wrap:wrap">
+
+<button class="primary hidden" id="nextBtn">
+Next Question
+</button>
+
+<button class="secondary hidden" id="practiceBtn">
+Start Practice Quiz
+</button>
+
+<button class="secondary hidden" id="retryBtn">
+Retry Entry Quiz
+</button>
+
+<button class="primary hidden" id="universityBtn">
+🎓 Start University-Level Quiz
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+© 2026 Biology | Learning Website
+</footer>
+
+
+<script>
+
+const DATA = {
+
+entry:[
+
+{
+q:"Which organelle controls the activities of a cell?",
+options:[
+"Nucleus",
+"Ribosome",
+"Cell wall",
+"Vacuole"
+],
+answer:0,
+explanation:
+"The nucleus contains the genetic material and controls cell activities."
+},
+
+{
+q:"Where does aerobic respiration mainly occur?",
+options:[
+"Nucleus",
+"Mitochondria",
+"Chloroplasts",
+"Cytoplasm"
+],
+answer:1,
+explanation:
+"Mitochondria are the main site of aerobic respiration."
+},
+
+{
+q:"What is osmosis?",
+options:[
+"Movement of water through a partially permeable membrane",
+"Movement of oxygen into blood",
+"Movement of particles against a concentration gradient",
+"Movement of glucose using energy"
+],
+answer:0,
+explanation:
+"Osmosis is the movement of water through a partially permeable membrane from a dilute solution to a more concentrated solution."
+},
+
+{
+q:"Which blood vessel carries blood away from the heart?",
+options:[
+"Vein",
+"Capillary",
+"Artery",
+"Venule"
+],
+answer:2,
+explanation:
+"Arteries carry blood away from the heart."
+},
+
+{
+q:"Which enzyme breaks down starch?",
+options:[
+"Lipase",
+"Protease",
+"Amylase",
+"Pepsin"
+],
+answer:2,
+explanation:
+"Amylase digests starch into sugars."
+},
+
+{
+q:"What type of pathogen causes measles?",
+options:[
+"Bacterium",
+"Virus",
+"Fungus",
+"Protist"
+],
+answer:1,
+explanation:
+"Measles is caused by a virus."
+},
+
+{
+q:"Which substance is needed for photosynthesis?",
+options:[
+"Carbon dioxide",
+"Lactic acid",
+"Urea",
+"Glycogen"
+],
+answer:0,
+explanation:
+"Plants use carbon dioxide and water to make glucose during photosynthesis."
+},
+
+{
+q:"Which hormone lowers blood glucose concentration?",
+options:[
+"Adrenaline",
+"Insulin",
+"Thyroxine",
+"Oestrogen"
+],
+answer:1,
+explanation:
+"Insulin causes cells to take glucose from the blood and promotes conversion of glucose into glycogen."
+},
+
+{
+q:"A gene is a section of which molecule?",
+options:[
+"Protein",
+"DNA",
+"Glucose",
+"Lipid"
+],
+answer:1,
+explanation:
+"A gene is a section of DNA containing information for a functional product."
+},
+
+{
+q:"What is biodiversity?",
+options:[
+"The number of predators",
+"The variety of living organisms",
+"The mass of plants",
+"The rate of respiration"
+],
+answer:1,
+explanation:
+"Biodiversity means the variety of different living organisms in an area."
+}
+
+],
+
+
+practice:[
+
+{
+q:"Which structure is found in plant cells but not animal cells?",
+options:[
+"Cell membrane",
+"Cytoplasm",
+"Cell wall",
+"Ribosome"
+],
+answer:2,
+explanation:
+"Plant cells have a cellulose cell wall."
+},
+
+{
+q:"What process moves particles from high concentration to low concentration?",
+options:[
+"Diffusion",
+"Active transport",
+"Mitosis",
+"Transpiration"
+],
+answer:0,
+explanation:
+"Diffusion is the net movement of particles down a concentration gradient."
+},
+
+{
+q:"What is the main function of red blood cells?",
+options:[
+"Fight pathogens",
+"Carry oxygen",
+"Make hormones",
+"Digest food"
+],
+answer:1,
+explanation:
+"Red blood cells contain haemoglobin which carries oxygen."
+},
+
+{
+q:"Which cells can produce antibodies?",
+options:[
+"Platelets",
+"White blood cells",
+"Red blood cells",
+"Nerve cells"
+],
+answer:1,
+explanation:
+"Some white blood cells called lymphocytes produce antibodies."
+},
+
+{
+q:"Photosynthesis takes place mainly in which organelle?",
+options:[
+"Mitochondrion",
+"Chloroplast",
+"Nucleus",
+"Ribosome"
+],
+answer:1,
+explanation:
+"Chloroplasts contain chlorophyll and are the main site of photosynthesis."
+},
+
+{
+q:"During vigorous exercise, muscles may produce which substance if oxygen is limited?",
+options:[
+"Starch",
+"Lactic acid",
+"Urea",
+"Insulin"
+],
+answer:1,
+explanation:
+"Anaerobic respiration in muscles produces lactic acid."
+},
+
+{
+q:"Which organ releases insulin?",
+options:[
+"Liver",
+"Pancreas",
+"Kidney",
+"Lung"
+],
+answer:1,
+explanation:
+"The pancreas releases insulin."
+},
+
+{
+q:"Two identical alleles are described as:",
+options:[
+"Heterozygous",
+"Homozygous",
+"Recessive",
+"Mutated"
+],
+answer:1,
+explanation:
+"Homozygous means having two identical alleles for a gene."
+},
+
+{
+q:"What is a producer in a food chain?",
+options:[
+"An organism that makes organic molecules, usually by photosynthesis",
+"A top predator",
+"A decomposer only",
+"A parasite"
+],
+answer:0,
+explanation:
+"Producers make their own organic molecules and provide energy for food chains."
+},
+
+{
+q:"Which activity commonly reduces biodiversity?",
+options:[
+"Habitat destruction",
+"Conservation",
+"Breeding programmes",
+"Reforestation"
+],
+answer:0,
+explanation:
+"Habitat destruction removes food, shelter and breeding areas used by organisms."
+}
+
+],
+
+
+university:[
+
+{
+q:"For an enzyme that follows Michaelis-Menten kinetics, what does Km represent?",
+options:[
+"The maximum reaction rate",
+"The substrate concentration at half Vmax",
+"The enzyme concentration at equilibrium",
+"The activation energy"
+],
+answer:1,
+explanation:
+"Km is the substrate concentration at which the reaction rate is half of Vmax."
+},
+
+{
+q:"Which process most directly establishes the resting membrane potential in a typical neuron?",
+options:[
+"Equal ion permeability",
+"Selective potassium permeability together with ion gradients maintained by the sodium-potassium ATPase",
+"DNA replication",
+"Calcium precipitation"
+],
+answer:1,
+explanation:
+"The resting membrane potential mainly results from ion concentration gradients and high resting permeability to potassium ions."
+},
+
+{
+q:"In Hardy-Weinberg equilibrium, p² + 2pq + q² = 1 describes:",
+options:[
+"Mutation rates",
+"Genotype frequencies for a two-allele locus",
+"Population growth rate",
+"Species richness"
+],
+answer:1,
+explanation:
+"p², 2pq and q² represent the expected frequencies of the three genotypes."
+},
+
+{
+q:"What is the most direct role of a transcription factor?",
+options:[
+"Translate mRNA",
+"Bind regulatory DNA and influence transcription",
+"Replicate mitochondrial DNA",
+"Break down proteins"
+],
+answer:1,
+explanation:
+"Transcription factors bind regulatory DNA sequences and influence gene transcription."
+},
+
+{
+q:"Why can competitive enzyme inhibition often be overcome by increasing substrate concentration?",
+options:[
+"The inhibitor is destroyed",
+"Substrate and inhibitor compete for the active site",
+"Vmax becomes zero",
+"The enzyme changes its primary sequence"
+],
+answer:1,
+explanation:
+"At high substrate concentration, substrate molecules are more likely than inhibitor molecules to occupy the active site."
+},
+
+{
+q:"Which event occurs during oxidative phosphorylation?",
+options:[
+"Glucose is split in the cytoplasm",
+"A proton gradient drives ATP synthase",
+"DNA is translated",
+"Pyruvate is converted into lactate in mitochondria"
+],
+answer:1,
+explanation:
+"The electron transport chain creates a proton gradient across the inner mitochondrial membrane. ATP synthase uses this gradient to make ATP."
+},
+
+{
+q:"What best distinguishes genetic drift from natural selection?",
+options:[
+"Genetic drift is always adaptive",
+"Genetic drift changes allele frequencies through random sampling effects",
+"Natural selection occurs only in small populations",
+"Genetic drift requires a mutation every generation"
+],
+answer:1,
+explanation:
+"Genetic drift changes allele frequencies randomly and has particularly strong effects in small populations."
+},
+
+{
+q:"In population ecology, carrying capacity K is best described as:",
+options:[
+"The minimum viable population",
+"The long-term population size an environment can support",
+"The mutation rate",
+"The number of trophic levels"
+],
+answer:1,
+explanation:
+"Carrying capacity is the approximate maximum population that the available resources and environmental conditions can support."
+},
+
+{
+q:"Which mechanism enables an action potential to propagate along an unmyelinated axon?",
+options:[
+"Local electrical currents depolarise adjacent membrane to threshold",
+"DNA polymerase activates ion channels",
+"Synapses form continuously along the axon",
+"ATP diffuses outside the cell"
+],
+answer:0,
+explanation:
+"Local currents generated by depolarisation bring adjacent membrane regions to threshold, opening voltage-gated sodium channels."
+},
+
+{
+q:"What is an allosteric regulator?",
+options:[
+"A molecule that binds only to an enzyme's active site",
+"A molecule that binds to another site and changes protein activity",
+"A DNA base",
+"A membrane lipid that cannot bind proteins"
+],
+answer:1,
+explanation:
+"Allosteric regulators bind to a site other than the active site and alter the protein's conformation and activity."
+}
+
+]
+
+};
+
+
+const KEY = "achievements-biology";
+
+let achievements =
+JSON.parse(localStorage.getItem(KEY) || "{}");
+
+let mode = "entry";
+let index = 0;
+let score = 0;
+let locked = false;
+
+
+const startBtn =
+document.getElementById("startBtn");
+
+const quizArea =
+document.getElementById("quizArea");
+
+const levelLabel =
+document.getElementById("levelLabel");
+
+const bar =
+document.getElementById("bar");
+
+const qcount =
+document.getElementById("qcount");
+
+const question =
+document.getElementById("question");
+
+const options =
+document.getElementById("options");
+
+const feedback =
+document.getElementById("feedback");
+
+const scoreline =
+document.getElementById("scoreline");
+
+const nextBtn =
+document.getElementById("nextBtn");
+
+const practiceBtn =
+document.getElementById("practiceBtn");
+
+const retryBtn =
+document.getElementById("retryBtn");
+
+const universityBtn =
+document.getElementById("universityBtn");
+
+
+function saveAchievement(key){
+
+achievements[key] = true;
+
+localStorage.setItem(
+KEY,
+JSON.stringify(achievements)
+);
+
+renderAchievements();
+
+}
+
+
+function renderAchievements(){
+
+document
+.querySelectorAll(".badge")
+.forEach(badge => {
+
+badge.classList.toggle(
+"unlocked",
+!!achievements[badge.dataset.badge]
+);
+
+});
+
+}
+
+
+function questions(){
+
+return DATA[mode];
+
+}
+
+
+function levelText(){
+
+if(mode === "entry")
+return "ENTRY LEVEL";
+
+if(mode === "practice")
+return "PRACTICE LEVEL";
+
+return "UNIVERSITY LEVEL";
+
+}
+
+
+function begin(newMode){
+
+mode = newMode;
+
+index = 0;
+score = 0;
+locked = false;
+
+quizArea.classList.remove("hidden");
+
+startBtn.classList.add("hidden");
+
+practiceBtn.classList.add("hidden");
+
+retryBtn.classList.add("hidden");
+
+universityBtn.classList.add("hidden");
+
+nextBtn.classList.add("hidden");
+
+feedback.style.display = "none";
+
+if(mode === "entry"){
+
+saveAchievement("starter");
+
+}
+
+renderQuestion();
+
+quizArea.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+}
+
+
+function renderQuestion(){
+
+const arr = questions();
+
+const item = arr[index];
+
+locked = false;
+
+levelLabel.textContent =
+levelText();
+
+bar.style.width =
+(index / arr.length * 100) + "%";
+
+qcount.textContent =
+"Question " +
+(index + 1) +
+" of " +
+arr.length;
+
+question.textContent =
+item.q;
+
+scoreline.textContent =
+"Score: " +
+score +
+" / " +
+arr.length;
+
+feedback.style.display =
+"none";
+
+feedback.textContent = "";
+
+nextBtn.classList.add("hidden");
+
+options.innerHTML = "";
+
+
+item.options.forEach(
+(opt, i) => {
+
+const button =
+document.createElement("button");
+
+button.className =
+"option";
+
+button.textContent =
+opt;
+
+button.addEventListener(
+"click",
+() => answer(i,button)
+);
+
+options.appendChild(button);
+
+});
+
+}
+
+
+function answer(choice,button){
+
+if(locked)
+return;
+
+locked = true;
+
+const item =
+questions()[index];
+
+
+[...options.children]
+.forEach(
+(btn,i) => {
+
+btn.disabled = true;
+
+if(i === item.answer){
+
+btn.classList.add("correct");
+
+}
+
+});
+
+
+if(choice === item.answer){
+
+score++;
+
+button.classList.add(
+"correct"
+);
+
+feedback.textContent =
+"✅ Correct. " +
+item.explanation;
+
+}
+
+else{
+
+button.classList.add(
+"wrong"
+);
+
+feedback.textContent =
+"❌ Not quite. " +
+item.explanation;
+
+}
+
+
+feedback.style.display =
+"block";
+
+
+scoreline.textContent =
+"Score: " +
+score +
+" / " +
+questions().length;
+
+
+if(
+index ===
+questions().length - 1
+){
+
+nextBtn.textContent =
+"See Result";
+
+}
+
+else{
+
+nextBtn.textContent =
+"Next Question";
+
+}
+
+nextBtn.classList.remove(
+"hidden"
+);
+
+}
+
+
+function finish(){
+
+bar.style.width =
+"100%";
+
+options.innerHTML = "";
+
+qcount.textContent = "";
+
+question.textContent =
+levelText() +
+" complete — " +
+score +
+" / " +
+questions().length;
+
+feedback.style.display =
+"block";
+
+nextBtn.classList.add(
+"hidden"
+);
+
+
+/* ENTRY QUIZ */
+
+if(mode === "entry"){
+
+if(
+score ===
+questions().length
+){
+
+saveAchievement(
+"perfectEntry"
+);
+
+saveAchievement(
+"uniUnlocked"
+);
+
+feedback.textContent =
+"🏆 Perfect 10/10! The University-Level Biology Quiz is now unlocked.";
+
+universityBtn.classList.remove(
+"hidden"
+);
+
+}
+
+else{
+
+feedback.textContent =
+"📘 Complete the easier Practice Quiz, then retry the Entry Quiz. Score 10/10 to unlock University Level.";
+
+practiceBtn.classList.remove(
+"hidden"
+);
+
+retryBtn.classList.remove(
+"hidden"
+);
+
+}
+
+}
+
+
+/* PRACTICE QUIZ */
+
+else if(mode === "practice"){
+
+saveAchievement(
+"practice"
+);
+
+feedback.textContent =
+"📘 Practice complete. Review the explanations, then retry the Entry Quiz and aim for 10/10.";
+
+retryBtn.classList.remove(
+"hidden"
+);
+
+}
+
+
+/* UNIVERSITY QUIZ */
+
+else{
+
+if(score >= 7){
+
+saveAchievement(
+"uniScholar"
+);
+
+}
+
+if(
+score ===
+questions().length
+){
+
+saveAchievement(
+"uniMaster"
+);
+
+}
+
+
+if(score === 10){
+
+feedback.textContent =
+"🏅 Outstanding — 10/10 at University Level! You have earned University Master.";
+
+}
+
+else if(score >= 7){
+
+feedback.textContent =
+"🎓 University Scholar achieved! Strong undergraduate-level Biology performance.";
+
+}
+
+else{
+
+feedback.textContent =
+"🎓 University-Level Biology Quiz complete. Review the explanations and try again to reach 7/10 or above.";
+
+}
+
+
+universityBtn.textContent =
+"Retry University-Level Quiz";
+
+universityBtn.classList.remove(
+"hidden"
+);
+
+}
+
+}
+
+
+nextBtn.addEventListener(
+"click",
+() => {
+
+index++;
+
+if(
+index >=
+questions().length
+){
+
+finish();
+
+}
+
+else{
+
+renderQuestion();
+
+}
+
+});
+
+
+startBtn.addEventListener(
+"click",
+() => begin("entry")
+);
+
+
+practiceBtn.addEventListener(
+"click",
+() => begin("practice")
+);
+
+
+retryBtn.addEventListener(
+"click",
+() => begin("entry")
+);
+
+
+universityBtn.addEventListener(
+"click",
+() => begin("university")
+);
+
+
+renderAchievements();
+
+</script>
+
+</body>
+</html>

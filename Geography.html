@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Geography Learning Website</title>
+
+<style>
+:root{
+  --ink:#1f2937;
+  --muted:#64748b;
+  --navy:#0f2747;
+  --navy2:#173a65;
+  --paper:#f5f7fb;
+  --card:#ffffff;
+  --line:#dbe3ee;
+  --gold:#f5c451;
+  --green:#1f8f62;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.65;
+}
+
+.hero{
+  background:linear-gradient(135deg,var(--navy),var(--navy2));
+  color:white;
+  padding:72px 22px 60px;
+  text-align:center;
+}
+
+.hero h1{
+  margin:0;
+  font-size:clamp(2.3rem,6vw,4.6rem);
+}
+
+.hero p{
+  margin:10px auto 0;
+  max-width:900px;
+  font-size:1.08rem;
+  opacity:.94;
+}
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:5;
+  background:white;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  padding:10px;
+}
+
+nav a{
+  color:var(--navy);
+  text-decoration:none;
+  font-weight:700;
+  padding:8px 12px;
+  border-radius:999px;
+}
+
+nav a:hover{
+  background:#edf2f8;
+}
+
+main{
+  max-width:1080px;
+  margin:auto;
+  padding:28px 18px 70px;
+}
+
+section{
+  scroll-margin-top:80px;
+  margin:26px 0 46px;
+}
+
+h2{
+  color:var(--navy);
+  font-size:2rem;
+  margin-bottom:14px;
+}
+
+h3{
+  color:var(--navy);
+  margin-top:0;
+}
+
+.lead{
+  font-size:1.08rem;
+  background:white;
+  border-left:5px solid var(--gold);
+  padding:20px 22px;
+  border-radius:12px;
+  box-shadow:0 8px 25px rgba(15,39,71,.06);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:16px;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:0 8px 22px rgba(15,39,71,.06);
+}
+
+.card .emoji{
+  font-size:1.9rem;
+}
+
+.quote{
+  background:var(--navy);
+  color:white;
+  padding:22px;
+  border-radius:16px;
+  font-size:1.08rem;
+  font-style:italic;
+}
+
+.quizbox{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:24px;
+  box-shadow:0 10px 30px rgba(15,39,71,.09);
+}
+
+.quizhead{
+  text-align:center;
+}
+
+.rules{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin:16px 0;
+}
+
+.rule{
+  background:#eef4fa;
+  border-radius:12px;
+  padding:10px 13px;
+  font-weight:700;
+}
+
+button{
+  cursor:pointer;
+  border:0;
+  border-radius:11px;
+  padding:11px 16px;
+  font-weight:800;
+  font-size:1rem;
+}
+
+.primary{
+  background:var(--navy);
+  color:white;
+}
+
+.primary:hover{
+  background:var(--navy2);
+}
+
+.secondary{
+  background:#e8eef6;
+  color:var(--navy);
+}
+
+.secondary:hover{
+  background:#dce6f2;
+}
+
+.quizarea{
+  margin-top:20px;
+}
+
+.level{
+  display:inline-block;
+  background:var(--gold);
+  color:#4d3900;
+  font-weight:900;
+  padding:5px 10px;
+  border-radius:999px;
+  font-size:.8rem;
+  letter-spacing:.5px;
+}
+
+.question{
+  font-size:1.2rem;
+  font-weight:800;
+  margin:15px 0;
+}
+
+.options{
+  display:grid;
+  gap:10px;
+}
+
+.option{
+  background:#f4f7fb;
+  border:2px solid transparent;
+  text-align:left;
+  color:var(--ink);
+}
+
+.option:hover{
+  border-color:#9eb4cf;
+}
+
+.option.correct{
+  background:#e7f7ef;
+  border-color:#55a97f;
+}
+
+.option.wrong{
+  background:#fdecec;
+  border-color:#dd7777;
+}
+
+.feedback{
+  margin:14px 0 0;
+  padding:12px 14px;
+  border-radius:10px;
+  background:#f7f9fc;
+  display:none;
+}
+
+.progress{
+  height:9px;
+  background:#e5eaf1;
+  border-radius:99px;
+  overflow:hidden;
+  margin:14px 0;
+}
+
+.bar{
+  height:100%;
+  width:0;
+  background:var(--navy);
+}
+
+.scoreline{
+  font-weight:800;
+  margin-top:12px;
+}
+
+.achievements{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:12px;
+}
+
+.badge{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:17px;
+  text-align:center;
+  opacity:.38;
+  filter:grayscale(1);
+  transition:.2s;
+}
+
+.badge.unlocked{
+  opacity:1;
+  filter:none;
+  box-shadow:0 8px 20px rgba(15,39,71,.08);
+}
+
+.badge .medal{
+  font-size:2.1rem;
+}
+
+.badge strong{
+  display:block;
+  color:var(--navy);
+}
+
+.small{
+  font-size:.9rem;
+  color:var(--muted);
+}
+
+.hidden{
+  display:none !important;
+}
+
+footer{
+  text-align:center;
+  background:var(--navy);
+  color:white;
+  padding:24px;
+}
+
+@media(max-width:600px){
+
+  .hero{
+    padding:50px 16px 42px;
+  }
+
+  .hero h1{
+    font-size:2.35rem;
+  }
+
+  .quizbox{
+    padding:17px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+
+<h1>🌍 Geography</h1>
+
+<p>
+Natural Hazards • Ecosystems • Coasts • Rivers •
+Urban Issues • Economic World • Resources • Fieldwork
+</p>
+
+</header>
+
+
+<nav>
+
+<a href="#about">About</a>
+<a href="#topics">Topics</a>
+<a href="#revision">Revision</a>
+<a href="#skills">Exam Skills</a>
+<a href="#achievements">Achievements</a>
+<a href="#quiz">Quiz</a>
+
+</nav>
+
+
+<main>
+
+
+<section id="about">
+
+<h2>Geography</h2>
+
+<div class="lead">
+
+Geography explains how physical processes and human decisions shape places.
+Strong Geography answers use located examples, data, scale, systems thinking
+and balanced evaluation.
+
+</div>
+
+</section>
+
+
+<section id="topics">
+
+<h2>Key Topics</h2>
+
+<div class="grid">
+
+
+<div class="card">
+
+<div class="emoji">🌋</div>
+
+<h3>Natural Hazards</h3>
+
+<p>
+Tectonic hazards, weather hazards and climate change.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">🌳</div>
+
+<h3>The Living World</h3>
+
+<p>
+Ecosystems, tropical rainforests and hot deserts
+or cold environments.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">🌊</div>
+
+<h3>Physical Landscapes</h3>
+
+<p>
+Coasts, rivers, erosion, transport,
+deposition and management.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">🏙️</div>
+
+<h3>Urban Issues</h3>
+
+<p>
+Urban growth, opportunities, challenges
+and sustainable cities.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">💷</div>
+
+<h3>Changing Economic World</h3>
+
+<p>
+Development, global inequality,
+industry and economic change.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">💧</div>
+
+<h3>Resources & Fieldwork</h3>
+
+<p>
+Food, water, energy, fieldwork methods,
+data and evaluation.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section id="revision">
+
+<h2>Revision Guide</h2>
+
+<div class="grid">
+
+
+<div class="card">
+
+<h3>Processes</h3>
+
+<p>
+Use clear sequences to explain how
+landforms and hazards develop.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Case Studies</h3>
+
+<p>
+Learn precise place detail, but only use
+evidence that is relevant to the question.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Evaluation</h3>
+
+<p>
+Compare social, economic and environmental
+costs and benefits over different timescales.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Maps & Data</h3>
+
+<p>
+Practise grid references, scale,
+graphs, statistics and identifying anomalies.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Fieldwork</h3>
+
+<p>
+Know the enquiry question, sampling,
+risks, data presentation, conclusions and limitations.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Synoptic Links</h3>
+
+<p>
+Connect physical and human Geography
+rather than treating every topic separately.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section id="skills">
+
+<h2>Exam Skills</h2>
+
+<div class="grid">
+
+
+<div class="card">
+
+<div class="emoji">🗺️</div>
+
+<h3>Place Evidence</h3>
+
+<p>
+Use named examples accurately and link
+facts directly to your argument.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">📊</div>
+
+<h3>Data & Maps</h3>
+
+<p>
+Read scale, calculate change,
+interpret spatial patterns and identify anomalies.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">⚖️</div>
+
+<h3>Evaluation</h3>
+
+<p>
+Judge strategies by stakeholder,
+scale, timescale and sustainability.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<div class="quote">
+
+“Strong Geography answers explain patterns, use evidence
+and evaluate how different people and places are affected.”
+
+</div>
+
+
+<section id="achievements">
+
+<h2>🏆 Achievements</h2>
+
+<p class="small">
+Achievements are saved on this device.
+</p>
+
+
+<div class="achievements">
+
+
+<div class="badge" data-badge="starter">
+
+<div class="medal">🚀</div>
+
+<strong>First Steps</strong>
+
+<span class="small">
+Start the Entry Quiz
+</span>
+
+</div>
+
+
+<div class="badge" data-badge="practice">
+
+<div class="medal">📘</div>
+
+<strong>Practice Pro</strong>
+
+<span class="small">
+Complete the Practice Quiz
+</span>
+
+</div>
+
+
+<div class="badge" data-badge="perfectEntry">
+
+<div class="medal">💯</div>
+
+<strong>Perfect Entry</strong>
+
+<span class="small">
+Score 10/10 on Entry
+</span>
+
+</div>
+
+
+<div class="badge" data-badge="uniUnlocked">
+
+<div class="medal">🔓</div>
+
+<strong>University Unlocked</strong>
+
+<span class="small">
+Unlock University Level
+</span>
+
+</div>
+
+
+<div class="badge" data-badge="uniScholar">
+
+<div class="medal">🎓</div>
+
+<strong>University Scholar</strong>
+
+<span class="small">
+Score 7+/10 at University Level
+</span>
+
+</div>
+
+
+<div class="badge" data-badge="uniMaster">
+
+<div class="medal">🏅</div>
+
+<strong>University Master</strong>
+
+<span class="small">
+Score 10/10 at University Level
+</span>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section id="quiz">
+
+
+<div class="quizbox">
+
+
+<div class="quizhead">
+
+<h2>🌍 Geography Adaptive Quiz</h2>
+
+<p>
+Start with the 10-question Entry Quiz.
+</p>
+
+
+<div class="rules">
+
+
+<div class="rule">
+
+🏆 10 / 10 → University-Level Quiz unlocks
+
+</div>
+
+
+<div class="rule">
+
+📘 Below 10 / 10 → Practice Quiz first
+
+</div>
+
+
+<div class="rule">
+
+🎓 University Quiz uses undergraduate Geography
+
+</div>
+
+
+</div>
+
+
+<button class="primary" id="startBtn">
+
+Start Geography Quiz
+
+</button>
+
+
+</div>
+
+
+<div id="quizArea" class="quizarea hidden">
+
+
+<span class="level" id="levelLabel">
+
+ENTRY LEVEL
+
+</span>
+
+
+<div class="progress">
+
+<div class="bar" id="bar"></div>
+
+</div>
+
+
+<div class="small" id="qcount"></div>
+
+
+<div class="question" id="question"></div>
+
+
+<div class="options" id="options"></div>
+
+
+<div class="feedback" id="feedback"></div>
+
+
+<div class="scoreline" id="scoreline">
+
+Score: 0 / 10
+
+</div>
+
+
+<div style="margin-top:15px;display:flex;gap:10px;flex-wrap:wrap">
+
+
+<button class="primary hidden" id="nextBtn">
+
+Next Question
+
+</button>
+
+
+<button class="secondary hidden" id="practiceBtn">
+
+Start Practice Quiz
+
+</button>
+
+
+<button class="secondary hidden" id="retryBtn">
+
+Retry Entry Quiz
+
+</button>
+
+
+<button class="primary hidden" id="universityBtn">
+
+🎓 Start University-Level Quiz
+
+</button>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+© 2026 Geography | Learning Website
+
+</footer>
+
+
+<script>
+
+const DATA = {
+
+
+entry:[
+
+
+{
+q:"What type of plate boundary occurs where two tectonic plates move apart?",
+options:[
+"Constructive or divergent",
+"Destructive or convergent",
+"Conservative",
+"Collision only"
+],
+answer:0,
+explanation:
+"At a constructive or divergent plate boundary, plates move apart and magma may rise to form new crust."
+},
+
+
+{
+q:"Which process describes rock material being worn away by a river?",
+options:[
+"Erosion",
+"Urbanisation",
+"Evaporation",
+"Afforestation"
+],
+answer:0,
+explanation:
+"Erosion removes rock and sediment from the river channel and banks."
+},
+
+
+{
+q:"What is urbanisation?",
+options:[
+"The growth in the proportion of people living in urban areas",
+"The decline of every city",
+"Movement from cities to villages only",
+"The formation of mountains"
+],
+answer:0,
+explanation:
+"Urbanisation is an increase in the proportion of a country's population living in towns and cities."
+},
+
+
+{
+q:"Which biome normally has high temperatures and high rainfall throughout much of the year?",
+options:[
+"Tundra",
+"Tropical rainforest",
+"Temperate grassland",
+"Polar desert"
+],
+answer:1,
+explanation:
+"Tropical rainforests normally experience high temperatures and high rainfall throughout the year."
+},
+
+
+{
+q:"What does GDP measure?",
+options:[
+"Only population size",
+"The value of goods and services produced within a country",
+"Average rainfall",
+"Life expectancy directly"
+],
+answer:1,
+explanation:
+"Gross Domestic Product measures the value of goods and services produced within a country's borders."
+},
+
+
+{
+q:"Which is a renewable energy source?",
+options:[
+"Coal",
+"Oil",
+"Wind",
+"Natural gas"
+],
+answer:2,
+explanation:
+"Wind is renewable because it is naturally replenished."
+},
+
+
+{
+q:"Longshore drift transports sediment mainly:",
+options:[
+"Along the coast",
+"Straight down into the mantle",
+"Only upstream",
+"Vertically through cliffs"
+],
+answer:0,
+explanation:
+"When waves approach the coast at an angle, swash and backwash move sediment along the shoreline."
+},
+
+
+{
+q:"A hydrograph shows river discharge against:",
+options:[
+"Time",
+"Altitude only",
+"Population",
+"Temperature only"
+],
+answer:0,
+explanation:
+"A hydrograph shows how river discharge changes over time, often after a rainfall event."
+},
+
+
+{
+q:"Which is a primary effect of an earthquake?",
+options:[
+"Ground shaking",
+"Long-term homelessness only",
+"International aid debt",
+"Migration many years later"
+],
+answer:0,
+explanation:
+"Primary effects happen directly because of the earthquake. Ground shaking is a direct physical effect."
+},
+
+
+{
+q:"What does sampling mean in Geography fieldwork?",
+options:[
+"Selecting observations or sites from a wider population or area",
+"Making up data",
+"Only interviewing teachers",
+"Ignoring spatial variation"
+],
+answer:0,
+explanation:
+"Sampling means selecting a manageable number of observations intended to represent a wider population or area."
+}
+
+
+],
+
+
+
+practice:[
+
+
+{
+q:"Which type of wave is generally associated with greater coastal erosion?",
+options:[
+"Constructive waves",
+"Destructive waves",
+"Radio waves",
+"Seismic P-waves"
+],
+answer:1,
+explanation:
+"Destructive waves usually have a strong backwash and remove beach material."
+},
+
+
+{
+q:"What is hydraulic action?",
+options:[
+"The force of water and compressed air breaking material from rock",
+"Rock dissolving chemically only",
+"Pebbles hitting each other",
+"Sediment being deposited"
+],
+answer:0,
+explanation:
+"Hydraulic action happens when water and compressed air enter cracks and weaken rock."
+},
+
+
+{
+q:"Which factor can increase the risk of flooding in an urban area?",
+options:[
+"More impermeable surfaces",
+"Afforestation",
+"Wetland restoration",
+"Permeable paving"
+],
+answer:0,
+explanation:
+"Impermeable surfaces reduce infiltration and increase rapid surface runoff into rivers."
+},
+
+
+{
+q:"A megacity is commonly defined as an urban area with more than:",
+options:[
+"1 million people",
+"5 million people",
+"10 million people",
+"100 million people"
+],
+answer:2,
+explanation:
+"A megacity is commonly defined as an urban area with a population of more than 10 million."
+},
+
+
+{
+q:"Which indicator is included in the Human Development Index?",
+options:[
+"Life expectancy",
+"Daily rainfall",
+"Longitude",
+"Number of volcanoes"
+],
+answer:0,
+explanation:
+"HDI uses life expectancy, education and income indicators."
+},
+
+
+{
+q:"Which strategy can reduce soil erosion in a tropical rainforest?",
+options:[
+"Clear-cutting",
+"Selective logging and replanting",
+"Removing all vegetation",
+"Burning slopes every year"
+],
+answer:1,
+explanation:
+"Selective logging and replanting can reduce damage to vegetation cover and help protect soil."
+},
+
+
+{
+q:"What is the main purpose of a groyne on a beach?",
+options:[
+"To trap sediment moved by longshore drift",
+"To deepen a river valley",
+"To measure earthquakes",
+"To create tectonic plates"
+],
+answer:0,
+explanation:
+"Groynes interrupt longshore drift and trap sediment, helping to create a wider beach."
+},
+
+
+{
+q:"Which sampling method selects sites at regular intervals?",
+options:[
+"Systematic sampling",
+"Random sampling",
+"Stratified sampling only",
+"Convenience sampling only"
+],
+answer:0,
+explanation:
+"Systematic sampling uses a fixed interval, such as every tenth person or every 20 metres."
+},
+
+
+{
+q:"What does a positive correlation mean?",
+options:[
+"As one variable increases, the other tends to increase",
+"One variable definitely causes the other",
+"The variables are identical",
+"There is no relationship"
+],
+answer:0,
+explanation:
+"A positive correlation means the variables tend to increase together. It does not automatically prove causation."
+},
+
+
+{
+q:"What is a main aim of sustainable urban transport?",
+options:[
+"Increase congestion",
+"Reduce environmental impacts while maintaining accessibility",
+"Ban all movement",
+"Increase fossil fuel use"
+],
+answer:1,
+explanation:
+"Sustainable transport aims to maintain access while reducing pollution, congestion and resource use."
+}
+
+
+],
+
+
+
+university:[
+
+
+{
+q:"What is the central idea of Tobler's First Law of Geography?",
+options:[
+"Everything is unrelated",
+"Nearby things are generally more related than distant things",
+"Distance never matters",
+"Only physical Geography has spatial relationships"
+],
+answer:1,
+explanation:
+"Tobler's First Law states that everything is related to everything else, but near things tend to be more related than distant things."
+},
+
+
+{
+q:"What problem does the Modifiable Areal Unit Problem, or MAUP, describe?",
+options:[
+"GPS battery failure",
+"Statistical results changing when spatial data are grouped into different zones or scales",
+"River erosion",
+"Plate motion"
+],
+answer:1,
+explanation:
+"MAUP describes how the scale and boundaries used to aggregate spatial data can change the statistical results."
+},
+
+
+{
+q:"In fluvial geomorphology, stream power is most directly related to:",
+options:[
+"Discharge, channel slope and the unit weight of water",
+"Only the colour of the river",
+"Population density",
+"Atmospheric pressure only"
+],
+answer:0,
+explanation:
+"Stream power describes the rate at which flowing water can do geomorphic work and is related to discharge and energy slope."
+},
+
+
+{
+q:"What is spatial autocorrelation?",
+options:[
+"The degree to which nearby observations have similar or related values",
+"A type of chemical bond",
+"Random error only",
+"The distance to the Equator"
+],
+answer:0,
+explanation:
+"Spatial autocorrelation measures whether nearby places tend to have similar, dissimilar or randomly distributed values."
+},
+
+
+{
+q:"In demographic transition theory, Stage 3 is typically characterised by:",
+options:[
+"High birth rates and high death rates",
+"Falling birth rates with already low death rates",
+"Zero population",
+"Rapidly rising death rates due only to war"
+],
+answer:1,
+explanation:
+"In Stage 3, death rates are already relatively low while birth rates begin to fall."
+},
+
+
+{
+q:"Which geographical concept describes a system's ability to absorb disturbance while retaining its main structure and function?",
+options:[
+"Resilience",
+"Latitude",
+"Weathering",
+"Agglomeration only"
+],
+answer:0,
+explanation:
+"Resilience describes the ability of a system, community or environment to absorb disturbance and recover or adapt."
+},
+
+
+{
+q:"In GIS, a raster data model represents geographical space mainly as:",
+options:[
+"A grid of cells",
+"Only connected road lines",
+"Written essays",
+"A list of countries without geometry"
+],
+answer:0,
+explanation:
+"Raster data divide geographical space into a grid of cells, with each cell storing a value."
+},
+
+
+{
+q:"The gravity model of spatial interaction predicts interaction using:",
+options:[
+"Only direction",
+"The size of places and the effect of distance between them",
+"Plate boundaries",
+"Soil pH only"
+],
+answer:1,
+explanation:
+"Gravity models generally predict more interaction between larger places and less interaction as distance or travel cost increases."
+},
+
+
+{
+q:"What is environmental justice mainly concerned with?",
+options:[
+"Equal longitude",
+"The distribution of environmental benefits, burdens and decision-making power among different groups",
+"Weather forecasting only",
+"Map projection mathematics only"
+],
+answer:1,
+explanation:
+"Environmental justice examines whether environmental risks, resources and decision-making power are distributed fairly."
+},
+
+
+{
+q:"Why is a correlation between deprivation and air pollution not enough by itself to prove causation?",
+options:[
+"Correlation alone cannot establish a causal mechanism and may be affected by confounding factors",
+"Maps cannot contain numbers",
+"Air pollution has no spatial pattern",
+"Deprivation cannot be measured"
+],
+answer:0,
+explanation:
+"Correlation can show an association, but other factors may influence both variables. Strong causal claims require additional evidence."
+}
+
+
+]
+
+
+};
+
+
+const KEY = "achievements-geography";
+
+let achievements =
+JSON.parse(localStorage.getItem(KEY) || "{}");
+
+let mode = "entry";
+let index = 0;
+let score = 0;
+let locked = false;
+
+
+const startBtn =
+document.getElementById("startBtn");
+
+const quizArea =
+document.getElementById("quizArea");
+
+const levelLabel =
+document.getElementById("levelLabel");
+
+const bar =
+document.getElementById("bar");
+
+const qcount =
+document.getElementById("qcount");
+
+const question =
+document.getElementById("question");
+
+const options =
+document.getElementById("options");
+
+const feedback =
+document.getElementById("feedback");
+
+const scoreline =
+document.getElementById("scoreline");
+
+const nextBtn =
+document.getElementById("nextBtn");
+
+const practiceBtn =
+document.getElementById("practiceBtn");
+
+const retryBtn =
+document.getElementById("retryBtn");
+
+const universityBtn =
+document.getElementById("universityBtn");
+
+
+function saveAchievement(key){
+
+achievements[key] = true;
+
+localStorage.setItem(
+KEY,
+JSON.stringify(achievements)
+);
+
+renderAchievements();
+
+}
+
+
+function renderAchievements(){
+
+document
+.querySelectorAll(".badge")
+.forEach(badge => {
+
+badge.classList.toggle(
+"unlocked",
+!!achievements[badge.dataset.badge]
+);
+
+});
+
+}
+
+
+function questions(){
+
+return DATA[mode];
+
+}
+
+
+function levelText(){
+
+if(mode === "entry")
+return "ENTRY LEVEL";
+
+if(mode === "practice")
+return "PRACTICE LEVEL";
+
+return "UNIVERSITY LEVEL";
+
+}
+
+
+function begin(newMode){
+
+mode = newMode;
+
+index = 0;
+score = 0;
+locked = false;
+
+quizArea.classList.remove("hidden");
+
+startBtn.classList.add("hidden");
+
+practiceBtn.classList.add("hidden");
+
+retryBtn.classList.add("hidden");
+
+universityBtn.classList.add("hidden");
+
+nextBtn.classList.add("hidden");
+
+feedback.style.display = "none";
+
+if(mode === "entry"){
+
+saveAchievement("starter");
+
+}
+
+renderQuestion();
+
+quizArea.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+}
+
+
+function renderQuestion(){
+
+const arr = questions();
+
+const item = arr[index];
+
+locked = false;
+
+levelLabel.textContent =
+levelText();
+
+bar.style.width =
+(index / arr.length * 100) + "%";
+
+qcount.textContent =
+"Question " +
+(index + 1) +
+" of " +
+arr.length;
+
+question.textContent =
+item.q;
+
+scoreline.textContent =
+"Score: " +
+score +
+" / " +
+arr.length;
+
+feedback.style.display =
+"none";
+
+feedback.textContent = "";
+
+nextBtn.classList.add("hidden");
+
+options.innerHTML = "";
+
+
+item.options.forEach(
+(opt, i) => {
+
+const button =
+document.createElement("button");
+
+button.className =
+"option";
+
+button.textContent =
+opt;
+
+button.addEventListener(
+"click",
+() => answer(i,button)
+);
+
+options.appendChild(button);
+
+});
+
+}
+
+
+function answer(choice,button){
+
+if(locked)
+return;
+
+locked = true;
+
+const item =
+questions()[index];
+
+
+[...options.children]
+.forEach(
+(btn,i) => {
+
+btn.disabled = true;
+
+if(i === item.answer){
+
+btn.classList.add("correct");
+
+}
+
+});
+
+
+if(choice === item.answer){
+
+score++;
+
+button.classList.add(
+"correct"
+);
+
+feedback.textContent =
+"✅ Correct. " +
+item.explanation;
+
+}
+
+else{
+
+button.classList.add(
+"wrong"
+);
+
+feedback.textContent =
+"❌ Not quite. " +
+item.explanation;
+
+}
+
+
+feedback.style.display =
+"block";
+
+
+scoreline.textContent =
+"Score: " +
+score +
+" / " +
+questions().length;
+
+
+if(
+index ===
+questions().length - 1
+){
+
+nextBtn.textContent =
+"See Result";
+
+}
+
+else{
+
+nextBtn.textContent =
+"Next Question";
+
+}
+
+nextBtn.classList.remove(
+"hidden"
+);
+
+}
+
+
+function finish(){
+
+bar.style.width =
+"100%";
+
+options.innerHTML = "";
+
+qcount.textContent = "";
+
+question.textContent =
+levelText() +
+" complete — " +
+score +
+" / " +
+questions().length;
+
+feedback.style.display =
+"block";
+
+nextBtn.classList.add(
+"hidden"
+);
+
+
+/* ENTRY QUIZ */
+
+if(mode === "entry"){
+
+if(
+score ===
+questions().length
+){
+
+saveAchievement(
+"perfectEntry"
+);
+
+saveAchievement(
+"uniUnlocked"
+);
+
+feedback.textContent =
+"🏆 Perfect 10/10! The University-Level Geography Quiz is now unlocked.";
+
+universityBtn.classList.remove(
+"hidden"
+);
+
+}
+
+else{
+
+feedback.textContent =
+"📘 Complete the easier Practice Quiz, then retry the Entry Quiz. Score 10/10 to unlock University Level.";
+
+practiceBtn.classList.remove(
+"hidden"
+);
+
+retryBtn.classList.remove(
+"hidden"
+);
+
+}
+
+}
+
+
+/* PRACTICE QUIZ */
+
+else if(mode === "practice"){
+
+saveAchievement(
+"practice"
+);
+
+feedback.textContent =
+"📘 Practice complete. Review the explanations, then retry the Entry Quiz and aim for 10/10.";
+
+retryBtn.classList.remove(
+"hidden"
+);
+
+}
+
+
+/* UNIVERSITY QUIZ */
+
+else{
+
+if(score >= 7){
+
+saveAchievement(
+"uniScholar"
+);
+
+}
+
+if(
+score ===
+questions().length
+){
+
+saveAchievement(
+"uniMaster"
+);
+
+}
+
+
+if(score === 10){
+
+feedback.textContent =
+"🏅 Outstanding — 10/10 at University Level! You have earned University Master.";
+
+}
+
+else if(score >= 7){
+
+feedback.textContent =
+"🎓 University Scholar achieved! Strong undergraduate-level Geography performance.";
+
+}
+
+else{
+
+feedback.textContent =
+"🎓 University-Level Geography Quiz complete. Review the explanations and try again to reach 7/10 or above.";
+
+}
+
+
+universityBtn.textContent =
+"Retry University-Level Quiz";
+
+universityBtn.classList.remove(
+"hidden"
+);
+
+}
+
+}
+
+
+nextBtn.addEventListener(
+"click",
+() => {
+
+index++;
+
+if(
+index >=
+questions().length
+){
+
+finish();
+
+}
+
+else{
+
+renderQuestion();
+
+}
+
+});
+
+
+startBtn.addEventListener(
+"click",
+() => begin("entry")
+);
+
+
+practiceBtn.addEventListener(
+"click",
+() => begin("practice")
+);
+
+
+retryBtn.addEventListener(
+"click",
+() => begin("entry")
+);
+
+
+universityBtn.addEventListener(
+"click",
+() => begin("university")
+);
+
+
+renderAchievements();
+
+</script>
+
+</body>
+</html>

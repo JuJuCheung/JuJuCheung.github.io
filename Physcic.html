@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Physics Learning Website</title>
+
+<style>
+:root{
+  --ink:#1f2937;
+  --muted:#64748b;
+  --navy:#0f2747;
+  --navy2:#173a65;
+  --paper:#f5f7fb;
+  --card:#ffffff;
+  --line:#dbe3ee;
+  --gold:#f5c451;
+  --green:#1f8f62;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.65;
+}
+
+.hero{
+  background:linear-gradient(135deg,var(--navy),var(--navy2));
+  color:white;
+  padding:72px 22px 60px;
+  text-align:center;
+}
+
+.hero h1{
+  margin:0;
+  font-size:clamp(2.3rem,6vw,4.6rem);
+}
+
+.hero p{
+  margin:10px auto 0;
+  max-width:900px;
+  font-size:1.08rem;
+  opacity:.94;
+}
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:5;
+  background:white;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  padding:10px;
+}
+
+nav a{
+  color:var(--navy);
+  text-decoration:none;
+  font-weight:700;
+  padding:8px 12px;
+  border-radius:999px;
+}
+
+nav a:hover{
+  background:#edf2f8;
+}
+
+main{
+  max-width:1080px;
+  margin:auto;
+  padding:28px 18px 70px;
+}
+
+section{
+  scroll-margin-top:80px;
+  margin:26px 0 46px;
+}
+
+h2{
+  color:var(--navy);
+  font-size:2rem;
+  margin-bottom:14px;
+}
+
+h3{
+  color:var(--navy);
+  margin-top:0;
+}
+
+.lead{
+  font-size:1.08rem;
+  background:white;
+  border-left:5px solid var(--gold);
+  padding:20px 22px;
+  border-radius:12px;
+  box-shadow:0 8px 25px rgba(15,39,71,.06);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:16px;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:0 8px 22px rgba(15,39,71,.06);
+}
+
+.card .emoji{
+  font-size:1.9rem;
+}
+
+.quote{
+  background:var(--navy);
+  color:white;
+  padding:22px;
+  border-radius:16px;
+  font-size:1.08rem;
+  font-style:italic;
+}
+
+.quizbox{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:24px;
+  box-shadow:0 10px 30px rgba(15,39,71,.09);
+}
+
+.quizhead{
+  text-align:center;
+}
+
+.rules{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin:16px 0;
+}
+
+.rule{
+  background:#eef4fa;
+  border-radius:12px;
+  padding:10px 13px;
+  font-weight:700;
+}
+
+button{
+  cursor:pointer;
+  border:0;
+  border-radius:11px;
+  padding:11px 16px;
+  font-weight:800;
+  font-size:1rem;
+}
+
+.primary{
+  background:var(--navy);
+  color:white;
+}
+
+.primary:hover{
+  background:var(--navy2);
+}
+
+.secondary{
+  background:#e8eef6;
+  color:var(--navy);
+}
+
+.secondary:hover{
+  background:#dce6f2;
+}
+
+.quizarea{
+  margin-top:20px;
+}
+
+.level{
+  display:inline-block;
+  background:var(--gold);
+  color:#4d3900;
+  font-weight:900;
+  padding:5px 10px;
+  border-radius:999px;
+  font-size:.8rem;
+  letter-spacing:.5px;
+}
+
+.question{
+  font-size:1.2rem;
+  font-weight:800;
+  margin:15px 0;
+}
+
+.options{
+  display:grid;
+  gap:10px;
+}
+
+.option{
+  background:#f4f7fb;
+  border:2px solid transparent;
+  text-align:left;
+  color:var(--ink);
+}
+
+.option:hover{
+  border-color:#9eb4cf;
+}
+
+.option.correct{
+  background:#e7f7ef;
+  border-color:#55a97f;
+}
+
+.option.wrong{
+  background:#fdecec;
+  border-color:#dd7777;
+}
+
+.feedback{
+  margin:14px 0 0;
+  padding:12px 14px;
+  border-radius:10px;
+  background:#f7f9fc;
+  display:none;
+}
+
+.progress{
+  height:9px;
+  background:#e5eaf1;
+  border-radius:99px;
+  overflow:hidden;
+  margin:14px 0;
+}
+
+.bar{
+  height:100%;
+  width:0;
+  background:var(--navy);
+}
+
+.scoreline{
+  font-weight:800;
+  margin-top:12px;
+}
+
+.achievements{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:12px;
+}
+
+.badge{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:17px;
+  text-align:center;
+  opacity:.38;
+  filter:grayscale(1);
+  transition:.2s;
+}
+
+.badge.unlocked{
+  opacity:1;
+  filter:none;
+  box-shadow:0 8px 20px rgba(15,39,71,.08);
+}
+
+.badge .medal{
+  font-size:2.1rem;
+}
+
+.badge strong{
+  display:block;
+  color:var(--navy);
+}
+
+.small{
+  font-size:.9rem;
+  color:var(--muted);
+}
+
+.hidden{
+  display:none !important;
+}
+
+footer{
+  text-align:center;
+  background:var(--navy);
+  color:white;
+  padding:24px;
+}
+
+@media(max-width:600px){
+
+  .hero{
+    padding:50px 16px 42px;
+  }
+
+  .hero h1{
+    font-size:2.35rem;
+  }
+
+  .quizbox{
+    padding:17px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+
+<h1>⚛️ Physics</h1>
+
+<p>
+Energy • Electricity • Particle Model • Atomic Structure •
+Forces • Waves • Magnetism • Space
+</p>
+
+</header>
+
+
+<nav>
+
+<a href="#about">About</a>
+<a href="#topics">Topics</a>
+<a href="#revision">Revision</a>
+<a href="#skills">Exam Skills</a>
+<a href="#achievements">Achievements</a>
+<a href="#quiz">Quiz</a>
+
+</nav>
+
+
+<main>
+
+
+<section id="about">
+
+<h2>Physics</h2>
+
+<div class="lead">
+
+Physics builds models of matter, energy, motion and fields.
+Strong Physics answers combine equations, units, diagrams,
+experimental evidence and clear physical reasoning.
+
+</div>
+
+</section>
+
+
+<section id="topics">
+
+<h2>Key Topics</h2>
+
+<div class="grid">
+
+
+<div class="card">
+
+<div class="emoji">⚡</div>
+
+<h3>Energy & Electricity</h3>
+
+<p>
+Energy stores, energy transfer, power,
+circuits, resistance and electrical safety.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">🌡️</div>
+
+<h3>Particle Model</h3>
+
+<p>
+Density, internal energy, changes of state
+and gas pressure.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">☢️</div>
+
+<h3>Atomic Physics</h3>
+
+<p>
+Atomic structure, radiation, half-life,
+fission and fusion.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">🚗</div>
+
+<h3>Forces</h3>
+
+<p>
+Motion, acceleration, Newton's laws,
+momentum and pressure.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">🌊</div>
+
+<h3>Waves</h3>
+
+<p>
+Wave properties, electromagnetic waves,
+reflection, refraction and sound.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">🧲</div>
+
+<h3>Magnetism & Space</h3>
+
+<p>
+Magnetic fields, motors, generators,
+transformers and astrophysics.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section id="revision">
+
+<h2>Revision Guide</h2>
+
+<div class="grid">
+
+
+<div class="card">
+
+<h3>Equations</h3>
+
+<p>
+Learn the meaning of each quantity and its unit,
+then practise rearranging equations.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Graphs</h3>
+
+<p>
+Interpret gradients and areas physically,
+not just mathematically.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Forces</h3>
+
+<p>
+Draw free-body diagrams and identify
+resultant forces clearly.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Waves</h3>
+
+<p>
+Keep wave speed, frequency,
+wavelength and amplitude separate.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Electricity</h3>
+
+<p>
+Distinguish series and parallel rules
+and link current, voltage, resistance and power.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Experiments</h3>
+
+<p>
+Know methods, measurements, uncertainty,
+control variables and improvements.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section id="skills">
+
+<h2>Exam Skills</h2>
+
+<div class="grid">
+
+
+<div class="card">
+
+<div class="emoji">📐</div>
+
+<h3>Mathematical Physics</h3>
+
+<p>
+Show substitutions clearly,
+use SI units and convert units carefully.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">📈</div>
+
+<h3>Graphs</h3>
+
+<p>
+Use gradients and areas with the correct
+physical meaning.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="emoji">🧪</div>
+
+<h3>Practical Reasoning</h3>
+
+<p>
+Explain measurement choices,
+uncertainty and control variables.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<div class="quote">
+
+“Strong Physics answers connect equations to physical meaning,
+experimental evidence and clear reasoning.”
+
+</div>
+
+
+<section id="achievements">
+
+<h2>🏆 Achievements</h2>
+
+<p class="small">
+Achievements are saved on this device.
+</p>
+
+
+<div class="achievements">
+
+
+<div class="badge" data-badge="starter">
+
+<div class="medal">🚀</div>
+
+<strong>First Steps</strong>
+
+<span class="small">
+Start the Entry Quiz
+</span>
+
+</div>
+
+
+<div class="badge" data-badge="practice">
+
+<div class="medal">📘</div>
+
+<strong>Practice Pro</strong>
+
+<span class="small">
+Complete the Practice Quiz
+</span>
+
+</div>
+
+
+<div class="badge" data-badge="perfectEntry">
+
+<div class="medal">💯</div>
+
+<strong>Perfect Entry</strong>
+
+<span class="small">
+Score 10/10 on Entry
+</span>
+
+</div>
+
+
+<div class="badge" data-badge="uniUnlocked">
+
+<div class="medal">🔓</div>
+
+<strong>University Unlocked</strong>
+
+<span class="small">
+Unlock University Level
+</span>
+
+</div>
+
+
+<div class="badge" data-badge="uniScholar">
+
+<div class="medal">🎓</div>
+
+<strong>University Scholar</strong>
+
+<span class="small">
+Score 7+/10 at University Level
+</span>
+
+</div>
+
+
+<div class="badge" data-badge="uniMaster">
+
+<div class="medal">🏅</div>
+
+<strong>University Master</strong>
+
+<span class="small">
+Score 10/10 at University Level
+</span>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section id="quiz">
+
+
+<div class="quizbox">
+
+
+<div class="quizhead">
+
+<h2>⚛️ Physics Adaptive Quiz</h2>
+
+<p>
+Start with the 10-question Entry Quiz.
+</p>
+
+
+<div class="rules">
+
+
+<div class="rule">
+
+🏆 10 / 10 → University-Level Quiz unlocks
+
+</div>
+
+
+<div class="rule">
+
+📘 Below 10 / 10 → Practice Quiz first
+
+</div>
+
+
+<div class="rule">
+
+🎓 University Quiz uses undergraduate Physics
+
+</div>
+
+
+</div>
+
+
+<button class="primary" id="startBtn">
+
+Start Physics Quiz
+
+</button>
+
+
+</div>
+
+
+<div id="quizArea" class="quizarea hidden">
+
+
+<span class="level" id="levelLabel">
+
+ENTRY LEVEL
+
+</span>
+
+
+<div class="progress">
+
+<div class="bar" id="bar"></div>
+
+</div>
+
+
+<div class="small" id="qcount"></div>
+
+
+<div class="question" id="question"></div>
+
+
+<div class="options" id="options"></div>
+
+
+<div class="feedback" id="feedback"></div>
+
+
+<div class="scoreline" id="scoreline">
+
+Score: 0 / 10
+
+</div>
+
+
+<div style="margin-top:15px;display:flex;gap:10px;flex-wrap:wrap">
+
+
+<button class="primary hidden" id="nextBtn">
+
+Next Question
+
+</button>
+
+
+<button class="secondary hidden" id="practiceBtn">
+
+Start Practice Quiz
+
+</button>
+
+
+<button class="secondary hidden" id="retryBtn">
+
+Retry Entry Quiz
+
+</button>
+
+
+<button class="primary hidden" id="universityBtn">
+
+🎓 Start University-Level Quiz
+
+</button>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+© 2026 Physics | Learning Website
+
+</footer>
+
+
+<script>
+
+const DATA = {
+
+
+entry:[
+
+
+{
+q:"What is the SI unit of force?",
+options:[
+"Joule",
+"Newton",
+"Watt",
+"Pascal"
+],
+answer:1,
+explanation:
+"Force is measured in newtons, symbol N."
+},
+
+
+{
+q:"Which equation links speed, distance and time?",
+options:[
+"speed = distance ÷ time",
+"speed = time ÷ distance",
+"speed = distance × time",
+"speed = mass ÷ time"
+],
+answer:0,
+explanation:
+"Average speed equals distance travelled divided by time taken."
+},
+
+
+{
+q:"What is the unit of electrical current?",
+options:[
+"Volt",
+"Ampere",
+"Ohm",
+"Coulomb"
+],
+answer:1,
+explanation:
+"Electrical current is measured in amperes, or amps."
+},
+
+
+{
+q:"In a series circuit, current is:",
+options:[
+"Different in every component",
+"The same through each component",
+"Always zero",
+"Largest at the battery only"
+],
+answer:1,
+explanation:
+"In a steady series circuit, the same current passes through every component."
+},
+
+
+{
+q:"Which type of nuclear radiation is the most strongly ionising?",
+options:[
+"Alpha",
+"Beta",
+"Gamma",
+"Radio waves"
+],
+answer:0,
+explanation:
+"Alpha particles are strongly ionising because they transfer energy over a short distance."
+},
+
+
+{
+q:"What is density?",
+options:[
+"mass × volume",
+"mass ÷ volume",
+"volume ÷ mass",
+"force ÷ area"
+],
+answer:1,
+explanation:
+"Density is mass per unit volume."
+},
+
+
+{
+q:"What is the approximate speed of light in a vacuum?",
+options:[
+"3 × 10⁸ m/s",
+"3 × 10⁶ m/s",
+"300 m/s",
+"3 × 10³ m/s"
+],
+answer:0,
+explanation:
+"The speed of light in a vacuum is approximately 3.0 × 10⁸ metres per second."
+},
+
+
+{
+q:"Which type of wave can travel through a vacuum?",
+options:[
+"Sound",
+"Water",
+"Electromagnetic",
+"Seismic S-wave"
+],
+answer:2,
+explanation:
+"Electromagnetic waves can travel through a vacuum because they do not require a material medium."
+},
+
+
+{
+q:"What happens to total momentum in an isolated system?",
+options:[
+"It is conserved",
+"It always increases",
+"It becomes zero",
+"It becomes energy"
+],
+answer:0,
+explanation:
+"Total momentum is conserved when there is no resultant external force acting on the system."
+},
+
+
+{
+q:"A transformer works using:",
+options:[
+"Static charge only",
+"Electromagnetic induction",
+"Nuclear decay",
+"Convection"
+],
+answer:1,
+explanation:
+"A changing magnetic field induces a potential difference in the secondary coil."
+}
+
+
+],
+
+
+
+practice:[
+
+
+{
+q:"Power is the rate of transfer of:",
+options:[
+"Charge only",
+"Energy",
+"Mass",
+"Momentum only"
+],
+answer:1,
+explanation:
+"Power is the rate at which energy is transferred or work is done."
+},
+
+
+{
+q:"Potential difference is measured in:",
+options:[
+"Volts",
+"Amps",
+"Ohms",
+"Teslas"
+],
+answer:0,
+explanation:
+"Potential difference is measured in volts."
+},
+
+
+{
+q:"For an ohmic conductor at constant temperature, voltage and current are:",
+options:[
+"Inversely proportional",
+"Directly proportional",
+"Unrelated",
+"Always zero"
+],
+answer:1,
+explanation:
+"For an ohmic conductor, V = IR, so voltage is directly proportional to current when resistance is constant."
+},
+
+
+{
+q:"At constant volume, gas pressure rises when temperature rises because:",
+options:[
+"Particles move faster and collide with the walls more often and with greater force",
+"Particles stop moving",
+"Particles lose mass",
+"Particles become electrically charged"
+],
+answer:0,
+explanation:
+"Higher temperature means greater average kinetic energy, so particles collide with the container walls more often and transfer more momentum."
+},
+
+
+{
+q:"Half-life is the time taken for:",
+options:[
+"All radioactive nuclei to decay",
+"The activity or number of undecayed nuclei to halve",
+"The mass to double",
+"The radiation speed to halve"
+],
+answer:1,
+explanation:
+"Half-life is the time taken for the number of undecayed nuclei or the activity to fall to half its original value."
+},
+
+
+{
+q:"For an object of constant mass, resultant force equals:",
+options:[
+"mass × acceleration",
+"mass ÷ acceleration",
+"energy × time",
+"pressure × density"
+],
+answer:0,
+explanation:
+"Newton's second law is F = ma."
+},
+
+
+{
+q:"The area under a velocity-time graph gives:",
+options:[
+"Acceleration",
+"Displacement",
+"Force",
+"Power"
+],
+answer:1,
+explanation:
+"The area under a velocity-time graph represents displacement."
+},
+
+
+{
+q:"Wave speed is calculated using:",
+options:[
+"frequency ÷ wavelength",
+"frequency × wavelength",
+"amplitude × time",
+"wavelength ÷ amplitude"
+],
+answer:1,
+explanation:
+"The wave equation is v = fλ."
+},
+
+
+{
+q:"Which part of the electromagnetic spectrum has the highest frequency?",
+options:[
+"Radio waves",
+"Microwaves",
+"Visible light",
+"Gamma rays"
+],
+answer:3,
+explanation:
+"Gamma rays have the highest frequencies in the electromagnetic spectrum."
+},
+
+
+{
+q:"In an ideal step-up transformer, voltage increases and current:",
+options:[
+"Increases",
+"Decreases",
+"Stays exactly the same",
+"Becomes direct current"
+],
+answer:1,
+explanation:
+"For an ideal transformer, power is approximately conserved, so increasing voltage causes current to decrease."
+}
+
+
+],
+
+
+
+university:[
+
+
+{
+q:"In special relativity, which quantity is invariant between inertial reference frames?",
+options:[
+"Coordinate time",
+"Spatial distance alone",
+"The spacetime interval",
+"Kinetic energy"
+],
+answer:2,
+explanation:
+"The spacetime interval is invariant under Lorentz transformations."
+},
+
+
+{
+q:"For a simple harmonic oscillator, acceleration is:",
+options:[
+"Proportional to displacement and opposite in direction",
+"Constant",
+"Proportional to velocity",
+"Always zero"
+],
+answer:0,
+explanation:
+"Simple harmonic motion satisfies a = -ω²x, so acceleration is proportional to displacement and directed towards equilibrium."
+},
+
+
+{
+q:"What does Gauss's law relate electric flux through a closed surface to?",
+options:[
+"Magnetic field only",
+"The electric charge enclosed by the surface",
+"Electric potential at one point only",
+"Electrical resistance"
+],
+answer:1,
+explanation:
+"Gauss's law states that total electric flux through a closed surface equals Q enclosed divided by ε₀."
+},
+
+
+{
+q:"In quantum mechanics, what is the usual interpretation of |ψ|²?",
+options:[
+"The exact energy of the particle",
+"Probability density",
+"Electric charge",
+"The classical trajectory"
+],
+answer:1,
+explanation:
+"According to the Born interpretation, |ψ|² gives the probability density of finding the particle."
+},
+
+
+{
+q:"According to Noether's theorem, which symmetry leads to conservation of energy?",
+options:[
+"Spatial translation symmetry",
+"Time translation symmetry",
+"Rotation only",
+"Charge conjugation"
+],
+answer:1,
+explanation:
+"Invariance under translations in time leads to conservation of energy."
+},
+
+
+{
+q:"For a particle moving under a central force, which quantity is conserved?",
+options:[
+"Angular momentum",
+"Speed in every possible central force",
+"Linear position",
+"Radial acceleration"
+],
+answer:0,
+explanation:
+"A central force produces zero torque about the centre, so angular momentum is conserved."
+},
+
+
+{
+q:"What is the physical meaning of the divergence of a vector field?",
+options:[
+"Local source or sink strength",
+"Rotation only",
+"Total energy",
+"Wavelength"
+],
+answer:0,
+explanation:
+"Divergence measures the local net outward flux of a vector field from a small region."
+},
+
+
+{
+q:"For a reversible thermodynamic process, entropy change satisfies:",
+options:[
+"dS = δQrev / T",
+"dS = TδQrev",
+"dS = δW / P",
+"dS = mcΔT in every situation"
+],
+answer:0,
+explanation:
+"For a reversible process, the thermodynamic definition is dS = δQrev/T."
+},
+
+
+{
+q:"Which equation governs the time evolution of a non-relativistic quantum state?",
+options:[
+"Maxwell's equations",
+"The Schrödinger equation",
+"The Navier-Stokes equation",
+"Poisson's ratio"
+],
+answer:1,
+explanation:
+"The time-dependent Schrödinger equation describes how a non-relativistic quantum state evolves with time."
+},
+
+
+{
+q:"Why is group velocity important when studying wave packets?",
+options:[
+"It is commonly associated with the speed at which the wave-packet envelope propagates",
+"It is always equal to the speed of light for every wave",
+"It is equal to amplitude",
+"It measures electric charge"
+],
+answer:0,
+explanation:
+"Group velocity describes the propagation speed of the envelope of a wave packet and is often associated with energy or information transport in suitable media."
+}
+
+
+]
+
+
+};
+
+
+const KEY = "achievements-physics";
+
+let achievements =
+JSON.parse(localStorage.getItem(KEY) || "{}");
+
+let mode = "entry";
+let index = 0;
+let score = 0;
+let locked = false;
+
+
+const startBtn =
+document.getElementById("startBtn");
+
+const quizArea =
+document.getElementById("quizArea");
+
+const levelLabel =
+document.getElementById("levelLabel");
+
+const bar =
+document.getElementById("bar");
+
+const qcount =
+document.getElementById("qcount");
+
+const question =
+document.getElementById("question");
+
+const options =
+document.getElementById("options");
+
+const feedback =
+document.getElementById("feedback");
+
+const scoreline =
+document.getElementById("scoreline");
+
+const nextBtn =
+document.getElementById("nextBtn");
+
+const practiceBtn =
+document.getElementById("practiceBtn");
+
+const retryBtn =
+document.getElementById("retryBtn");
+
+const universityBtn =
+document.getElementById("universityBtn");
+
+
+function saveAchievement(key){
+
+achievements[key] = true;
+
+localStorage.setItem(
+KEY,
+JSON.stringify(achievements)
+);
+
+renderAchievements();
+
+}
+
+
+function renderAchievements(){
+
+document
+.querySelectorAll(".badge")
+.forEach(badge => {
+
+badge.classList.toggle(
+"unlocked",
+!!achievements[badge.dataset.badge]
+);
+
+});
+
+}
+
+
+function questions(){
+
+return DATA[mode];
+
+}
+
+
+function levelText(){
+
+if(mode === "entry")
+return "ENTRY LEVEL";
+
+if(mode === "practice")
+return "PRACTICE LEVEL";
+
+return "UNIVERSITY LEVEL";
+
+}
+
+
+function begin(newMode){
+
+mode = newMode;
+
+index = 0;
+score = 0;
+locked = false;
+
+quizArea.classList.remove("hidden");
+
+startBtn.classList.add("hidden");
+
+practiceBtn.classList.add("hidden");
+
+retryBtn.classList.add("hidden");
+
+universityBtn.classList.add("hidden");
+
+nextBtn.classList.add("hidden");
+
+feedback.style.display = "none";
+
+if(mode === "entry"){
+
+saveAchievement("starter");
+
+}
+
+renderQuestion();
+
+quizArea.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+}
+
+
+function renderQuestion(){
+
+const arr = questions();
+
+const item = arr[index];
+
+locked = false;
+
+levelLabel.textContent =
+levelText();
+
+bar.style.width =
+(index / arr.length * 100) + "%";
+
+qcount.textContent =
+"Question " +
+(index + 1) +
+" of " +
+arr.length;
+
+question.textContent =
+item.q;
+
+scoreline.textContent =
+"Score: " +
+score +
+" / " +
+arr.length;
+
+feedback.style.display =
+"none";
+
+feedback.textContent = "";
+
+nextBtn.classList.add("hidden");
+
+options.innerHTML = "";
+
+
+item.options.forEach(
+(opt, i) => {
+
+const button =
+document.createElement("button");
+
+button.className =
+"option";
+
+button.textContent =
+opt;
+
+button.addEventListener(
+"click",
+() => answer(i,button)
+);
+
+options.appendChild(button);
+
+});
+
+}
+
+
+function answer(choice,button){
+
+if(locked)
+return;
+
+locked = true;
+
+const item =
+questions()[index];
+
+
+[...options.children]
+.forEach(
+(btn,i) => {
+
+btn.disabled = true;
+
+if(i === item.answer){
+
+btn.classList.add("correct");
+
+}
+
+});
+
+
+if(choice === item.answer){
+
+score++;
+
+button.classList.add(
+"correct"
+);
+
+feedback.textContent =
+"✅ Correct. " +
+item.explanation;
+
+}
+
+else{
+
+button.classList.add(
+"wrong"
+);
+
+feedback.textContent =
+"❌ Not quite. " +
+item.explanation;
+
+}
+
+
+feedback.style.display =
+"block";
+
+
+scoreline.textContent =
+"Score: " +
+score +
+" / " +
+questions().length;
+
+
+if(
+index ===
+questions().length - 1
+){
+
+nextBtn.textContent =
+"See Result";
+
+}
+
+else{
+
+nextBtn.textContent =
+"Next Question";
+
+}
+
+nextBtn.classList.remove(
+"hidden"
+);
+
+}
+
+
+function finish(){
+
+bar.style.width =
+"100%";
+
+options.innerHTML = "";
+
+qcount.textContent = "";
+
+question.textContent =
+levelText() +
+" complete — " +
+score +
+" / " +
+questions().length;
+
+feedback.style.display =
+"block";
+
+nextBtn.classList.add(
+"hidden"
+);
+
+
+/* ENTRY QUIZ */
+
+if(mode === "entry"){
+
+if(
+score ===
+questions().length
+){
+
+saveAchievement(
+"perfectEntry"
+);
+
+saveAchievement(
+"uniUnlocked"
+);
+
+feedback.textContent =
+"🏆 Perfect 10/10! The University-Level Physics Quiz is now unlocked.";
+
+universityBtn.classList.remove(
+"hidden"
+);
+
+}
+
+else{
+
+feedback.textContent =
+"📘 Complete the easier Practice Quiz, then retry the Entry Quiz. Score 10/10 to unlock University Level.";
+
+practiceBtn.classList.remove(
+"hidden"
+);
+
+retryBtn.classList.remove(
+"hidden"
+);
+
+}
+
+}
+
+
+/* PRACTICE QUIZ */
+
+else if(mode === "practice"){
+
+saveAchievement(
+"practice"
+);
+
+feedback.textContent =
+"📘 Practice complete. Review the explanations, then retry the Entry Quiz and aim for 10/10.";
+
+retryBtn.classList.remove(
+"hidden"
+);
+
+}
+
+
+/* UNIVERSITY QUIZ */
+
+else{
+
+if(score >= 7){
+
+saveAchievement(
+"uniScholar"
+);
+
+}
+
+if(
+score ===
+questions().length
+){
+
+saveAchievement(
+"uniMaster"
+);
+
+}
+
+
+if(score === 10){
+
+feedback.textContent =
+"🏅 Outstanding — 10/10 at University Level! You have earned University Master.";
+
+}
+
+else if(score >= 7){
+
+feedback.textContent =
+"🎓 University Scholar achieved! Strong undergraduate-level Physics performance.";
+
+}
+
+else{
+
+feedback.textContent =
+"🎓 University-Level Physics Quiz complete. Review the explanations and try again to reach 7/10 or above.";
+
+}
+
+
+universityBtn.textContent =
+"Retry University-Level Quiz";
+
+universityBtn.classList.remove(
+"hidden"
+);
+
+}
+
+}
+
+
+nextBtn.addEventListener(
+"click",
+() => {
+
+index++;
+
+if(
+index >=
+questions().length
+){
+
+finish();
+
+}
+
+else{
+
+renderQuestion();
+
+}
+
+});
+
+
+startBtn.addEventListener(
+"click",
+() => begin("entry")
+);
+
+
+practiceBtn.addEventListener(
+"click",
+() => begin("practice")
+);
+
+
+retryBtn.addEventListener(
+"click",
+() => begin("entry")
+);
+
+
+universityBtn.addEventListener(
+"click",
+() => begin("university")
+);
+
+
+renderAchievements();
+
+</script>
+
+</body>
+</html>
