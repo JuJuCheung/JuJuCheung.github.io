@@ -1,220 +1,508 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Master Subjects Hub</title>
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial,sans-serif;
-    }
+<meta charset="UTF-8" />
 
-    body{
-      background:linear-gradient(135deg,#eef3f8,#dfe8f2);
-      color:#222;
-      line-height:1.6;
-    }
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0" />
 
-    header{
-      background:
-      linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
-      url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1400&q=80")
-      center/cover no-repeat;
-      color:white;
-      text-align:center;
-      padding:90px 20px;
-    }
+<title>Master Subjects Hub</title>
 
-    header h1{
-      font-size:3rem;
-      margin-bottom:10px;
-    }
 
-    header p{
-      font-size:1.15rem;
-    }
+<style>
 
-    nav{
-      background:#111;
-      text-align:center;
-      padding:15px;
-      position:sticky;
-      top:0;
-      z-index:999;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
 
-    nav a{
-      color:white;
-      text-decoration:none;
-      margin:0 15px;
-      font-weight:bold;
-      transition:.3s;
-    }
 
-    nav a:hover{
-      color:#ffd54f;
-    }
+body{
 
-    .container{
-      width:90%;
-      max-width:1150px;
-      margin:40px auto;
-    }
+background:
+linear-gradient(
+135deg,
+#eef3f8,
+#dfe8f2
+);
 
-    .intro{
-      background:white;
-      padding:30px;
-      border-radius:18px;
-      box-shadow:0 8px 20px rgba(0,0,0,.08);
-      margin-bottom:30px;
-      text-align:center;
-    }
+color:#222;
 
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:25px;
-    }
+line-height:1.6;
 
-    .card{
-      background:white;
-      border-radius:18px;
-      overflow:hidden;
-      box-shadow:0 8px 20px rgba(0,0,0,.08);
-      transition:.3s;
-    }
+}
 
-    .card:hover{
-      transform:translateY(-8px);
-      box-shadow:0 15px 30px rgba(0,0,0,.15);
-    }
 
-    .card-image{
-      height:200px;
-      background-size:cover;
-      background-position:center;
-    }
+/* HEADER */
 
-    .card-content{
-      padding:22px;
-    }
+header{
 
-    .card-content h2{
-      margin-bottom:10px;
-      color:#111;
-    }
+background:
 
-    .card-content p{
-      margin-bottom:18px;
-    }
+linear-gradient(
+rgba(0,0,0,.6),
+rgba(0,0,0,.6)
+),
 
-    .btn{
-      display:inline-block;
-      background:#111;
-      color:white;
-      text-decoration:none;
-      padding:12px 18px;
-      border-radius:10px;
-      font-weight:bold;
-      transition:.3s;
-    }
+url(
+"https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1400&q=80"
+)
 
-    .btn:hover{
-      background:#ffd54f;
-      color:#111;
-    }
+center/cover no-repeat;
 
-    footer{
-      background:#111;
-      color:white;
-      text-align:center;
-      padding:18px;
-      margin-top:40px;
-    }
+color:white;
 
-    @media(max-width:768px){
+text-align:center;
 
-      header h1{
-        font-size:2.2rem;
-      }
+padding:90px 20px;
 
-      header p{
-        font-size:1rem;
-      }
+}
 
-      nav a{
-        display:inline-block;
-        margin:8px 10px;
-      }
 
-    }
+header h1{
 
-  </style>
+font-size:3rem;
+
+margin-bottom:10px;
+
+}
+
+
+header p{
+
+font-size:1.15rem;
+
+}
+
+
+/* NAVIGATION */
+
+nav{
+
+background:#111;
+
+text-align:center;
+
+padding:15px;
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+}
+
+
+nav a{
+
+color:white;
+
+text-decoration:none;
+
+margin:0 10px;
+
+font-weight:bold;
+
+transition:.3s;
+
+display:inline-block;
+
+}
+
+
+nav a:hover{
+
+color:#ffd54f;
+
+}
+
+
+/* MAIN */
+
+.container{
+
+width:90%;
+
+max-width:1200px;
+
+margin:40px auto;
+
+}
+
+
+/* INTRO */
+
+.intro{
+
+background:white;
+
+padding:30px;
+
+border-radius:18px;
+
+box-shadow:
+0 8px 20px
+rgba(0,0,0,.08);
+
+margin-bottom:30px;
+
+text-align:center;
+
+}
+
+
+.intro h2{
+
+margin-bottom:10px;
+
+}
+
+
+/* GRID */
+
+.grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(
+auto-fit,
+minmax(280px,1fr)
+);
+
+gap:25px;
+
+}
+
+
+/* CARDS */
+
+.card{
+
+background:white;
+
+border-radius:18px;
+
+overflow:hidden;
+
+box-shadow:
+0 8px 20px
+rgba(0,0,0,.08);
+
+transition:.3s;
+
+}
+
+
+.card:hover{
+
+transform:
+translateY(-8px);
+
+box-shadow:
+0 15px 30px
+rgba(0,0,0,.15);
+
+}
+
+
+.card-image{
+
+height:200px;
+
+background-size:cover;
+
+background-position:center;
+
+}
+
+
+.card-content{
+
+padding:22px;
+
+}
+
+
+.card-content h2{
+
+margin-bottom:10px;
+
+color:#111;
+
+}
+
+
+.card-content p{
+
+margin-bottom:18px;
+
+}
+
+
+/* BUTTON */
+
+.btn{
+
+display:inline-block;
+
+background:#111;
+
+color:white;
+
+text-decoration:none;
+
+padding:12px 18px;
+
+border-radius:10px;
+
+font-weight:bold;
+
+transition:.3s;
+
+}
+
+
+.btn:hover{
+
+background:#ffd54f;
+
+color:#111;
+
+}
+
+
+/* SECTION TITLE */
+
+.section-title{
+
+grid-column:1 / -1;
+
+margin-top:15px;
+
+margin-bottom:-5px;
+
+padding:12px 5px;
+
+font-size:1.7rem;
+
+color:#111;
+
+border-bottom:
+3px solid #ffd54f;
+
+}
+
+
+/* FOOTER */
+
+footer{
+
+background:#111;
+
+color:white;
+
+text-align:center;
+
+padding:18px;
+
+margin-top:40px;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+header h1{
+
+font-size:2.2rem;
+
+}
+
+
+header p{
+
+font-size:1rem;
+
+}
+
+
+nav a{
+
+margin:8px 8px;
+
+}
+
+}
+
+</style>
 
 </head>
+
+
+
 <body>
+
+
+<!-- HEADER -->
 
 <header>
 
-<h1>Master Subjects Hub</h1>
+<h1>
+Master Subjects Hub
+</h1>
 
-<p>Click a subject below to open its own page.</p>
+<p>
+Click a subject below to open its own learning page.
+</p>
 
 </header>
 
+
+
+<!-- NAVIGATION -->
+
 <nav>
 
-<a href="./DT.html">DT</a>
+<a href="./DT.html">
+DT
+</a>
 
-<a href="./A2B.html">A2B</a>
+<a href="./A2B.html">
+A2B
+</a>
 
-<a href="./History.html">History</a>
+<a href="./History.html">
+History
+</a>
 
-<a href="./Engineering.html">Engineering</a>
+<a href="./Engineering.html">
+Engineering
+</a>
 
-<a href="./ICT.html">ICT</a>
+<a href="./ICT.html">
+ICT
+</a>
 
-<a href="./Maths.html">Maths</a>
+<a href="./Maths.html">
+Maths
+</a>
 
-<a href="./ClassChartsPro.html">ClassCharts Pro</a>
+<a href="./Biology.html">
+Biology
+</a>
+
+<a href="./Chemistry.html">
+Chemistry
+</a>
+
+<a href="./Physics.html">
+Physics
+</a>
+
+<a href="./Geography.html">
+Geography
+</a>
+
+<a href="./EnglishLiterature.html">
+English Lit
+</a>
+
+<a href="./EnglishLanguage.html">
+English Language
+</a>
+
+<a href="./ClassChartsPro.html">
+ClassCharts Pro
+</a>
 
 </nav>
 
+
+
 <div class="container">
+
+
+<!-- INTRO -->
 
 <section class="intro">
 
-<h2>Welcome</h2>
+<h2>
+Welcome
+</h2>
 
 <p>
+
 This is the main page for all your subjects.
-Click a button below to open each website page.
+
+Choose a subject below to open its revision,
+learning and quiz page.
+
 </p>
 
 </section>
+
+
 
 <section class="grid">
 
+
+<!-- CURRENT SUBJECTS -->
+
+
+<h2 class="section-title">
+
+📚 Subjects
+
+</h2>
+
+
+
+<!-- DT -->
+
 <div class="card">
 
-<div class="card-image"
-style="background-image:url('https://images.unsplash.com/photo-1519947486511-46149fa0a254?auto=format&fit=crop&w=1200&q=80');">
+
+<div
+class="card-image"
+
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1519947486511-46149fa0a254?auto=format&fit=crop&w=1200&q=80'
+);
+">
+
 </div>
+
 
 <div class="card-content">
 
-<h2>DT</h2>
+<h2>
+🛠️ DT
+</h2>
 
 <p>
-Philippe Starck and Design Technology work.
+
+Design Technology,
+product design and project work.
+
 </p>
 
-<a class="btn" href="./DT.html">
+
+<a
+class="btn"
+href="./DT.html">
+
 Open DT Page
+
 </a>
 
 </div>
@@ -222,22 +510,45 @@ Open DT Page
 </div>
 
 
+
+<!-- A2B -->
+
 <div class="card">
 
-<div class="card-image"
-style="background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=80');">
+
+<div
+class="card-image"
+
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=80'
+);
+">
+
 </div>
+
 
 <div class="card-content">
 
-<h2>A2B</h2>
+<h2>
+💻 A2B
+</h2>
 
 <p>
-Online safety, digital skills and responsible use of technology.
+
+Online safety,
+digital skills and responsible use of technology.
+
 </p>
 
-<a class="btn" href="./A2B.html">
+
+<a
+class="btn"
+href="./A2B.html">
+
 Open A2B Page
+
 </a>
 
 </div>
@@ -245,22 +556,45 @@ Open A2B Page
 </div>
 
 
+
+<!-- HISTORY -->
+
 <div class="card">
 
-<div class="card-image"
-style="background-image:url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1400&q=80');">
+
+<div
+class="card-image"
+
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1400&q=80'
+);
+">
+
 </div>
+
 
 <div class="card-content">
 
-<h2>History</h2>
+<h2>
+🏛️ History
+</h2>
 
 <p>
-Life of soldiers and historical learning page.
+
+Historical topics,
+revision and adaptive quizzes.
+
 </p>
 
-<a class="btn" href="./History.html">
+
+<a
+class="btn"
+href="./History.html">
+
 Open History Page
+
 </a>
 
 </div>
@@ -268,22 +602,45 @@ Open History Page
 </div>
 
 
+
+<!-- ENGINEERING -->
+
 <div class="card">
 
-<div class="card-image"
-style="background-image:url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=80');">
+
+<div
+class="card-image"
+
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=80'
+);
+">
+
 </div>
+
 
 <div class="card-content">
 
-<h2>Engineering</h2>
+<h2>
+⚙️ Engineering
+</h2>
 
 <p>
-Engineering subject page.
+
+Engineering concepts,
+design and problem solving.
+
 </p>
 
-<a class="btn" href="./Engineering.html">
+
+<a
+class="btn"
+href="./Engineering.html">
+
 Open Engineering Page
+
 </a>
 
 </div>
@@ -291,22 +648,45 @@ Open Engineering Page
 </div>
 
 
+
+<!-- ICT -->
+
 <div class="card">
 
-<div class="card-image"
-style="background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80');">
+
+<div
+class="card-image"
+
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80'
+);
+">
+
 </div>
+
 
 <div class="card-content">
 
-<h2>ICT</h2>
+<h2>
+🖥️ ICT
+</h2>
 
 <p>
-ICT subject page.
+
+Computing,
+ICT and digital technology.
+
 </p>
 
-<a class="btn" href="./ICT.html">
+
+<a
+class="btn"
+href="./ICT.html">
+
 Open ICT Page
+
 </a>
 
 </div>
@@ -314,25 +694,45 @@ Open ICT Page
 </div>
 
 
-<!-- MATHS CARD -->
+
+<!-- MATHS -->
 
 <div class="card">
 
-<div class="card-image"
-style="background-image:url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1400&q=80');">
+
+<div
+class="card-image"
+
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1400&q=80'
+);
+">
+
 </div>
+
 
 <div class="card-content">
 
-<h2>Maths</h2>
+<h2>
+➗ Maths
+</h2>
 
 <p>
-A-Level and university-level maths with context-based quizzes,
-explanations and achievements.
+
+A-Level and university-level Maths
+with quizzes, explanations and achievements.
+
 </p>
 
-<a class="btn" href="./Maths.html">
+
+<a
+class="btn"
+href="./Maths.html">
+
 Open Maths Page
+
 </a>
 
 </div>
@@ -340,34 +740,398 @@ Open Maths Page
 </div>
 
 
-<!-- CLASSCHARTS PRO CARD -->
+
+<!-- SCIENCE -->
+
+
+<h2 class="section-title">
+
+🔬 Sciences
+
+</h2>
+
+
+
+<!-- BIOLOGY -->
 
 <div class="card">
 
-<div class="card-image"
-style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80');">
+
+<div
+class="card-image"
+
+style="
+background:
+linear-gradient(
+135deg,
+#166534,
+#4ade80
+);
+">
+
 </div>
+
 
 <div class="card-content">
 
-<h2>ClassCharts Pro</h2>
+<h2>
+🧬 Biology
+</h2>
 
 <p>
-Professional behaviour tracking, achievement points, rewards,
-teacher comments and student progress dashboard.
+
+Cells, organisation,
+bioenergetics, homeostasis,
+genetics and ecology.
+
 </p>
 
-<a class="btn" href="./ClassChartsPro.html">
-Open ClassCharts Pro
+
+<a
+class="btn"
+href="./Biology.html">
+
+Open Biology Page
+
 </a>
 
 </div>
 
 </div>
+
+
+
+<!-- CHEMISTRY -->
+
+<div class="card">
+
+
+<div
+class="card-image"
+
+style="
+background:
+linear-gradient(
+135deg,
+#7e22ce,
+#c084fc
+);
+">
+
+</div>
+
+
+<div class="card-content">
+
+<h2>
+⚗️ Chemistry
+</h2>
+
+<p>
+
+Atomic structure,
+bonding, reactions,
+organic chemistry and analysis.
+
+</p>
+
+
+<a
+class="btn"
+href="./Chemistry.html">
+
+Open Chemistry Page
+
+</a>
+
+</div>
+
+</div>
+
+
+
+<!-- PHYSICS -->
+
+<div class="card">
+
+
+<div
+class="card-image"
+
+style="
+background:
+linear-gradient(
+135deg,
+#1d4ed8,
+#60a5fa
+);
+">
+
+</div>
+
+
+<div class="card-content">
+
+<h2>
+⚛️ Physics
+</h2>
+
+<p>
+
+Energy, electricity,
+forces, waves,
+atomic physics and space.
+
+</p>
+
+
+<a
+class="btn"
+href="./Physics.html">
+
+Open Physics Page
+
+</a>
+
+</div>
+
+</div>
+
+
+
+<!-- HUMANITIES -->
+
+
+<h2 class="section-title">
+
+🌍 Humanities
+
+</h2>
+
+
+
+<!-- GEOGRAPHY -->
+
+<div class="card">
+
+
+<div
+class="card-image"
+
+style="
+background:
+linear-gradient(
+135deg,
+#065f46,
+#34d399
+);
+">
+
+</div>
+
+
+<div class="card-content">
+
+<h2>
+🌍 Geography
+</h2>
+
+<p>
+
+Natural hazards,
+ecosystems, coasts,
+rivers, cities and fieldwork.
+
+</p>
+
+
+<a
+class="btn"
+href="./Geography.html">
+
+Open Geography Page
+
+</a>
+
+</div>
+
+</div>
+
+
+
+<!-- ENGLISH -->
+
+
+<h2 class="section-title">
+
+✍️ English
+
+</h2>
+
+
+
+<!-- ENGLISH LITERATURE -->
+
+<div class="card">
+
+
+<div
+class="card-image"
+
+style="
+background:
+linear-gradient(
+135deg,
+#7c2d12,
+#fb923c
+);
+">
+
+</div>
+
+
+<div class="card-content">
+
+<h2>
+📚 English Literature
+</h2>
+
+<p>
+
+Shakespeare,
+novels, modern texts,
+poetry and literary analysis.
+
+</p>
+
+
+<a
+class="btn"
+href="./EnglishLiterature.html">
+
+Open English Literature
+
+</a>
+
+</div>
+
+</div>
+
+
+
+<!-- ENGLISH LANGUAGE -->
+
+<div class="card">
+
+
+<div
+class="card-image"
+
+style="
+background:
+linear-gradient(
+135deg,
+#9f1239,
+#fb7185
+);
+">
+
+</div>
+
+
+<div class="card-content">
+
+<h2>
+✍️ English Language
+</h2>
+
+<p>
+
+Reading,
+language analysis,
+structure, creative writing
+and transactional writing.
+
+</p>
+
+
+<a
+class="btn"
+href="./EnglishLanguage.html">
+
+Open English Language
+
+</a>
+
+</div>
+
+</div>
+
+
+
+<!-- SCHOOL TOOLS -->
+
+
+<h2 class="section-title">
+
+🏆 School Tools
+
+</h2>
+
+
+
+<!-- CLASSCHARTS PRO -->
+
+<div class="card">
+
+
+<div
+class="card-image"
+
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80'
+);
+">
+
+</div>
+
+
+<div class="card-content">
+
+<h2>
+🏆 ClassCharts Pro
+</h2>
+
+<p>
+
+Professional behaviour tracking,
+achievement points, rewards,
+teacher comments and student progress.
+
+</p>
+
+
+<a
+class="btn"
+href="./ClassChartsPro.html">
+
+Open ClassCharts Pro
+
+</a>
+
+</div>
+
+</div>
+
 
 </section>
 
+
 </div>
+
+
 
 <footer>
 
@@ -375,5 +1139,7 @@ Open ClassCharts Pro
 
 </footer>
 
+
 </body>
+
 </html>
