@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>University Maths</title>
-  <meta name="description" content="University-level maths learning website with context-based quizzes." />
+  <title>Engineering Maths</title>
+  <meta name="description" content="Engineering maths learning website with A-Level maths, context-based quizzes, XP and a leaderboard." />
   <style>
     :root{
       --navy:#34433a;
@@ -277,6 +277,57 @@
       color:#111827;
       white-space:normal;
     }
+
+    .player-panel{
+      background:#f8fafc;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:18px;
+      margin:18px 0 22px;
+    }
+    .player-panel h3,.leaderboard h3{margin:0 0 10px;color:var(--navy)}
+    .player-select-row{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .player-select-row label{font-weight:800}
+    #playerSelect{
+      min-width:220px;
+      padding:10px 12px;
+      border:1px solid #cfd9e5;
+      border-radius:9px;
+      background:#fff;
+      font:inherit;
+      color:var(--text);
+    }
+    .player-note{margin:10px 0 0;color:var(--muted);font-size:.94rem}
+    .leaderboard{
+      margin:0 0 24px;
+      border:1px solid #d9b754;
+      background:#fffdf4;
+      border-radius:14px;
+      padding:18px;
+    }
+    .leaderboard-list{display:grid;gap:8px}
+    .leader-row{
+      display:grid;
+      grid-template-columns:48px 1fr auto;
+      align-items:center;
+      gap:10px;
+      background:#fff;
+      border:1px solid #eadfb7;
+      border-radius:10px;
+      padding:10px 12px;
+      font-weight:800;
+    }
+    .leader-rank{font-size:1.05rem;text-align:center}
+    .leader-xp{color:#684b09;white-space:nowrap}
+    .xp-flash{font-weight:900;color:#166534}
+    .score-wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+    #playerXp{font-weight:800;color:#684b09}
+
     @media (max-width:820px){
       .topic-buttons{grid-template-columns:repeat(2,1fr)}
     }
@@ -290,8 +341,8 @@
 <body>
 
 <header>
-  <h1>University Maths</h1>
-  <p>Calculus • Linear Algebra • Probability & Statistics • Number Theory • A-Level Maths</p>
+  <h1>Engineering Maths</h1>
+  <p>Engineering Calculus • Vectors & Mechanics • Matrices & Systems • Differential Equations & Signals • A-Level Maths</p>
 </header>
 
 <nav>
@@ -304,15 +355,15 @@
 
 <main>
   <section id="about" class="intro">
-    <h2>University Maths</h2>
+    <h2>Engineering Maths</h2>
     <p>
-      Explore four major areas of university mathematics. Learn how calculus describes change,
-      how linear algebra works with vectors and matrices, how probability models uncertainty,
-      and how number theory studies the hidden structure of integers.
+      Explore four major areas of engineering mathematics. Learn how calculus models changing systems,
+      how vectors describe forces and motion, how matrices solve engineering systems,
+      and how differential equations and signals model real engineering problems.
     </p>
     <p>
       In the quiz, every question starts with a short <strong>context box</strong>. Read the context first,
-      then use it to solve the university-level problem.
+      then use it to solve the engineering maths problem.
     </p>
   </section>
 
@@ -321,23 +372,23 @@
     <div class="topic-grid">
       <article class="card">
         <span class="topic-icon">∫</span>
-        <h3>Calculus</h3>
-        <p>Study limits, derivatives, integrals, infinite series, multivariable calculus and differential equations.</p>
+        <h3>Engineering Calculus</h3>
+        <p>Use differentiation and integration to solve rate, motion, area, optimisation and changing-system problems.</p>
       </article>
       <article class="card">
         <span class="topic-icon">▦</span>
-        <h3>Linear Algebra</h3>
-        <p>Explore vectors, matrices, determinants, eigenvalues, vector spaces, rank, projections and transformations.</p>
+        <h3>Vectors & Mechanics</h3>
+        <p>Resolve forces, combine vectors, calculate moments, velocity and acceleration, and model mechanical systems.</p>
       </article>
       <article class="card">
         <span class="topic-icon">🎲</span>
-        <h3>Probability & Statistics</h3>
-        <p>Use probability distributions, conditional probability, expectation, variance, Bayes' theorem and sampling ideas.</p>
+        <h3>Matrices & Systems</h3>
+        <p>Use matrices and simultaneous equations to solve networks, transformations and linked engineering quantities.</p>
       </article>
       <article class="card">
         <span class="topic-icon">ℤ</span>
-        <h3>Number Theory</h3>
-        <p>Investigate primes, divisibility, greatest common divisors, modular arithmetic and Diophantine equations.</p>
+        <h3>Differential Equations & Signals</h3>
+        <p>Model growth, decay, vibration, circuits and signals using differential equations, exponentials and trigonometry.</p>
       </article>
     </div>
   </section>
@@ -346,52 +397,72 @@
     <h2>Key Mathematical Ideas</h2>
     <div class="idea-grid">
       <article class="card idea">
-        <h3>Limits and Change</h3>
-        <p>Calculus turns the idea of “getting closer” into a precise mathematical tool. Limits lead to derivatives and integrals.</p>
+        <h3>Rates and Change</h3>
+        <p>Engineering uses derivatives for rates such as velocity, current and heat flow, and integrals for totals such as distance, charge and energy.</p>
       </article>
       <article class="card idea">
-        <h3>Structure and Transformation</h3>
-        <p>Linear algebra studies spaces and transformations. Matrices give a compact way to represent and calculate them.</p>
+        <h3>Forces and Vectors</h3>
+        <p>Vectors describe quantities with both size and direction, making them essential for forces, motion and engineering geometry.</p>
       </article>
       <article class="card idea">
-        <h3>Uncertainty and Evidence</h3>
-        <p>Probability measures uncertainty, while statistics uses data to estimate, compare and make carefully justified conclusions.</p>
+        <h3>Systems and Matrices</h3>
+        <p>Matrices provide a compact way to solve several linked equations at once, which is useful in structures, circuits and control systems.</p>
       </article>
       <article class="card idea">
-        <h3>Patterns in Integers</h3>
-        <p>Number theory asks simple-looking questions about whole numbers that can lead to deep ideas about primes and congruences.</p>
+        <h3>Signals and Models</h3>
+        <p>Differential equations and trigonometric functions help engineers model vibration, waves, electrical signals and changing systems.</p>
       </article>
     </div>
   </section>
 
   <section id="thinking" class="thinking">
     <h2>Mathematical Thinking</h2>
-    <h3>Why is university maths different?</h3>
+    <h3>Why is engineering maths different?</h3>
     <p>
-      At university level, mathematics is not only about getting a numerical answer.
-      You also need to understand definitions, recognise useful structures, choose an appropriate theorem,
-      and explain why a method works.
+      In engineering maths, mathematics is not only about getting a numerical answer.
+      You also need to choose a suitable model, use the correct units, apply the right formula,
+      and explain what the answer means in an engineering situation.
     </p>
     <h3>What makes a strong solution?</h3>
     <p>
-      A strong solution is logically organised. It states the important idea, shows the main steps,
-      checks assumptions where necessary, and reaches a conclusion that follows from the mathematics.
+      A strong solution is logically organised. It identifies the known values, chooses the correct engineering maths method,
+      shows the main steps, keeps track of units, and checks whether the final answer is reasonable.
     </p>
     <div class="quote">
-      “Mathematics is not simply calculating. It is recognising structure, making logical arguments and explaining why a result must be true.”
+      “Engineering maths connects calculation with real systems: forces, motion, structures, circuits, signals and change.”
     </div>
   </section>
 
   <section id="quiz" class="quiz-shell">
-    <h2 class="quiz-title">🎓 University Maths</h2>
-    <p class="quiz-sub">Choose a topic below. University topics contain university-level questions, and A-Level Maths has its own 10-question quiz.</p>
+    <h2 class="quiz-title">⚙️ Engineering Maths</h2>
+    <p class="quiz-sub">Choose a topic below. Each Engineering Maths topic has 10 questions, and A-Level Maths keeps its own 10-question quiz.</p>
     <div class="award">🏆 Score 10 / 10 to unlock the Maths Teacher Award!</div>
 
+
+    <div class="player-panel">
+      <h3>Who is playing?</h3>
+      <div class="player-select-row">
+        <label for="playerSelect">Player:</label>
+        <select id="playerSelect">
+          <option value="">Choose a player</option>
+          <option value="Mr Sharratt">Mr Sharratt</option>
+          <option value="Mr Davidson">Mr Davidson</option>
+          <option value="Mrs Dubey">Mrs Dubey</option>
+        </select>
+      </div>
+      <p class="player-note">Every correct answer gives the selected player <strong>+1 XP</strong>. XP keeps adding across repeat attempts.</p>
+    </div>
+
+    <div class="leaderboard">
+      <h3>🏆 XP Leaderboard</h3>
+      <div id="leaderboardList" class="leaderboard-list"></div>
+    </div>
+
     <div class="topic-buttons">
-      <button class="topic-btn" data-topic="calculus">∫ Calculus</button>
-      <button class="topic-btn" data-topic="linear">▦ Linear Algebra</button>
-      <button class="topic-btn" data-topic="probability">🎲 Probability</button>
-      <button class="topic-btn" data-topic="number">ℤ Number Theory</button>
+      <button class="topic-btn" data-topic="calculus">∫ Engineering Calculus</button>
+      <button class="topic-btn" data-topic="linear">🧭 Vectors & Mechanics</button>
+      <button class="topic-btn" data-topic="probability">▦ Matrices & Systems</button>
+      <button class="topic-btn" data-topic="number">〰 Differential Equations & Signals</button>
       <button class="topic-btn" data-topic="alevel">📐 A-Level Maths</button>
     </div>
 
@@ -411,7 +482,7 @@
       <div id="feedback" class="feedback"></div>
 
       <div class="controls">
-        <div id="score" class="score">Score: 0 / 10</div>
+        <div class="score-wrap"><div id="score" class="score">Score: 0 / 10</div><div id="playerXp">Player XP: —</div></div>
         <button id="nextBtn" class="next-btn" disabled>Next Question</button>
       </div>
     </div>
@@ -428,325 +499,312 @@
       <h3>Achievement Unlocked</h3>
       <div class="award-name">Maths Teacher Award</div>
       <p>Awarded for achieving a perfect <strong>10 / 10</strong></p>
-      <p>University-Level Mathematics Quiz</p>
+      <p>Engineering Mathematics Quiz</p>
     </div>
   </section>
 </main>
 
-<footer>© 2026 University Maths | Maths Learning Website</footer>
+<footer>© 2026 Engineering Maths | Maths Learning Website</footer>
 
 <script>
 const quizzes = {
   calculus: {
-    name: "Calculus",
+    name: "Engineering Calculus",
     questions: [
       {
-        context: "For a positive variable x, the function x^x is differentiated by first writing x^x = e^(x ln x). This allows the chain rule and product rule to be used.",
-        q: "If f(x) = x^x, what is f′(e)?",
-        options: ["e^e", "2e^e", "e^(2e)", "2e"],
-        answer: 1,
-        explain: "f′(x) = x^x(ln x + 1). At x = e, ln e = 1, so f′(e) = 2e^e."
-      },
-      {
-        context: "Improper integrals are used when an interval is infinite. The integral ∫₀^∞ x e^(-x) dx is also a Gamma-function value, Γ(2).",
-        q: "Evaluate ∫₀^∞ x e^(-x) dx.",
-        options: ["0", "1", "e", "∞"],
-        answer: 1,
-        explain: "Γ(2) = 1! = 1. Integration by parts gives the same result."
-      },
-      {
-        context: "The Maclaurin expansion is e^x = 1 + x + x²/2! + x³/3! + x⁴/4! + ···.",
-        q: "What is the coefficient of x⁴ in the Maclaurin series for e^x?",
-        options: ["1/4", "1/8", "1/24", "1/16"],
+        context: "Velocity is the derivative of displacement. If s(t) is measured in metres, ds/dt is measured in metres per second.",
+        q: "A component moves with displacement s(t)=3t²+2t. What is its velocity at t=4 s?",
+        options: ["14 m/s", "20 m/s", "26 m/s", "50 m/s"],
         answer: 2,
-        explain: "The x⁴ term is x⁴/4!, and 4! = 24."
+        explain: "v=ds/dt=6t+2. At t=4, v=24+2=26 m/s."
       },
       {
-        context: "For a twice-differentiable function of two variables, the Hessian matrix helps classify stationary points. A positive-definite Hessian gives a strict local minimum.",
-        q: "For f(x,y) = x² + xy + y², what type of stationary point is at (0,0)?",
-        options: ["Strict local minimum", "Strict local maximum", "Saddle point", "No stationary point"],
-        answer: 0,
-        explain: "The Hessian is [[2,1],[1,2]], whose eigenvalues are 3 and 1, both positive."
-      },
-      {
-        context: "A first-order differential equation y′ = ky models exponential growth or decay. Its general solution is y = Ce^(kx).",
-        q: "Solve y′ = 3y with y(0) = 2.",
-        options: ["y = 2e^x", "y = 3e^(2x)", "y = 2e^(3x)", "y = e^(6x)"],
+        context: "Acceleration is the derivative of velocity with respect to time.",
+        q: "If v(t)=5t³-2t, what is the acceleration at t=2 s?",
+        options: ["18 m/s²", "38 m/s²", "58 m/s²", "60 m/s²"],
         answer: 2,
-        explain: "y = Ce^(3x). Using y(0)=2 gives C=2."
+        explain: "a=dv/dt=15t²-2. At t=2, a=60-2=58 m/s²."
       },
       {
-        context: "A standard limit is ln(1+t)/t → 1 as t → 0. Setting t = 1/n converts many sequence limits into this form.",
-        q: "Find lim(n→∞) n ln(1 + 1/n).",
-        options: ["0", "1", "e", "∞"],
-        answer: 1,
-        explain: "Let t=1/n. Then n ln(1+1/n)=ln(1+t)/t → 1."
-      },
-      {
-        context: "Integrals containing a logarithm often simplify by integration by parts. For ∫x ln x dx, one can take u = ln x and dv = x dx.",
-        q: "Evaluate ∫₀¹ x ln x dx.",
-        options: ["-1/4", "-1/2", "0", "1/4"],
-        answer: 0,
-        explain: "Integration by parts gives [x² ln x/2]₀¹ - ∫₀¹ x/2 dx = -1/4."
-      },
-      {
-        context: "The directional derivative of f in a unit direction u is ∇f · u. The direction vector must first be normalised.",
-        q: "For f(x,y)=x²y at (1,2), find the directional derivative in the direction (3,4).",
-        options: ["3", "16/5", "5", "17/5"],
-        answer: 1,
-        explain: "∇f=(2xy,x²)=(4,1). The unit direction is (3/5,4/5), so the dot product is 16/5."
-      },
-      {
-        context: "A telescoping series is one in which most terms cancel after partial fractions. Here 1/[n(n+1)] = 1/n - 1/(n+1).",
-        q: "Evaluate Σ from n=1 to ∞ of 1/[n(n+1)].",
-        options: ["1/2", "1", "2", "Diverges"],
-        answer: 1,
-        explain: "The partial sums telescope to 1 - 1/(N+1), which tends to 1."
-      },
-      {
-        context: "The alternating harmonic series has terms that decrease to zero, so the alternating-series test gives convergence. But its absolute-value series is the harmonic series.",
-        q: "How does Σ from n=1 to ∞ of (-1)^(n+1)/n converge?",
-        options: ["Absolutely", "Conditionally", "It diverges", "Only for n > 10"],
-        answer: 1,
-        explain: "It converges by the alternating-series test, but not absolutely because Σ1/n diverges."
-      }
-    ]
-  },
-
-  linear: {
-    name: "Linear Algebra",
-    questions: [
-      {
-        context: "For a 2×2 matrix [[a,b],[c,d]], the determinant is ad - bc. A non-zero determinant means the matrix is invertible.",
-        q: "What is det([[1,2],[3,4]])?",
-        options: ["-2", "2", "10", "-10"],
-        answer: 0,
-        explain: "det = 1·4 - 2·3 = 4 - 6 = -2."
-      },
-      {
-        context: "Eigenvalues satisfy det(A - λI)=0. Symmetric matrices have real eigenvalues and orthogonal eigenvectors.",
-        q: "What are the eigenvalues of [[2,1],[1,2]]?",
-        options: ["2 and 2", "3 and 1", "4 and 0", "1 and -1"],
-        answer: 1,
-        explain: "The characteristic equation is (2-λ)² - 1 = 0, giving λ = 3 and 1."
-      },
-      {
-        context: "The rank-nullity theorem states: dimension of domain = rank + nullity.",
-        q: "A linear map T: R⁵ → R³ has rank 3. What is its nullity?",
-        options: ["1", "2", "3", "5"],
-        answer: 1,
-        explain: "5 = rank + nullity = 3 + nullity, so nullity = 2."
-      },
-      {
-        context: "The orthogonal projection of v onto a non-zero vector u is projᵤ(v) = [(v·u)/(u·u)]u.",
-        q: "Project v=(3,1) onto the line spanned by u=(1,1).",
-        options: ["(1,1)", "(2,2)", "(3,3)", "(4,4)"],
-        answer: 1,
-        explain: "(v·u)/(u·u) = 4/2 = 2, so the projection is (2,2)."
-      },
-      {
-        context: "An orthogonal matrix preserves lengths and angles. Its columns form an orthonormal basis.",
-        q: "If Q is an orthogonal matrix, which identity must hold?",
-        options: ["Q⁻¹ = Qᵀ", "Q⁻¹ = -Q", "Q² = 0", "det(Q)=0"],
-        answer: 0,
-        explain: "By definition QᵀQ=I, so Q⁻¹=Qᵀ."
-      },
-      {
-        context: "A square linear system Ax=b has a unique solution for every b exactly when A is invertible.",
-        q: "Which condition guarantees that Ax=b has a unique solution for every b in Rⁿ?",
-        options: ["det(A)=0", "rank(A)<n", "det(A)≠0", "A has a zero row"],
+        context: "The area under a force-displacement graph gives work done. For a variable force F(x), work is W=∫F(x)dx.",
+        q: "A force is F(x)=4x N from x=0 to x=3 m. How much work is done?",
+        options: ["6 J", "12 J", "18 J", "36 J"],
         answer: 2,
-        explain: "For a square matrix, det(A)≠0 is equivalent to invertibility and a unique solution."
+        explain: "W=∫₀³4x dx=[2x²]₀³=18 J."
       },
       {
-        context: "The trace of a square matrix is the sum of its diagonal entries. Counting algebraic multiplicity, it is also the sum of the eigenvalues.",
-        q: "If a 3×3 matrix has eigenvalues 2, -1 and 5, what is its trace?",
-        options: ["6", "7", "8", "10"],
-        answer: 0,
-        explain: "Trace = 2 + (-1) + 5 = 6."
-      },
-      {
-        context: "The spectral theorem is a major result for real symmetric matrices.",
-        q: "Which statement is always true for a real symmetric matrix?",
-        options: ["It is singular", "It is orthogonally diagonalizable", "All eigenvalues are positive", "Its determinant is 1"],
+        context: "A stationary point occurs where the first derivative equals zero.",
+        q: "For y=x²-8x+20, at what x-value is the minimum?",
+        options: ["2", "4", "8", "20"],
         answer: 1,
-        explain: "The real spectral theorem says every real symmetric matrix is diagonalizable by an orthogonal matrix."
+        explain: "dy/dx=2x-8. Setting this to zero gives x=4."
       },
       {
-        context: "The vector space P₃ consists of all real polynomials of degree at most 3. A standard basis is {1,x,x²,x³}.",
-        q: "What is dim(P₃)?",
-        options: ["3", "4", "5", "Infinite"],
-        answer: 1,
-        explain: "The standard basis contains four linearly independent polynomials."
-      },
-      {
-        context: "Determinants are multiplicative: det(AB)=det(A)det(B) for square matrices of the same size.",
-        q: "If det(A)=3 and det(B)=-2, what is det(AB)?",
-        options: ["-6", "-1", "1", "6"],
-        answer: 0,
-        explain: "det(AB)=3×(-2)=-6."
-      }
-    ]
-  },
-
-  probability: {
-    name: "Probability & Statistics",
-    questions: [
-      {
-        context: "For X~Binomial(n,p), the expectation is E[X]=np.",
-        q: "If X~Binomial(10,0.2), what is E[X]?",
-        options: ["0.2", "1", "2", "5"],
+        context: "If current varies with time, electric charge is the time integral of current: Q=∫I(t)dt.",
+        q: "A current is I(t)=2t A from t=0 to 5 s. What charge passes?",
+        options: ["5 C", "10 C", "25 C", "50 C"],
         answer: 2,
-        explain: "E[X]=np=10×0.2=2."
+        explain: "Q=∫₀⁵2t dt=[t²]₀⁵=25 C."
       },
       {
-        context: "A Bernoulli random variable takes value 1 with probability p and 0 with probability 1-p.",
-        q: "What is the variance of a Bernoulli(p) random variable?",
-        options: ["p", "1-p", "p(1-p)", "p²"],
+        context: "For exponential decay y=y₀e^(-kt), k is a positive decay constant.",
+        q: "A sensor signal is V=12e^(-0.2t). What is V at t=0?",
+        options: ["0 V", "1 V", "12 V", "e V"],
         answer: 2,
-        explain: "Var(X)=E[X²]-E[X]²=p-p²=p(1-p)."
+        explain: "At t=0, e⁰=1, so V=12 V."
       },
       {
-        context: "Conditional probability updates the probability of A when event B is known to have happened.",
-        q: "For P(B)>0, which formula defines P(A|B)?",
-        options: ["P(A)+P(B)", "P(A∩B)/P(B)", "P(A)/P(B)", "P(A∪B)/P(A)"],
+        context: "For a circle, area is A=πr². Differentiating gives dA/dr=2πr.",
+        q: "At radius r=3 m, what is dA/dr?",
+        options: ["3π", "6π", "9π", "18π"],
         answer: 1,
-        explain: "By definition P(A|B)=P(A∩B)/P(B)."
+        explain: "dA/dr=2πr=2π(3)=6π."
       },
       {
-        context: "For a normal distribution, about 68.27% of observations lie within one standard deviation of the mean.",
-        q: "Approximately what probability lies between μ-σ and μ+σ for a normal distribution?",
-        options: ["0.50", "0.6827", "0.95", "0.997"],
+        context: "An average value of a function f(x) on [a,b] is (1/(b-a))∫ₐᵇ f(x)dx.",
+        q: "What is the average value of f(x)=2x from x=0 to x=4?",
+        options: ["2", "4", "8", "16"],
         answer: 1,
-        explain: "The normal 68-95-99.7 rule gives about 0.6827 within one standard deviation."
+        explain: "Average=(1/4)∫₀⁴2x dx=(1/4)[x²]₀⁴=16/4=4."
       },
       {
-        context: "For X~Poisson(λ), P(X=k)=e^(-λ)λ^k/k!.",
-        q: "If X~Poisson(3), what is P(X=0)?",
-        options: ["e^-3", "3e^-3", "1-e^-3", "1/3"],
-        answer: 0,
-        explain: "P(X=0)=e^-3·3^0/0!=e^-3."
-      },
-      {
-        context: "Independence is stronger than zero covariance. Independent random variables with finite second moments have covariance zero.",
-        q: "Which statement is correct?",
-        options: [
-          "Zero covariance always implies independence",
-          "Independence implies zero covariance when moments exist",
-          "Covariance is always positive",
-          "Independent variables must have equal means"
-        ],
-        answer: 1,
-        explain: "Independence implies E[XY]=E[X]E[Y], hence covariance 0. The converse is not always true."
-      },
-      {
-        context: "A disease affects 1% of a population. A test has 90% sensitivity and a 5% false-positive rate. Bayes' theorem can find the probability of disease after a positive result.",
-        q: "Approximately what is P(disease | positive)?",
-        options: ["1.0%", "9.0%", "15.4%", "90.0%"],
-        answer: 2,
-        explain: "0.009 / (0.009 + 0.0495) ≈ 0.1538, or 15.4%."
-      },
-      {
-        context: "For an independent sample of size n from a population with standard deviation σ, the standard error of the sample mean is σ/√n.",
-        q: "If σ=12 and n=36, what is the standard error of the sample mean?",
-        options: ["1", "2", "3", "6"],
-        answer: 1,
-        explain: "SE=12/√36=12/6=2."
-      },
-      {
-        context: "A continuous uniform distribution on [a,b] assigns probability in proportion to interval length.",
-        q: "If X~Uniform(0,4), what is P(1<X<3)?",
-        options: ["1/4", "1/2", "3/4", "1"],
-        answer: 1,
-        explain: "The interval (1,3) has length 2 out of total length 4, so the probability is 1/2."
-      },
-      {
-        context: "For repeated independent Bernoulli trials, the waiting time until the first success has a geometric distribution with mean 1/p.",
-        q: "For a fair coin, what is the expected number of tosses until the first head?",
-        options: ["1", "2", "3", "4"],
-        answer: 1,
-        explain: "Here p=1/2, so the geometric mean is 1/p=2."
-      }
-    ]
-  },
-
-  number: {
-    name: "Number Theory",
-    questions: [
-      {
-        context: "The Euclidean algorithm repeatedly replaces a pair of integers by the smaller number and the remainder.",
-        q: "What is gcd(252,105)?",
-        options: ["7", "14", "21", "35"],
-        answer: 2,
-        explain: "252=2·105+42, 105=2·42+21, and 42=2·21, so the gcd is 21."
-      },
-      {
-        context: "Euler's totient function φ(n) counts positive integers up to n that are coprime to n.",
-        q: "What is φ(10)?",
-        options: ["2", "4", "5", "8"],
-        answer: 1,
-        explain: "The numbers 1,3,7,9 are coprime to 10, so φ(10)=4."
-      },
-      {
-        context: "Modular arithmetic treats two integers as equivalent when they have the same remainder after division by the modulus.",
-        q: "What is 3⁴ mod 7?",
-        options: ["1", "2", "4", "6"],
-        answer: 2,
-        explain: "3⁴=81, and 81=77+4, so the remainder is 4."
-      },
-      {
-        context: "Fermat's little theorem says that if p is prime and p does not divide a, then a^(p-1) ≡ 1 (mod p).",
-        q: "Using Fermat's little theorem, what is 2¹⁰ mod 11?",
-        options: ["0", "1", "2", "10"],
-        answer: 1,
-        explain: "Because 11 is prime and gcd(2,11)=1, 2^10 ≡ 1 (mod 11)."
-      },
-      {
-        context: "A linear Diophantine equation ax+by=c has integer solutions exactly when gcd(a,b) divides c.",
-        q: "Does 6x + 9y = 30 have integer solutions?",
-        options: ["Yes", "No", "Only if x=y", "Only positive solutions"],
-        answer: 0,
-        explain: "gcd(6,9)=3 and 3 divides 30, so integer solutions exist."
-      },
-      {
-        context: "Euclid's proof of the infinitude of primes begins by assuming a finite list of all primes and considering one more than their product.",
-        q: "What central fact does Euclid's argument prove?",
-        options: [
-          "There are exactly 100 primes",
-          "Every odd number is prime",
-          "There are infinitely many primes",
-          "Every prime is one more than a product"
-        ],
-        answer: 2,
-        explain: "Any finite list of primes leads to a number not divisible by any prime on that list, producing a contradiction."
-      },
-      {
-        context: "The Chinese Remainder Theorem gives a unique solution modulo the product when the moduli are pairwise coprime.",
-        q: "Solve x≡2 (mod 3) and x≡3 (mod 5).",
-        options: ["x≡5 (mod 15)", "x≡8 (mod 15)", "x≡11 (mod 15)", "x≡13 (mod 15)"],
-        answer: 1,
-        explain: "8 leaves remainder 2 mod 3 and remainder 3 mod 5, so x≡8 mod 15."
-      },
-      {
-        context: "Prime factorisation expresses a positive integer as a product of primes. The Fundamental Theorem of Arithmetic says this factorisation is unique apart from order.",
-        q: "Which is the prime factorisation of 1001?",
-        options: ["7×11×13", "3×7×47", "5×11×19", "17×59"],
-        answer: 0,
-        explain: "7×11=77 and 77×13=1001."
-      },
-      {
-        context: "A modular inverse of a modulo m is a number b satisfying ab≡1 (mod m). It exists exactly when gcd(a,m)=1.",
-        q: "What is the inverse of 3 modulo 7?",
-        options: ["2", "3", "4", "5"],
+        context: "If power P(t) is known, energy is E=∫P(t)dt.",
+        q: "A machine uses constant power 500 W for 20 s. What energy is used?",
+        options: ["25 J", "500 J", "2,500 J", "10,000 J"],
         answer: 3,
-        explain: "3×5=15≡1 (mod 7), so the inverse is 5."
+        explain: "E=Pt=500×20=10,000 J."
       },
       {
-        context: "Any prime p>3 is odd and is not divisible by 3. These two facts strongly restrict p² modulo 8 and modulo 3.",
-        q: "For every prime p>3, which congruence is true?",
-        options: ["p²≡0 (mod 24)", "p²≡1 (mod 24)", "p²≡3 (mod 24)", "p²≡p (mod 24)"],
+        context: "For y=sin(ωt), the derivative is dy/dt=ωcos(ωt).",
+        q: "Differentiate y=sin(5t).",
+        options: ["cos(5t)", "5cos(5t)", "-5sin(5t)", "5sin(5t)"],
         answer: 1,
-        explain: "For odd p, p²≡1 mod 8. Since p is not divisible by 3, p²≡1 mod 3. Therefore p²≡1 mod 24."
+        explain: "Using the chain rule, dy/dt=5cos(5t)."
+      }
+    ]
+  },
+  linear: {
+    name: "Vectors & Mechanics",
+    questions: [
+      {
+        context: "A 2D force vector F=(Fx,Fy) has magnitude √(Fx²+Fy²).",
+        q: "What is the magnitude of the force vector (3,4) N?",
+        options: ["4 N", "5 N", "7 N", "12 N"],
+        answer: 1,
+        explain: "|F|=√(3²+4²)=√25=5 N."
+      },
+      {
+        context: "For perpendicular x and y components, the resultant is found by vector addition.",
+        q: "A 6 N force acts east and an 8 N force acts north. What is the resultant magnitude?",
+        options: ["2 N", "7 N", "10 N", "14 N"],
+        answer: 2,
+        explain: "Resultant=√(6²+8²)=10 N."
+      },
+      {
+        context: "Moment about a point equals force × perpendicular distance from the point.",
+        q: "A 20 N force acts 0.5 m perpendicular to a pivot. What moment is produced?",
+        options: ["10 N m", "20 N m", "40 N m", "0.025 N m"],
+        answer: 0,
+        explain: "Moment=20×0.5=10 N m."
+      },
+      {
+        context: "Newton's second law is F=ma.",
+        q: "A 12 kg trolley accelerates at 3 m/s². What resultant force acts on it?",
+        options: ["4 N", "15 N", "36 N", "144 N"],
+        answer: 2,
+        explain: "F=ma=12×3=36 N."
+      },
+      {
+        context: "For constant acceleration, v=u+at.",
+        q: "A vehicle starts at 5 m/s and accelerates at 2 m/s² for 6 s. What is its final speed?",
+        options: ["7 m/s", "12 m/s", "17 m/s", "30 m/s"],
+        answer: 2,
+        explain: "v=5+(2×6)=17 m/s."
+      },
+      {
+        context: "The dot product a·b=axbx+ayby. Perpendicular vectors have dot product zero.",
+        q: "Find (2,3)·(3,-2).",
+        options: ["0", "1", "6", "12"],
+        answer: 0,
+        explain: "2×3+3×(-2)=6-6=0, so the vectors are perpendicular."
+      },
+      {
+        context: "A unit vector has magnitude 1. To make a unit vector, divide a vector by its magnitude.",
+        q: "Which is the unit vector in the direction of (3,4)?",
+        options: ["(3,4)", "(4/3,3/4)", "(3/5,4/5)", "(5/3,5/4)"],
+        answer: 2,
+        explain: "The magnitude is 5, so divide each component by 5."
+      },
+      {
+        context: "For equilibrium in one dimension, the total force must be zero.",
+        q: "A cable is pulled right by 50 N. What force is needed to balance it exactly?",
+        options: ["0 N", "25 N left", "50 N left", "100 N left"],
+        answer: 2,
+        explain: "An equal and opposite 50 N force makes the resultant zero."
+      },
+      {
+        context: "Kinetic energy is KE=½mv².",
+        q: "What is the kinetic energy of a 2 kg object moving at 6 m/s?",
+        options: ["6 J", "12 J", "36 J", "72 J"],
+        answer: 2,
+        explain: "KE=½×2×6²=36 J."
+      },
+      {
+        context: "Momentum is p=mv.",
+        q: "A 1.5 kg component moves at 8 m/s. What is its momentum?",
+        options: ["5.33 kg m/s", "9.5 kg m/s", "12 kg m/s", "48 kg m/s"],
+        answer: 2,
+        explain: "p=1.5×8=12 kg m/s."
+      }
+    ]
+  },
+  probability: {
+    name: "Matrices & Systems",
+    questions: [
+      {
+        context: "A 2×2 matrix multiplies a vector by row-by-column multiplication.",
+        q: "If A=[[2,1],[0,3]] and x=(4,2), what is Ax?",
+        options: ["(8,6)", "(10,6)", "(10,8)", "(6,10)"],
+        answer: 1,
+        explain: "First component=2×4+1×2=10. Second=0×4+3×2=6."
+      },
+      {
+        context: "The determinant of [[a,b],[c,d]] is ad-bc.",
+        q: "Find det([[4,2],[1,3]]).",
+        options: ["5", "8", "10", "14"],
+        answer: 2,
+        explain: "det=4×3-2×1=12-2=10."
+      },
+      {
+        context: "A 2×2 matrix is invertible when its determinant is not zero.",
+        q: "Which matrix is NOT invertible?",
+        options: ["[[1,0],[0,1]]", "[[2,1],[1,2]]", "[[1,2],[2,4]]", "[[3,0],[0,2]]"],
+        answer: 2,
+        explain: "Its determinant is 1×4-2×2=0, so it has no inverse."
+      },
+      {
+        context: "Simultaneous equations can model linked currents, forces or flows.",
+        q: "Solve x+y=7 and x-y=1.",
+        options: ["x=3,y=4", "x=4,y=3", "x=6,y=1", "x=7,y=0"],
+        answer: 1,
+        explain: "Adding the equations gives 2x=8, so x=4 and y=3."
+      },
+      {
+        context: "The identity matrix leaves a vector unchanged when multiplied by it.",
+        q: "What is I(5,-2) for the 2×2 identity matrix I?",
+        options: ["(0,0)", "(5,2)", "(-5,2)", "(5,-2)"],
+        answer: 3,
+        explain: "Multiplying by the identity matrix leaves the vector unchanged."
+      },
+      {
+        context: "Matrix addition is done by adding matching entries.",
+        q: "Find [[1,2],[3,4]] + [[2,0],[-1,5]].",
+        options: ["[[3,2],[2,9]]", "[[2,2],[-3,20]]", "[[3,0],[-1,9]]", "[[1,2],[2,5]]"],
+        answer: 0,
+        explain: "Add corresponding entries: [[3,2],[2,9]]."
+      },
+      {
+        context: "Scalar multiplication multiplies every matrix entry by the scalar.",
+        q: "What is 3[[2,-1],[0,4]]?",
+        options: ["[[5,2],[3,7]]", "[[6,-3],[0,12]]", "[[6,-1],[0,12]]", "[[2,-3],[0,4]]"],
+        answer: 1,
+        explain: "Multiply each entry by 3."
+      },
+      {
+        context: "The trace of a square matrix is the sum of its diagonal entries.",
+        q: "What is the trace of [[5,2],[1,-3]]?",
+        options: ["-15", "2", "3", "8"],
+        answer: 1,
+        explain: "Trace=5+(-3)=2."
+      },
+      {
+        context: "An eigenvector v satisfies Av=λv for some scalar λ.",
+        q: "For A=[[2,0],[0,3]], which vector is an eigenvector?",
+        options: ["(1,1) only", "(1,0)", "(1,2) only", "No non-zero vector"],
+        answer: 1,
+        explain: "A(1,0)=(2,0)=2(1,0), so (1,0) is an eigenvector."
+      },
+      {
+        context: "A linear system with a unique solution has independent equations. For a 2×2 coefficient matrix, this corresponds to a non-zero determinant.",
+        q: "Does 2x+y=5 and x-y=1 have a unique solution?",
+        options: ["Yes", "No, infinitely many", "No, none", "Cannot tell"],
+        answer: 0,
+        explain: "The coefficient determinant is 2×(-1)-1×1=-3, which is non-zero, so the solution is unique."
+      }
+    ]
+  },
+  number: {
+    name: "Differential Equations & Signals",
+    questions: [
+      {
+        context: "The first-order differential equation dy/dt=ky has solution y=Ce^(kt).",
+        q: "Solve dy/dt=2y with y(0)=3.",
+        options: ["y=2e^(3t)", "y=3e^(2t)", "y=3+2t", "y=6e^t"],
+        answer: 1,
+        explain: "The general solution is Ce^(2t). Since y(0)=3, C=3."
+      },
+      {
+        context: "For exponential decay dy/dt=-ky, the quantity decreases toward zero.",
+        q: "Which expression represents decay when k>0?",
+        options: ["Ae^(kt)", "Ae^(-kt)", "A+kt", "Akt"],
+        answer: 1,
+        explain: "The negative exponent makes the exponential decrease as time increases."
+      },
+      {
+        context: "A sinusoidal signal can be written y=A sin(ωt), where A is amplitude.",
+        q: "What is the amplitude of y=8 sin(4t)?",
+        options: ["2", "4", "8", "32"],
+        answer: 2,
+        explain: "The coefficient in front of sin is the amplitude, so A=8."
+      },
+      {
+        context: "Angular frequency and ordinary frequency are related by ω=2πf.",
+        q: "If f=50 Hz, what is angular frequency ω?",
+        options: ["25π rad/s", "50π rad/s", "100π rad/s", "200π rad/s"],
+        answer: 2,
+        explain: "ω=2π×50=100π rad/s."
+      },
+      {
+        context: "The period of a sinusoidal signal is T=1/f.",
+        q: "What is the period of a 20 Hz signal?",
+        options: ["0.02 s", "0.05 s", "0.2 s", "20 s"],
+        answer: 1,
+        explain: "T=1/20=0.05 s."
+      },
+      {
+        context: "For a simple RC charging model, V(t)=V₀(1-e^(-t/RC)). At t=0 the capacitor voltage is zero.",
+        q: "Using this model, what is V(0)?",
+        options: ["0", "V₀/2", "V₀", "eV₀"],
+        answer: 0,
+        explain: "At t=0, e⁰=1, so V=V₀(1-1)=0."
+      },
+      {
+        context: "A second-order undamped vibration model can be written x''+ω²x=0.",
+        q: "Which type of function is a solution of x''+9x=0?",
+        options: ["e^(9t) only", "sin(3t) and cos(3t)", "t³", "ln t"],
+        answer: 1,
+        explain: "The natural angular frequency is 3, giving sine and cosine solutions."
+      },
+      {
+        context: "The derivative of cos(ωt) is -ωsin(ωt).",
+        q: "Differentiate y=4cos(2t).",
+        options: ["-8sin(2t)", "8cos(2t)", "-4sin(2t)", "2sin(4t)"],
+        answer: 0,
+        explain: "dy/dt=4×[-2sin(2t)]=-8sin(2t)."
+      },
+      {
+        context: "In a first-order linear system, a time constant indicates how quickly the response changes. In y=e^(-t/τ), τ is the time constant.",
+        q: "For y=e^(-t/5), what is the time constant?",
+        options: ["0.2", "1", "5", "25"],
+        answer: 2,
+        explain: "Comparing e^(-t/τ) with e^(-t/5) gives τ=5."
+      },
+      {
+        context: "RMS voltage for a sine wave is Vrms=Vpeak/√2.",
+        q: "A sinusoidal voltage has peak value 10√2 V. What is its RMS value?",
+        options: ["5 V", "10 V", "10√2 V", "20 V"],
+        answer: 1,
+        explain: "Vrms=(10√2)/√2=10 V."
       }
     ]
   },
@@ -831,6 +889,10 @@ let currentTopic = null;
 let currentIndex = 0;
 let score = 0;
 let answered = false;
+let currentPlayer = "";
+const players = ["Mr Sharratt", "Mr Davidson", "Mrs Dubey"];
+const xpKey = "engineeringMathsLeaderboardXP_v1";
+let xpData = loadXp();
 
 const questionArea = document.getElementById("questionArea");
 const contextText = document.getElementById("contextText");
@@ -846,12 +908,68 @@ const resultTitle = document.getElementById("resultTitle");
 const resultText = document.getElementById("resultText");
 const resultTrophy = document.getElementById("resultTrophy");
 const certificate = document.getElementById("certificate");
+const playerSelect = document.getElementById("playerSelect");
+const leaderboardList = document.getElementById("leaderboardList");
+const playerXp = document.getElementById("playerXp");
+
+function loadXp(){
+  try{
+    const saved = JSON.parse(localStorage.getItem(xpKey) || "{}");
+    const clean = {};
+    players.forEach(name => clean[name] = Number(saved[name]) || 0);
+    return clean;
+  }catch(e){
+    const clean = {};
+    players.forEach(name => clean[name] = 0);
+    return clean;
+  }
+}
+
+function saveXp(){
+  localStorage.setItem(xpKey, JSON.stringify(xpData));
+}
+
+function renderLeaderboard(){
+  const ordered = players
+    .map((name, order) => ({name, xp: xpData[name] || 0, order}))
+    .sort((a,b) => b.xp - a.xp || a.order - b.order);
+
+  leaderboardList.innerHTML = "";
+  ordered.forEach((entry, i) => {
+    const row = document.createElement("div");
+    row.className = "leader-row";
+    row.innerHTML = `<span class="leader-rank">#${i+1}</span><span>${entry.name}</span><span class="leader-xp">${entry.xp} XP</span>`;
+    leaderboardList.appendChild(row);
+  });
+
+  playerXp.textContent = currentPlayer ? `Player XP: ${xpData[currentPlayer]} XP` : "Player XP: —";
+}
+
+playerSelect.addEventListener("change", () => {
+  currentPlayer = playerSelect.value;
+  if(currentPlayer){
+    localStorage.setItem("engineeringMathsCurrentPlayer_v1", currentPlayer);
+  }
+  renderLeaderboard();
+});
+
+const rememberedPlayer = localStorage.getItem("engineeringMathsCurrentPlayer_v1");
+if(players.includes(rememberedPlayer)){
+  currentPlayer = rememberedPlayer;
+  playerSelect.value = rememberedPlayer;
+}
+renderLeaderboard();
 
 document.querySelectorAll(".topic-btn").forEach(btn => {
   btn.addEventListener("click", () => startQuiz(btn.dataset.topic));
 });
 
 function startQuiz(topic){
+  if(!currentPlayer){
+    alert("Please choose Mr Sharratt, Mr Davidson or Mrs Dubey before starting the quiz.");
+    playerSelect.focus();
+    return;
+  }
   currentTopic = topic;
   currentIndex = 0;
   score = 0;
@@ -908,7 +1026,10 @@ function chooseAnswer(index, clickedBtn){
 
   if(index === item.answer){
     score++;
-    feedback.textContent = "✓ Correct! " + item.explain;
+    xpData[currentPlayer] = (xpData[currentPlayer] || 0) + 1;
+    saveXp();
+    renderLeaderboard();
+    feedback.innerHTML = `<span class="xp-flash">✓ Correct! +1 XP</span> ${item.explain}`;
     feedback.classList.add("good");
   } else {
     clickedBtn.classList.add("wrong");
@@ -938,22 +1059,22 @@ function showResult(){
     certificate.classList.add("show");
     resultTrophy.textContent = "🏆";
     resultTitle.textContent = "Maths Teacher Award Unlocked!";
-    resultText.innerHTML = `<strong>Perfect score: ${score}/10.</strong><br>You have earned the <strong>Maths Teacher Award</strong> for outstanding mathematical reasoning.`;
+    resultText.innerHTML = `<strong>Perfect score: ${score}/10 and +10 XP.</strong><br>You have earned the <strong>Maths Teacher Award</strong> for outstanding mathematical reasoning and engineering problem solving.`;
   } else if(score >= 8){
     certificate.classList.remove("show");
     resultTrophy.textContent = "🎓";
-    resultTitle.textContent = "Excellent university-level result!";
-    resultText.textContent = `You scored ${score}/10. Review the missed ideas and try for 10/10.`;
+    resultTitle.textContent = "Excellent result!";
+    resultText.textContent = `You scored ${score}/10 and earned ${score} XP in this attempt. Review the missed ideas and try for 10/10.`;
   } else if(score >= 5){
     certificate.classList.remove("show");
     resultTrophy.textContent = "📘";
     resultTitle.textContent = "Good progress!";
-    resultText.textContent = `You scored ${score}/10. Re-read the context boxes and try again.`;
+    resultText.textContent = `You scored ${score}/10 and earned ${score} XP in this attempt. Re-read the context boxes and try again.`;
   } else {
     certificate.classList.remove("show");
     resultTrophy.textContent = "🧠";
     resultTitle.textContent = "Keep building the ideas.";
-    resultText.textContent = `You scored ${score}/10. Use each context box as a clue, then try the topic again.`;
+    resultText.textContent = `You scored ${score}/10 and earned ${score} XP in this attempt. Use each context box as a clue, then try the topic again.`;
   }
 }
 
