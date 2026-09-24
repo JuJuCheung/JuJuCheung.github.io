@@ -345,9 +345,9 @@
       .intro,.thinking,.quiz-shell{padding:20px}
     }
   </style>
+\n
 </head>
 <body>
-
 <header>
   <h1>Engineering Maths</h1>
   <p>Engineering Maths • Pure Maths • Mechanical Maths • Statistics • A-Level Maths</p>
@@ -474,13 +474,14 @@
           <option value="Mrs Dubey">Mrs Dubey</option>
         </select>
       </div>
-      <p class="player-note">Every correct answer gives the selected player <strong>+1 XP</strong>. XP keeps adding across repeat attempts on this computer.</p>
+      <p class="player-note">Every correct answer gives the selected player <strong>+1 XP</strong>. XP keeps adding across repeat attempts and is saved by this website on this browser.</p>
     </div>
 
     <section id="leaderboard" class="leaderboard">
       <h3>🏆 XP Leaderboard</h3>
-      <p class="player-note">XP is saved on this computer.</p>
+      <p class="player-note">Scores are saved by this website on this browser and stay after the page is closed or refreshed.</p>
       <div id="leaderboardList" class="leaderboard-list"></div>
+      <div id="syncStatus" class="sync-status">💾 Website score saving is on.</div>
     </section>
 
     <div class="topic-buttons">
@@ -1146,8 +1147,8 @@ let answered = false;
 let currentPlayer = "";
 
 const players = ["Mr Sharratt", "Mr Davidson", "Mrs Dubey"];
-const localXpKey = "engineeringMathsLeaderboardXP_v2";
-const currentPlayerKey = "engineeringMathsCurrentPlayer_v2";
+const localXpKey = "engineeringMathsLeaderboardXP_v3";
+const currentPlayerKey = "engineeringMathsCurrentPlayer_v3";
 let xpData = loadLocalXp();
 
 const questionArea = document.getElementById("questionArea");
@@ -1167,6 +1168,7 @@ const certificate = document.getElementById("certificate");
 const playerSelect = document.getElementById("playerSelect");
 const leaderboardList = document.getElementById("leaderboardList");
 const playerXp = document.getElementById("playerXp");
+const syncStatus = document.getElementById("syncStatus");
 
 function blankXp(){
   const clean = {};
@@ -1206,7 +1208,7 @@ function renderLeaderboard(){
   playerXp.textContent = currentPlayer ? `Player XP: ${Number(xpData[currentPlayer]) || 0} XP` : "Player XP: —";
 }
 
-async function awardOneXp(playerName){
+function awardOneXp(playerName){
   if(!playerName) return;
   xpData[playerName] = (Number(xpData[playerName]) || 0) + 1;
   saveLocalXp();
@@ -1348,6 +1350,5 @@ function showResult(){
 
 document.getElementById("restartBtn").addEventListener("click", () => startQuiz(currentTopic));
 </script>
-
 </body>
 </html>
