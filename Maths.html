@@ -363,12 +363,6 @@
 </nav>
 
 <main>
-  <section id="leaderboard" class="leaderboard">
-    <h3>🏆 XP Leaderboard</h3>
-    <p class="player-note">Everyone can see the same ranking when the shared Firebase leaderboard is connected.</p>
-    <div id="leaderboardList" class="leaderboard-list"></div>
-  </section>
-
   <section id="about" class="intro">
     <h2>Engineering Maths</h2>
     <p>
@@ -480,9 +474,14 @@
           <option value="Mrs Dubey">Mrs Dubey</option>
         </select>
       </div>
-      <p class="player-note">Every correct answer gives the selected player <strong>+1 XP</strong>. XP keeps adding across every quiz and, when Firebase is connected, the same leaderboard is shown on every computer.</p>
-      <div id="syncStatus" class="sync-status">🌐 Shared leaderboard: checking connection…</div>
+      <p class="player-note">Every correct answer gives the selected player <strong>+1 XP</strong>. XP keeps adding across repeat attempts on this computer.</p>
     </div>
+
+    <section id="leaderboard" class="leaderboard">
+      <h3>🏆 XP Leaderboard</h3>
+      <p class="player-note">XP is saved on this computer.</p>
+      <div id="leaderboardList" class="leaderboard-list"></div>
+    </section>
 
     <div class="topic-buttons">
       <button class="topic-btn" data-topic="calculus">∫ Engineering Calculus</button>
@@ -535,10 +534,7 @@
 
 <footer>© 2026 Engineering Maths | Maths Learning Website</footer>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-import { getDatabase, ref, onValue, runTransaction } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
-import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+<script>
 
 const quizzes = {
   calculus: {
@@ -1150,34 +1146,9 @@ let answered = false;
 let currentPlayer = "";
 
 const players = ["Mr Sharratt", "Mr Davidson", "Mrs Dubey"];
-const playerKeys = {
-  "Mr Sharratt": "mr_sharratt",
-  "Mr Davidson": "mr_davidson",
-  "Mrs Dubey": "mrs_dubey"
-};
-
-/*
-  SHARED LEADERBOARD SETUP
-  ------------------------
-  Replace the PASTE_... values below with the Firebase web-app configuration
-  from your own Firebase project. The site will then use Realtime Database so
-  the same XP leaderboard appears on every computer.
-*/
-const firebaseConfig = {
-  apiKey: "PASTE_API_KEY_HERE",
-  authDomain: "PASTE_AUTH_DOMAIN_HERE",
-  databaseURL: "PASTE_DATABASE_URL_HERE",
-  projectId: "PASTE_PROJECT_ID_HERE",
-  storageBucket: "PASTE_STORAGE_BUCKET_HERE",
-  messagingSenderId: "PASTE_MESSAGING_SENDER_ID_HERE",
-  appId: "PASTE_APP_ID_HERE"
-};
-
 const localXpKey = "engineeringMathsLeaderboardXP_v2";
 const currentPlayerKey = "engineeringMathsCurrentPlayer_v2";
 let xpData = loadLocalXp();
-let sharedDb = null;
-let sharedReady = false;
 
 const questionArea = document.getElementById("questionArea");
 const contextText = document.getElementById("contextText");
@@ -1196,7 +1167,6 @@ const certificate = document.getElementById("certificate");
 const playerSelect = document.getElementById("playerSelect");
 const leaderboardList = document.getElementById("leaderboardList");
 const playerXp = document.getElementById("playerXp");
-const syncStatus = document.getElementById("syncStatus");
 
 function blankXp(){
   const clean = {};
@@ -1219,63 +1189,6 @@ function saveLocalXp(){
   localStorage.setItem(localXpKey, JSON.stringify(xpData));
 }
 
-function firebaseConfigured(){
-  const required = [
-    firebaseConfig.apiKey,
-    firebaseConfig.authDomain,
-    firebaseConfig.databaseURL,
-    firebaseConfig.projectId,
-    firebaseConfig.appId
-  ];
-  return required.every(value => value && !String(value).startsWith("PASTE_"));
-}
-
-function setSyncStatus(message, mode=""){
-  syncStatus.textContent = message;
-  syncStatus.className = "sync-status" + (mode ? " " + mode : "");
-}
-
-async function connectSharedLeaderboard(){
-  if(!firebaseConfigured()){
-    sharedReady = false;
-    setSyncStatus("⚠ Shared leaderboard not connected yet — scores are currently saved on this computer only.", "offline");
-    renderLeaderboard();
-    return;
-  }
-
-  try{
-    setSyncStatus("🌐 Shared leaderboard: connecting…");
-    const app = initializeApp(firebaseConfig);
-    sharedDb = getDatabase(app);
-    const auth = getAuth(app);
-    await signInAnonymously(auth);
-
-    onValue(ref(sharedDb, "leaderboard"), snapshot => {
-      const online = snapshot.val() || {};
-      const clean = blankXp();
-      players.forEach(name => {
-        const key = playerKeys[name];
-        clean[name] = Number(online[key]) || 0;
-      });
-      xpData = clean;
-      sharedReady = true;
-      saveLocalXp();
-      renderLeaderboard();
-      setSyncStatus("✓ Shared leaderboard connected — everyone sees the same XP.", "online");
-    }, error => {
-      sharedReady = false;
-      setSyncStatus("⚠ Could not read the shared leaderboard. Using scores saved on this computer.", "offline");
-      console.error(error);
-      renderLeaderboard();
-    });
-  }catch(error){
-    sharedReady = false;
-    setSyncStatus("⚠ Shared leaderboard connection failed. Using scores saved on this computer.", "offline");
-    console.error(error);
-    renderLeaderboard();
-  }
-}
-
 function renderLeaderboard(){
   const ordered = players
     .map((name, order) => ({name, xp: Number(xpData[name]) || 0, order}))
@@ -1295,20 +1208,6 @@ function renderLeaderboard(){
 
 async function awardOneXp(playerName){
   if(!playerName) return;
-
-  if(sharedReady && sharedDb){
-    const key = playerKeys[playerName];
-    try{
-      await runTransaction(ref(sharedDb, `leaderboard/${key}`), current => {
-        return (Number(current) || 0) + 1;
-      });
-      return;
-    }catch(error){
-      console.error(error);
-      setSyncStatus("⚠ Online XP update failed. This answer has been saved on this computer instead.", "offline");
-    }
-  }
-
   xpData[playerName] = (Number(xpData[playerName]) || 0) + 1;
   saveLocalXp();
   renderLeaderboard();
@@ -1330,7 +1229,6 @@ if(players.includes(rememberedPlayer)){
   playerSelect.value = rememberedPlayer;
 }
 renderLeaderboard();
-connectSharedLeaderboard();
 
 document.querySelectorAll(".topic-btn").forEach(btn => {
   btn.addEventListener("click", () => startQuiz(btn.dataset.topic));
