@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Engineering Maths</title>
-  <meta name="description" content="Engineering maths learning website with A-Level maths, context-based quizzes, XP and a leaderboard." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>GCSE Higher & A-Level Maths</title>
+
+  <meta
+    name="description"
+    content="GCSE Higher and A-Level maths learning website with quizzes, XP and a leaderboard."
+  >
+
   <style>
+
     :root{
       --navy:#34433a;
       --blue:#8a5a3b;
@@ -20,8 +27,15 @@
       --gold:#c89b2b;
       --shadow:0 7px 20px rgba(45,52,47,.10);
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
     body{
       margin:0;
       font-family:Inter,Segoe UI,Arial,sans-serif;
@@ -29,62 +43,94 @@
       background:var(--light);
       line-height:1.65;
     }
+
     header{
       background:linear-gradient(135deg,#34433a,#26342d);
       color:#fff;
       padding:46px 20px 36px;
       text-align:center;
     }
+
     header h1{
       margin:0 0 8px;
       font-size:clamp(2.1rem,5vw,4rem);
       letter-spacing:-1px;
     }
-    header p{margin:0;opacity:.92;font-size:1.05rem}
+
+    header p{
+      margin:0;
+      opacity:.92;
+      font-size:1.05rem;
+    }
+
     nav{
       position:sticky;
       top:0;
       z-index:10;
+
       display:flex;
       justify-content:center;
       gap:10px;
       flex-wrap:wrap;
+
       padding:12px 16px;
+
       background:#34433a;
       border-bottom:1px solid #26342d;
     }
+
     nav a{
       color:#fff;
       text-decoration:none;
       font-weight:700;
+
       padding:7px 11px;
       border-radius:8px;
     }
-    nav a:hover{background:#8a5a3b}
+
+    nav a:hover{
+      background:#8a5a3b;
+    }
+
     main{
       width:min(1100px,92%);
       margin:0 auto;
       padding:34px 0 60px;
     }
-    section{scroll-margin-top:82px;margin-bottom:45px}
+
+    section{
+      scroll-margin-top:82px;
+      margin-bottom:45px;
+    }
+
     h2{
       color:#1a1a1a;
       font-size:clamp(1.55rem,3vw,2.15rem);
       margin:0 0 18px;
     }
-    h3{color:var(--navy);margin-top:0}
-    .intro,.thinking,.quiz-shell{
+
+    h3{
+      color:var(--navy);
+      margin-top:0;
+    }
+
+    .intro,
+    .thinking,
+    .quiz-shell{
       background:var(--card);
       border:1px solid var(--line);
       border-radius:18px;
       box-shadow:var(--shadow);
       padding:26px;
     }
-    .topic-grid,.idea-grid{
+
+    .topic-grid,
+    .idea-grid{
       display:grid;
       grid-template-columns:repeat(2,minmax(0,1fr));
       gap:18px;
     }
+
     .card{
       background:var(--card);
       border:1px solid var(--line);
@@ -92,176 +138,278 @@
       padding:22px;
       box-shadow:var(--shadow);
     }
-    .topic-icon{font-size:2rem;display:block;margin-bottom:7px}
+
+    .topic-icon{
+      font-size:2rem;
+      display:block;
+      margin-bottom:7px;
+    }
+
     .idea{
       border-left:5px solid #8a5a3b;
     }
+
     .quote{
       background:#eef5ff;
       border-left:5px solid var(--blue);
       padding:16px 18px;
       border-radius:10px;
       font-weight:700;
-      color:#000000;
+      color:#000;
       margin-top:18px;
     }
-    .quiz-title{text-align:center;margin-bottom:6px}
-    .quiz-sub{text-align:center;color:var(--muted);margin-top:0}
+
+    .quiz-title{
+      text-align:center;
+      margin-bottom:6px;
+    }
+
+    .quiz-sub{
+      text-align:center;
+      color:var(--muted);
+      margin-top:0;
+    }
+
     .award{
       text-align:center;
+
       background:#fff4cf;
       border:1px solid #d9b754;
       color:#684b09;
+
       padding:10px 14px;
       border-radius:10px;
+
       font-weight:800;
+
       margin:14px auto 24px;
       max-width:620px;
     }
+
     .topic-buttons{
       display:grid;
-      grid-template-columns:repeat(4,1fr);
+      grid-template-columns:repeat(2,1fr);
       gap:10px;
       margin-bottom:22px;
     }
+
     button{
       font:inherit;
       cursor:pointer;
     }
-    .topic-btn,.next-btn,.restart-btn{
+
+    .topic-btn,
+    .next-btn,
+    .restart-btn{
       border:0;
       border-radius:10px;
       padding:12px 14px;
+
       font-weight:800;
       transition:.18s ease;
     }
+
     .topic-btn{
       background:#161616;
       color:#fff;
     }
-    .topic-btn:hover,.topic-btn.active{
+
+    .topic-btn:hover,
+    .topic-btn.active{
       background:#8a5a3b;
       color:#fff;
       transform:translateY(-1px);
     }
+
     .question-area{
       display:none;
       margin-top:12px;
     }
-    .question-area.show{display:block}
+
+    .question-area.show{
+      display:block;
+    }
+
     .level-row{
       display:flex;
       justify-content:space-between;
       gap:12px;
       flex-wrap:wrap;
+
       color:var(--muted);
       font-size:.92rem;
+
       margin-bottom:10px;
     }
+
     .context-box{
       background:#eff6ff;
       border:1px solid #bfdbfe;
       border-left:5px solid #8a5a3b;
+
       border-radius:12px;
       padding:16px 18px;
       margin-bottom:16px;
     }
+
     .context-box strong{
       color:var(--navy);
       display:block;
       margin-bottom:4px;
     }
+
     .question{
       font-size:1.13rem;
       font-weight:800;
       color:var(--navy);
       margin:10px 0 15px;
     }
+
     .answers{
       display:grid;
       gap:10px;
     }
+
     .answer-btn{
       width:100%;
       text-align:left;
+
       background:#fff;
       border:1px solid #cfd9e5;
+
       border-radius:10px;
       padding:12px 14px;
+
       color:var(--text);
     }
+
     .answer-btn:hover:not(:disabled){
       border-color:#8a5a3b;
       background:#fff8ef;
     }
+
     .answer-btn.correct{
       background:#ecfdf3;
       border-color:#86d7a3;
       color:#14532d;
       font-weight:800;
     }
+
     .answer-btn.wrong{
       background:#fff1f2;
       border-color:#f5a4ab;
       color:#7f1d1d;
       font-weight:800;
     }
+
     .feedback{
       min-height:32px;
       margin:14px 0 4px;
       font-weight:700;
     }
-    .feedback.good{color:var(--good)}
-    .feedback.bad{color:var(--bad)}
+
+    .feedback.good{
+      color:var(--good);
+    }
+
+    .feedback.bad{
+      color:var(--bad);
+    }
+
     .controls{
       display:flex;
       justify-content:space-between;
       align-items:center;
+
       gap:12px;
       margin-top:14px;
+
       flex-wrap:wrap;
     }
-    .score{font-weight:900;color:var(--navy)}
-    .next-btn,.restart-btn{
+
+    .score{
+      font-weight:900;
+      color:var(--navy);
+    }
+
+    .next-btn,
+    .restart-btn{
       background:#161616;
       color:#fff;
     }
-    .next-btn:hover,.restart-btn:hover{background:#8a5a3b}
-    .next-btn:disabled{opacity:.45;cursor:not-allowed}
+
+    .next-btn:hover,
+    .restart-btn:hover{
+      background:#8a5a3b;
+    }
+
+    .next-btn:disabled{
+      opacity:.45;
+      cursor:not-allowed;
+    }
+
     .result{
       display:none;
       text-align:center;
       padding:24px 8px 8px;
     }
-    .result.show{display:block}
-    .result h3{font-size:1.8rem}
-    .trophy{font-size:3.2rem}
+
+    .result.show{
+      display:block;
+    }
+
+    .result h3{
+      font-size:1.8rem;
+    }
+
+    .trophy{
+      font-size:3.2rem;
+    }
+
     .award-certificate{
       display:none;
+
       max-width:680px;
       margin:24px auto 8px;
       padding:34px 24px;
+
       text-align:center;
+
       background:linear-gradient(135deg,#fff9dd,#f4df98);
+
       border:5px double #b88716;
       border-radius:16px;
+
       box-shadow:0 10px 30px rgba(104,75,9,.18);
+
       color:#4d390b;
     }
-    .award-certificate.show{display:block}
-    .award-certificate .medal{font-size:4rem;line-height:1}
+
+    .award-certificate.show{
+      display:block;
+    }
+
+    .award-certificate .medal{
+      font-size:4rem;
+      line-height:1;
+    }
+
     .award-certificate h3{
       margin:10px 0 4px;
       color:#684b09;
       font-size:2rem;
     }
+
     .award-certificate .award-name{
       font-family:Georgia,serif;
       font-size:1.55rem;
       font-weight:800;
       margin:12px 0;
     }
-    .award-certificate p{margin:5px 0}
+
+    .award-certificate p{
+      margin:5px 0;
+    }
 
     footer{
       text-align:center;
@@ -269,1086 +417,2235 @@
       color:#dbeafe;
       padding:24px;
     }
-    code.math{
-      font-family:"Cambria Math","Times New Roman",serif;
-      background:#edf2f7;
-      padding:1px 5px;
-      border-radius:5px;
-      color:#111827;
-      white-space:normal;
-    }
 
     .player-panel{
       background:#f8fafc;
       border:1px solid var(--line);
+
       border-radius:14px;
       padding:18px;
       margin:18px 0 22px;
     }
-    .player-panel h3,.leaderboard h3{margin:0 0 10px;color:var(--navy)}
+
+    .player-panel h3,
+    .leaderboard h3{
+      margin:0 0 10px;
+      color:var(--navy);
+    }
+
     .player-select-row{
       display:flex;
       align-items:center;
       gap:12px;
       flex-wrap:wrap;
     }
-    .player-select-row label{font-weight:800}
+
+    .player-select-row label{
+      font-weight:800;
+    }
+
     #playerSelect{
       min-width:220px;
+
       padding:10px 12px;
+
       border:1px solid #cfd9e5;
       border-radius:9px;
+
       background:#fff;
+
       font:inherit;
       color:var(--text);
     }
-    .player-note{margin:10px 0 0;color:var(--muted);font-size:.94rem}
+
+    .player-note{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
     .leaderboard{
       margin:0 0 24px;
+
       border:1px solid #d9b754;
       background:#fffdf4;
+
       border-radius:14px;
       padding:18px;
     }
-    .leaderboard-list{display:grid;gap:8px}
+
+    .leaderboard-list{
+      display:grid;
+      gap:8px;
+    }
+
     .leader-row{
       display:grid;
       grid-template-columns:48px 1fr auto;
       align-items:center;
+
       gap:10px;
+
       background:#fff;
       border:1px solid #eadfb7;
+
       border-radius:10px;
       padding:10px 12px;
+
       font-weight:800;
     }
-    .leader-rank{font-size:1.05rem;text-align:center}
-    .leader-xp{color:#684b09;white-space:nowrap}
-    .xp-flash{font-weight:900;color:#166534}
-    .score-wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-    #playerXp{font-weight:800;color:#684b09}
+
+    .leader-rank{
+      font-size:1.05rem;
+      text-align:center;
+    }
+
+    .leader-xp{
+      color:#684b09;
+      white-space:nowrap;
+    }
+
+    .xp-flash{
+      font-weight:900;
+      color:#166534;
+    }
+
+    .score-wrap{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    #playerXp{
+      font-weight:800;
+      color:#684b09;
+    }
+
     .sync-status{
       margin:10px 0 0;
       font-size:.92rem;
       font-weight:800;
       color:#684b09;
     }
-    .sync-status.online{color:#166534}
-    .sync-status.offline{color:#9a3412}
 
-    @media (max-width:820px){
-      .topic-buttons{grid-template-columns:repeat(2,1fr)}
+    @media(max-width:680px){
+
+      .topic-grid,
+      .idea-grid{
+        grid-template-columns:1fr;
+      }
+
+      .topic-buttons{
+        grid-template-columns:1fr;
+      }
+
+      main{
+        width:min(94%,1100px);
+      }
+
+      .intro,
+      .thinking,
+      .quiz-shell{
+        padding:20px;
+      }
+
     }
-    @media (max-width:680px){
-      .topic-grid,.idea-grid{grid-template-columns:1fr}
-      main{width:min(94%,1100px)}
-      .intro,.thinking,.quiz-shell{padding:20px}
-    }
+
   </style>
-\n
 </head>
+
 <body>
+
 <header>
-  <h1>Engineering Maths</h1>
-  <p>Engineering Maths • Pure Maths • Mechanical Maths • Statistics • A-Level Maths</p>
+
+  <h1>GCSE Higher & A-Level Maths</h1>
+
+  <p>
+    Number • Algebra • Geometry • Trigonometry •
+    Probability • Statistics • A-Level Maths
+  </p>
+
 </header>
 
+
 <nav>
+
   <a href="#about">About</a>
+
   <a href="#topics">Topics</a>
+
   <a href="#ideas">Key Ideas</a>
+
   <a href="#thinking">Mathematical Thinking</a>
+
   <a href="#leaderboard">🏆 Leaderboard</a>
+
   <a href="#quiz">Quiz</a>
+
 </nav>
 
+
 <main>
+
+
+  <!-- ABOUT -->
+
   <section id="about" class="intro">
-    <h2>Engineering Maths</h2>
+
+    <h2>GCSE Higher Maths</h2>
+
     <p>
-      Explore four major areas of engineering mathematics. Learn how calculus models changing systems,
-      how vectors describe forces and motion, how matrices solve engineering systems,
-      and how differential equations and signals model real engineering problems.
+
+      Revise the main GCSE Higher Maths topics, including
+      number, algebra, ratio and proportion, geometry,
+      trigonometry, probability and statistics.
+
     </p>
+
     <p>
-      In the quiz, every question starts with a short <strong>context box</strong>. Read the context first,
-      then use it to solve the engineering maths problem.
+
+      The questions are designed to practise methods that
+      are commonly needed in Higher Tier GCSE Maths.
+
     </p>
+
+    <p>
+
+      You can also keep practising the existing
+      <strong>A-Level Maths</strong> quiz.
+
+      Every correct answer gives the selected player XP
+      for the leaderboard.
+
+    </p>
+
   </section>
+
+
+
+  <!-- TOPICS -->
 
   <section id="topics">
-    <h2>Maths Topics</h2>
+
+    <h2>GCSE Higher Maths Topics</h2>
+
     <div class="topic-grid">
+
+
       <article class="card">
-        <span class="topic-icon">∫</span>
-        <h3>Engineering Calculus</h3>
-        <p>Use differentiation and integration to solve rate, motion, area, optimisation and changing-system problems.</p>
+
+        <span class="topic-icon">123</span>
+
+        <h3>Number</h3>
+
+        <p>
+
+          Practise fractions, percentages, standard form,
+          surds, indices, bounds and calculations.
+
+        </p>
+
       </article>
+
+
+
       <article class="card">
-        <span class="topic-icon">▦</span>
-        <h3>Vectors & Mechanics</h3>
-        <p>Resolve forces, combine vectors, calculate moments, velocity and acceleration, and model mechanical systems.</p>
+
+        <span class="topic-icon">x</span>
+
+        <h3>Algebra</h3>
+
+        <p>
+
+          Simplify expressions, solve equations and
+          inequalities, and use sequences, quadratics
+          and functions.
+
+        </p>
+
       </article>
+
+
+
       <article class="card">
+
+        <span class="topic-icon">%</span>
+
+        <h3>Ratio & Proportion</h3>
+
+        <p>
+
+          Work with ratios, direct and inverse proportion,
+          rates of change and percentage problems.
+
+        </p>
+
+      </article>
+
+
+
+      <article class="card">
+
+        <span class="topic-icon">△</span>
+
+        <h3>Geometry</h3>
+
+        <p>
+
+          Use angle rules, similarity, congruence,
+          transformations, circles, area, volume and vectors.
+
+        </p>
+
+      </article>
+
+
+
+      <article class="card">
+
+        <span class="topic-icon">sin</span>
+
+        <h3>Trigonometry</h3>
+
+        <p>
+
+          Use Pythagoras, SOHCAHTOA, sine rule,
+          cosine rule and area of a triangle.
+
+        </p>
+
+      </article>
+
+
+
+      <article class="card">
+
         <span class="topic-icon">🎲</span>
-        <h3>Matrices & Systems</h3>
-        <p>Use matrices and simultaneous equations to solve networks, transformations and linked engineering quantities.</p>
+
+        <h3>Probability</h3>
+
+        <p>
+
+          Use probability rules, tree diagrams,
+          Venn diagrams and conditional probability.
+
+        </p>
+
       </article>
+
+
+
       <article class="card">
-        <span class="topic-icon">ℤ</span>
-        <h3>Differential Equations & Signals</h3>
-        <p>Model growth, decay, vibration, circuits and signals using differential equations, exponentials and trigonometry.</p>
-      </article>
-      <article class="card">
-        <span class="topic-icon">π</span>
-        <h3>Pure Maths</h3>
-        <p>Practise algebra, functions, trigonometry, sequences, differentiation, integration and coordinate geometry.</p>
-      </article>
-      <article class="card">
-        <span class="topic-icon">⚙️</span>
-        <h3>Mechanical Maths</h3>
-        <p>Use SUVAT, forces, moments, friction, momentum, impulse, projectiles and equilibrium.</p>
-      </article>
-      <article class="card">
+
         <span class="topic-icon">📊</span>
+
         <h3>Statistics</h3>
-        <p>Work with probability, distributions, averages, spread, correlation, expectation and hypothesis ideas.</p>
+
+        <p>
+
+          Interpret charts and graphs, calculate averages
+          and spread, and use cumulative frequency
+          and histograms.
+
+        </p>
+
       </article>
+
+
+
+      <article class="card">
+
+        <span class="topic-icon">📐</span>
+
+        <h3>A-Level Maths</h3>
+
+        <p>
+
+          Keep the existing A-Level Maths quiz
+          for more advanced practice.
+
+        </p>
+
+      </article>
+
+
     </div>
+
   </section>
+
+
+
+  <!-- KEY IDEAS -->
 
   <section id="ideas">
+
     <h2>Key Mathematical Ideas</h2>
+
     <div class="idea-grid">
+
+
       <article class="card idea">
-        <h3>Rates and Change</h3>
-        <p>Engineering uses derivatives for rates such as velocity, current and heat flow, and integrals for totals such as distance, charge and energy.</p>
+
+        <h3>Show Your Working</h3>
+
+        <p>
+
+          Write down the main steps clearly.
+          This helps you gain method marks even if
+          the final answer is not correct.
+
+        </p>
+
       </article>
+
+
+
       <article class="card idea">
-        <h3>Forces and Vectors</h3>
-        <p>Vectors describe quantities with both size and direction, making them essential for forces, motion and engineering geometry.</p>
+
+        <h3>Choose the Right Method</h3>
+
+        <p>
+
+          Look carefully at the information in the
+          question and decide which formula,
+          rule or method is needed.
+
+        </p>
+
       </article>
+
+
+
       <article class="card idea">
-        <h3>Systems and Matrices</h3>
-        <p>Matrices provide a compact way to solve several linked equations at once, which is useful in structures, circuits and control systems.</p>
+
+        <h3>Check Units</h3>
+
+        <p>
+
+          Make sure your units match the question,
+          especially for length, area, volume,
+          speed and compound measures.
+
+        </p>
+
       </article>
+
+
+
       <article class="card idea">
-        <h3>Signals and Models</h3>
-        <p>Differential equations and trigonometric functions help engineers model vibration, waves, electrical signals and changing systems.</p>
+
+        <h3>Check Your Answer</h3>
+
+        <p>
+
+          Ask whether your answer is sensible.
+
+          Use estimation where possible and check
+          signs, rounding and accuracy.
+
+        </p>
+
       </article>
+
+
     </div>
+
   </section>
+
+
+
+  <!-- MATHEMATICAL THINKING -->
 
   <section id="thinking" class="thinking">
+
     <h2>Mathematical Thinking</h2>
-    <h3>Why is engineering maths different?</h3>
+
+
+    <h3>
+      How should I approach a Higher Maths question?
+    </h3>
+
     <p>
-      In engineering maths, mathematics is not only about getting a numerical answer.
-      You also need to choose a suitable model, use the correct units, apply the right formula,
-      and explain what the answer means in an engineering situation.
+
+      Read the question carefully.
+
+      Underline the important information.
+
+      Decide what you need to find.
+
+      Choose a suitable method and show each
+      main step clearly.
+
     </p>
-    <h3>What makes a strong solution?</h3>
+
+
+    <h3>
+      What makes a strong GCSE answer?
+    </h3>
+
     <p>
-      A strong solution is logically organised. It identifies the known values, chooses the correct engineering maths method,
-      shows the main steps, keeps track of units, and checks whether the final answer is reasonable.
+
+      A strong answer uses the correct method,
+      shows enough working, uses the correct units
+      and gives the answer to the accuracy requested.
+
     </p>
+
+
     <div class="quote">
-      “Engineering maths connects calculation with real systems: forces, motion, structures, circuits, signals and change.”
+
+      “Higher Maths is about choosing the right method,
+      showing clear working and checking that your
+      answer makes sense.”
+
     </div>
+
   </section>
+
+
+
+  <!-- QUIZ -->
 
   <section id="quiz" class="quiz-shell">
-    <h2 class="quiz-title">⚙️ Engineering Maths</h2>
-    <p class="quiz-sub">Choose a topic below. The existing quizzes are unchanged, and Pure Maths, Mechanical Maths and Statistics each add a new 10-question quiz.</p>
-    <div class="award">🏆 Score 10 / 10 to unlock the Maths Teacher Award!</div>
 
+
+    <h2 class="quiz-title">
+      🎓 Maths Quiz
+    </h2>
+
+
+    <p class="quiz-sub">
+
+      Choose GCSE Higher Maths or A-Level Maths.
+
+      Each quiz has 10 questions with explanations.
+
+    </p>
+
+
+    <div class="award">
+
+      🏆 Score 10 / 10 to unlock the
+      Maths Teacher Award!
+
+    </div>
+
+
+
+    <!-- PLAYER -->
 
     <div class="player-panel">
-      <h3>Who is playing?</h3>
+
+
+      <h3>
+        Who is playing?
+      </h3>
+
+
       <div class="player-select-row">
-        <label for="playerSelect">Player:</label>
+
+        <label for="playerSelect">
+          Player:
+        </label>
+
+
         <select id="playerSelect">
-          <option value="">Choose a player</option>
-          <option value="Mr Sharratt">Mr Sharratt</option>
-          <option value="Mr Davidson">Mr Davidson</option>
-          <option value="Mrs Dubey">Mrs Dubey</option>
+
+          <option value="">
+            Choose a player
+          </option>
+
+          <option value="Mr Sharratt">
+            Mr Sharratt
+          </option>
+
+          <option value="Mr Davidson">
+            Mr Davidson
+          </option>
+
+          <option value="Mrs Dubey">
+            Mrs Dubey
+          </option>
+
         </select>
+
       </div>
-      <p class="player-note">Every correct answer gives the selected player <strong>+1 XP</strong>. XP keeps adding across repeat attempts and is saved by this website on this browser.</p>
+
+
+      <p class="player-note">
+
+        Every correct answer gives the selected player
+
+        <strong>+1 XP</strong>.
+
+        XP keeps adding across repeat attempts
+        and is saved by this website on this browser.
+
+      </p>
+
+
     </div>
 
-    <section id="leaderboard" class="leaderboard">
-      <h3>🏆 XP Leaderboard</h3>
-      <p class="player-note">Scores are saved by this website on this browser and stay after the page is closed or refreshed.</p>
-      <div id="leaderboardList" class="leaderboard-list"></div>
-      <div id="syncStatus" class="sync-status">💾 Website score saving is on.</div>
+
+
+    <!-- LEADERBOARD -->
+
+    <section
+      id="leaderboard"
+      class="leaderboard"
+    >
+
+
+      <h3>
+        🏆 XP Leaderboard
+      </h3>
+
+
+      <p class="player-note">
+
+        Scores are saved by this website on this browser
+        and stay after the page is closed or refreshed.
+
+      </p>
+
+
+      <div
+        id="leaderboardList"
+        class="leaderboard-list"
+      ></div>
+
+
+      <div
+        id="syncStatus"
+        class="sync-status"
+      >
+
+        💾 Website score saving is on.
+
+      </div>
+
+
     </section>
 
+
+
+    <!-- QUIZ BUTTONS -->
+
     <div class="topic-buttons">
-      <button class="topic-btn" data-topic="calculus">∫ Engineering Calculus</button>
-      <button class="topic-btn" data-topic="linear">🧭 Vectors & Mechanics</button>
-      <button class="topic-btn" data-topic="probability">▦ Matrices & Systems</button>
-      <button class="topic-btn" data-topic="number">〰 Differential Equations & Signals</button>
-      <button class="topic-btn" data-topic="pure">π Pure Maths</button>
-      <button class="topic-btn" data-topic="mechanics">⚙️ Mechanical Maths</button>
-      <button class="topic-btn" data-topic="statistics">📊 Statistics</button>
-      <button class="topic-btn" data-topic="alevel">📐 A-Level Maths</button>
+
+
+      <button
+        class="topic-btn"
+        data-topic="gcse"
+      >
+
+        🎓 GCSE Higher Maths
+
+      </button>
+
+
+
+      <button
+        class="topic-btn"
+        data-topic="alevel"
+      >
+
+        📐 A-Level Maths
+
+      </button>
+
+
     </div>
 
-    <div id="questionArea" class="question-area">
+
+
+    <!-- QUESTIONS -->
+
+    <div
+      id="questionArea"
+      class="question-area"
+    >
+
+
       <div class="level-row">
+
         <span id="topicLabel"></span>
+
         <span id="progressLabel"></span>
+
       </div>
+
+
 
       <div class="context-box">
-        <strong>Context</strong>
+
+        <strong>
+          Context
+        </strong>
+
         <span id="contextText"></span>
+
       </div>
 
-      <div id="questionText" class="question"></div>
-      <div id="answers" class="answers"></div>
-      <div id="feedback" class="feedback"></div>
+
+
+      <div
+        id="questionText"
+        class="question"
+      ></div>
+
+
+
+      <div
+        id="answers"
+        class="answers"
+      ></div>
+
+
+
+      <div
+        id="feedback"
+        class="feedback"
+      ></div>
+
+
 
       <div class="controls">
-        <div class="score-wrap"><div id="score" class="score">Score: 0 / 10</div><div id="playerXp">Player XP: —</div></div>
-        <button id="nextBtn" class="next-btn" disabled>Next Question</button>
+
+
+        <div class="score-wrap">
+
+
+          <div
+            id="score"
+            class="score"
+          >
+
+            Score: 0 / 10
+
+          </div>
+
+
+          <div id="playerXp">
+
+            Player XP: —
+
+          </div>
+
+
+        </div>
+
+
+
+        <button
+          id="nextBtn"
+          class="next-btn"
+          disabled
+        >
+
+          Next Question
+
+        </button>
+
+
       </div>
+
+
     </div>
 
-    <div id="result" class="result">
-      <div id="resultTrophy" class="trophy">🎓</div>
-      <h3 id="resultTitle">Quiz complete!</h3>
+
+
+    <!-- RESULT -->
+
+    <div
+      id="result"
+      class="result"
+    >
+
+
+      <div
+        id="resultTrophy"
+        class="trophy"
+      >
+
+        🎓
+
+      </div>
+
+
+      <h3 id="resultTitle">
+
+        Quiz complete!
+
+      </h3>
+
+
       <p id="resultText"></p>
-      <button id="restartBtn" class="restart-btn">Try This Topic Again</button>
+
+
+      <button
+        id="restartBtn"
+        class="restart-btn"
+      >
+
+        Try This Topic Again
+
+      </button>
+
+
     </div>
 
-    <div id="certificate" class="award-certificate">
-      <div class="medal">🏆</div>
-      <h3>Achievement Unlocked</h3>
-      <div class="award-name">Maths Teacher Award</div>
-      <p>Awarded for achieving a perfect <strong>10 / 10</strong></p>
-      <p>Engineering Mathematics Quiz</p>
+
+
+    <!-- AWARD -->
+
+    <div
+      id="certificate"
+      class="award-certificate"
+    >
+
+
+      <div class="medal">
+        🏆
+      </div>
+
+
+      <h3>
+        Achievement Unlocked
+      </h3>
+
+
+      <div class="award-name">
+
+        Maths Teacher Award
+
+      </div>
+
+
+      <p>
+
+        Awarded for achieving a perfect
+
+        <strong>10 / 10</strong>
+
+      </p>
+
+
+      <p>
+
+        GCSE Higher & A-Level Maths Quiz
+
+      </p>
+
+
     </div>
+
+
   </section>
+
+
 </main>
 
-<footer>© 2026 Engineering Maths | Maths Learning Website</footer>
+
+
+<footer>
+
+  © 2026 GCSE Higher & A-Level Maths |
+  Maths Learning Website
+
+</footer>
+
+
 
 <script>
 
+
+/* ==========================
+   QUIZ QUESTIONS
+========================== */
+
 const quizzes = {
-  calculus: {
-    name: "Engineering Calculus",
-    questions: [
+
+
+  /* GCSE HIGHER */
+
+  gcse: {
+
+    name:"GCSE Higher Maths",
+
+    questions:[
+
+
       {
-        context: "Velocity is the derivative of displacement. If s(t) is measured in metres, ds/dt is measured in metres per second.",
-        q: "A component moves with displacement s(t)=3t²+2t. What is its velocity at t=4 s?",
-        options: ["14 m/s", "20 m/s", "26 m/s", "50 m/s"],
-        answer: 2,
-        explain: "v=ds/dt=6t+2. At t=4, v=24+2=26 m/s."
+        context:
+          "Higher GCSE algebra often asks you to solve quadratic equations by factorising.",
+
+        q:
+          "Solve x² - 7x + 12 = 0.",
+
+        options:[
+          "x = 3 or 4",
+          "x = -3 or -4",
+          "x = 2 or 6",
+          "x = 1 or 12"
+        ],
+
+        answer:0,
+
+        explain:
+          "x² - 7x + 12 = (x - 3)(x - 4), so x = 3 or x = 4."
       },
+
+
+
       {
-        context: "Acceleration is the derivative of velocity with respect to time.",
-        q: "If v(t)=5t³-2t, what is the acceleration at t=2 s?",
-        options: ["18 m/s²", "38 m/s²", "58 m/s²", "60 m/s²"],
-        answer: 2,
-        explain: "a=dv/dt=15t²-2. At t=2, a=60-2=58 m/s²."
+        context:
+          "Surds should be simplified by taking square factors out of the square root.",
+
+        q:
+          "Simplify √72.",
+
+        options:[
+          "6√2",
+          "8√2",
+          "12√2",
+          "36√2"
+        ],
+
+        answer:0,
+
+        explain:
+          "√72 = √(36 × 2) = 6√2."
       },
+
+
+
       {
-        context: "The area under a force-displacement graph gives work done. For a variable force F(x), work is W=∫F(x)dx.",
-        q: "A force is F(x)=4x N from x=0 to x=3 m. How much work is done?",
-        options: ["6 J", "12 J", "18 J", "36 J"],
-        answer: 2,
-        explain: "W=∫₀³4x dx=[2x²]₀³=18 J."
+        context:
+          "For simultaneous equations, eliminate one variable and then substitute back.",
+
+        q:
+          "Solve x + y = 9 and x - y = 3. What is x?",
+
+        options:[
+          "3",
+          "4",
+          "6",
+          "12"
+        ],
+
+        answer:2,
+
+        explain:
+          "Add the equations: 2x = 12, so x = 6."
       },
+
+
+
       {
-        context: "A stationary point occurs where the first derivative equals zero.",
-        q: "For y=x²-8x+20, at what x-value is the minimum?",
-        options: ["2", "4", "8", "20"],
-        answer: 1,
-        explain: "dy/dx=2x-8. Setting this to zero gives x=4."
+        context:
+          "For a right-angled triangle, SOH CAH TOA helps you choose the correct trigonometric ratio.",
+
+        q:
+          "In a right-angled triangle, opposite = 6 cm and hypotenuse = 10 cm. What is sin θ?",
+
+        options:[
+          "0.4",
+          "0.6",
+          "1.67",
+          "16"
+        ],
+
+        answer:1,
+
+        explain:
+          "sin θ = opposite ÷ hypotenuse = 6 ÷ 10 = 0.6."
       },
+
+
+
       {
-        context: "If current varies with time, electric charge is the time integral of current: Q=∫I(t)dt.",
-        q: "A current is I(t)=2t A from t=0 to 5 s. What charge passes?",
-        options: ["5 C", "10 C", "25 C", "50 C"],
-        answer: 2,
-        explain: "Q=∫₀⁵2t dt=[t²]₀⁵=25 C."
+        context:
+          "The angle at the centre of a circle is twice the angle at the circumference standing on the same arc.",
+
+        q:
+          "An angle at the circumference is 35°. What is the angle at the centre on the same arc?",
+
+        options:[
+          "17.5°",
+          "35°",
+          "70°",
+          "145°"
+        ],
+
+        answer:2,
+
+        explain:
+          "The angle at the centre is twice 35°, so it is 70°."
       },
+
+
+
       {
-        context: "For exponential decay y=y₀e^(-kt), k is a positive decay constant.",
-        q: "A sensor signal is V=12e^(-0.2t). What is V at t=0?",
-        options: ["0 V", "1 V", "12 V", "e V"],
-        answer: 2,
-        explain: "At t=0, e⁰=1, so V=12 V."
+        context:
+          "A percentage multiplier can be used for repeated percentage change.",
+
+        q:
+          "A value of £800 increases by 5% each year. What is it after 2 years?",
+
+        options:[
+          "£840",
+          "£880",
+          "£882",
+          "£900"
+        ],
+
+        answer:2,
+
+        explain:
+          "£800 × 1.05² = £882."
       },
+
+
+
       {
-        context: "For a circle, area is A=πr². Differentiating gives dA/dr=2πr.",
-        q: "At radius r=3 m, what is dA/dr?",
-        options: ["3π", "6π", "9π", "18π"],
-        answer: 1,
-        explain: "dA/dr=2πr=2π(3)=6π."
+        context:
+          "Upper and lower bounds come from the rounding interval around a stated measurement.",
+
+        q:
+          "A length is 12.4 cm correct to the nearest 0.1 cm. What is the upper bound?",
+
+        options:[
+          "12.40 cm",
+          "12.45 cm",
+          "12.49 cm",
+          "12.50 cm"
+        ],
+
+        answer:1,
+
+        explain:
+          "The interval is 12.35 ≤ length < 12.45, so the upper bound is 12.45 cm."
       },
+
+
+
       {
-        context: "An average value of a function f(x) on [a,b] is (1/(b-a))∫ₐᵇ f(x)dx.",
-        q: "What is the average value of f(x)=2x from x=0 to x=4?",
-        options: ["2", "4", "8", "16"],
-        answer: 1,
-        explain: "Average=(1/4)∫₀⁴2x dx=(1/4)[x²]₀⁴=16/4=4."
+        context:
+          "For independent events, multiply the probabilities to find the probability that both happen.",
+
+        q:
+          "A fair coin is tossed twice. What is the probability of getting two heads?",
+
+        options:[
+          "1/2",
+          "1/3",
+          "1/4",
+          "3/4"
+        ],
+
+        answer:2,
+
+        explain:
+          "P(HH) = 1/2 × 1/2 = 1/4."
       },
+
+
+
       {
-        context: "If power P(t) is known, energy is E=∫P(t)dt.",
-        q: "A machine uses constant power 500 W for 20 s. What energy is used?",
-        options: ["25 J", "500 J", "2,500 J", "10,000 J"],
-        answer: 3,
-        explain: "E=Pt=500×20=10,000 J."
+        context:
+          "Vectors can be added by combining matching components.",
+
+        q:
+          "If a = (3, -2) and b = (1, 5), find a + b.",
+
+        options:[
+          "(4, 3)",
+          "(2, -7)",
+          "(3, 3)",
+          "(4, 7)"
+        ],
+
+        answer:0,
+
+        explain:
+          "Add the components: (3 + 1, -2 + 5) = (4, 3)."
       },
+
+
+
       {
-        context: "For y=sin(ωt), the derivative is dy/dt=ωcos(ωt).",
-        q: "Differentiate y=sin(5t).",
-        options: ["cos(5t)", "5cos(5t)", "-5sin(5t)", "5sin(5t)"],
-        answer: 1,
-        explain: "Using the chain rule, dy/dt=5cos(5t)."
+        context:
+          "The nth term of a quadratic sequence contains an n² term. Look at the second differences to identify its coefficient.",
+
+        q:
+          "What is the nth term of the sequence 3, 8, 15, 24, 35, ...?",
+
+        options:[
+          "n² + 2",
+          "n² + 2n",
+          "2n² + 1",
+          "n² + n + 1"
+        ],
+
+        answer:1,
+
+        explain:
+          "n² + 2n gives 3, 8, 15, 24, 35 for n = 1, 2, 3, 4, 5."
       }
+
+
     ]
+
   },
-  linear: {
-    name: "Vectors & Mechanics",
-    questions: [
-      {
-        context: "A 2D force vector F=(Fx,Fy) has magnitude √(Fx²+Fy²).",
-        q: "What is the magnitude of the force vector (3,4) N?",
-        options: ["4 N", "5 N", "7 N", "12 N"],
-        answer: 1,
-        explain: "|F|=√(3²+4²)=√25=5 N."
-      },
-      {
-        context: "For perpendicular x and y components, the resultant is found by vector addition.",
-        q: "A 6 N force acts east and an 8 N force acts north. What is the resultant magnitude?",
-        options: ["2 N", "7 N", "10 N", "14 N"],
-        answer: 2,
-        explain: "Resultant=√(6²+8²)=10 N."
-      },
-      {
-        context: "Moment about a point equals force × perpendicular distance from the point.",
-        q: "A 20 N force acts 0.5 m perpendicular to a pivot. What moment is produced?",
-        options: ["10 N m", "20 N m", "40 N m", "0.025 N m"],
-        answer: 0,
-        explain: "Moment=20×0.5=10 N m."
-      },
-      {
-        context: "Newton's second law is F=ma.",
-        q: "A 12 kg trolley accelerates at 3 m/s². What resultant force acts on it?",
-        options: ["4 N", "15 N", "36 N", "144 N"],
-        answer: 2,
-        explain: "F=ma=12×3=36 N."
-      },
-      {
-        context: "For constant acceleration, v=u+at.",
-        q: "A vehicle starts at 5 m/s and accelerates at 2 m/s² for 6 s. What is its final speed?",
-        options: ["7 m/s", "12 m/s", "17 m/s", "30 m/s"],
-        answer: 2,
-        explain: "v=5+(2×6)=17 m/s."
-      },
-      {
-        context: "The dot product a·b=axbx+ayby. Perpendicular vectors have dot product zero.",
-        q: "Find (2,3)·(3,-2).",
-        options: ["0", "1", "6", "12"],
-        answer: 0,
-        explain: "2×3+3×(-2)=6-6=0, so the vectors are perpendicular."
-      },
-      {
-        context: "A unit vector has magnitude 1. To make a unit vector, divide a vector by its magnitude.",
-        q: "Which is the unit vector in the direction of (3,4)?",
-        options: ["(3,4)", "(4/3,3/4)", "(3/5,4/5)", "(5/3,5/4)"],
-        answer: 2,
-        explain: "The magnitude is 5, so divide each component by 5."
-      },
-      {
-        context: "For equilibrium in one dimension, the total force must be zero.",
-        q: "A cable is pulled right by 50 N. What force is needed to balance it exactly?",
-        options: ["0 N", "25 N left", "50 N left", "100 N left"],
-        answer: 2,
-        explain: "An equal and opposite 50 N force makes the resultant zero."
-      },
-      {
-        context: "Kinetic energy is KE=½mv².",
-        q: "What is the kinetic energy of a 2 kg object moving at 6 m/s?",
-        options: ["6 J", "12 J", "36 J", "72 J"],
-        answer: 2,
-        explain: "KE=½×2×6²=36 J."
-      },
-      {
-        context: "Momentum is p=mv.",
-        q: "A 1.5 kg component moves at 8 m/s. What is its momentum?",
-        options: ["5.33 kg m/s", "9.5 kg m/s", "12 kg m/s", "48 kg m/s"],
-        answer: 2,
-        explain: "p=1.5×8=12 kg m/s."
-      }
-    ]
-  },
-  probability: {
-    name: "Matrices & Systems",
-    questions: [
-      {
-        context: "A 2×2 matrix multiplies a vector by row-by-column multiplication.",
-        q: "If A=[[2,1],[0,3]] and x=(4,2), what is Ax?",
-        options: ["(8,6)", "(10,6)", "(10,8)", "(6,10)"],
-        answer: 1,
-        explain: "First component=2×4+1×2=10. Second=0×4+3×2=6."
-      },
-      {
-        context: "The determinant of [[a,b],[c,d]] is ad-bc.",
-        q: "Find det([[4,2],[1,3]]).",
-        options: ["5", "8", "10", "14"],
-        answer: 2,
-        explain: "det=4×3-2×1=12-2=10."
-      },
-      {
-        context: "A 2×2 matrix is invertible when its determinant is not zero.",
-        q: "Which matrix is NOT invertible?",
-        options: ["[[1,0],[0,1]]", "[[2,1],[1,2]]", "[[1,2],[2,4]]", "[[3,0],[0,2]]"],
-        answer: 2,
-        explain: "Its determinant is 1×4-2×2=0, so it has no inverse."
-      },
-      {
-        context: "Simultaneous equations can model linked currents, forces or flows.",
-        q: "Solve x+y=7 and x-y=1.",
-        options: ["x=3,y=4", "x=4,y=3", "x=6,y=1", "x=7,y=0"],
-        answer: 1,
-        explain: "Adding the equations gives 2x=8, so x=4 and y=3."
-      },
-      {
-        context: "The identity matrix leaves a vector unchanged when multiplied by it.",
-        q: "What is I(5,-2) for the 2×2 identity matrix I?",
-        options: ["(0,0)", "(5,2)", "(-5,2)", "(5,-2)"],
-        answer: 3,
-        explain: "Multiplying by the identity matrix leaves the vector unchanged."
-      },
-      {
-        context: "Matrix addition is done by adding matching entries.",
-        q: "Find [[1,2],[3,4]] + [[2,0],[-1,5]].",
-        options: ["[[3,2],[2,9]]", "[[2,2],[-3,20]]", "[[3,0],[-1,9]]", "[[1,2],[2,5]]"],
-        answer: 0,
-        explain: "Add corresponding entries: [[3,2],[2,9]]."
-      },
-      {
-        context: "Scalar multiplication multiplies every matrix entry by the scalar.",
-        q: "What is 3[[2,-1],[0,4]]?",
-        options: ["[[5,2],[3,7]]", "[[6,-3],[0,12]]", "[[6,-1],[0,12]]", "[[2,-3],[0,4]]"],
-        answer: 1,
-        explain: "Multiply each entry by 3."
-      },
-      {
-        context: "The trace of a square matrix is the sum of its diagonal entries.",
-        q: "What is the trace of [[5,2],[1,-3]]?",
-        options: ["-15", "2", "3", "8"],
-        answer: 1,
-        explain: "Trace=5+(-3)=2."
-      },
-      {
-        context: "An eigenvector v satisfies Av=λv for some scalar λ.",
-        q: "For A=[[2,0],[0,3]], which vector is an eigenvector?",
-        options: ["(1,1) only", "(1,0)", "(1,2) only", "No non-zero vector"],
-        answer: 1,
-        explain: "A(1,0)=(2,0)=2(1,0), so (1,0) is an eigenvector."
-      },
-      {
-        context: "A linear system with a unique solution has independent equations. For a 2×2 coefficient matrix, this corresponds to a non-zero determinant.",
-        q: "Does 2x+y=5 and x-y=1 have a unique solution?",
-        options: ["Yes", "No, infinitely many", "No, none", "Cannot tell"],
-        answer: 0,
-        explain: "The coefficient determinant is 2×(-1)-1×1=-3, which is non-zero, so the solution is unique."
-      }
-    ]
-  },
-  number: {
-    name: "Differential Equations & Signals",
-    questions: [
-      {
-        context: "The first-order differential equation dy/dt=ky has solution y=Ce^(kt).",
-        q: "Solve dy/dt=2y with y(0)=3.",
-        options: ["y=2e^(3t)", "y=3e^(2t)", "y=3+2t", "y=6e^t"],
-        answer: 1,
-        explain: "The general solution is Ce^(2t). Since y(0)=3, C=3."
-      },
-      {
-        context: "For exponential decay dy/dt=-ky, the quantity decreases toward zero.",
-        q: "Which expression represents decay when k>0?",
-        options: ["Ae^(kt)", "Ae^(-kt)", "A+kt", "Akt"],
-        answer: 1,
-        explain: "The negative exponent makes the exponential decrease as time increases."
-      },
-      {
-        context: "A sinusoidal signal can be written y=A sin(ωt), where A is amplitude.",
-        q: "What is the amplitude of y=8 sin(4t)?",
-        options: ["2", "4", "8", "32"],
-        answer: 2,
-        explain: "The coefficient in front of sin is the amplitude, so A=8."
-      },
-      {
-        context: "Angular frequency and ordinary frequency are related by ω=2πf.",
-        q: "If f=50 Hz, what is angular frequency ω?",
-        options: ["25π rad/s", "50π rad/s", "100π rad/s", "200π rad/s"],
-        answer: 2,
-        explain: "ω=2π×50=100π rad/s."
-      },
-      {
-        context: "The period of a sinusoidal signal is T=1/f.",
-        q: "What is the period of a 20 Hz signal?",
-        options: ["0.02 s", "0.05 s", "0.2 s", "20 s"],
-        answer: 1,
-        explain: "T=1/20=0.05 s."
-      },
-      {
-        context: "For a simple RC charging model, V(t)=V₀(1-e^(-t/RC)). At t=0 the capacitor voltage is zero.",
-        q: "Using this model, what is V(0)?",
-        options: ["0", "V₀/2", "V₀", "eV₀"],
-        answer: 0,
-        explain: "At t=0, e⁰=1, so V=V₀(1-1)=0."
-      },
-      {
-        context: "A second-order undamped vibration model can be written x''+ω²x=0.",
-        q: "Which type of function is a solution of x''+9x=0?",
-        options: ["e^(9t) only", "sin(3t) and cos(3t)", "t³", "ln t"],
-        answer: 1,
-        explain: "The natural angular frequency is 3, giving sine and cosine solutions."
-      },
-      {
-        context: "The derivative of cos(ωt) is -ωsin(ωt).",
-        q: "Differentiate y=4cos(2t).",
-        options: ["-8sin(2t)", "8cos(2t)", "-4sin(2t)", "2sin(4t)"],
-        answer: 0,
-        explain: "dy/dt=4×[-2sin(2t)]=-8sin(2t)."
-      },
-      {
-        context: "In a first-order linear system, a time constant indicates how quickly the response changes. In y=e^(-t/τ), τ is the time constant.",
-        q: "For y=e^(-t/5), what is the time constant?",
-        options: ["0.2", "1", "5", "25"],
-        answer: 2,
-        explain: "Comparing e^(-t/τ) with e^(-t/5) gives τ=5."
-      },
-      {
-        context: "RMS voltage for a sine wave is Vrms=Vpeak/√2.",
-        q: "A sinusoidal voltage has peak value 10√2 V. What is its RMS value?",
-        options: ["5 V", "10 V", "10√2 V", "20 V"],
-        answer: 1,
-        explain: "Vrms=(10√2)/√2=10 V."
-      }
-    ]
-  },
+
+
+
+  /* A-LEVEL MATHS */
+
   alevel: {
-    name: "A-Level Maths",
-    questions: [
+
+    name:"A-Level Maths",
+
+    questions:[
+
+
       {
-        context: "A quadratic can be solved by factorising, completing the square, or using the quadratic formula. Here the expression factorises neatly.",
-        q: "Solve x² - 5x + 6 = 0.",
-        options: ["x = 1 or 6", "x = 2 or 3", "x = -2 or -3", "x = 3 only"],
-        answer: 1,
-        explain: "x² - 5x + 6 = (x-2)(x-3), so x = 2 or x = 3."
+        context:
+          "A quadratic can be solved by factorising, completing the square, or using the quadratic formula.",
+
+        q:
+          "Solve x² - 5x + 6 = 0.",
+
+        options:[
+          "x = 1 or 6",
+          "x = 2 or 3",
+          "x = -2 or -3",
+          "x = 3 only"
+        ],
+
+        answer:1,
+
+        explain:
+          "x² - 5x + 6 = (x - 2)(x - 3), so x = 2 or x = 3."
       },
+
+
+
       {
-        context: "For y = x^n, the derivative is dy/dx = nx^(n-1). This rule can be applied term by term.",
-        q: "Differentiate y = 3x⁴ - 5x² + 7.",
-        options: ["12x³ - 10x", "12x⁴ - 10x²", "3x³ - 5x", "4x³ - 2x"],
-        answer: 0,
-        explain: "Differentiate each term: 3x⁴ → 12x³, -5x² → -10x, and 7 → 0."
+        context:
+          "For y = xⁿ, the derivative is dy/dx = nxⁿ⁻¹.",
+
+        q:
+          "Differentiate y = 3x⁴ - 5x² + 7.",
+
+        options:[
+          "12x³ - 10x",
+          "12x⁴ - 10x²",
+          "3x³ - 5x",
+          "4x³ - 2x"
+        ],
+
+        answer:0,
+
+        explain:
+          "Differentiate each term: 3x⁴ → 12x³, -5x² → -10x, and 7 → 0."
       },
+
+
+
       {
-        context: "Integration reverses differentiation. To integrate x^n, increase the power by 1 and divide by the new power.",
-        q: "Find ∫(6x² - 4x) dx.",
-        options: ["2x³ - 2x² + C", "6x³ - 4x² + C", "3x² - 4 + C", "2x³ - 4x + C"],
-        answer: 0,
-        explain: "∫6x² dx = 2x³ and ∫-4x dx = -2x², so the answer is 2x³ - 2x² + C."
+        context:
+          "Integration reverses differentiation. Increase the power by 1 and divide by the new power.",
+
+        q:
+          "Find ∫(6x² - 4x) dx.",
+
+        options:[
+          "2x³ - 2x² + C",
+          "6x³ - 4x² + C",
+          "3x² - 4 + C",
+          "2x³ - 4x + C"
+        ],
+
+        answer:0,
+
+        explain:
+          "∫6x² dx = 2x³ and ∫-4x dx = -2x², giving 2x³ - 2x² + C."
       },
+
+
+
       {
-        context: "In trigonometry, sin²θ + cos²θ = 1 for every angle θ.",
-        q: "If sin θ = 3/5 and θ is acute, what is cos θ?",
-        options: ["2/5", "3/4", "4/5", "5/4"],
-        answer: 2,
-        explain: "cos²θ = 1 - 9/25 = 16/25, so cos θ = 4/5 because θ is acute."
+        context:
+          "In trigonometry, sin²θ + cos²θ = 1.",
+
+        q:
+          "If sin θ = 3/5 and θ is acute, what is cos θ?",
+
+        options:[
+          "2/5",
+          "3/4",
+          "4/5",
+          "5/4"
+        ],
+
+        answer:2,
+
+        explain:
+          "cos²θ = 1 - 9/25 = 16/25, therefore cos θ = 4/5."
       },
+
+
+
       {
-        context: "A geometric sequence has a constant ratio between consecutive terms. The nth term is ar^(n-1).",
-        q: "A geometric sequence starts 3, 6, 12, ... What is the 6th term?",
-        options: ["48", "96", "192", "384"],
-        answer: 1,
-        explain: "The common ratio is 2. The 6th term is 3×2⁵ = 96."
+        context:
+          "A geometric sequence has a constant ratio. The nth term is arⁿ⁻¹.",
+
+        q:
+          "A geometric sequence starts 3, 6, 12, ... What is the 6th term?",
+
+        options:[
+          "48",
+          "96",
+          "192",
+          "384"
+        ],
+
+        answer:1,
+
+        explain:
+          "The common ratio is 2. The 6th term is 3 × 2⁵ = 96."
       },
+
+
+
       {
-        context: "For a binomial distribution X~B(n,p), the expected value is np.",
-        q: "If X~B(20,0.3), what is E(X)?",
-        options: ["3", "6", "10", "14"],
-        answer: 1,
-        explain: "E(X)=np=20×0.3=6."
+        context:
+          "For a binomial distribution X ~ B(n,p), the expected value is np.",
+
+        q:
+          "If X ~ B(20,0.3), what is E(X)?",
+
+        options:[
+          "3",
+          "6",
+          "10",
+          "14"
+        ],
+
+        answer:1,
+
+        explain:
+          "E(X) = np = 20 × 0.3 = 6."
       },
+
+
+
       {
-        context: "The equation of a straight line can be written as y = mx + c, where m is the gradient and c is the y-intercept.",
-        q: "What is the gradient of the line through (2,5) and (6,13)?",
-        options: ["1", "2", "3", "4"],
-        answer: 1,
-        explain: "Gradient = (13-5)/(6-2) = 8/4 = 2."
+        context:
+          "A straight line can be written as y = mx + c, where m is the gradient.",
+
+        q:
+          "What is the gradient of the line through (2,5) and (6,13)?",
+
+        options:[
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+
+        answer:1,
+
+        explain:
+          "Gradient = (13 - 5) ÷ (6 - 2) = 8 ÷ 4 = 2."
       },
+
+
+
       {
-        context: "The discriminant of ax²+bx+c is b²-4ac. It tells you how many real roots the quadratic has.",
-        q: "How many real roots does 2x² + 4x + 5 = 0 have?",
-        options: ["Two", "One repeated root", "None", "Infinitely many"],
-        answer: 2,
-        explain: "The discriminant is 4² - 4×2×5 = 16 - 40 = -24, so there are no real roots."
+        context:
+          "The discriminant b² - 4ac tells you how many real roots a quadratic equation has.",
+
+        q:
+          "How many real roots does 2x² + 4x + 5 = 0 have?",
+
+        options:[
+          "Two",
+          "One repeated root",
+          "None",
+          "Infinitely many"
+        ],
+
+        answer:2,
+
+        explain:
+          "b² - 4ac = 4² - 4 × 2 × 5 = -24, so there are no real roots."
       },
+
+
+
       {
-        context: "For vectors a and b, the scalar product is a·b = |a||b|cosθ. It is also found by multiplying matching components and adding.",
-        q: "Find (2,3) · (4,-1).",
-        options: ["5", "8", "11", "-5"],
-        answer: 0,
-        explain: "2×4 + 3×(-1) = 8 - 3 = 5."
+        context:
+          "The scalar product is found by multiplying matching vector components and adding.",
+
+        q:
+          "Find (2,3) · (4,-1).",
+
+        options:[
+          "5",
+          "8",
+          "11",
+          "-5"
+        ],
+
+        answer:0,
+
+        explain:
+          "2 × 4 + 3 × (-1) = 8 - 3 = 5."
       },
+
+
+
       {
-        context: "For exponential growth y = Ae^(kt), the constant k controls how fast the quantity grows.",
-        q: "If y = 5e^(0.2t), what is y when t = 0?",
-        options: ["0", "1", "5", "e"],
-        answer: 2,
-        explain: "e^0 = 1, so y = 5×1 = 5."
+        context:
+          "For exponential growth y = Aeᵏᵗ, substitute the value of t into the formula.",
+
+        q:
+          "If y = 5e^(0.2t), what is y when t = 0?",
+
+        options:[
+          "0",
+          "1",
+          "5",
+          "e"
+        ],
+
+        answer:2,
+
+        explain:
+          "e⁰ = 1, so y = 5 × 1 = 5."
       }
+
+
     ]
-  },
-  pure: {
-    name: "Pure Maths",
-    questions: [
-      {
-        context: "A quadratic equation can be solved by factorising when two numbers multiply to ac and combine to give b.",
-        q: "Solve 2x² - 7x + 3 = 0.",
-        options: ["x = 3 or x = 1/2", "x = -3 or x = -1/2", "x = 1 or x = 3", "x = 7/2 only"],
-        answer: 0,
-        explain: "2x² - 7x + 3 = (2x-1)(x-3), so x=1/2 or x=3."
-      },
-      {
-        context: "For y=xⁿ, the power rule gives dy/dx = nxⁿ⁻¹. Differentiate each term separately.",
-        q: "Differentiate y = 4x³ - 3x² + 2.",
-        options: ["12x² - 6x", "12x³ - 6x²", "4x² - 3x", "12x² - 3x"],
-        answer: 0,
-        explain: "4x³ differentiates to 12x², -3x² to -6x, and the constant differentiates to 0."
-      },
-      {
-        context: "Integration reverses differentiation. Increase each power by 1 and divide by the new power.",
-        q: "Find ∫(3x² + 4x - 5) dx.",
-        options: ["x³ + 2x² - 5x + C", "6x + 4 - 5x + C", "x³ + 4x² - 5 + C", "3x³ + 2x² - 5x + C"],
-        answer: 0,
-        explain: "∫3x²dx=x³, ∫4xdx=2x² and ∫-5dx=-5x, then add C."
-      },
-      {
-        context: "On 0°≤x≤360°, sine is positive in quadrants I and II.",
-        q: "Solve sin x = 1/2 for 0°≤x≤360°.",
-        options: ["30° only", "30° and 150°", "150° and 330°", "30° and 330°"],
-        answer: 1,
-        explain: "The reference angle is 30°. Sine is positive in quadrants I and II, giving 30° and 150°."
-      },
-      {
-        context: "A logarithm answers the question: what power must the base be raised to in order to make the given number?",
-        q: "What is log₂(32)?",
-        options: ["4", "5", "16", "32"],
-        answer: 1,
-        explain: "2⁵=32, so log₂(32)=5."
-      },
-      {
-        context: "In (a+b)ⁿ, the coefficient of a chosen term can be found using binomial coefficients.",
-        q: "What is the coefficient of x² in (1 + 2x)⁴?",
-        options: ["6", "12", "24", "32"],
-        answer: 2,
-        explain: "The x² term is C(4,2)(2x)²=6×4x²=24x²."
-      },
-      {
-        context: "For an arithmetic sequence, uₙ=a+(n-1)d.",
-        q: "An arithmetic sequence begins 5, 8, 11, … What is the 20th term?",
-        options: ["60", "62", "65", "68"],
-        answer: 1,
-        explain: "u₂₀=5+19×3=62."
-      },
-      {
-        context: "For a geometric sequence with first term a and common ratio r, Sₙ=a(rⁿ-1)/(r-1) when r≠1.",
-        q: "Find the sum of the first 5 terms of 3, 6, 12, 24, …",
-        options: ["45", "63", "93", "96"],
-        answer: 2,
-        explain: "S₅=3(2⁵-1)/(2-1)=3×31=93."
-      },
-      {
-        context: "A tangent to a circle is perpendicular to the radius at the point of contact, so their gradients multiply to -1.",
-        q: "For x²+y²=25, what is the gradient of the tangent at (3,4)?",
-        options: ["4/3", "-4/3", "3/4", "-3/4"],
-        answer: 3,
-        explain: "The radius from (0,0) to (3,4) has gradient 4/3, so the perpendicular tangent gradient is -3/4."
-      },
-      {
-        context: "To find an inverse function, write y=f(x), swap x and y, then rearrange for y.",
-        q: "If f(x)=3x+2, what is f⁻¹(x)?",
-        options: ["3x-2", "(x+2)/3", "(x-2)/3", "1/(3x+2)"],
-        answer: 2,
-        explain: "y=3x+2 gives x=(y-2)/3, so f⁻¹(x)=(x-2)/3."
-      }
-    ]
-  },
-  mechanics: {
-    name: "Mechanical Maths",
-    questions: [
-      {
-        context: "For constant acceleration, the SUVAT equation v=u+at links final velocity, initial velocity, acceleration and time.",
-        q: "A particle has u=4 m/s and accelerates at 3 m/s² for 5 s. What is v?",
-        options: ["15 m/s", "19 m/s", "20 m/s", "23 m/s"],
-        answer: 1,
-        explain: "v=u+at=4+3×5=19 m/s."
-      },
-      {
-        context: "For constant acceleration, displacement can be found from s=ut+½at².",
-        q: "A body has u=2 m/s, a=4 m/s² and t=3 s. What distance does it travel?",
-        options: ["18 m", "20 m", "24 m", "30 m"],
-        answer: 2,
-        explain: "s=2×3+½×4×3²=6+18=24 m."
-      },
-      {
-        context: "Newton's second law states that resultant force equals mass multiplied by acceleration: F=ma.",
-        q: "What resultant force accelerates a 7 kg object at 2.5 m/s²?",
-        options: ["9.5 N", "14 N", "17.5 N", "28 N"],
-        answer: 2,
-        explain: "F=ma=7×2.5=17.5 N."
-      },
-      {
-        context: "In the model F=μR, friction equals the coefficient of friction multiplied by the normal reaction at limiting equilibrium.",
-        q: "If μ=0.30 and R=50 N, what is the limiting friction?",
-        options: ["10 N", "15 N", "20 N", "50 N"],
-        answer: 1,
-        explain: "F=μR=0.30×50=15 N."
-      },
-      {
-        context: "The moment of a force about a point is force × perpendicular distance from the point.",
-        q: "A 12 N force acts 0.40 m from a pivot. What is its moment?",
-        options: ["3 N m", "4.8 N m", "12.4 N m", "30 N m"],
-        answer: 1,
-        explain: "Moment=12×0.40=4.8 N m."
-      },
-      {
-        context: "For a projectile launched at speed u at angle θ above the horizontal, the vertical component is u sinθ.",
-        q: "A projectile is launched at 20 m/s at 30°. What is its initial vertical component?",
-        options: ["5 m/s", "10 m/s", "10√3 m/s", "20 m/s"],
-        answer: 1,
-        explain: "20 sin30°=20×0.5=10 m/s."
-      },
-      {
-        context: "The component of weight acting down a slope of angle θ is mg sinθ.",
-        q: "A 10 kg mass is on a 30° slope. Using g=9.8 m/s², what is the component of weight down the slope?",
-        options: ["24.5 N", "49 N", "84.9 N", "98 N"],
-        answer: 1,
-        explain: "mg sin30°=10×9.8×0.5=49 N."
-      },
-      {
-        context: "Impulse equals change in momentum: I=m(v-u).",
-        q: "A 2 kg object changes speed from 3 m/s to 8 m/s in the same direction. What is the impulse?",
-        options: ["5 N s", "10 N s", "16 N s", "22 N s"],
-        answer: 1,
-        explain: "I=2(8-3)=10 N s."
-      },
-      {
-        context: "When two bodies stick together after a collision, total momentum before equals total momentum after.",
-        q: "A 2 kg mass moving at 5 m/s hits a stationary 3 kg mass and they stick together. What is their common speed?",
-        options: ["1 m/s", "2 m/s", "2.5 m/s", "5 m/s"],
-        answer: 1,
-        explain: "Initial momentum=2×5=10. Total mass=5 kg, so v=10/5=2 m/s."
-      },
-      {
-        context: "At terminal velocity, acceleration is zero because the forces are balanced.",
-        q: "What is the resultant force on an object moving at terminal velocity?",
-        options: ["Zero", "Equal to its weight", "Equal to drag only", "Increasing"],
-        answer: 0,
-        explain: "Terminal velocity means constant velocity, so acceleration and therefore resultant force are zero."
-      }
-    ]
-  },
-  statistics: {
-    name: "Statistics",
-    questions: [
-      {
-        context: "The mean is the total of the observations divided by the number of observations.",
-        q: "What is the mean of 4, 6, 8, 12?",
-        options: ["6", "7", "7.5", "8"],
-        answer: 2,
-        explain: "The total is 30 and there are 4 values, so the mean is 30/4=7.5."
-      },
-      {
-        context: "For an ordered data set with an odd number of values, the median is the middle value.",
-        q: "What is the median of 2, 5, 7, 9, 14?",
-        options: ["5", "7", "7.4", "9"],
-        answer: 1,
-        explain: "The middle of the five ordered values is 7."
-      },
-      {
-        context: "Range is a simple measure of spread calculated as maximum minus minimum.",
-        q: "What is the range of 3, 4, 8, 11, 15?",
-        options: ["8", "10", "12", "15"],
-        answer: 2,
-        explain: "Range=15-3=12."
-      },
-      {
-        context: "For independent events A and B, P(A∩B)=P(A)P(B).",
-        q: "If P(A)=0.4 and P(B)=0.5 and the events are independent, what is P(A∩B)?",
-        options: ["0.10", "0.20", "0.45", "0.90"],
-        answer: 1,
-        explain: "0.4×0.5=0.20."
-      },
-      {
-        context: "For X~B(n,p), the probability of zero successes is (1-p)ⁿ.",
-        q: "If X~B(5,0.2), what is P(X=0)?",
-        options: ["0.2⁵", "0.8⁵", "5×0.2", "1-0.8⁵"],
-        answer: 1,
-        explain: "P(X=0)=(1-0.2)⁵=0.8⁵=0.32768."
-      },
-      {
-        context: "A z-score measures how many standard deviations a value lies from the mean: z=(x-μ)/σ.",
-        q: "A normal variable has mean 50 and standard deviation 10. What is the z-score of 70?",
-        options: ["1", "2", "5", "7"],
-        answer: 1,
-        explain: "z=(70-50)/10=2."
-      },
-      {
-        context: "Conditional probability is P(A|B)=P(A∩B)/P(B), provided P(B)>0.",
-        q: "If P(A∩B)=0.18 and P(B)=0.60, what is P(A|B)?",
-        options: ["0.18", "0.30", "0.42", "0.78"],
-        answer: 1,
-        explain: "P(A|B)=0.18/0.60=0.30."
-      },
-      {
-        context: "Correlation measures association between variables, but an association alone does not prove that one variable causes the other.",
-        q: "A strong positive correlation between two variables proves that one causes the other. Is this statement correct?",
-        options: ["Yes, always", "Yes, if the sample is large", "No, correlation does not by itself prove causation", "Only when r=1"],
-        answer: 2,
-        explain: "Correlation can be strong even when another factor explains the relationship, so it does not by itself prove causation."
-      },
-      {
-        context: "In a hypothesis test, a small p-value gives evidence against the null hypothesis when compared with the chosen significance level.",
-        q: "At the 5% significance level, what do you do if p=0.03?",
-        options: ["Accept the null as certainly true", "Reject the null hypothesis", "Increase p to 0.05", "No conclusion is possible"],
-        answer: 1,
-        explain: "Since 0.03<0.05, the result is statistically significant at the 5% level and the null hypothesis is rejected."
-      },
-      {
-        context: "For a discrete random variable, E(X)=ΣxP(X=x).",
-        q: "X takes values 1, 2 and 3 with probabilities 0.3, 0.5 and 0.2. What is E(X)?",
-        options: ["1.5", "1.9", "2.0", "2.3"],
-        answer: 1,
-        explain: "E(X)=1(0.3)+2(0.5)+3(0.2)=0.3+1.0+0.6=1.9."
-      }
-    ]
+
   }
+
+
 };
 
+
+
+/* ==========================
+   QUIZ SYSTEM
+========================== */
+
+
 let currentTopic = null;
+
 let currentIndex = 0;
+
 let score = 0;
+
 let answered = false;
+
 let currentPlayer = "";
 
-const players = ["Mr Sharratt", "Mr Davidson", "Mrs Dubey"];
-const localXpKey = "engineeringMathsLeaderboardXP_v3";
-const currentPlayerKey = "engineeringMathsCurrentPlayer_v3";
+
+
+/* PLAYERS */
+
+const players = [
+
+  "Mr Sharratt",
+
+  "Mr Davidson",
+
+  "Mrs Dubey"
+
+];
+
+
+
+/* LOCAL STORAGE */
+
+const localXpKey =
+  "engineeringMathsLeaderboardXP_v3";
+
+const currentPlayerKey =
+  "engineeringMathsCurrentPlayer_v3";
+
+
+
 let xpData = loadLocalXp();
 
-const questionArea = document.getElementById("questionArea");
-const contextText = document.getElementById("contextText");
-const questionText = document.getElementById("questionText");
-const answers = document.getElementById("answers");
-const feedback = document.getElementById("feedback");
-const scoreEl = document.getElementById("score");
-const nextBtn = document.getElementById("nextBtn");
-const topicLabel = document.getElementById("topicLabel");
-const progressLabel = document.getElementById("progressLabel");
-const result = document.getElementById("result");
-const resultTitle = document.getElementById("resultTitle");
-const resultText = document.getElementById("resultText");
-const resultTrophy = document.getElementById("resultTrophy");
-const certificate = document.getElementById("certificate");
-const playerSelect = document.getElementById("playerSelect");
-const leaderboardList = document.getElementById("leaderboardList");
-const playerXp = document.getElementById("playerXp");
-const syncStatus = document.getElementById("syncStatus");
+
+
+/* PAGE ELEMENTS */
+
+const questionArea =
+  document.getElementById("questionArea");
+
+const contextText =
+  document.getElementById("contextText");
+
+const questionText =
+  document.getElementById("questionText");
+
+const answers =
+  document.getElementById("answers");
+
+const feedback =
+  document.getElementById("feedback");
+
+const scoreEl =
+  document.getElementById("score");
+
+const nextBtn =
+  document.getElementById("nextBtn");
+
+const topicLabel =
+  document.getElementById("topicLabel");
+
+const progressLabel =
+  document.getElementById("progressLabel");
+
+const result =
+  document.getElementById("result");
+
+const resultTitle =
+  document.getElementById("resultTitle");
+
+const resultText =
+  document.getElementById("resultText");
+
+const resultTrophy =
+  document.getElementById("resultTrophy");
+
+const certificate =
+  document.getElementById("certificate");
+
+const playerSelect =
+  document.getElementById("playerSelect");
+
+const leaderboardList =
+  document.getElementById("leaderboardList");
+
+const playerXp =
+  document.getElementById("playerXp");
+
+
+
+/* CREATE BLANK XP */
 
 function blankXp(){
+
   const clean = {};
-  players.forEach(name => clean[name] = 0);
+
+  players.forEach(name => {
+
+    clean[name] = 0;
+
+  });
+
   return clean;
+
 }
+
+
+
+/* LOAD XP */
 
 function loadLocalXp(){
+
   try{
-    const saved = JSON.parse(localStorage.getItem(localXpKey) || "{}");
+
+    const saved =
+      JSON.parse(
+        localStorage.getItem(localXpKey) || "{}"
+      );
+
     const clean = blankXp();
-    players.forEach(name => clean[name] = Number(saved[name]) || 0);
+
+
+    players.forEach(name => {
+
+      clean[name] =
+        Number(saved[name]) || 0;
+
+    });
+
+
     return clean;
-  }catch(e){
-    return blankXp();
+
   }
+
+  catch(e){
+
+    return blankXp();
+
+  }
+
 }
+
+
+
+/* SAVE XP */
 
 function saveLocalXp(){
-  localStorage.setItem(localXpKey, JSON.stringify(xpData));
+
+  localStorage.setItem(
+    localXpKey,
+    JSON.stringify(xpData)
+  );
+
 }
+
+
+
+/* LEADERBOARD */
 
 function renderLeaderboard(){
+
+
   const ordered = players
-    .map((name, order) => ({name, xp: Number(xpData[name]) || 0, order}))
-    .sort((a,b) => b.xp - a.xp || a.order - b.order);
+
+    .map((name,order) => ({
+
+      name:name,
+
+      xp:Number(xpData[name]) || 0,
+
+      order:order
+
+    }))
+
+    .sort(
+      (a,b) =>
+      b.xp - a.xp ||
+      a.order - b.order
+    );
+
 
   leaderboardList.innerHTML = "";
-  const medal = ["🥇", "🥈", "🥉"];
-  ordered.forEach((entry, i) => {
-    const row = document.createElement("div");
-    row.className = "leader-row";
-    row.innerHTML = `<span class="leader-rank">${medal[i] || "#"+(i+1)}</span><span>${entry.name}</span><span class="leader-xp">${entry.xp} XP</span>`;
+
+
+  const medal = [
+
+    "🥇",
+
+    "🥈",
+
+    "🥉"
+
+  ];
+
+
+  ordered.forEach((entry,i) => {
+
+
+    const row =
+      document.createElement("div");
+
+
+    row.className =
+      "leader-row";
+
+
+    row.innerHTML = `
+
+      <span class="leader-rank">
+
+        ${medal[i] || "#" + (i + 1)}
+
+      </span>
+
+
+      <span>
+
+        ${entry.name}
+
+      </span>
+
+
+      <span class="leader-xp">
+
+        ${entry.xp} XP
+
+      </span>
+
+    `;
+
+
     leaderboardList.appendChild(row);
+
+
   });
 
-  playerXp.textContent = currentPlayer ? `Player XP: ${Number(xpData[currentPlayer]) || 0} XP` : "Player XP: —";
+
+
+  playerXp.textContent =
+
+    currentPlayer
+
+    ? `Player XP: ${
+        Number(xpData[currentPlayer]) || 0
+      } XP`
+
+    : "Player XP: —";
+
+
 }
+
+
+
+/* GIVE XP */
 
 function awardOneXp(playerName){
-  if(!playerName) return;
-  xpData[playerName] = (Number(xpData[playerName]) || 0) + 1;
-  saveLocalXp();
-  renderLeaderboard();
-}
 
-playerSelect.addEventListener("change", () => {
-  currentPlayer = playerSelect.value;
-  if(currentPlayer){
-    localStorage.setItem(currentPlayerKey, currentPlayer);
-  } else {
-    localStorage.removeItem(currentPlayerKey);
+
+  if(!playerName){
+
+    return;
+
   }
-  renderLeaderboard();
-});
 
-const rememberedPlayer = localStorage.getItem(currentPlayerKey);
-if(players.includes(rememberedPlayer)){
-  currentPlayer = rememberedPlayer;
-  playerSelect.value = rememberedPlayer;
+
+  xpData[playerName] =
+
+    (Number(xpData[playerName]) || 0)
+
+    + 1;
+
+
+  saveLocalXp();
+
+  renderLeaderboard();
+
+
 }
+
+
+
+/* PLAYER CHANGE */
+
+playerSelect.addEventListener(
+  "change",
+  () => {
+
+
+    currentPlayer =
+      playerSelect.value;
+
+
+    if(currentPlayer){
+
+      localStorage.setItem(
+        currentPlayerKey,
+        currentPlayer
+      );
+
+    }
+
+    else{
+
+      localStorage.removeItem(
+        currentPlayerKey
+      );
+
+    }
+
+
+    renderLeaderboard();
+
+
+  }
+);
+
+
+
+/* REMEMBER PLAYER */
+
+const rememberedPlayer =
+  localStorage.getItem(
+    currentPlayerKey
+  );
+
+
+if(
+  players.includes(
+    rememberedPlayer
+  )
+){
+
+  currentPlayer =
+    rememberedPlayer;
+
+  playerSelect.value =
+    rememberedPlayer;
+
+}
+
+
 renderLeaderboard();
 
-document.querySelectorAll(".topic-btn").forEach(btn => {
-  btn.addEventListener("click", () => startQuiz(btn.dataset.topic));
-});
+
+
+/* QUIZ BUTTONS */
+
+document
+  .querySelectorAll(".topic-btn")
+  .forEach(btn => {
+
+
+    btn.addEventListener(
+      "click",
+      () => {
+
+        startQuiz(
+          btn.dataset.topic
+        );
+
+      }
+    );
+
+
+  });
+
+
+
+/* START QUIZ */
 
 function startQuiz(topic){
+
+
   if(!currentPlayer){
-    alert("Please choose Mr Sharratt, Mr Davidson or Mrs Dubey before starting the quiz.");
+
+
+    alert(
+      "Please choose Mr Sharratt, Mr Davidson or Mrs Dubey before starting the quiz."
+    );
+
+
     playerSelect.focus();
+
+
     return;
+
   }
+
+
+
   currentTopic = topic;
+
   currentIndex = 0;
+
   score = 0;
+
   answered = false;
 
-  document.querySelectorAll(".topic-btn").forEach(b => b.classList.remove("active"));
-  document.querySelector(`[data-topic="${topic}"]`).classList.add("active");
+
+
+  document
+    .querySelectorAll(".topic-btn")
+    .forEach(
+
+      b => b.classList.remove("active")
+
+    );
+
+
+
+  document
+    .querySelector(
+      `[data-topic="${topic}"]`
+    )
+    .classList.add("active");
+
+
 
   result.classList.remove("show");
+
   certificate.classList.remove("show");
+
   questionArea.classList.add("show");
+
+
   renderQuestion();
-  questionArea.scrollIntoView({behavior:"smooth", block:"nearest"});
+
+
+
+  questionArea.scrollIntoView({
+
+    behavior:"smooth",
+
+    block:"nearest"
+
+  });
+
+
 }
+
+
+
+/* SHOW QUESTION */
 
 function renderQuestion(){
+
+
   answered = false;
+
+
   nextBtn.disabled = true;
+
+
   feedback.textContent = "";
-  feedback.className = "feedback";
 
-  const quiz = quizzes[currentTopic];
-  const item = quiz.questions[currentIndex];
+  feedback.className =
+    "feedback";
 
-  topicLabel.textContent = "Topic: " + quiz.name;
-  progressLabel.textContent = `Question ${currentIndex + 1} of ${quiz.questions.length}`;
-  contextText.textContent = item.context;
-  questionText.textContent = item.q;
-  scoreEl.textContent = `Score: ${score} / ${quiz.questions.length}`;
+
+
+  const quiz =
+    quizzes[currentTopic];
+
+
+  const item =
+    quiz.questions[currentIndex];
+
+
+
+  topicLabel.textContent =
+
+    "Topic: " +
+    quiz.name;
+
+
+
+  progressLabel.textContent =
+
+    `Question ${
+      currentIndex + 1
+    } of ${
+      quiz.questions.length
+    }`;
+
+
+
+  contextText.textContent =
+    item.context;
+
+
+  questionText.textContent =
+    item.q;
+
+
+
+  scoreEl.textContent =
+
+    `Score: ${score} / ${
+      quiz.questions.length
+    }`;
+
+
 
   answers.innerHTML = "";
-  item.options.forEach((option, i) => {
-    const btn = document.createElement("button");
-    btn.className = "answer-btn";
-    btn.textContent = option;
-    btn.addEventListener("click", () => chooseAnswer(i, btn));
-    answers.appendChild(btn);
-  });
 
-  nextBtn.textContent = currentIndex === quiz.questions.length - 1 ? "See Result" : "Next Question";
+
+
+  item.options.forEach(
+
+    (option,i) => {
+
+
+      const btn =
+        document.createElement(
+          "button"
+        );
+
+
+      btn.className =
+        "answer-btn";
+
+
+      btn.textContent =
+        option;
+
+
+      btn.addEventListener(
+
+        "click",
+
+        () => {
+
+          chooseAnswer(
+            i,
+            btn
+          );
+
+        }
+
+      );
+
+
+      answers.appendChild(
+        btn
+      );
+
+
+    }
+
+  );
+
+
+
+  if(
+    currentIndex ===
+    quiz.questions.length - 1
+  ){
+
+    nextBtn.textContent =
+      "See Result";
+
+  }
+
+  else{
+
+    nextBtn.textContent =
+      "Next Question";
+
+  }
+
+
 }
 
-async function chooseAnswer(index, clickedBtn){
-  if(answered) return;
+
+
+/* ANSWER QUESTION */
+
+function chooseAnswer(
+  index,
+  clickedBtn
+){
+
+
+  if(answered){
+
+    return;
+
+  }
+
+
   answered = true;
 
-  const item = quizzes[currentTopic].questions[currentIndex];
-  const buttons = [...document.querySelectorAll(".answer-btn")];
 
-  buttons.forEach((btn, i) => {
-    btn.disabled = true;
-    if(i === item.answer) btn.classList.add("correct");
-  });
+
+  const item =
+
+    quizzes[currentTopic]
+    .questions[currentIndex];
+
+
+
+  const buttons = [
+
+    ...document.querySelectorAll(
+      ".answer-btn"
+    )
+
+  ];
+
+
+
+  buttons.forEach(
+
+    (btn,i) => {
+
+
+      btn.disabled = true;
+
+
+      if(i === item.answer){
+
+        btn.classList.add(
+          "correct"
+        );
+
+      }
+
+
+    }
+
+  );
+
+
 
   if(index === item.answer){
+
+
     score++;
-    await awardOneXp(currentPlayer);
-    feedback.innerHTML = `<span class="xp-flash">✓ Correct! +1 XP</span> ${item.explain}`;
-    feedback.classList.add("good");
-  } else {
-    clickedBtn.classList.add("wrong");
-    feedback.textContent = "✗ Not quite. " + item.explain;
-    feedback.classList.add("bad");
+
+
+    awardOneXp(
+      currentPlayer
+    );
+
+
+    feedback.innerHTML = `
+
+      <span class="xp-flash">
+
+        ✓ Correct! +1 XP
+
+      </span>
+
+      ${item.explain}
+
+    `;
+
+
+    feedback.classList.add(
+      "good"
+    );
+
+
   }
 
-  scoreEl.textContent = `Score: ${score} / ${quizzes[currentTopic].questions.length}`;
+  else{
+
+
+    clickedBtn.classList.add(
+      "wrong"
+    );
+
+
+    feedback.textContent =
+
+      "✗ Not quite. "
+
+      + item.explain;
+
+
+    feedback.classList.add(
+      "bad"
+    );
+
+
+  }
+
+
+
+  scoreEl.textContent =
+
+    `Score: ${score} / ${
+      quizzes[currentTopic]
+      .questions.length
+    }`;
+
+
+
   nextBtn.disabled = false;
+
+
 }
 
-nextBtn.addEventListener("click", () => {
-  const quiz = quizzes[currentTopic];
-  if(currentIndex < quiz.questions.length - 1){
-    currentIndex++;
-    renderQuestion();
-  } else {
-    showResult();
+
+
+/* NEXT QUESTION */
+
+nextBtn.addEventListener(
+
+  "click",
+
+  () => {
+
+
+    const quiz =
+      quizzes[currentTopic];
+
+
+    if(
+      currentIndex <
+      quiz.questions.length - 1
+    ){
+
+      currentIndex++;
+
+      renderQuestion();
+
+    }
+
+    else{
+
+      showResult();
+
+    }
+
+
   }
-});
+
+);
+
+
+
+/* RESULTS */
 
 function showResult(){
-  questionArea.classList.remove("show");
-  result.classList.add("show");
+
+
+  questionArea.classList.remove(
+    "show"
+  );
+
+
+  result.classList.add(
+    "show"
+  );
+
+
 
   if(score === 10){
-    certificate.classList.add("show");
-    resultTrophy.textContent = "🏆";
-    resultTitle.textContent = "Maths Teacher Award Unlocked!";
-    resultText.innerHTML = `<strong>Perfect score: ${score}/10 and +10 XP.</strong><br>You have earned the <strong>Maths Teacher Award</strong>.`;
-  } else if(score >= 8){
-    certificate.classList.remove("show");
-    resultTrophy.textContent = "🎓";
-    resultTitle.textContent = "Excellent result!";
-    resultText.textContent = `You scored ${score}/10 and earned ${score} XP in this attempt. Review the missed ideas and try for 10/10.`;
-  } else if(score >= 5){
-    certificate.classList.remove("show");
-    resultTrophy.textContent = "📘";
-    resultTitle.textContent = "Good progress!";
-    resultText.textContent = `You scored ${score}/10 and earned ${score} XP in this attempt. Re-read the context boxes and try again.`;
-  } else {
-    certificate.classList.remove("show");
-    resultTrophy.textContent = "🧠";
-    resultTitle.textContent = "Keep building the ideas.";
-    resultText.textContent = `You scored ${score}/10 and earned ${score} XP in this attempt. Use each context box as a clue, then try the topic again.`;
+
+
+    certificate.classList.add(
+      "show"
+    );
+
+
+    resultTrophy.textContent =
+      "🏆";
+
+
+    resultTitle.textContent =
+      "Maths Teacher Award Unlocked!";
+
+
+    resultText.innerHTML = `
+
+      <strong>
+
+        Perfect score:
+        ${score}/10
+        and +10 XP.
+
+      </strong>
+
+      <br>
+
+      You have earned the
+
+      <strong>
+        Maths Teacher Award
+      </strong>.
+
+    `;
+
+
   }
+
+
+
+  else if(score >= 8){
+
+
+    certificate.classList.remove(
+      "show"
+    );
+
+
+    resultTrophy.textContent =
+      "🎓";
+
+
+    resultTitle.textContent =
+      "Excellent result!";
+
+
+    resultText.textContent =
+
+      `You scored ${score}/10 and earned ${score} XP in this attempt. Review the missed ideas and try for 10/10.`;
+
+
+  }
+
+
+
+  else if(score >= 5){
+
+
+    certificate.classList.remove(
+      "show"
+    );
+
+
+    resultTrophy.textContent =
+      "📘";
+
+
+    resultTitle.textContent =
+      "Good progress!";
+
+
+    resultText.textContent =
+
+      `You scored ${score}/10 and earned ${score} XP in this attempt. Re-read the context boxes and try again.`;
+
+
+  }
+
+
+
+  else{
+
+
+    certificate.classList.remove(
+      "show"
+    );
+
+
+    resultTrophy.textContent =
+      "🧠";
+
+
+    resultTitle.textContent =
+      "Keep building the ideas.";
+
+
+    resultText.textContent =
+
+      `You scored ${score}/10 and earned ${score} XP in this attempt. Use each context box as a clue, then try the topic again.`;
+
+
+  }
+
+
 }
 
-document.getElementById("restartBtn").addEventListener("click", () => startQuiz(currentTopic));
+
+
+/* RESTART */
+
+document
+  .getElementById("restartBtn")
+  .addEventListener(
+
+    "click",
+
+    () => {
+
+      startQuiz(
+        currentTopic
+      );
+
+    }
+
+  );
+
+
 </script>
+
 </body>
 </html>
