@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Engineering</title>
+
+  <style>
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+      font-family:Arial,sans-serif;
+    }
+
+    body{
+      background:#f3f4f7;
+      color:#222;
+      line-height:1.6;
+    }
+
+    header{
+      min-height:390px;
+
+      background:
+      linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+      url("https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1600&q=80")
+      center/cover no-repeat;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      text-align:center;
+      color:white;
+      padding:40px 20px;
+    }
+
+    .hero-text{
+      max-width:900px;
+    }
+
+    .hero-text h1{
+      font-size:3.7rem;
+      margin-bottom:12px;
+    }
+
+    .hero-text p{
+      font-size:1.2rem;
+      font-weight:bold;
+    }
+
+    nav{
+      background:#111;
+      text-align:center;
+      padding:13px 10px;
+      position:sticky;
+      top:0;
+      z-index:20;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      display:inline-block;
+      margin:5px 12px;
+      padding:7px 10px;
+      font-weight:bold;
+      border-radius:7px;
+    }
+
+    nav a:hover{
+      background:#ffd54f;
+      color:#111;
+    }
+
+    section{
+      width:min(1100px,92%);
+      margin:0 auto;
+      padding:55px 0;
+      scroll-margin-top:70px;
+    }
+
+    section h2{
+      text-align:center;
+      margin-bottom:28px;
+      color:#2f3b2f;
+      font-size:2rem;
+    }
+
+    .about-text{
+      text-align:center;
+      max-width:850px;
+      margin:auto;
+      font-size:1.05rem;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:20px;
+    }
+
+    .card{
+      background:white;
+      padding:24px;
+      border-radius:14px;
+      box-shadow:0 4px 12px rgba(0,0,0,.10);
+      border-top:5px solid #d7a72e;
+    }
+
+    .card h3{
+      margin-bottom:10px;
+      color:#2f3b2f;
+    }
+
+    .card p{
+      color:#444;
+    }
+
+    .timeline{
+      display:grid;
+      gap:15px;
+      max-width:850px;
+      margin:auto;
+    }
+
+    .timeline-item{
+      background:white;
+      border-left:6px solid #d7a72e;
+      padding:18px 20px;
+      border-radius:10px;
+      box-shadow:0 4px 10px rgba(0,0,0,.08);
+    }
+
+    .timeline-item h4{
+      color:#2f3b2f;
+      margin-bottom:5px;
+      font-size:1.1rem;
+    }
+
+    .quote{
+      margin-top:30px;
+      background:#fff6cf;
+      border-left:6px solid #d7a72e;
+      border-radius:10px;
+      padding:20px;
+      font-weight:bold;
+      text-align:center;
+    }
+
+    /* QUIZ */
+
+    #quiz{
+      background:white;
+      border-radius:18px;
+      padding:36px 25px;
+      margin-bottom:55px;
+      box-shadow:0 6px 18px rgba(0,0,0,.10);
+    }
+
+    .quiz-intro{
+      max-width:700px;
+      margin:0 auto 20px;
+      text-align:center;
+      color:#333;
+    }
+
+    .quiz-wrapper{
+      max-width:700px;
+      margin:20px auto;
+      background:#f3f4f7;
+      padding:22px;
+      border-radius:12px;
+      box-shadow:0 4px 10px rgba(0,0,0,.1);
+    }
+
+    .level-badge{
+      display:inline-block;
+      background:#7a4e2d;
+      color:white;
+      border-radius:999px;
+      padding:5px 12px;
+      font-size:13px;
+      font-weight:bold;
+      margin-bottom:12px;
+    }
+
+    .question{
+      font-size:17px;
+      font-weight:bold;
+      margin-bottom:18px;
+      line-height:1.5;
+      color:#111;
+    }
+
+    .answers{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+      margin-bottom:22px;
+    }
+
+    .answer-btn{
+      background:#0b0b0b;
+      color:white;
+      border:none;
+      border-radius:12px;
+      padding:15px 12px;
+      font-size:15px;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    .answer-btn:hover{
+      opacity:.88;
+    }
+
+    .answer-btn:disabled{
+      opacity:1;
+      cursor:default;
+    }
+
+    .answer-btn.correct{
+      background:green;
+    }
+
+    .answer-btn.wrong{
+      background:crimson;
+    }
+
+    .status-text{
+      font-size:15px;
+      font-weight:bold;
+      margin-bottom:18px;
+      color:#111;
+    }
+
+    .next-btn,
+    .restart-btn{
+      background:#0b0b0b;
+      color:white;
+      border:none;
+      border-radius:12px;
+      padding:14px 24px;
+      font-size:15px;
+      cursor:pointer;
+      margin-bottom:18px;
+    }
+
+    .next-btn:hover,
+    .restart-btn:hover{
+      background:#d7a72e;
+      color:#111;
+    }
+
+    .score{
+      font-size:16px;
+      font-weight:bold;
+      color:#111;
+    }
+
+    .score span{
+      color:#1a3d8f;
+    }
+
+    .result-box{
+      text-align:center;
+      padding:20px 10px;
+    }
+
+    .result-box h2{
+      margin-bottom:10px;
+    }
+
+    footer{
+      background:#1e261e;
+      color:white;
+      text-align:center;
+      padding:20px;
+    }
+
+    @media(max-width:700px){
+      .hero-text h1{
+        font-size:2.4rem;
+      }
+
+      .cards{
+        grid-template-columns:1fr;
+      }
+
+      .answers{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="hero-text">
+    <h1>⚙️ Engineering</h1>
+
+    <p>
+      Design • Technology • Machines • Structures • Electronics • Problem Solving
+    </p>
+  </div>
+</header>
+
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#topics">Topics</a>
+  <a href="#process">Design Process</a>
+  <a href="#thinking">Engineering Thinking</a>
+  <a href="#quiz">Quiz</a>
+</nav>
+
+
+<section id="about">
+
+  <h2>What is Engineering?</h2>
+
+  <p class="about-text">
+
+    Engineering is the use of
+    <strong>science, maths, technology and creativity</strong>
+    to solve real-world problems.
+
+    Engineers design, build, test and improve products,
+    machines, structures and systems.
+
+    Engineering can be found everywhere around us,
+    including cars, bridges, buildings, computers,
+    aircraft, phones, robots and medical equipment.
+
+  </p>
+
+</section>
+
+
+<section id="topics">
+
+  <h2>Main Areas of Engineering</h2>
+
+  <div class="cards">
+
+
+    <div class="card">
+
+      <h3>⚙️ Mechanical Engineering</h3>
+
+      <p>
+        Mechanical engineering focuses on machines,
+        engines, gears, mechanisms, moving parts
+        and mechanical systems.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>🏗️ Civil Engineering</h3>
+
+      <p>
+        Civil engineers design and build structures
+        such as bridges, roads, tunnels,
+        railways and buildings.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>⚡ Electrical Engineering</h3>
+
+      <p>
+        Electrical engineers work with electricity,
+        circuits, power, electronics
+        and electrical systems.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>💻 Computer Engineering</h3>
+
+      <p>
+        Computer engineering combines computing
+        and electronics to develop hardware,
+        processors and digital systems.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>✈️ Aerospace Engineering</h3>
+
+      <p>
+        Aerospace engineers design aircraft,
+        spacecraft, rockets, satellites
+        and flight systems.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>🤖 Robotics Engineering</h3>
+
+      <p>
+        Robotics combines mechanics,
+        electronics and computing
+        to create machines that can perform tasks.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>🧪 Chemical Engineering</h3>
+
+      <p>
+        Chemical engineers use chemistry,
+        physics and engineering to develop
+        materials and industrial processes.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>🌱 Environmental Engineering</h3>
+
+      <p>
+        Environmental engineers develop solutions
+        for pollution, water, waste,
+        energy and sustainability.
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<section id="process">
+
+  <h2>Engineering Design Process</h2>
+
+  <div class="timeline">
+
+
+    <div class="timeline-item">
+
+      <h4>1. Identify the Problem</h4>
+
+      <p>
+        Understand what problem needs to be solved
+        and what the design needs to achieve.
+      </p>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+      <h4>2. Research</h4>
+
+      <p>
+        Find information about the problem,
+        users, materials and existing products.
+      </p>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+      <h4>3. Generate Ideas</h4>
+
+      <p>
+        Develop different possible solutions
+        through sketches, diagrams and models.
+      </p>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+      <h4>4. Choose a Solution</h4>
+
+      <p>
+        Compare ideas and select a suitable solution
+        based on performance, safety and cost.
+      </p>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+      <h4>5. Design</h4>
+
+      <p>
+        Develop the idea using drawings,
+        measurements, CAD or models.
+      </p>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+      <h4>6. Build</h4>
+
+      <p>
+        Make a prototype or working version
+        of the proposed solution.
+      </p>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+      <h4>7. Test</h4>
+
+      <p>
+        Test the product to see whether
+        it performs correctly and safely.
+      </p>
+
+    </div>
+
+
+    <div class="timeline-item">
+
+      <h4>8. Improve</h4>
+
+      <p>
+        Use testing results to make changes
+        and improve the final design.
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<section id="thinking">
+
+  <h2>Engineering Thinking</h2>
+
+  <div class="cards">
+
+
+    <div class="card">
+
+      <h3>🧠 Problem Solving</h3>
+
+      <p>
+        Engineers break large problems into smaller
+        problems and investigate possible solutions.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>📐 Maths & Science</h3>
+
+      <p>
+        Maths and science help engineers calculate,
+        predict and understand how designs will work.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>🧪 Testing</h3>
+
+      <p>
+        Engineers test prototypes to identify problems
+        before developing a final product.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>💡 Innovation</h3>
+
+      <p>
+        Engineers develop new ideas and improve
+        existing technology to solve problems
+        more effectively.
+      </p>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="quote">
+
+    “Engineering is about using knowledge and creativity
+    to turn ideas into real solutions.”
+
+  </div>
+
+</section>
+
+
+
+<!-- QUIZ -->
+
+<section id="quiz">
+
+  <h2>⚙️ Engineering Quiz</h2>
+
+  <p class="quiz-intro">
+
+    Test your knowledge with this
+    <strong>10-question Engineering Quiz</strong>.
+
+    <br><br>
+
+    🏆 Score <strong>10 / 10</strong>
+    to unlock the
+    <strong>Engineering Teacher Achievement</strong>.
+
+  </p>
+
+
+  <div class="quiz-wrapper">
+
+    <div id="quiz-container">
+
+      <div class="level-badge">
+        ENGINEERING
+      </div>
+
+      <div
+        class="question"
+        id="question">
+      </div>
+
+      <div
+        class="answers"
+        id="answers">
+      </div>
+
+      <div
+        class="status-text"
+        id="statusText">
+        Choose one answer.
+      </div>
+
+      <button
+        class="next-btn"
+        id="nextBtn">
+
+        Next Question
+
+      </button>
+
+      <div class="score">
+
+        Score:
+        <span id="score">
+          0 / 10
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <p>
+    © 2026 Engineering | Engineering Learning Website
+  </p>
+
+</footer>
+
+
+<script>
+
+const quizData = [
+
+  {
+    question:
+      "1. What is the main purpose of engineering?",
+
+    answers:[
+      "A. To memorise scientific facts",
+      "B. To use knowledge and creativity to solve problems",
+      "C. To study history",
+      "D. To create art only"
+    ],
+
+    correct:1
+  },
+
+
+  {
+    question:
+      "2. Which type of engineering commonly designs bridges and roads?",
+
+    answers:[
+      "A. Civil engineering",
+      "B. Chemical engineering",
+      "C. Computer engineering",
+      "D. Aerospace engineering"
+    ],
+
+    correct:0
+  },
+
+
+  {
+    question:
+      "3. Which area of engineering focuses on machines and moving parts?",
+
+    answers:[
+      "A. Civil engineering",
+      "B. Mechanical engineering",
+      "C. Chemical engineering",
+      "D. Environmental engineering"
+    ],
+
+    correct:1
+  },
+
+
+  {
+    question:
+      "4. Which engineer is most likely to work with electrical circuits?",
+
+    answers:[
+      "A. Civil engineer",
+      "B. Electrical engineer",
+      "C. Chemical engineer",
+      "D. Structural engineer"
+    ],
+
+    correct:1
+  },
+
+
+  {
+    question:
+      "5. What normally comes first in the engineering design process?",
+
+    answers:[
+      "A. Build the product",
+      "B. Test the product",
+      "C. Identify the problem",
+      "D. Sell the product"
+    ],
+
+    correct:2
+  },
+
+
+  {
+    question:
+      "6. Why do engineers build prototypes?",
+
+    answers:[
+      "A. To avoid testing",
+      "B. To test ideas before making the final product",
+      "C. To make products more expensive",
+      "D. To remove the design stage"
+    ],
+
+    correct:1
+  },
+
+
+  {
+    question:
+      "7. Which type of engineering is closely connected with aircraft and spacecraft?",
+
+    answers:[
+      "A. Aerospace engineering",
+      "B. Civil engineering",
+      "C. Chemical engineering",
+      "D. Environmental engineering"
+    ],
+
+    correct:0
+  },
+
+
+  {
+    question:
+      "8. What should an engineer normally do after testing a design?",
+
+    answers:[
+      "A. Ignore the results",
+      "B. Improve the design",
+      "C. Start without planning",
+      "D. Remove all safety checks"
+    ],
+
+    correct:1
+  },
+
+
+  {
+    question:
+      "9. Which subjects are especially important in engineering?",
+
+    answers:[
+      "A. Maths and science",
+      "B. Music only",
+      "C. History only",
+      "D. Drama only"
+    ],
+
+    correct:0
+  },
+
+
+  {
+    question:
+      "10. Which statement best describes a good engineer?",
+
+    answers:[
+      "A. Someone who never changes a design",
+      "B. Someone who solves problems, tests ideas and improves solutions",
+      "C. Someone who avoids teamwork",
+      "D. Someone who does not need evidence"
+    ],
+
+    correct:1
+  }
+
+];
+
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let answered = false;
+
+
+const questionEl =
+document.getElementById("question");
+
+const answersEl =
+document.getElementById("answers");
+
+const statusText =
+document.getElementById("statusText");
+
+const nextBtn =
+document.getElementById("nextBtn");
+
+const scoreEl =
+document.getElementById("score");
+
+const quizContainer =
+document.getElementById("quiz-container");
+
+
+function loadQuestion(){
+
+  const q =
+  quizData[currentQuestion];
+
+  questionEl.textContent =
+  q.question;
+
+  answersEl.innerHTML = "";
+
+  statusText.textContent =
+  "Choose one answer.";
+
+  answered = false;
+
+
+  nextBtn.textContent =
+
+  currentQuestion ===
+  quizData.length - 1
+
+  ? "Show Result"
+
+  : "Next Question";
+
+
+  q.answers.forEach(
+    (answer,index) => {
+
+      const button =
+      document.createElement("button");
+
+      button.classList.add(
+        "answer-btn"
+      );
+
+      button.textContent =
+      answer;
+
+      button.type =
+      "button";
+
+
+      button.addEventListener(
+        "click",
+        () => selectAnswer(index)
+      );
+
+
+      answersEl.appendChild(
+        button
+      );
+
+    }
+  );
+
+}
+
+
+function selectAnswer(index){
+
+  if(answered){
+    return;
+  }
+
+  answered = true;
+
+
+  const correctIndex =
+  quizData[currentQuestion].correct;
+
+
+  const allButtons =
+  document.querySelectorAll(
+    ".answer-btn"
+  );
+
+
+  allButtons.forEach(
+    (btn,i) => {
+
+      btn.disabled = true;
+
+
+      if(i === correctIndex){
+
+        btn.classList.add(
+          "correct"
+        );
+
+      }
+
+
+      if(
+        i === index &&
+        i !== correctIndex
+      ){
+
+        btn.classList.add(
+          "wrong"
+        );
+
+      }
+
+    }
+  );
+
+
+  if(index === correctIndex){
+
+    score++;
+
+    statusText.textContent =
+    "Correct!";
+
+  }
+
+  else{
+
+    statusText.textContent =
+    "Wrong answer.";
+
+  }
+
+
+  scoreEl.textContent =
+  score + " / 10";
+
+}
+
+
+nextBtn.addEventListener(
+  "click",
+  () => {
+
+    if(!answered){
+
+      statusText.textContent =
+      "Choose one answer.";
+
+      return;
+
+    }
+
+
+    currentQuestion++;
+
+
+    if(
+      currentQuestion <
+      quizData.length
+    ){
+
+      loadQuestion();
+
+    }
+
+    else{
+
+      showResult();
+
+    }
+
+  }
+);
+
+
+function showResult(){
+
+  let achievement = "";
+
+
+  if(score === 10){
+
+    achievement = `
+
+      <h3
+      style="
+      color:#b88716;
+      font-size:28px;
+      margin-top:20px;
+      ">
+
+      🏆 Engineering Teacher Achievement
+
+      </h3>
+
+
+      <p
+      style="
+      font-size:20px;
+      margin-top:10px;
+      ">
+
+      ⚙️ Outstanding Engineer
+
+      <br>
+
+      <strong>
+      Perfect Score (10/10)
+      </strong>
+
+      </p>
+
+    `;
+
+  }
+
+
+  quizContainer.innerHTML = `
+
+    <div class="result-box">
+
+      <h2>
+      Quiz Complete
+      </h2>
+
+      <p>
+
+      You got
+
+      <strong>
+      ${score}
+      </strong>
+
+      out of
+
+      <strong>
+      10
+      </strong>.
+
+      </p>
+
+      ${achievement}
+
+      <button
+      class="restart-btn"
+      onclick="location.reload()">
+
+      Restart Quiz
+
+      </button>
+
+    </div>
+
+  `;
+
+}
+
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
