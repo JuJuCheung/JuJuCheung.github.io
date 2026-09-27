@@ -35,6 +35,41 @@ body{
   line-height:1.65;
 }
 
+
+/* BACK TO MAIN PAGE */
+
+.back-button{
+  position:fixed;
+  top:16px;
+  left:16px;
+  z-index:20;
+
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+
+  background:white;
+  color:var(--navy);
+
+  text-decoration:none;
+  font-weight:800;
+
+  padding:10px 15px;
+
+  border-radius:999px;
+  border:1px solid var(--line);
+
+  box-shadow:0 6px 18px rgba(15,39,71,.18);
+
+  transition:.2s;
+}
+
+.back-button:hover{
+  background:#edf2f8;
+  transform:translateY(-1px);
+}
+
+
 /* HERO */
 
 .hero{
@@ -55,6 +90,7 @@ body{
   font-size:1.08rem;
   opacity:.94;
 }
+
 
 /* NAVIGATION */
 
@@ -82,6 +118,7 @@ nav a{
 nav a:hover{
   background:#edf2f8;
 }
+
 
 /* MAIN */
 
@@ -130,9 +167,43 @@ h3{
   box-shadow:0 8px 22px rgba(15,39,71,.06);
 }
 
+
+/* BIG BIOLOGY PICTURES */
+
 .card .emoji{
-  font-size:1.9rem;
+  width:76px;
+  height:76px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:3rem;
+  line-height:1;
+
+  margin-bottom:14px;
+
+  border-radius:18px;
+
+  background:linear-gradient(
+    135deg,
+    #eef4fa,
+    #ffffff
+  );
+
+  border:1px solid var(--line);
+
+  box-shadow:
+    0 6px 16px
+    rgba(15,39,71,.08);
+
+  transition:.2s;
 }
+
+.card:hover .emoji{
+  transform:scale(1.05);
+}
+
 
 .quote{
   background:var(--navy);
@@ -142,6 +213,7 @@ h3{
   font-size:1.08rem;
   font-style:italic;
 }
+
 
 /* QUIZ */
 
@@ -273,6 +345,7 @@ button{
   margin-top:12px;
 }
 
+
 /* ACHIEVEMENTS */
 
 .achievements{
@@ -323,7 +396,18 @@ footer{
   padding:24px;
 }
 
+
+/* MOBILE */
+
 @media(max-width:600px){
+
+  .back-button{
+    top:10px;
+    left:10px;
+    padding:8px 12px;
+    font-size:.88rem;
+  }
+
   .hero{
     padding:50px 16px 42px;
   }
@@ -335,39 +419,56 @@ footer{
   .quizbox{
     padding:17px;
   }
+
 }
 </style>
 </head>
 
+
 <body>
 
+<a href="index.html" class="back-button">
+  ← Back to Main Page
+</a>
+
+
 <header class="hero">
-  <h1>🧬 Biology</h1>
-  <p>
-    Cells • Organisation • Infection • Bioenergetics •
-    Homeostasis • Genetics • Ecology
-  </p>
+
+<h1>🧬 Biology</h1>
+
+<p>
+Cells • Organisation • Infection • Bioenergetics •
+Homeostasis • Genetics • Ecology
+</p>
+
 </header>
 
+
 <nav>
-  <a href="#about">About</a>
-  <a href="#topics">Topics</a>
-  <a href="#revision">Revision</a>
-  <a href="#skills">Exam Skills</a>
-  <a href="#achievements">Achievements</a>
-  <a href="#quiz">Quiz</a>
+
+<a href="#about">About</a>
+<a href="#topics">Topics</a>
+<a href="#revision">Revision</a>
+<a href="#skills">Exam Skills</a>
+<a href="#achievements">Achievements</a>
+<a href="#quiz">Quiz</a>
+
 </nav>
 
+
 <main>
+
 
 <section id="about">
 
 <h2>Biology</h2>
 
 <div class="lead">
+
 Biology explains how living organisms are built, how they function,
 how they respond to change, and how organisms interact with one
 another and their environment.
+
 </div>
 
 </section>
@@ -379,60 +480,92 @@ another and their environment.
 
 <div class="grid">
 
+
 <div class="card">
+
 <div class="emoji">🔬</div>
+
 <h3>Cell Biology</h3>
+
 <p>
 Cell structure, microscopy, cell division, transport across
 membranes and stem cells.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <div class="emoji">🫀</div>
+
 <h3>Organisation</h3>
+
 <p>
 Digestive system, enzymes, heart and circulation,
 plant tissues and disease.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <div class="emoji">🦠</div>
+
 <h3>Infection & Response</h3>
+
 <p>
 Pathogens, immune responses, vaccination,
 antibiotics and drug development.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <div class="emoji">🌱</div>
+
 <h3>Bioenergetics</h3>
+
 <p>
 Photosynthesis, respiration, exercise and metabolism.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <div class="emoji">🧠</div>
+
 <h3>Homeostasis</h3>
+
 <p>
 Nervous system, hormones, blood glucose,
 temperature and reproduction.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <div class="emoji">🧬</div>
+
 <h3>Inheritance & Ecology</h3>
+
 <p>
 DNA, genetics, evolution, ecosystems,
 biodiversity and human impact.
 </p>
-</div>
 
 </div>
+
+
+</div>
+
 </section>
 
 
@@ -442,53 +575,78 @@ biodiversity and human impact.
 
 <div class="grid">
 
+
 <div class="card">
+
 <h3>Cell Processes</h3>
+
 <p>
 Link structure to function and practise microscopy,
 diffusion, osmosis and active transport.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <h3>Body Systems</h3>
+
 <p>
 Explain digestion, circulation and plant transport
 as connected systems.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <h3>Disease</h3>
+
 <p>
 Compare pathogen types and explain immune responses,
 vaccination and antibiotics.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <h3>Energy</h3>
+
 <p>
 Know photosynthesis and respiration equations
 and understand limiting factors.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <h3>Control</h3>
+
 <p>
 Use negative-feedback chains to explain
 nervous and hormonal control.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <h3>Inheritance & Ecology</h3>
+
 <p>
 Use genetic diagrams, natural selection and
 ecosystem relationships accurately.
 </p>
+
 </div>
+
 
 </div>
 
@@ -501,32 +659,48 @@ ecosystem relationships accurately.
 
 <div class="grid">
 
+
 <div class="card">
+
 <div class="emoji">📊</div>
+
 <h3>Data Analysis</h3>
+
 <p>
 Quote figures, calculate change, identify patterns
 and explain the biology behind them.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <div class="emoji">🧪</div>
+
 <h3>Required Practicals</h3>
+
 <p>
 Know variables, controls, improvements,
 risks and how results should be processed.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <div class="emoji">✍️</div>
+
 <h3>Linked Explanations</h3>
+
 <p>
 Use because and therefore links so every biological
 step leads clearly to the next.
 </p>
+
 </div>
+
 
 </div>
 
@@ -534,8 +708,10 @@ step leads clearly to the next.
 
 
 <div class="quote">
+
 “Strong Biology answers do more than remember content:
 they use evidence, method and reasoning to explain why an answer works.”
+
 </div>
 
 
@@ -547,43 +723,87 @@ they use evidence, method and reasoning to explain why an answer works.”
 Achievements are saved on this device.
 </p>
 
+
 <div class="achievements">
 
+
 <div class="badge" data-badge="starter">
+
 <div class="medal">🚀</div>
+
 <strong>First Steps</strong>
-<span class="small">Start the Entry Quiz</span>
+
+<span class="small">
+Start the Entry Quiz
+</span>
+
 </div>
+
 
 <div class="badge" data-badge="practice">
+
 <div class="medal">📘</div>
+
 <strong>Practice Pro</strong>
-<span class="small">Complete the Practice Quiz</span>
+
+<span class="small">
+Complete the Practice Quiz
+</span>
+
 </div>
+
 
 <div class="badge" data-badge="perfectEntry">
+
 <div class="medal">💯</div>
+
 <strong>Perfect Entry</strong>
-<span class="small">Score 10/10 on Entry</span>
+
+<span class="small">
+Score 10/10 on Entry
+</span>
+
 </div>
+
 
 <div class="badge" data-badge="uniUnlocked">
+
 <div class="medal">🔓</div>
+
 <strong>University Unlocked</strong>
-<span class="small">Unlock University Level</span>
+
+<span class="small">
+Unlock University Level
+</span>
+
 </div>
+
 
 <div class="badge" data-badge="uniScholar">
+
 <div class="medal">🎓</div>
+
 <strong>University Scholar</strong>
-<span class="small">Score 7+/10 at University Level</span>
+
+<span class="small">
+Score 7+/10 at University Level
+</span>
+
 </div>
 
+
 <div class="badge" data-badge="uniMaster">
+
 <div class="medal">🏅</div>
+
 <strong>University Master</strong>
-<span class="small">Score 10/10 at University Level</span>
+
+<span class="small">
+Score 10/10 at University Level
+</span>
+
 </div>
+
 
 </div>
 
@@ -592,7 +812,9 @@ Achievements are saved on this device.
 
 <section id="quiz">
 
+
 <div class="quizbox">
+
 
 <div class="quizhead">
 
@@ -602,68 +824,110 @@ Achievements are saved on this device.
 Start with the 10-question Entry Quiz.
 </p>
 
+
 <div class="rules">
 
+
 <div class="rule">
+
 🏆 10 / 10 → University-Level Quiz unlocks
+
 </div>
 
+
 <div class="rule">
+
 📘 Below 10 / 10 → Practice Quiz first
+
 </div>
+
 
 <div class="rule">
+
 🎓 University Quiz uses undergraduate Biology
-</div>
 
 </div>
+
+
+</div>
+
 
 <button class="primary" id="startBtn">
+
 Start Biology Quiz
+
 </button>
+
 
 </div>
 
 
 <div id="quizArea" class="quizarea hidden">
 
+
 <span class="level" id="levelLabel">
+
 ENTRY LEVEL
+
 </span>
 
+
 <div class="progress">
+
 <div class="bar" id="bar"></div>
+
 </div>
+
 
 <div class="small" id="qcount"></div>
 
+
 <div class="question" id="question"></div>
+
 
 <div class="options" id="options"></div>
 
+
 <div class="feedback" id="feedback"></div>
 
+
 <div class="scoreline" id="scoreline">
+
 Score: 0 / 10
+
 </div>
+
 
 <div style="margin-top:15px;display:flex;gap:10px;flex-wrap:wrap">
 
+
 <button class="primary hidden" id="nextBtn">
+
 Next Question
+
 </button>
+
 
 <button class="secondary hidden" id="practiceBtn">
+
 Start Practice Quiz
+
 </button>
+
 
 <button class="secondary hidden" id="retryBtn">
+
 Retry Entry Quiz
+
 </button>
 
+
 <button class="primary hidden" id="universityBtn">
+
 🎓 Start University-Level Quiz
+
 </button>
+
 
 </div>
 
@@ -673,19 +937,25 @@ Retry Entry Quiz
 
 </section>
 
+
 </main>
 
 
 <footer>
+
 © 2026 Biology | Learning Website
+
 </footer>
+
 
 
 <script>
 
 const DATA = {
 
+
 entry:[
+
 
 {
 q:"Which organelle controls the activities of a cell?",
@@ -700,6 +970,7 @@ explanation:
 "The nucleus contains the genetic material and controls cell activities."
 },
 
+
 {
 q:"Where does aerobic respiration mainly occur?",
 options:[
@@ -712,6 +983,7 @@ answer:1,
 explanation:
 "Mitochondria are the main site of aerobic respiration."
 },
+
 
 {
 q:"What is osmosis?",
@@ -726,6 +998,7 @@ explanation:
 "Osmosis is the movement of water through a partially permeable membrane from a dilute solution to a more concentrated solution."
 },
 
+
 {
 q:"Which blood vessel carries blood away from the heart?",
 options:[
@@ -738,6 +1011,7 @@ answer:2,
 explanation:
 "Arteries carry blood away from the heart."
 },
+
 
 {
 q:"Which enzyme breaks down starch?",
@@ -752,6 +1026,7 @@ explanation:
 "Amylase digests starch into sugars."
 },
 
+
 {
 q:"What type of pathogen causes measles?",
 options:[
@@ -764,6 +1039,7 @@ answer:1,
 explanation:
 "Measles is caused by a virus."
 },
+
 
 {
 q:"Which substance is needed for photosynthesis?",
@@ -778,6 +1054,7 @@ explanation:
 "Plants use carbon dioxide and water to make glucose during photosynthesis."
 },
 
+
 {
 q:"Which hormone lowers blood glucose concentration?",
 options:[
@@ -790,6 +1067,7 @@ answer:1,
 explanation:
 "Insulin causes cells to take glucose from the blood and promotes conversion of glucose into glycogen."
 },
+
 
 {
 q:"A gene is a section of which molecule?",
@@ -804,6 +1082,7 @@ explanation:
 "A gene is a section of DNA containing information for a functional product."
 },
 
+
 {
 q:"What is biodiversity?",
 options:[
@@ -817,10 +1096,13 @@ explanation:
 "Biodiversity means the variety of different living organisms in an area."
 }
 
+
 ],
 
 
+
 practice:[
+
 
 {
 q:"Which structure is found in plant cells but not animal cells?",
@@ -835,6 +1117,7 @@ explanation:
 "Plant cells have a cellulose cell wall."
 },
 
+
 {
 q:"What process moves particles from high concentration to low concentration?",
 options:[
@@ -847,6 +1130,7 @@ answer:0,
 explanation:
 "Diffusion is the net movement of particles down a concentration gradient."
 },
+
 
 {
 q:"What is the main function of red blood cells?",
@@ -861,6 +1145,7 @@ explanation:
 "Red blood cells contain haemoglobin which carries oxygen."
 },
 
+
 {
 q:"Which cells can produce antibodies?",
 options:[
@@ -873,6 +1158,7 @@ answer:1,
 explanation:
 "Some white blood cells called lymphocytes produce antibodies."
 },
+
 
 {
 q:"Photosynthesis takes place mainly in which organelle?",
@@ -887,6 +1173,7 @@ explanation:
 "Chloroplasts contain chlorophyll and are the main site of photosynthesis."
 },
 
+
 {
 q:"During vigorous exercise, muscles may produce which substance if oxygen is limited?",
 options:[
@@ -899,6 +1186,7 @@ answer:1,
 explanation:
 "Anaerobic respiration in muscles produces lactic acid."
 },
+
 
 {
 q:"Which organ releases insulin?",
@@ -913,6 +1201,7 @@ explanation:
 "The pancreas releases insulin."
 },
 
+
 {
 q:"Two identical alleles are described as:",
 options:[
@@ -925,6 +1214,7 @@ answer:1,
 explanation:
 "Homozygous means having two identical alleles for a gene."
 },
+
 
 {
 q:"What is a producer in a food chain?",
@@ -939,6 +1229,7 @@ explanation:
 "Producers make their own organic molecules and provide energy for food chains."
 },
 
+
 {
 q:"Which activity commonly reduces biodiversity?",
 options:[
@@ -952,10 +1243,13 @@ explanation:
 "Habitat destruction removes food, shelter and breeding areas used by organisms."
 }
 
+
 ],
 
 
+
 university:[
+
 
 {
 q:"For an enzyme that follows Michaelis-Menten kinetics, what does Km represent?",
@@ -970,6 +1264,7 @@ explanation:
 "Km is the substrate concentration at which the reaction rate is half of Vmax."
 },
 
+
 {
 q:"Which process most directly establishes the resting membrane potential in a typical neuron?",
 options:[
@@ -982,6 +1277,7 @@ answer:1,
 explanation:
 "The resting membrane potential mainly results from ion concentration gradients and high resting permeability to potassium ions."
 },
+
 
 {
 q:"In Hardy-Weinberg equilibrium, p² + 2pq + q² = 1 describes:",
@@ -996,6 +1292,7 @@ explanation:
 "p², 2pq and q² represent the expected frequencies of the three genotypes."
 },
 
+
 {
 q:"What is the most direct role of a transcription factor?",
 options:[
@@ -1008,6 +1305,7 @@ answer:1,
 explanation:
 "Transcription factors bind regulatory DNA sequences and influence gene transcription."
 },
+
 
 {
 q:"Why can competitive enzyme inhibition often be overcome by increasing substrate concentration?",
@@ -1022,6 +1320,7 @@ explanation:
 "At high substrate concentration, substrate molecules are more likely than inhibitor molecules to occupy the active site."
 },
 
+
 {
 q:"Which event occurs during oxidative phosphorylation?",
 options:[
@@ -1034,6 +1333,7 @@ answer:1,
 explanation:
 "The electron transport chain creates a proton gradient across the inner mitochondrial membrane. ATP synthase uses this gradient to make ATP."
 },
+
 
 {
 q:"What best distinguishes genetic drift from natural selection?",
@@ -1048,6 +1348,7 @@ explanation:
 "Genetic drift changes allele frequencies randomly and has particularly strong effects in small populations."
 },
 
+
 {
 q:"In population ecology, carrying capacity K is best described as:",
 options:[
@@ -1060,6 +1361,7 @@ answer:1,
 explanation:
 "Carrying capacity is the approximate maximum population that the available resources and environmental conditions can support."
 },
+
 
 {
 q:"Which mechanism enables an action potential to propagate along an unmyelinated axon?",
@@ -1074,6 +1376,7 @@ explanation:
 "Local currents generated by depolarisation bring adjacent membrane regions to threshold, opening voltage-gated sodium channels."
 },
 
+
 {
 q:"What is an allosteric regulator?",
 options:[
@@ -1087,9 +1390,12 @@ explanation:
 "Allosteric regulators bind to a site other than the active site and alter the protein's conformation and activity."
 }
 
+
 ]
 
+
 };
+
 
 
 const KEY = "achievements-biology";
@@ -1101,6 +1407,7 @@ let mode = "entry";
 let index = 0;
 let score = 0;
 let locked = false;
+
 
 
 const startBtn =
@@ -1143,6 +1450,7 @@ const universityBtn =
 document.getElementById("universityBtn");
 
 
+
 function saveAchievement(key){
 
 achievements[key] = true;
@@ -1155,6 +1463,7 @@ JSON.stringify(achievements)
 renderAchievements();
 
 }
+
 
 
 function renderAchievements(){
@@ -1173,11 +1482,13 @@ badge.classList.toggle(
 }
 
 
+
 function questions(){
 
 return DATA[mode];
 
 }
+
 
 
 function levelText(){
@@ -1191,6 +1502,7 @@ return "PRACTICE LEVEL";
 return "UNIVERSITY LEVEL";
 
 }
+
 
 
 function begin(newMode){
@@ -1229,6 +1541,7 @@ block:"start"
 });
 
 }
+
 
 
 function renderQuestion(){
@@ -1292,6 +1605,7 @@ options.appendChild(button);
 });
 
 }
+
 
 
 function answer(choice,button){
@@ -1380,6 +1694,7 @@ nextBtn.classList.remove(
 );
 
 }
+
 
 
 function finish(){
@@ -1526,6 +1841,7 @@ universityBtn.classList.remove(
 }
 
 
+
 nextBtn.addEventListener(
 "click",
 () => {
@@ -1550,10 +1866,12 @@ renderQuestion();
 });
 
 
+
 startBtn.addEventListener(
 "click",
 () => begin("entry")
 );
+
 
 
 practiceBtn.addEventListener(
@@ -1562,16 +1880,19 @@ practiceBtn.addEventListener(
 );
 
 
+
 retryBtn.addEventListener(
 "click",
 () => begin("entry")
 );
 
 
+
 universityBtn.addEventListener(
 "click",
 () => begin("university")
 );
+
 
 
 renderAchievements();
