@@ -1681,23 +1681,17 @@ function renderLeaderboard(){
 
 
 
-function awardOneXp(playerName){
+async function awardOneXp(playerName){
 
-  if(!playerName){
+  if(!playerName) return;
 
-    return;
+  xpData[playerName] = (Number(xpData[playerName]) || 0) + 1;
 
-  }
-
-
-  xpData[playerName] =
-
-  (Number(xpData[playerName]) || 0)
-
-  + 1;
-
-
-   const playerDoc = doc(db, "players", playerName.toLowerCase().replace(/\s+/g, "_"));
+  const playerDoc = doc(
+    db,
+    "players",
+    playerName.toLowerCase().replace(/\s+/g, "_")
+  );
 
   await setDoc(
     playerDoc,
