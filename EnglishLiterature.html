@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>English Literature Learning Website</title>
+
+  <style>
+    :root {
+      --ink: #1f2937;
+      --muted: #64748b;
+      --navy: #0f2747;
+      --navy2: #173a65;
+      --paper: #f5f7fb;
+      --card: #ffffff;
+      --line: #dbe3ee;
+      --gold: #f5c451;
+      --green: #1f8f62;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--navy), var(--navy2));
+      color: white;
+      padding: 72px 22px 60px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.3rem, 6vw, 4.6rem);
+    }
+
+    .hero p {
+      margin: 10px auto 0;
+      max-width: 900px;
+      font-size: 1.08rem;
+      opacity: 0.94;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: white;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 10px;
+    }
+
+    nav a {
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+
+    nav a:hover {
+      background: #edf2f8;
+    }
+
+    main {
+      max-width: 1080px;
+      margin: auto;
+      padding: 28px 18px 70px;
+    }
+
+    section {
+      scroll-margin-top: 80px;
+      margin: 26px 0 46px;
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      color: var(--navy);
+      margin-top: 0;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      background: white;
+      border-left: 5px solid var(--gold);
+      padding: 20px 22px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(15, 39, 71, 0.06);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 8px 22px rgba(15, 39, 71, 0.06);
+    }
+
+    .card .emoji {
+      font-size: 1.9rem;
+    }
+
+    .quote {
+      background: var(--navy);
+      color: white;
+      padding: 22px;
+      border-radius: 16px;
+      font-size: 1.08rem;
+      font-style: italic;
+    }
+
+    .quizbox {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(15, 39, 71, 0.09);
+    }
+
+    .quizhead {
+      text-align: center;
+    }
+
+    .rules {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 16px 0;
+    }
+
+    .rule {
+      background: #eef4fa;
+      border-radius: 12px;
+      padding: 10px 13px;
+      font-weight: 700;
+    }
+
+    button {
+      cursor: pointer;
+      border: 0;
+      border-radius: 11px;
+      padding: 11px 16px;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .primary {
+      background: var(--navy);
+      color: white;
+    }
+
+    .primary:hover {
+      background: var(--navy2);
+    }
+
+    .secondary {
+      background: #e8eef6;
+      color: var(--navy);
+    }
+
+    .secondary:hover {
+      background: #dce6f2;
+    }
+
+    .quizarea {
+      margin-top: 20px;
+    }
+
+    .level {
+      display: inline-block;
+      background: var(--gold);
+      color: #4d3900;
+      font-weight: 900;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    .question {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin: 15px 0;
+    }
+
+    .options {
+      display: grid;
+      gap: 10px;
+    }
+
+    .option {
+      background: #f4f7fb;
+      border: 2px solid transparent;
+      text-align: left;
+      color: var(--ink);
+    }
+
+    .option:hover {
+      border-color: #9eb4cf;
+    }
+
+    .option.correct {
+      background: #e7f7ef;
+      border-color: #55a97f;
+    }
+
+    .option.wrong {
+      background: #fdecec;
+      border-color: #dd7777;
+    }
+
+    .feedback {
+      margin: 14px 0 0;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: #f7f9fc;
+      display: none;
+    }
+
+    .progress {
+      height: 9px;
+      background: #e5eaf1;
+      border-radius: 99px;
+      overflow: hidden;
+      margin: 14px 0;
+    }
+
+    .bar {
+      height: 100%;
+      width: 0;
+      background: var(--navy);
+    }
+
+    .scoreline {
+      font-weight: 800;
+      margin-top: 12px;
+    }
+
+    .achievements {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+    }
+
+    .badge {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      padding: 17px;
+      text-align: center;
+      opacity: 0.38;
+      filter: grayscale(1);
+      transition: 0.2s;
+    }
+
+    .badge.unlocked {
+      opacity: 1;
+      filter: none;
+      box-shadow: 0 8px 20px rgba(15, 39, 71, 0.08);
+    }
+
+    .badge .medal {
+      font-size: 2.1rem;
+    }
+
+    .badge strong {
+      display: block;
+      color: var(--navy);
+    }
+
+    .small {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    footer {
+      text-align: center;
+      background: var(--navy);
+      color: white;
+      padding: 24px;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 50px 16px 42px;
+      }
+
+      .hero h1 {
+        font-size: 2.35rem;
+      }
+
+      .quizbox {
+        padding: 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="hero">
+
+    <h1>📚 English Literature</h1>
+
+    <p>
+      Novels • Plays • Poetry • Themes • Characters • Context •
+      Language • Structure • Literary Analysis
+    </p>
+
+  </header>
+
+  <nav>
+
+    <a href="#about">About</a>
+    <a href="#topics">Topics</a>
+    <a href="#revision">Revision</a>
+    <a href="#skills">Exam Skills</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#quiz">Quiz</a>
+
+  </nav>
+
+  <main>
+
+    <section id="about">
+
+      <h2>English Literature</h2>
+
+      <div class="lead">
+
+        English Literature develops your ability to understand novels,
+        plays and poetry. Strong answers explain how writers use language,
+        structure, characters and themes to communicate ideas.
+
+      </div>
+
+    </section>
+
+    <section id="topics">
+
+      <h2>Key Topics</h2>
+
+      <div class="grid">
+
+        <div class="card">
+          <div class="emoji">📖</div>
+          <h3>Novels</h3>
+          <p>
+            Explore plot, character development, themes,
+            setting and narrative methods.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="emoji">🎭</div>
+          <h3>Drama</h3>
+          <p>
+            Study dialogue, stage directions, conflict,
+            relationships and dramatic structure.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="emoji">🪶</div>
+          <h3>Poetry</h3>
+          <p>
+            Analyse imagery, form, rhythm, rhyme,
+            voice and meaning.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="emoji">💡</div>
+          <h3>Themes</h3>
+          <p>
+            Explore ideas such as power, conflict,
+            love, responsibility and identity.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="emoji">👤</div>
+          <h3>Characters</h3>
+          <p>
+            Track how characters change and how
+            writers present their thoughts and actions.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="emoji">🏛️</div>
+          <h3>Context</h3>
+          <p>
+            Understand how historical, social and cultural
+            ideas can influence literature.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="revision">
+
+      <h2>Revision Guide</h2>
+
+      <div class="grid">
+
+        <div class="card">
+          <h3>Quotations</h3>
+          <p>
+            Learn short quotations that can be used
+            for several themes and characters.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Characters</h3>
+          <p>
+            Track each major character across the beginning,
+            middle and end of the text.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Themes</h3>
+          <p>
+            Connect themes to characters,
+            key moments and writer's methods.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Language</h3>
+          <p>
+            Analyse individual words, imagery
+            and literary techniques closely.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Structure</h3>
+          <p>
+            Consider beginnings, endings, contrasts,
+            turning points and changes in focus.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Context</h3>
+          <p>
+            Use relevant context to support your analysis,
+            not as a separate history paragraph.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="skills">
+
+      <h2>Exam Skills</h2>
+
+      <div class="grid">
+
+        <div class="card">
+          <div class="emoji">🔍</div>
+          <h3>Close Analysis</h3>
+          <p>
+            Zoom in on important words and explain
+            their meanings and effects.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="emoji">🧠</div>
+          <h3>Interpretation</h3>
+          <p>
+            Develop clear ideas about characters,
+            themes and the writer's message.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="emoji">🧩</div>
+          <h3>Whole Text</h3>
+          <p>
+            Link the extract or quotation to events
+            elsewhere in the text.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <div class="quote">
+
+      “Strong English Literature answers explain what the writer
+      is showing, how they show it and why it is important.”
+
+    </div>
+
+    <section id="achievements">
+
+      <h2>🏆 Achievements</h2>
+
+      <p class="small">
+        Achievements are saved on this device.
+      </p>
+
+      <div class="achievements">
+
+        <div class="badge" data-badge="starter">
+          <div class="medal">🚀</div>
+          <strong>First Steps</strong>
+          <span class="small">
+            Start the Entry Quiz
+          </span>
+        </div>
+
+        <div class="badge" data-badge="practice">
+          <div class="medal">📘</div>
+          <strong>Practice Pro</strong>
+          <span class="small">
+            Complete the Practice Quiz
+          </span>
+        </div>
+
+        <div class="badge" data-badge="perfectEntry">
+          <div class="medal">💯</div>
+          <strong>Perfect Entry</strong>
+          <span class="small">
+            Score 10/10 on Entry
+          </span>
+        </div>
+
+        <div class="badge" data-badge="uniUnlocked">
+          <div class="medal">🔓</div>
+          <strong>University Unlocked</strong>
+          <span class="small">
+            Unlock University Level
+          </span>
+        </div>
+
+        <div class="badge" data-badge="uniScholar">
+          <div class="medal">🎓</div>
+          <strong>University Scholar</strong>
+          <span class="small">
+            Score 7+/10 at University Level
+          </span>
+        </div>
+
+        <div class="badge" data-badge="uniMaster">
+          <div class="medal">🏅</div>
+          <strong>University Master</strong>
+          <span class="small">
+            Score 10/10 at University Level
+          </span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="quiz">
+
+      <div class="quizbox">
+
+        <div class="quizhead">
+
+          <h2>📚 English Literature Adaptive Quiz</h2>
+
+          <p>
+            Start with the 10-question Entry Quiz.
+          </p>
+
+          <div class="rules">
+
+            <div class="rule">
+              🏆 10 / 10 → University-Level Quiz unlocks
+            </div>
+
+            <div class="rule">
+              📘 Below 10 / 10 → Practice Quiz first
+            </div>
+
+            <div class="rule">
+              🎓 University Quiz uses advanced literary theory
+            </div>
+
+          </div>
+
+          <button class="primary" id="startBtn">
+            Start English Literature Quiz
+          </button>
+
+        </div>
+
+        <div id="quizArea" class="quizarea hidden">
+
+          <span class="level" id="levelLabel">
+            ENTRY LEVEL
+          </span>
+
+          <div class="progress">
+            <div class="bar" id="bar"></div>
+          </div>
+
+          <div class="small" id="qcount"></div>
+
+          <div class="question" id="question"></div>
+
+          <div class="options" id="options"></div>
+
+          <div class="feedback" id="feedback"></div>
+
+          <div class="scoreline" id="scoreline">
+            Score: 0 / 10
+          </div>
+
+          <div style="margin-top:15px;display:flex;gap:10px;flex-wrap:wrap">
+
+            <button class="primary hidden" id="nextBtn">
+              Next Question
+            </button>
+
+            <button class="secondary hidden" id="practiceBtn">
+              Start Practice Quiz
+            </button>
+
+            <button class="secondary hidden" id="retryBtn">
+              Retry Entry Quiz
+            </button>
+
+            <button class="primary hidden" id="universityBtn">
+              🎓 Start University-Level Quiz
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 English Literature | Learning Website
+  </footer>
+
+  <script>
+
+    const DATA = {
+
+      entry: [
+
+        {
+          q: "What is a theme in literature?",
+          options: [
+            "A central idea explored in a text",
+            "The page number",
+            "The font used",
+            "The title only"
+          ],
+          answer: 0,
+          explanation:
+            "A theme is an important idea explored throughout a literary text."
+        },
+
+        {
+          q: "What is a metaphor?",
+          options: [
+            "A direct comparison where one thing is described as another",
+            "A list of events",
+            "A question",
+            "A stage direction"
+          ],
+          answer: 0,
+          explanation:
+            "A metaphor describes one thing as another to create meaning or imagery."
+        },
+
+        {
+          q: "What is a protagonist?",
+          options: [
+            "The main character in a story or play",
+            "The reader",
+            "The publisher",
+            "A type of rhyme"
+          ],
+          answer: 0,
+          explanation:
+            "The protagonist is the central character around whom much of the action develops."
+        },
+
+        {
+          q: "What is dramatic irony?",
+          options: [
+            "When the audience knows something a character does not",
+            "When every character is happy",
+            "When the setting changes",
+            "When a poem has no rhyme"
+          ],
+          answer: 0,
+          explanation:
+            "Dramatic irony occurs when the audience understands something that a character does not."
+        },
+
+        {
+          q: "What does context mean in literature?",
+          options: [
+            "The historical, social or cultural background of a text",
+            "The number of chapters",
+            "The book cover",
+            "The author's handwriting"
+          ],
+          answer: 0,
+          explanation:
+            "Context includes the historical, social and cultural circumstances surrounding a text."
+        },
+
+        {
+          q: "Why should quotations be used in an essay?",
+          options: [
+            "To support ideas with evidence from the text",
+            "To make the essay longer",
+            "To replace analysis",
+            "To avoid explaining ideas"
+          ],
+          answer: 0,
+          explanation:
+            "Quotations provide evidence that supports your interpretation."
+        },
+
+        {
+          q: "What is personification?",
+          options: [
+            "Giving human qualities to something non-human",
+            "Writing in the first person",
+            "Using only dialogue",
+            "Describing a person"
+          ],
+          answer: 0,
+          explanation:
+            "Personification gives human characteristics to objects, animals or abstract ideas."
+        },
+
+        {
+          q: "What is an antagonist?",
+          options: [
+            "A character or force that opposes the protagonist",
+            "The narrator",
+            "The main setting",
+            "The writer"
+          ],
+          answer: 0,
+          explanation:
+            "The antagonist creates opposition or conflict for the protagonist."
+        },
+
+        {
+          q: "Why is structure important in literature?",
+          options: [
+            "It controls how events and ideas are organised",
+            "It only controls spelling",
+            "It decides the book colour",
+            "It removes meaning"
+          ],
+          answer: 0,
+          explanation:
+            "Structure controls the order and development of events, ideas and perspectives."
+        },
+
+        {
+          q: "What should a strong literature paragraph include?",
+          options: [
+            "A clear point, evidence and detailed analysis",
+            "Only a quotation",
+            "Only context",
+            "A plot summary"
+          ],
+          answer: 0,
+          explanation:
+            "Strong paragraphs use a clear idea, relevant evidence and detailed explanation."
+        }
+
+      ],
+
+      practice: [
+
+        {
+          q: "What is symbolism?",
+          options: [
+            "When an object, image or idea represents something deeper",
+            "A spelling technique",
+            "A chapter title",
+            "A rhyme only"
+          ],
+          answer: 0,
+          explanation:
+            "Symbolism uses something concrete to represent a wider idea or meaning."
+        },
+
+        {
+          q: "What is foreshadowing?",
+          options: [
+            "A hint about something that may happen later",
+            "Repeating the ending",
+            "Changing narrator",
+            "Using a metaphor"
+          ],
+          answer: 0,
+          explanation:
+            "Foreshadowing gives clues about later events in a text."
+        },
+
+        {
+          q: "What is a motif?",
+          options: [
+            "A recurring image, idea or symbol",
+            "A one-off spelling error",
+            "A paragraph heading",
+            "A character name"
+          ],
+          answer: 0,
+          explanation:
+            "A motif is a recurring feature that helps develop themes or ideas."
+        },
+
+        {
+          q: "What is a soliloquy?",
+          options: [
+            "A speech revealing a character's thoughts, usually when alone",
+            "A group conversation",
+            "A poem with fourteen lines only",
+            "A stage direction"
+          ],
+          answer: 0,
+          explanation:
+            "A soliloquy allows a character to reveal private thoughts directly to the audience."
+        },
+
+        {
+          q: "What does narrative perspective mean?",
+          options: [
+            "The viewpoint from which a story is told",
+            "The number of chapters",
+            "The cover design",
+            "The author's age"
+          ],
+          answer: 0,
+          explanation:
+            "Narrative perspective describes who tells the story and how events are presented."
+        },
+
+        {
+          q: "What is a semantic field?",
+          options: [
+            "A group of words linked by meaning",
+            "A type of punctuation",
+            "A paragraph break",
+            "A title"
+          ],
+          answer: 0,
+          explanation:
+            "A semantic field is a group of related words that reinforce an idea or atmosphere."
+        },
+
+        {
+          q: "Why might a writer use contrast?",
+          options: [
+            "To highlight differences between characters, ideas or situations",
+            "To remove all meaning",
+            "To shorten every sentence",
+            "To create spelling rules"
+          ],
+          answer: 0,
+          explanation:
+            "Contrast makes differences more noticeable and can strengthen themes or characterisation."
+        },
+
+        {
+          q: "What is a cyclical structure?",
+          options: [
+            "A structure that returns to an idea or image from the beginning",
+            "A text with no ending",
+            "A poem with one line",
+            "A dialogue between two characters"
+          ],
+          answer: 0,
+          explanation:
+            "A cyclical structure links the ending back to the beginning."
+        },
+
+        {
+          q: "Why should context be linked to analysis?",
+          options: [
+            "Because it can help explain the writer's ideas and choices",
+            "Because it replaces quotations",
+            "Because every paragraph must be history",
+            "Because context is always more important than the text"
+          ],
+          answer: 0,
+          explanation:
+            "Relevant context can deepen analysis when it helps explain the writer's intentions or ideas."
+        },
+
+        {
+          q: "What does characterisation mean?",
+          options: [
+            "The methods a writer uses to create and develop a character",
+            "Writing a title",
+            "Choosing a font",
+            "Counting paragraphs"
+          ],
+          answer: 0,
+          explanation:
+            "Characterisation includes actions, dialogue, description and relationships used to develop a character."
+        }
+
+      ],
+
+      university: [
+
+        {
+          q: "What is intertextuality?",
+          options: [
+            "The relationship between a text and other texts",
+            "The number of chapters in a book",
+            "A spelling system",
+            "A rhyme scheme only"
+          ],
+          answer: 0,
+          explanation:
+            "Intertextuality describes how texts refer to, echo or respond to other texts."
+        },
+
+        {
+          q: "In literary theory, what does close reading involve?",
+          options: [
+            "Detailed analysis of language, form and structure",
+            "Reading a text very quickly",
+            "Studying only the author's biography",
+            "Ignoring individual words"
+          ],
+          answer: 0,
+          explanation:
+            "Close reading examines the detailed choices within a text to develop an interpretation."
+        },
+
+        {
+          q: "What is an unreliable narrator?",
+          options: [
+            "A narrator whose account may be incomplete, biased or misleading",
+            "A narrator who makes spelling mistakes",
+            "Any first-person narrator",
+            "The main character only"
+          ],
+          answer: 0,
+          explanation:
+            "An unreliable narrator cannot always be fully trusted because of bias, limited knowledge or deliberate deception."
+        },
+
+        {
+          q: "What is structuralism mainly interested in?",
+          options: [
+            "Underlying systems and patterns that shape meaning",
+            "Only the author's personal life",
+            "Only historical dates",
+            "Book cover design"
+          ],
+          answer: 0,
+          explanation:
+            "Structuralism studies patterns, systems and relationships that shape how meaning is produced."
+        },
+
+        {
+          q: "What does feminist literary criticism often examine?",
+          options: [
+            "Representations of gender, power and inequality",
+            "Only punctuation",
+            "Only rhyme",
+            "Only publication dates"
+          ],
+          answer: 0,
+          explanation:
+            "Feminist criticism often studies how literature represents gender roles and power relationships."
+        },
+
+        {
+          q: "What does Marxist literary criticism often focus on?",
+          options: [
+            "Class, power, wealth and economic relationships",
+            "Only imagery",
+            "Only narrative tense",
+            "Only the author's handwriting"
+          ],
+          answer: 0,
+          explanation:
+            "Marxist criticism commonly examines class conflict, economic power and social structures."
+        },
+
+        {
+          q: "What is a postcolonial reading concerned with?",
+          options: [
+            "Empire, identity, power and the effects of colonialism",
+            "Only sentence length",
+            "Only punctuation",
+            "Book sales"
+          ],
+          answer: 0,
+          explanation:
+            "Postcolonial criticism examines literature in relation to colonial power, identity and cultural representation."
+        },
+
+        {
+          q: "What is ambiguity in literature?",
+          options: [
+            "When language or meaning allows more than one interpretation",
+            "A spelling error",
+            "A clear factual statement only",
+            "A missing title"
+          ],
+          answer: 0,
+          explanation:
+            "Ambiguity allows multiple possible meanings or interpretations."
+        },
+
+        {
+          q: "What does reader-response criticism emphasise?",
+          options: [
+            "The role of the reader in creating meaning",
+            "Only the author's intention",
+            "Only the text's publication date",
+            "Only grammar"
+          ],
+          answer: 0,
+          explanation:
+            "Reader-response criticism explores how readers actively construct meaning from texts."
+        },
+
+        {
+          q: "What is metanarrative or metafiction?",
+          options: [
+            "Writing that draws attention to its own status as fiction or storytelling",
+            "A simple plot summary",
+            "A spelling technique",
+            "A fixed poetic metre"
+          ],
+          answer: 0,
+          explanation:
+            "Metafiction deliberately reminds readers that they are reading a constructed fictional work."
+        }
+
+      ]
+
+    };
+
+
+    const KEY = "achievements-english-literature";
+
+    let achievements = JSON.parse(
+      localStorage.getItem(KEY) || "{}"
+    );
+
+    let mode = "entry";
+    let index = 0;
+    let score = 0;
+    let locked = false;
+
+
+    const startBtn =
+      document.getElementById("startBtn");
+
+    const quizArea =
+      document.getElementById("quizArea");
+
+    const levelLabel =
+      document.getElementById("levelLabel");
+
+    const bar =
+      document.getElementById("bar");
+
+    const qcount =
+      document.getElementById("qcount");
+
+    const question =
+      document.getElementById("question");
+
+    const options =
+      document.getElementById("options");
+
+    const feedback =
+      document.getElementById("feedback");
+
+    const scoreline =
+      document.getElementById("scoreline");
+
+    const nextBtn =
+      document.getElementById("nextBtn");
+
+    const practiceBtn =
+      document.getElementById("practiceBtn");
+
+    const retryBtn =
+      document.getElementById("retryBtn");
+
+    const universityBtn =
+      document.getElementById("universityBtn");
+
+
+    function saveAchievement(key) {
+
+      achievements[key] = true;
+
+      localStorage.setItem(
+        KEY,
+        JSON.stringify(achievements)
+      );
+
+      renderAchievements();
+
+    }
+
+
+    function renderAchievements() {
+
+      document
+        .querySelectorAll(".badge")
+        .forEach(badge => {
+
+          badge.classList.toggle(
+            "unlocked",
+            !!achievements[badge.dataset.badge]
+          );
+
+        });
+
+    }
+
+
+    function questions() {
+      return DATA[mode];
+    }
+
+
+    function levelText() {
+
+      if (mode === "entry") {
+        return "ENTRY LEVEL";
+      }
+
+      if (mode === "practice") {
+        return "PRACTICE LEVEL";
+      }
+
+      return "UNIVERSITY LEVEL";
+
+    }
+
+
+    function begin(newMode) {
+
+      mode = newMode;
+
+      index = 0;
+      score = 0;
+      locked = false;
+
+      quizArea.classList.remove("hidden");
+
+      startBtn.classList.add("hidden");
+
+      practiceBtn.classList.add("hidden");
+
+      retryBtn.classList.add("hidden");
+
+      universityBtn.classList.add("hidden");
+
+      nextBtn.classList.add("hidden");
+
+      feedback.style.display = "none";
+
+      if (mode === "entry") {
+        saveAchievement("starter");
+      }
+
+      renderQuestion();
+
+      quizArea.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    }
+
+
+    function renderQuestion() {
+
+      const arr = questions();
+      const item = arr[index];
+
+      locked = false;
+
+      levelLabel.textContent =
+        levelText();
+
+      bar.style.width =
+        (index / arr.length * 100) + "%";
+
+      qcount.textContent =
+        "Question " +
+        (index + 1) +
+        " of " +
+        arr.length;
+
+      question.textContent =
+        item.q;
+
+      scoreline.textContent =
+        "Score: " +
+        score +
+        " / " +
+        arr.length;
+
+      feedback.style.display =
+        "none";
+
+      feedback.textContent =
+        "";
+
+      nextBtn.classList.add(
+        "hidden"
+      );
+
+      options.innerHTML =
+        "";
+
+      item.options.forEach(
+        (opt, i) => {
+
+          const button =
+            document.createElement("button");
+
+          button.className =
+            "option";
+
+          button.textContent =
+            opt;
+
+          button.addEventListener(
+            "click",
+            () => answer(i, button)
+          );
+
+          options.appendChild(
+            button
+          );
+
+        }
+      );
+
+    }
+
+
+    function answer(choice, button) {
+
+      if (locked) {
+        return;
+      }
+
+      locked = true;
+
+      const item =
+        questions()[index];
+
+      [...options.children].forEach(
+        (btn, i) => {
+
+          btn.disabled = true;
+
+          if (i === item.answer) {
+            btn.classList.add("correct");
+          }
+
+        }
+      );
+
+      if (choice === item.answer) {
+
+        score++;
+
+        button.classList.add(
+          "correct"
+        );
+
+        feedback.textContent =
+          "✅ Correct. " +
+          item.explanation;
+
+      } else {
+
+        button.classList.add(
+          "wrong"
+        );
+
+        feedback.textContent =
+          "❌ Not quite. " +
+          item.explanation;
+
+      }
+
+      feedback.style.display =
+        "block";
+
+      scoreline.textContent =
+        "Score: " +
+        score +
+        " / " +
+        questions().length;
+
+      if (
+        index ===
+        questions().length - 1
+      ) {
+
+        nextBtn.textContent =
+          "See Result";
+
+      } else {
+
+        nextBtn.textContent =
+          "Next Question";
+
+      }
+
+      nextBtn.classList.remove(
+        "hidden"
+      );
+
+    }
+
+
+    function finish() {
+
+      bar.style.width =
+        "100%";
+
+      options.innerHTML =
+        "";
+
+      qcount.textContent =
+        "";
+
+      question.textContent =
+        levelText() +
+        " complete — " +
+        score +
+        " / " +
+        questions().length;
+
+      feedback.style.display =
+        "block";
+
+      nextBtn.classList.add(
+        "hidden"
+      );
+
+
+      if (mode === "entry") {
+
+        if (
+          score ===
+          questions().length
+        ) {
+
+          saveAchievement(
+            "perfectEntry"
+          );
+
+          saveAchievement(
+            "uniUnlocked"
+          );
+
+          feedback.textContent =
+            "🏆 Perfect 10/10! The University-Level English Literature Quiz is now unlocked.";
+
+          universityBtn.classList.remove(
+            "hidden"
+          );
+
+        } else {
+
+          feedback.textContent =
+            "📘 Complete the Practice Quiz, then retry the Entry Quiz. Score 10/10 to unlock University Level.";
+
+          practiceBtn.classList.remove(
+            "hidden"
+          );
+
+          retryBtn.classList.remove(
+            "hidden"
+          );
+
+        }
+
+      }
+
+      else if (mode === "practice") {
+
+        saveAchievement(
+          "practice"
+        );
+
+        feedback.textContent =
+          "📘 Practice complete. Review the explanations, then retry the Entry Quiz and aim for 10/10.";
+
+        retryBtn.classList.remove(
+          "hidden"
+        );
+
+      }
+
+      else {
+
+        if (score >= 7) {
+
+          saveAchievement(
+            "uniScholar"
+          );
+
+        }
+
+        if (
+          score ===
+          questions().length
+        ) {
+
+          saveAchievement(
+            "uniMaster"
+          );
+
+        }
+
+        if (score === 10) {
+
+          feedback.textContent =
+            "🏅 Outstanding — 10/10 at University Level! You have earned University Master.";
+
+        }
+
+        else if (score >= 7) {
+
+          feedback.textContent =
+            "🎓 University Scholar achieved! Strong advanced literary analysis performance.";
+
+        }
+
+        else {
+
+          feedback.textContent =
+            "🎓 University-Level English Literature Quiz complete. Review the explanations and try again to reach 7/10 or above.";
+
+        }
+
+        universityBtn.textContent =
+          "Retry University-Level Quiz";
+
+        universityBtn.classList.remove(
+          "hidden"
+        );
+
+      }
+
+    }
+
+
+    nextBtn.addEventListener(
+      "click",
+      () => {
+
+        index++;
+
+        if (
+          index >=
+          questions().length
+        ) {
+
+          finish();
+
+        } else {
+
+          renderQuestion();
+
+        }
+
+      }
+    );
+
+
+    startBtn.addEventListener(
+      "click",
+      () => begin("entry")
+    );
+
+
+    practiceBtn.addEventListener(
+      "click",
+      () => begin("practice")
+    );
+
+
+    retryBtn.addEventListener(
+      "click",
+      () => begin("entry")
+    );
+
+
+    universityBtn.addEventListener(
+      "click",
+      () => begin("university")
+    );
+
+
+    renderAchievements();
+
+  </script>
+
+</body>
+
+</html>
