@@ -1785,16 +1785,19 @@ if(
 
 }
   
-const querySnapshot = await getDocs(collection(db, "players"));
+try {
+  const querySnapshot = await getDocs(collection(db, "players"));
 
-querySnapshot.forEach((docSnap) => {
-  const data = docSnap.data();
+  querySnapshot.forEach((docSnap) => {
+    const data = docSnap.data();
 
-  if (players.includes(data.name)) {
-    xpData[data.name] = Number(data.xp) || 0;
-  }
-});
-
+    if (players.includes(data.name)) {
+      xpData[data.name] = Number(data.xp) || 0;
+    }
+  });
+} catch (error) {
+  console.error("Firebase leaderboard error:", error);
+}
 
 
 renderLeaderboard();
