@@ -1,329 +1,738 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Mental Health Flowchart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
+    <title>A2B - Digital Skills & Online Safety</title>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
-}
+    <style>
 
-body{
-background:linear-gradient(-45deg,#74ebd5,#9face6,#89f7fe,#66a6ff);
-background-size:400% 400%;
-animation:gradient 15s ease infinite;
-min-height:100vh;
-padding:40px;
-overflow-x:hidden;
-position:relative;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-@keyframes gradient{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+        }
 
-.circle{
-position:absolute;
-border-radius:50%;
-background:rgba(255,255,255,.18);
-animation:float 20s infinite linear;
-backdrop-filter:blur(2px);
-}
+        /* HEADER */
 
-.circle:nth-child(1){width:90px;height:90px;left:5%;top:80%;animation-duration:22s;}
-.circle:nth-child(2){width:140px;height:140px;right:8%;top:70%;animation-duration:30s;}
-.circle:nth-child(3){width:60px;height:60px;left:20%;top:20%;animation-duration:18s;}
-.circle:nth-child(4){width:110px;height:110px;right:25%;top:15%;animation-duration:26s;}
-.circle:nth-child(5){width:80px;height:80px;left:75%;top:85%;animation-duration:24s;}
+        header {
+            background: #263238;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-@keyframes float{
-0%{transform:translateY(0px);}
-100%{transform:translateY(-120vh);}
-}
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
 
-.container{
-max-width:760px;
-margin:auto;
-padding:35px;
-border-radius:25px;
-background:rgba(255,255,255,.25);
-backdrop-filter:blur(18px);
--webkit-backdrop-filter:blur(18px);
-box-shadow:0 20px 50px rgba(0,0,0,.25);
-position:relative;
-z-index:2;
-text-align:center;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
 
-h1{
-font-size:40px;
-margin-bottom:20px;
-color:#003c8f;
-}
+        nav a:hover {
+            text-decoration: underline;
+        }
 
-.box{
-background:white;
-border:3px solid #2196f3;
-border-radius:18px;
-padding:22px;
-margin:20px auto;
-width:85%;
-font-size:24px;
-font-weight:bold;
-box-shadow:0 8px 18px rgba(0,0,0,.15);
-animation:fade .5s;
-}
 
-.solution{
-background:#e8ffe8;
-border-color:#4CAF50;
-color:#146d1b;
-}
+        /* HERO */
 
-.arrow{
-font-size:42px;
-margin:8px;
-color:#1976d2;
-font-weight:bold;
-animation:slide .5s;
-}
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #dbeafe, #f0f9ff);
+        }
 
-@keyframes slide{
-from{opacity:0;transform:translateY(-20px);}
-to{opacity:1;transform:translateY(0);}
-}
+        .hero h2 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
 
-@keyframes fade{
-from{opacity:0;transform:scale(.95);}
-to{opacity:1;transform:scale(1);}
-}
+        .hero p {
+            font-size: 20px;
+            max-width: 750px;
+            margin: auto;
+            line-height: 1.6;
+        }
 
-button{
-padding:14px 40px;
-margin:12px;
-font-size:20px;
-border:none;
-border-radius:50px;
-cursor:pointer;
-font-weight:bold;
-transition:.3s;
-color:white;
-box-shadow:0 8px 20px rgba(0,0,0,.2);
-}
+        .hero-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 14px 28px;
+            background: #263238;
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
 
-button:hover{
-transform:translateY(-4px) scale(1.05);
-}
+        .hero-button:hover {
+            transform: scale(1.06);
+        }
 
-.yes{background:#43a047;}
-.no{background:#e53935;}
-.restart{display:none;background:#1565c0;}
 
-.footer{
-margin-top:25px;
-font-size:15px;
-color:#003c8f;
-font-weight:bold;
-}
+        /* WHAT DOES A2B DO */
 
-</style>
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 34px;
+            margin-bottom: 15px;
+        }
+
+        .section-intro {
+            max-width: 750px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            width: 240px;
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+            animation: floatIcon 2.5s ease-in-out infinite;
+        }
+
+        @keyframes floatIcon {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+
+        /* ANIMATED JOURNEY */
+
+        .journey-section {
+            background: #eef5ff;
+        }
+
+        .journey {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-top: 35px;
+        }
+
+        .journey-card {
+            width: 180px;
+            min-height: 190px;
+            background: white;
+            padding: 20px;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+
+            opacity: 0;
+            transform: translateY(30px);
+
+            animation: cardAppear 0.8s forwards;
+        }
+
+        .journey-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .journey-card:nth-child(3) {
+            animation-delay: 0.8s;
+        }
+
+        .journey-card:nth-child(5) {
+            animation-delay: 1.4s;
+        }
+
+        .journey-card:nth-child(7) {
+            animation-delay: 2s;
+        }
+
+        @keyframes cardAppear {
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .journey-number {
+            width: 30px;
+            height: 30px;
+            background: #263238;
+            color: white;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .journey-icon {
+            font-size: 45px;
+            margin: 12px;
+        }
+
+        .arrow {
+            font-size: 35px;
+            animation: arrowMove 0.8s infinite alternate;
+        }
+
+        @keyframes arrowMove {
+
+            from {
+                transform: translateX(-5px);
+            }
+
+            to {
+                transform: translateX(5px);
+            }
+        }
+
+
+        /* TALK TO SOMEONE */
+
+        .help-section {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 6px 22px rgba(0,0,0,0.12);
+
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .chat-icon {
+            font-size: 100px;
+            animation: chatBounce 1.5s ease-in-out infinite;
+        }
+
+        @keyframes chatBounce {
+
+            0%, 100% {
+                transform: translateY(0) rotate(-4deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(4deg);
+            }
+        }
+
+        .help-content {
+            text-align: left;
+        }
+
+        .help-content h2 {
+            font-size: 32px;
+        }
+
+        .help-content p {
+            line-height: 1.6;
+            font-size: 17px;
+        }
+
+        .help-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 14px 24px;
+            background: #263238;
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .help-button:hover {
+            transform: scale(1.05);
+        }
+
+
+        /* QUIZ */
+
+        .quiz {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+        }
+
+        .quiz-question {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .quiz button {
+            display: block;
+            width: 100%;
+            padding: 13px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+
+        .quiz button:hover {
+            transform: scale(1.02);
+        }
+
+        #quiz-result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 60px;
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 750px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .hero h2 {
+                font-size: 34px;
+            }
+
+            .journey {
+                flex-direction: column;
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+            }
+
+            .help-section {
+                margin: 30px 15px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .help-content {
+                text-align: center;
+            }
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
-<div class="circle"></div>
 
-<div class="container">
+<header>
 
-<h1>🧠 Mental Health Flowchart</h1>
+    <h1>A2B</h1>
 
-<div id="flowArea">
-<div class="box">
-Are you feeling stressed, sad or worried?
-</div>
-</div>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#journey">Journey</a>
+        <a href="#help">Get Help</a>
+        <a href="#quiz">Quiz</a>
+    </nav>
 
-<div id="buttonArea">
-<button class="yes" onclick="choose('yes')">✔ Yes</button>
-<button class="no" onclick="choose('no')">✖ No</button>
-</div>
+</header>
 
-<button class="restart" id="restartBtn" onclick="restartFlow()">🔄 Restart</button>
 
-<div class="footer">
-Every answer helps you find the best support 💙
-</div>
 
-</div>
+<!-- HERO -->
+
+<section class="hero">
+
+    <h2>Learn. Think. Stay Safe. 🌐</h2>
+
+    <p>
+        A2B helps students learn how to use technology and the internet
+        safely, responsibly and confidently.
+    </p>
+
+    <a class="hero-button" href="#about">
+        Start Learning
+    </a>
+
+</section>
+
+
+
+<!-- WHAT DOES A2B DO -->
+
+<section class="section" id="about">
+
+    <h2>What Does A2B Do?</h2>
+
+    <p class="section-intro">
+        A2B teaches students important digital skills that can help them
+        make safer and smarter choices when they are online.
+    </p>
+
+
+    <div class="cards">
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🔒
+            </div>
+
+            <h3>Stay Safe Online</h3>
+
+            <p>
+                Learn how to protect your personal information,
+                passwords and online accounts.
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                💬
+            </div>
+
+            <h3>Communicate Safely</h3>
+
+            <p>
+                Learn how to communicate respectfully and what to do
+                if something online makes you uncomfortable.
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🔎
+            </div>
+
+            <h3>Research Smartly</h3>
+
+            <p>
+                Learn how to check whether online information
+                is reliable, accurate or misleading.
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                💻
+            </div>
+
+            <h3>Digital Responsibility</h3>
+
+            <p>
+                Learn how to use websites, apps, social media
+                and technology responsibly.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ANIMATED JOURNEY -->
+
+<section class="section journey-section" id="journey">
+
+    <h2>Your A2B Journey 🚀</h2>
+
+    <p class="section-intro">
+        Follow these four steps to become a safer and smarter digital user.
+    </p>
+
+
+    <div class="journey">
+
+
+        <div class="journey-card">
+
+            <span class="journey-number">1</span>
+
+            <div class="journey-icon">
+                🤔
+            </div>
+
+            <h3>Think</h3>
+
+            <p>
+                Think before you click, post or share.
+            </p>
+
+        </div>
+
+
+        <div class="arrow">
+            ➜
+        </div>
+
+
+
+        <div class="journey-card">
+
+            <span class="journey-number">2</span>
+
+            <div class="journey-icon">
+                🔐
+            </div>
+
+            <h3>Protect</h3>
+
+            <p>
+                Protect your personal information and accounts.
+            </p>
+
+        </div>
+
+
+        <div class="arrow">
+            ➜
+        </div>
+
+
+
+        <div class="journey-card">
+
+            <span class="journey-number">3</span>
+
+            <div class="journey-icon">
+                🔎
+            </div>
+
+            <h3>Check</h3>
+
+            <p>
+                Check whether information online is reliable.
+            </p>
+
+        </div>
+
+
+        <div class="arrow">
+            ➜
+        </div>
+
+
+
+        <div class="journey-card">
+
+            <span class="journey-number">4</span>
+
+            <div class="journey-icon">
+                ⭐
+            </div>
+
+            <h3>Be Responsible</h3>
+
+            <p>
+                Use technology positively and respectfully.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- TALK TO SOMEONE -->
+
+<section class="help-section" id="help">
+
+
+    <div class="chat-icon">
+        💬
+    </div>
+
+
+    <div class="help-content">
+
+        <h2>Need to Talk to Someone?</h2>
+
+        <p>
+            If something happens online that worries, scares or upsets you,
+            you do not have to deal with it alone.
+        </p>
+
+        <p>
+            Talk to a parent, teacher or another trusted adult.
+            You can also use Childline to speak to a trained counsellor online.
+        </p>
+
+
+        <a
+            class="help-button"
+            href="https://www.childline.org.uk/get-support/1-2-1-counsellor-chat/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            💬 Talk to Childline
+        </a>
+
+
+        <p>
+            If you or somebody else is in immediate danger,
+            call <strong>999</strong>.
+        </p>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- QUIZ -->
+
+<section class="section" id="quiz">
+
+    <h2>A2B Quick Quiz 🎯</h2>
+
+    <p class="section-intro">
+        Test what you have learned about staying safe online.
+    </p>
+
+
+    <div class="quiz">
+
+        <p class="quiz-question">
+            Someone online asks you for your password.
+            What should you do?
+        </p>
+
+
+        <button onclick="checkAnswer(false)">
+            Give them the password
+        </button>
+
+
+        <button onclick="checkAnswer(true)">
+            Keep it private and tell a trusted adult if you are worried
+        </button>
+
+
+        <button onclick="checkAnswer(false)">
+            Post the password online
+        </button>
+
+
+        <p id="quiz-result"></p>
+
+    </div>
+
+</section>
+
+
+
+<footer>
+
+    <p>
+        A2B | Digital Skills & Online Safety
+    </p>
+
+</footer>
+
+
 
 <script>
 
-let current="q1";
+function checkAnswer(correct) {
 
-const flow={
+    const result =
+        document.getElementById("quiz-result");
 
-q1:{
-question:"Are you feeling stressed, sad or worried?",
-yes:"q2",
-no:"q3"
-},
+    if (correct) {
 
-q2:{
-question:"Is it because of school, homework or exams?",
-yes:"q4",
-no:"q5"
-},
+        result.innerHTML =
+            "✅ Correct! Passwords should always be kept private.";
 
-q3:{
-question:"Do you still want to check your mental wellbeing?",
-yes:"q6",
-no:"s1"
-},
+    } else {
 
-q4:{
-question:"Have you made a plan for your school work?",
-yes:"q7",
-no:"s2"
-},
+        result.innerHTML =
+            "❌ Try again. Think about how you can keep your account safe.";
 
-q5:{
-question:"Is it about food, body image or eating habits?",
-yes:"q8",
-no:"q9"
-},
-
-q6:{
-question:"Are you sleeping and eating properly?",
-yes:"s3",
-no:"s4"
-},
-
-q7:{
-question:"Do you still feel overwhelmed even with a plan?",
-yes:"s5",
-no:"s6"
-},
-
-q8:{
-question:"Are you skipping meals or worrying a lot about what you eat?",
-yes:"s7",
-no:"s8"
-},
-
-q9:{
-question:"Is it because of friends, family or relationships?",
-yes:"s9",
-no:"s10"
-},
-
-s1:{
-solution:"That is good. Keep looking after yourself by resting, staying active, eating well and talking to people you trust."
-},
-
-s2:{
-solution:"Try making a simple study plan. Break your work into small tasks, do one thing at a time, and ask a teacher if you feel stuck."
-},
-
-s3:{
-solution:"Great. Keep your healthy routine going and check in with yourself regularly."
-},
-
-s4:{
-solution:"Focus on your basic routine first: sleep enough, eat proper meals, drink water and take short breaks from screens."
-},
-
-s5:{
-solution:"Speak to a teacher, parent or trusted adult. They can help you reduce pressure, organise homework and make things feel more manageable."
-},
-
-s6:{
-solution:"Good. Keep using your plan and remember to take breaks so you do not burn out."
-},
-
-s7:{
-solution:"Talk to a trusted adult, school counsellor or GP. Food and body worries can become serious, so you should not deal with them alone."
-},
-
-s8:{
-solution:"Try to build a balanced routine with regular meals, water, rest and positive self-talk. Avoid comparing yourself to others."
-},
-
-s9:{
-solution:"Talk to someone you trust about what happened. If it involves bullying or pressure from others, tell a teacher or trusted adult."
-},
-
-s10:{
-solution:"If you are not sure why you feel this way, write down your feelings, take a short break, and speak to someone you trust."
-}
-
-};
-
-function choose(answer){
-
-let next=flow[current][answer];
-
-let flowArea=document.getElementById("flowArea");
-
-let arrow=document.createElement("div");
-arrow.className="arrow";
-arrow.innerHTML="⬇ "+answer.toUpperCase();
-
-flowArea.appendChild(arrow);
-
-let box=document.createElement("div");
-
-if(flow[next].solution){
-
-box.className="box solution";
-box.innerHTML="✅ "+flow[next].solution;
-
-document.getElementById("buttonArea").style.display="none";
-document.getElementById("restartBtn").style.display="inline-block";
-
-}else{
-
-box.className="box";
-box.innerHTML=flow[next].question;
-
-}
-
-flowArea.appendChild(box);
-
-current=next;
-
-box.scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-function restartFlow(){
-
-current="q1";
-
-document.getElementById("flowArea").innerHTML=`
-<div class="box">
-Are you feeling stressed, sad or worried?
-</div>
-`;
-
-document.getElementById("buttonArea").style.display="block";
-document.getElementById("restartBtn").style.display="none";
+    }
 
 }
 
 </script>
+
 
 </body>
 </html>
