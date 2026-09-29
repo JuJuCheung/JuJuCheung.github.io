@@ -2,381 +2,545 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>A2B - Digital Skills & Online Safety</title>
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f7fb;
-            color: #222;
-        }
-
-        /* HEADER */
-
-        header {
-            background: #263238;
-            color: white;
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 32px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-
-        /* HERO */
-
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #dbeafe, #f0f9ff);
-        }
-
-        .hero h2 {
-            font-size: 45px;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            font-size: 20px;
-            max-width: 750px;
-            margin: auto;
-            line-height: 1.6;
-        }
-
-        .hero-button {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 14px 28px;
-            background: #263238;
-            color: white;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .hero-button:hover {
-            transform: scale(1.06);
-        }
-
-
-        /* WHAT DOES A2B DO */
-
-        .section {
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        .section h2 {
-            font-size: 34px;
-            margin-bottom: 15px;
-        }
-
-        .section-intro {
-            max-width: 750px;
-            margin: 0 auto 40px;
-            font-size: 18px;
-            line-height: 1.6;
-        }
-
-        .cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .card {
-            width: 240px;
-            background: white;
-            border-radius: 18px;
-            padding: 25px;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.12);
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-        }
-
-        .card-icon {
-            font-size: 48px;
-            margin-bottom: 10px;
-            animation: floatIcon 2.5s ease-in-out infinite;
-        }
-
-        @keyframes floatIcon {
-
-            0%, 100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-8px);
-            }
-        }
-
-
-        /* ANIMATED JOURNEY */
-
-        .journey-section {
-            background: #eef5ff;
-        }
-
-        .journey {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            margin-top: 35px;
-        }
-
-        .journey-card {
-            width: 180px;
-            min-height: 190px;
-            background: white;
-            padding: 20px;
-            border-radius: 18px;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.12);
-
-            opacity: 0;
-            transform: translateY(30px);
-
-            animation: cardAppear 0.8s forwards;
-        }
-
-        .journey-card:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-
-        .journey-card:nth-child(3) {
-            animation-delay: 0.8s;
-        }
-
-        .journey-card:nth-child(5) {
-            animation-delay: 1.4s;
-        }
-
-        .journey-card:nth-child(7) {
-            animation-delay: 2s;
-        }
-
-        @keyframes cardAppear {
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .journey-number {
-            width: 30px;
-            height: 30px;
-            background: #263238;
-            color: white;
-            border-radius: 50%;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-        }
-
-        .journey-icon {
-            font-size: 45px;
-            margin: 12px;
-        }
-
-        .arrow {
-            font-size: 35px;
-            animation: arrowMove 0.8s infinite alternate;
-        }
-
-        @keyframes arrowMove {
-
-            from {
-                transform: translateX(-5px);
-            }
-
-            to {
-                transform: translateX(5px);
-            }
-        }
-
-
-        /* TALK TO SOMEONE */
-
-        .help-section {
-            max-width: 900px;
-            margin: 60px auto;
-            padding: 40px;
-            background: white;
-            border-radius: 25px;
-            box-shadow: 0 6px 22px rgba(0,0,0,0.12);
-
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .chat-icon {
-            font-size: 100px;
-            animation: chatBounce 1.5s ease-in-out infinite;
-        }
-
-        @keyframes chatBounce {
-
-            0%, 100% {
-                transform: translateY(0) rotate(-4deg);
-            }
-
-            50% {
-                transform: translateY(-15px) rotate(4deg);
-            }
-        }
-
-        .help-content {
-            text-align: left;
-        }
-
-        .help-content h2 {
-            font-size: 32px;
-        }
-
-        .help-content p {
-            line-height: 1.6;
-            font-size: 17px;
-        }
-
-        .help-button {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 14px 24px;
-            background: #263238;
-            color: white;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .help-button:hover {
-            transform: scale(1.05);
-        }
-
-
-        /* QUIZ */
-
-        .quiz {
-            max-width: 700px;
-            margin: auto;
-            background: white;
-            padding: 35px;
-            border-radius: 20px;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.12);
-        }
-
-        .quiz-question {
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .quiz button {
-            display: block;
-            width: 100%;
-            padding: 13px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: 0.2s;
-        }
-
-        .quiz button:hover {
-            transform: scale(1.02);
-        }
-
-        #quiz-result {
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-
-        /* FOOTER */
-
-        footer {
-            margin-top: 60px;
-            background: #263238;
-            color: white;
-            text-align: center;
-            padding: 25px;
-        }
-
-
-        /* MOBILE */
-
-        @media (max-width: 750px) {
-
-            header {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            nav a {
-                margin: 0 8px;
-            }
-
-            .hero h2 {
-                font-size: 34px;
-            }
-
-            .journey {
-                flex-direction: column;
-            }
-
-            .arrow {
-                transform: rotate(90deg);
-            }
-
-            .help-section {
-                margin: 30px 15px;
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .help-content {
-                text-align: center;
-            }
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A2B - Digital Skills & Online Safety</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+}
+
+
+/* HEADER */
+
+header {
+    background: #263238;
+    color: white;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 34px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 90px 20px;
+    background: linear-gradient(135deg, #dbeafe, #f0f9ff);
+}
+
+.hero h2 {
+    font-size: 46px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 20px;
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.6;
+}
+
+.hero-button {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 15px 30px;
+    background: #263238;
+    color: white;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.hero-button:hover {
+    transform: scale(1.06);
+}
+
+
+/* NORMAL SECTIONS */
+
+.section {
+    padding: 65px 20px;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.section-intro {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* INFORMATION CARDS */
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 22px;
+}
+
+.card {
+    width: 240px;
+    background: white;
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card-icon {
+    font-size: 50px;
+    margin-bottom: 12px;
+    animation: floatIcon 2.5s ease-in-out infinite;
+}
+
+.card h3 {
+    margin-top: 5px;
+}
+
+.card p {
+    line-height: 1.5;
+}
+
+@keyframes floatIcon {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+/* A2B JOURNEY */
+
+.journey-section {
+    background: #eef5ff;
+}
+
+.journey {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.journey-card {
+    width: 180px;
+    min-height: 200px;
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+
+    opacity: 0;
+    transform: translateY(30px);
+
+    animation: cardAppear 0.8s forwards;
+}
+
+.journey-card:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.journey-card:nth-child(3) {
+    animation-delay: 0.8s;
+}
+
+.journey-card:nth-child(5) {
+    animation-delay: 1.4s;
+}
+
+.journey-card:nth-child(7) {
+    animation-delay: 2s;
+}
+
+@keyframes cardAppear {
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.journey-number {
+    width: 30px;
+    height: 30px;
+    background: #263238;
+    color: white;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.journey-icon {
+    font-size: 45px;
+    margin: 12px;
+}
+
+.arrow {
+    font-size: 36px;
+    animation: arrowMove 0.8s infinite alternate;
+}
+
+@keyframes arrowMove {
+
+    from {
+        transform: translateX(-5px);
+    }
+
+    to {
+        transform: translateX(5px);
+    }
+}
+
+
+/* WHY ONLINE SAFETY MATTERS */
+
+.why-box {
+    max-width: 850px;
+    margin: auto;
+    background: white;
+    padding: 35px;
+    border-radius: 22px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+.why-box h3 {
+    font-size: 24px;
+}
+
+.why-box li {
+    margin: 14px 0;
+    line-height: 1.5;
+}
+
+
+/* HELP */
+
+.help-section {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 40px;
+
+    background: white;
+    border-radius: 25px;
+
+    box-shadow: 0 6px 22px rgba(0,0,0,0.12);
+
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.chat-icon {
+    font-size: 100px;
+    animation: chatBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes chatBounce {
+
+    0%, 100% {
+        transform: translateY(0) rotate(-4deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(4deg);
+    }
+}
+
+.help-content {
+    text-align: left;
+}
+
+.help-content h2 {
+    font-size: 32px;
+}
+
+.help-content p {
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.help-button {
+    display: inline-block;
+    padding: 14px 24px;
+    margin: 10px 0;
+
+    background: #263238;
+    color: white;
+
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.help-button:hover {
+    transform: scale(1.05);
+}
+
+
+/* QUIZ */
+
+.quiz-section {
+    background: #eef5ff;
+}
+
+.quiz-container {
+    max-width: 760px;
+    margin: auto;
+
+    background: white;
+    padding: 35px;
+
+    border-radius: 22px;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.12);
+
+    text-align: left;
+}
+
+.progress-text {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 14px;
+    background: #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: #263238;
+    transition: width 0.4s;
+}
+
+#question {
+    font-size: 22px;
+    margin-bottom: 22px;
+}
+
+.answer-button {
+    display: block;
+    width: 100%;
+
+    border: 2px solid #ddd;
+    background: white;
+
+    padding: 15px;
+    margin: 12px 0;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+    text-align: left;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.answer-button:hover {
+    background: #eef5ff;
+    transform: translateX(5px);
+}
+
+.correct {
+    background: #d8f5dd !important;
+    border-color: #43a047 !important;
+}
+
+.wrong {
+    background: #ffdede !important;
+    border-color: #e53935 !important;
+}
+
+#feedback {
+    min-height: 25px;
+    margin-top: 18px;
+    font-weight: bold;
+}
+
+.next-button {
+    padding: 13px 25px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #263238;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    display: none;
+}
+
+.next-button:hover {
+    transform: scale(1.04);
+}
+
+
+/* ACHIEVEMENT */
+
+.achievement {
+    display: none;
+    text-align: center;
+    padding: 20px;
+}
+
+.achievement-badge {
+    font-size: 100px;
+    animation: badgeAppear 0.8s ease;
+}
+
+@keyframes badgeAppear {
+
+    0% {
+        transform: scale(0) rotate(-180deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+}
+
+.achievement h2 {
+    font-size: 32px;
+}
+
+.achievement-title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.score {
+    font-size: 20px;
+}
+
+.restart-button {
+    margin-top: 20px;
+    padding: 13px 25px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #263238;
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+
+/* FOOTER */
+
+footer {
+    background: #263238;
+    color: white;
+    text-align: center;
+    padding: 28px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 750px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 0 7px;
+    }
+
+    .hero h2 {
+        font-size: 34px;
+    }
+
+    .journey {
+        flex-direction: column;
+    }
+
+    .arrow {
+        transform: rotate(90deg);
+    }
+
+    .help-section {
+        margin: 30px 15px;
+        flex-direction: column;
+    }
+
+    .help-content {
+        text-align: center;
+    }
+}
+
+</style>
+
 </head>
 
 
@@ -390,12 +554,12 @@
     <nav>
         <a href="#about">About</a>
         <a href="#journey">Journey</a>
-        <a href="#help">Get Help</a>
+        <a href="#skills">Skills</a>
+        <a href="#help">Help</a>
         <a href="#quiz">Quiz</a>
     </nav>
 
 </header>
-
 
 
 <!-- HERO -->
@@ -405,27 +569,33 @@
     <h2>Learn. Think. Stay Safe. 🌐</h2>
 
     <p>
-        A2B helps students learn how to use technology and the internet
-        safely, responsibly and confidently.
+        A2B helps students understand the digital world and learn
+        how to use the internet safely, confidently and responsibly.
     </p>
 
-    <a class="hero-button" href="#about">
-        Start Learning
+    <a href="#about" class="hero-button">
+        Start Your A2B Journey
     </a>
 
 </section>
 
 
 
-<!-- WHAT DOES A2B DO -->
+<!-- ABOUT -->
 
 <section class="section" id="about">
 
-    <h2>What Does A2B Do?</h2>
+    <h2>What is A2B?</h2>
 
     <p class="section-intro">
-        A2B teaches students important digital skills that can help them
-        make safer and smarter choices when they are online.
+
+        A2B is an interactive digital learning website that teaches
+        students important skills for using technology and the internet.
+
+        The internet is useful for learning, communicating, gaming and
+        entertainment, but it is also important to understand how to
+        protect yourself and make sensible choices online.
+
     </p>
 
 
@@ -434,66 +604,82 @@
 
         <div class="card">
 
-            <div class="card-icon">
-                🔒
-            </div>
+            <div class="card-icon">🔒</div>
 
-            <h3>Stay Safe Online</h3>
+            <h3>Online Safety</h3>
 
             <p>
-                Learn how to protect your personal information,
-                passwords and online accounts.
+                Protect your passwords, accounts and personal information.
             </p>
 
         </div>
 
 
-
         <div class="card">
 
-            <div class="card-icon">
-                💬
-            </div>
+            <div class="card-icon">💬</div>
 
-            <h3>Communicate Safely</h3>
+            <h3>Safe Communication</h3>
 
             <p>
-                Learn how to communicate respectfully and what to do
-                if something online makes you uncomfortable.
+                Learn how to communicate respectfully and respond
+                to uncomfortable messages.
             </p>
 
         </div>
 
 
-
         <div class="card">
 
-            <div class="card-icon">
-                🔎
-            </div>
+            <div class="card-icon">🔎</div>
 
-            <h3>Research Smartly</h3>
+            <h3>Smart Research</h3>
 
             <p>
-                Learn how to check whether online information
-                is reliable, accurate or misleading.
+                Check sources and learn how to recognise false or
+                misleading information.
             </p>
 
         </div>
 
 
+        <div class="card">
+
+            <div class="card-icon">🛡️</div>
+
+            <h3>Protect Yourself</h3>
+
+            <p>
+                Understand privacy settings, suspicious links,
+                scams and online risks.
+            </p>
+
+        </div>
+
 
         <div class="card">
 
-            <div class="card-icon">
-                💻
-            </div>
+            <div class="card-icon">🤝</div>
 
-            <h3>Digital Responsibility</h3>
+            <h3>Be Respectful</h3>
 
             <p>
-                Learn how to use websites, apps, social media
-                and technology responsibly.
+                Treat other people online with the same respect
+                you would show them face-to-face.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">🧠</div>
+
+            <h3>Think First</h3>
+
+            <p>
+                Stop and think before posting, sending,
+                downloading or sharing something.
             </p>
 
         </div>
@@ -505,14 +691,14 @@
 
 
 
-<!-- ANIMATED JOURNEY -->
+<!-- JOURNEY -->
 
 <section class="section journey-section" id="journey">
 
     <h2>Your A2B Journey 🚀</h2>
 
     <p class="section-intro">
-        Follow these four steps to become a safer and smarter digital user.
+        Becoming a confident digital user can start with four simple steps.
     </p>
 
 
@@ -523,78 +709,61 @@
 
             <span class="journey-number">1</span>
 
-            <div class="journey-icon">
-                🤔
-            </div>
+            <div class="journey-icon">🤔</div>
 
             <h3>Think</h3>
 
             <p>
-                Think before you click, post or share.
+                Think before you click, post or send.
             </p>
 
         </div>
 
 
-        <div class="arrow">
-            ➜
-        </div>
-
+        <div class="arrow">➜</div>
 
 
         <div class="journey-card">
 
             <span class="journey-number">2</span>
 
-            <div class="journey-icon">
-                🔐
-            </div>
+            <div class="journey-icon">🔐</div>
 
             <h3>Protect</h3>
 
             <p>
-                Protect your personal information and accounts.
+                Protect your information and accounts.
             </p>
 
         </div>
 
 
-        <div class="arrow">
-            ➜
-        </div>
-
+        <div class="arrow">➜</div>
 
 
         <div class="journey-card">
 
             <span class="journey-number">3</span>
 
-            <div class="journey-icon">
-                🔎
-            </div>
+            <div class="journey-icon">🔎</div>
 
             <h3>Check</h3>
 
             <p>
-                Check whether information online is reliable.
+                Check whether information and links are trustworthy.
             </p>
 
         </div>
 
 
-        <div class="arrow">
-            ➜
-        </div>
-
+        <div class="arrow">➜</div>
 
 
         <div class="journey-card">
 
             <span class="journey-number">4</span>
 
-            <div class="journey-icon">
-                ⭐
-            </div>
+            <div class="journey-icon">⭐</div>
 
             <h3>Be Responsible</h3>
 
@@ -611,7 +780,61 @@
 
 
 
-<!-- TALK TO SOMEONE -->
+<!-- WHY IT MATTERS -->
+
+<section class="section" id="skills">
+
+    <h2>Why Does Online Safety Matter?</h2>
+
+    <p class="section-intro">
+        What you do online can affect both you and other people.
+        Small decisions can make a big difference.
+    </p>
+
+
+    <div class="why-box">
+
+        <h3>Remember:</h3>
+
+        <ul>
+
+            <li>
+                🔑 Never share your passwords with other people.
+            </li>
+
+            <li>
+                📍 Think carefully before sharing your location or personal details.
+            </li>
+
+            <li>
+                🔗 Do not open suspicious links or unexpected downloads.
+            </li>
+
+            <li>
+                📸 Think before posting pictures because online posts can be difficult to remove.
+            </li>
+
+            <li>
+                🤝 Treat other people respectfully online.
+            </li>
+
+            <li>
+                🚩 Block and report users who send harmful or inappropriate messages.
+            </li>
+
+            <li>
+                👨‍👩‍👧 Speak to a trusted adult when something online worries you.
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+
+<!-- HELP -->
 
 <section class="help-section" id="help">
 
@@ -626,13 +849,13 @@
         <h2>Need to Talk to Someone?</h2>
 
         <p>
-            If something happens online that worries, scares or upsets you,
-            you do not have to deal with it alone.
+            If something happens online that makes you feel worried,
+            scared or uncomfortable, you do not have to deal with it alone.
         </p>
 
         <p>
-            Talk to a parent, teacher or another trusted adult.
-            You can also use Childline to speak to a trained counsellor online.
+            You can speak to a parent, carer, teacher or another trusted adult.
+            You can also contact Childline for support.
         </p>
 
 
@@ -642,7 +865,7 @@
             target="_blank"
             rel="noopener noreferrer"
         >
-            💬 Talk to Childline
+            💬 Talk to Childline Online
         </a>
 
 
@@ -653,46 +876,101 @@
 
     </div>
 
-
 </section>
 
 
 
 <!-- QUIZ -->
 
-<section class="section" id="quiz">
+<section class="section quiz-section" id="quiz">
 
-    <h2>A2B Quick Quiz 🎯</h2>
+    <h2>A2B Online Safety Challenge 🎯</h2>
 
     <p class="section-intro">
-        Test what you have learned about staying safe online.
+        Answer all 10 questions and see which A2B achievement you can earn!
     </p>
 
 
-    <div class="quiz">
-
-        <p class="quiz-question">
-            Someone online asks you for your password.
-            What should you do?
-        </p>
+    <div class="quiz-container">
 
 
-        <button onclick="checkAnswer(false)">
-            Give them the password
-        </button>
+        <div id="quizArea">
+
+            <div class="progress-text" id="progressText">
+                Question 1 of 10
+            </div>
 
 
-        <button onclick="checkAnswer(true)">
-            Keep it private and tell a trusted adult if you are worried
-        </button>
+            <div class="progress-bar">
+
+                <div class="progress" id="progressBar"></div>
+
+            </div>
 
 
-        <button onclick="checkAnswer(false)">
-            Post the password online
-        </button>
+            <h3 id="question">
+                Question
+            </h3>
 
 
-        <p id="quiz-result"></p>
+            <div id="answers"></div>
+
+
+            <p id="feedback"></p>
+
+
+            <button
+                class="next-button"
+                id="nextButton"
+                onclick="nextQuestion()"
+            >
+                Next Question ➜
+            </button>
+
+        </div>
+
+
+        <!-- ACHIEVEMENT -->
+
+        <div class="achievement" id="achievement">
+
+            <div
+                class="achievement-badge"
+                id="achievementBadge"
+            >
+                🏆
+            </div>
+
+
+            <h2>Achievement Unlocked!</h2>
+
+
+            <p
+                class="achievement-title"
+                id="achievementTitle"
+            >
+            </p>
+
+
+            <p
+                class="score"
+                id="finalScore"
+            >
+            </p>
+
+
+            <p id="achievementMessage"></p>
+
+
+            <button
+                class="restart-button"
+                onclick="restartQuiz()"
+            >
+                🔄 Try Again
+            </button>
+
+        </div>
+
 
     </div>
 
@@ -703,7 +981,11 @@
 <footer>
 
     <p>
-        A2B | Digital Skills & Online Safety
+        A2B | Learn • Think • Stay Safe
+    </p>
+
+    <p>
+        Digital Skills & Online Safety
     </p>
 
 </footer>
@@ -712,27 +994,422 @@
 
 <script>
 
-function checkAnswer(correct) {
 
-    const result =
-        document.getElementById("quiz-result");
+const questions = [
 
-    if (correct) {
+{
+    question:
+    "1. Someone online asks you for your password. What should you do?",
 
-        result.innerHTML =
-            "✅ Correct! Passwords should always be kept private.";
+    answers: [
+        "Give them your password",
+        "Keep your password private",
+        "Post your password online",
+        "Use the same password as them"
+    ],
 
-    } else {
+    correct: 1
+},
 
-        result.innerHTML =
-            "❌ Try again. Think about how you can keep your account safe.";
+
+{
+    question:
+    "2. You receive a strange link from someone you do not know. What should you do?",
+
+    answers: [
+        "Click it immediately",
+        "Send it to your friends",
+        "Do not click it",
+        "Download everything from it"
+    ],
+
+    correct: 2
+},
+
+
+{
+    question:
+    "3. Which password is the safest?",
+
+    answers: [
+        "password",
+        "123456",
+        "football",
+        "A9!Blue#Tree72"
+    ],
+
+    correct: 3
+},
+
+
+{
+    question:
+    "4. Someone sends you a cruel message online. What is a sensible action?",
+
+    answers: [
+        "Send an even worse message back",
+        "Block or report them and tell a trusted adult",
+        "Share the message with everyone",
+        "Give them your personal details"
+    ],
+
+    correct: 1
+},
+
+
+{
+    question:
+    "5. Before sharing a photo online, what should you think about?",
+
+    answers: [
+        "Who might be able to see it",
+        "Nothing",
+        "How quickly you can upload it",
+        "How many emojis you can add"
+    ],
+
+    correct: 0
+},
+
+
+{
+    question:
+    "6. You read an amazing story online. How can you check if it is true?",
+
+    answers: [
+        "Believe it immediately",
+        "Check other reliable sources",
+        "Share it before checking",
+        "Believe it because it has a picture"
+    ],
+
+    correct: 1
+},
+
+
+{
+    question:
+    "7. Which piece of information should you be careful about sharing online?",
+
+    answers: [
+        "Your favourite colour",
+        "Your favourite subject",
+        "Your home address",
+        "Your favourite food"
+    ],
+
+    correct: 2
+},
+
+
+{
+    question:
+    "8. A stranger online asks to meet you in person. What should you do?",
+
+    answers: [
+        "Meet them without telling anyone",
+        "Give them your home address",
+        "Tell a trusted adult",
+        "Send them more personal information"
+    ],
+
+    correct: 2
+},
+
+
+{
+    question:
+    "9. What should you do before downloading an unknown file?",
+
+    answers: [
+        "Check whether the source is trustworthy",
+        "Download it immediately",
+        "Turn off your security software",
+        "Send it to everyone"
+    ],
+
+    correct: 0
+},
+
+
+{
+    question:
+    "10. What is one of the most important A2B rules?",
+
+    answers: [
+        "Click everything",
+        "Share everything",
+        "Think before you click",
+        "Trust everybody online"
+    ],
+
+    correct: 2
+}
+
+];
+
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+
+
+function loadQuestion() {
+
+    answered = false;
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("question").innerText =
+        q.question;
+
+
+    document.getElementById("progressText").innerText =
+        "Question " +
+        (currentQuestion + 1) +
+        " of " +
+        questions.length;
+
+
+    document.getElementById("progressBar").style.width =
+        ((currentQuestion) / questions.length * 100) + "%";
+
+
+    const answers =
+        document.getElementById("answers");
+
+
+    answers.innerHTML = "";
+
+
+    document.getElementById("feedback").innerText = "";
+
+    document.getElementById("nextButton").style.display =
+        "none";
+
+
+    q.answers.forEach((answer, index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.className =
+            "answer-button";
+
+        button.innerText =
+            answer;
+
+        button.onclick =
+            function() {
+                chooseAnswer(index, button);
+            };
+
+
+        answers.appendChild(button);
+
+    });
+
+}
+
+
+
+function chooseAnswer(index, selectedButton) {
+
+    if (answered) {
+        return;
+    }
+
+    answered = true;
+
+
+    const q =
+        questions[currentQuestion];
+
+
+    const buttons =
+        document.querySelectorAll(".answer-button");
+
+
+    if (index === q.correct) {
+
+        score++;
+
+        selectedButton.classList.add("correct");
+
+        document.getElementById("feedback").innerHTML =
+            "✅ Correct! Great job.";
+
+    }
+
+    else {
+
+        selectedButton.classList.add("wrong");
+
+        buttons[q.correct].classList.add("correct");
+
+        document.getElementById("feedback").innerHTML =
+            "❌ Not quite. The correct answer is highlighted.";
+
+    }
+
+
+    document.getElementById("nextButton").style.display =
+        "inline-block";
+
+
+    if (currentQuestion === questions.length - 1) {
+
+        document.getElementById("nextButton").innerHTML =
+            "See My Achievement 🏆";
 
     }
 
 }
 
+
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+
+    if (currentQuestion < questions.length) {
+
+        loadQuestion();
+
+    }
+
+    else {
+
+        showAchievement();
+
+    }
+
+}
+
+
+
+function showAchievement() {
+
+    document.getElementById("quizArea").style.display =
+        "none";
+
+
+    document.getElementById("achievement").style.display =
+        "block";
+
+
+    document.getElementById("progressBar").style.width =
+        "100%";
+
+
+    document.getElementById("finalScore").innerHTML =
+        "Your score: <strong>" +
+        score +
+        " / 10</strong>";
+
+
+    let badge;
+    let title;
+    let message;
+
+
+    if (score === 10) {
+
+        badge = "🏆";
+
+        title =
+            "A2B Online Safety Champion";
+
+        message =
+            "Amazing! You completed the challenge with a perfect score.";
+
+    }
+
+    else if (score >= 8) {
+
+        badge = "🥇";
+
+        title =
+            "A2B Digital Safety Expert";
+
+        message =
+            "Excellent work! You have a strong understanding of online safety.";
+
+    }
+
+    else if (score >= 6) {
+
+        badge = "🥈";
+
+        title =
+            "A2B Safe Surfer";
+
+        message =
+            "Well done! You know many important ways to stay safe online.";
+
+    }
+
+    else {
+
+        badge = "🌱";
+
+        title =
+            "A2B Digital Learner";
+
+        message =
+            "Good start! Review the A2B safety tips and try the challenge again.";
+
+    }
+
+
+    document.getElementById("achievementBadge").innerText =
+        badge;
+
+
+    document.getElementById("achievementTitle").innerText =
+        title;
+
+
+    document.getElementById("achievementMessage").innerText =
+        message;
+
+}
+
+
+
+function restartQuiz() {
+
+    currentQuestion = 0;
+    score = 0;
+    answered = false;
+
+
+    document.getElementById("achievement").style.display =
+        "none";
+
+
+    document.getElementById("quizArea").style.display =
+        "block";
+
+
+    document.getElementById("nextButton").innerHTML =
+        "Next Question ➜";
+
+
+    loadQuestion();
+
+}
+
+
+
+loadQuestion();
+
+
 </script>
 
 
 </body>
+
 </html>
