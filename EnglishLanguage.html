@@ -1,15 +1,684 @@
-<script>
+<!DOCTYPE html>
+<html lang="en">
 
-const DATA = {
+<head>
 
-paper1: {
+<meta charset="UTF-8">
 
-title: "AQA PAPER 1",
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-extract: `
-<h3>Paper 1 Fiction Extract</h3>
+<title>AQA GCSE English Language</title>
 
-<p><strong>Read this extract carefully.</strong></p>
+<style>
+
+:root{
+--ink:#1f2937;
+--muted:#64748b;
+--navy:#0f2747;
+--navy2:#173a65;
+--paper:#f5f7fb;
+--card:#ffffff;
+--line:#dbe3ee;
+--gold:#f5c451;
+--green:#1f8f62;
+--red:#c94b4b;
+}
+
+*{
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+color:var(--ink);
+background:var(--paper);
+line-height:1.65;
+}
+
+
+/* HERO */
+
+.hero{
+background:
+linear-gradient(135deg,var(--navy),var(--navy2));
+color:white;
+padding:70px 22px 58px;
+text-align:center;
+}
+
+.hero h1{
+margin:0;
+font-size:clamp(2.3rem,6vw,4.5rem);
+}
+
+.hero p{
+max-width:900px;
+margin:12px auto 0;
+font-size:1.08rem;
+}
+
+
+/* NAV */
+
+nav{
+position:sticky;
+top:0;
+z-index:10;
+background:white;
+border-bottom:1px solid var(--line);
+display:flex;
+justify-content:center;
+gap:8px;
+flex-wrap:wrap;
+padding:10px;
+}
+
+nav a{
+color:var(--navy);
+text-decoration:none;
+font-weight:700;
+padding:8px 13px;
+border-radius:999px;
+}
+
+nav a:hover{
+background:#edf2f8;
+}
+
+
+/* MAIN */
+
+main{
+max-width:1100px;
+margin:auto;
+padding:30px 18px 80px;
+}
+
+section{
+margin:25px 0 50px;
+scroll-margin-top:90px;
+}
+
+h2{
+color:var(--navy);
+font-size:2rem;
+margin-bottom:15px;
+}
+
+h3{
+color:var(--navy);
+}
+
+.lead{
+background:white;
+border-left:5px solid var(--gold);
+padding:20px 22px;
+border-radius:12px;
+box-shadow:0 8px 25px rgba(15,39,71,.06);
+}
+
+
+/* CARDS */
+
+.grid{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(250px,1fr));
+gap:16px;
+}
+
+.card{
+background:white;
+padding:20px;
+border:1px solid var(--line);
+border-radius:16px;
+box-shadow:0 8px 22px rgba(15,39,71,.06);
+}
+
+.paper-card{
+border-top:6px solid var(--navy);
+}
+
+
+/* TABLE */
+
+.question-table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+}
+
+.question-table th,
+.question-table td{
+border:1px solid var(--line);
+padding:11px;
+text-align:left;
+}
+
+.question-table th{
+background:#eef4fa;
+color:var(--navy);
+}
+
+
+/* BUTTON */
+
+button{
+cursor:pointer;
+border:0;
+border-radius:11px;
+padding:11px 17px;
+font-weight:800;
+font-size:1rem;
+}
+
+.primary{
+background:var(--navy);
+color:white;
+}
+
+.primary:hover{
+background:var(--navy2);
+}
+
+.secondary{
+background:#e8eef6;
+color:var(--navy);
+}
+
+.secondary:hover{
+background:#dae5f2;
+}
+
+.paper-buttons{
+display:flex;
+justify-content:center;
+gap:14px;
+flex-wrap:wrap;
+margin:25px 0;
+}
+
+.paper-button{
+font-size:1.05rem;
+padding:15px 23px;
+}
+
+
+/* QUIZ */
+
+.quizbox{
+background:white;
+border:1px solid var(--line);
+border-radius:18px;
+padding:25px;
+box-shadow:0 10px 30px rgba(15,39,71,.09);
+}
+
+.level{
+display:inline-block;
+background:var(--gold);
+color:#4d3900;
+font-weight:900;
+padding:6px 12px;
+border-radius:999px;
+font-size:.85rem;
+letter-spacing:.5px;
+margin-bottom:10px;
+}
+
+.extract{
+background:#fffdf5;
+border:1px solid #eadca8;
+padding:24px;
+border-radius:15px;
+margin:20px 0 30px;
+}
+
+.extract h3{
+margin-top:0;
+}
+
+.extract h4{
+color:var(--navy);
+margin-top:24px;
+}
+
+.extract p{
+white-space:pre-line;
+}
+
+
+/* QUESTIONS */
+
+.exam-question{
+background:#f9fbfd;
+border:1px solid var(--line);
+padding:22px;
+border-radius:14px;
+margin:20px 0;
+}
+
+.exam-question h3{
+margin-top:0;
+}
+
+.marks{
+display:inline-block;
+background:#eef4fa;
+padding:4px 9px;
+border-radius:8px;
+font-weight:bold;
+color:var(--navy);
+margin-bottom:10px;
+}
+
+.options{
+display:grid;
+gap:10px;
+margin-top:15px;
+}
+
+.option{
+background:#f4f7fb;
+border:2px solid transparent;
+text-align:left;
+color:var(--ink);
+}
+
+.option:hover{
+border-color:#9eb4cf;
+}
+
+.option.correct{
+background:#e7f7ef;
+border-color:#55a97f;
+}
+
+.option.wrong{
+background:#fdecec;
+border-color:#dd7777;
+}
+
+
+/* TEXT ANSWER */
+
+.answer-box{
+width:100%;
+min-height:160px;
+resize:vertical;
+padding:14px;
+font-family:Arial,Helvetica,sans-serif;
+font-size:1rem;
+line-height:1.55;
+border:2px solid #cfd9e7;
+border-radius:12px;
+margin-top:12px;
+}
+
+.answer-box:focus{
+outline:none;
+border-color:var(--navy);
+}
+
+.big-answer{
+min-height:280px;
+}
+
+
+/* MODEL ANSWER */
+
+.model-answer{
+display:none;
+background:#eef8f3;
+border-left:5px solid var(--green);
+padding:18px;
+border-radius:10px;
+margin-top:16px;
+}
+
+.model-answer strong{
+color:#176744;
+}
+
+
+/* CHECKLIST */
+
+.checklist{
+background:#fff8df;
+border-left:5px solid var(--gold);
+padding:16px 20px;
+border-radius:10px;
+margin-top:15px;
+}
+
+.checklist ul{
+margin-bottom:0;
+}
+
+
+/* FEEDBACK */
+
+.feedback{
+margin-top:14px;
+padding:12px 14px;
+border-radius:10px;
+background:#f7f9fc;
+display:none;
+}
+
+
+/* UTILITIES */
+
+.hidden{
+display:none !important;
+}
+
+.small{
+font-size:.9rem;
+color:var(--muted);
+}
+
+
+/* FOOTER */
+
+footer{
+background:var(--navy);
+color:white;
+text-align:center;
+padding:25px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:650px){
+
+.hero{
+padding:50px 16px 42px;
+}
+
+.hero h1{
+font-size:2.3rem;
+}
+
+.quizbox{
+padding:16px;
+}
+
+.exam-question{
+padding:16px;
+}
+
+.question-table{
+font-size:.9rem;
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="hero">
+
+<h1>✍️ AQA GCSE English Language</h1>
+
+<p>
+AQA 8700 • Paper 1 • Paper 2 • Reading • Language •
+Structure • Evaluation • Comparison • Creative Writing
+</p>
+
+</header>
+
+
+<nav>
+
+<a href="#about">About</a>
+
+<a href="#paper1">Paper 1</a>
+
+<a href="#paper2">Paper 2</a>
+
+<a href="#practice">Exam Practice</a>
+
+</nav>
+
+
+<main>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2>AQA GCSE English Language</h2>
+
+<div class="lead">
+
+This revision website helps you practise the main skills for
+<strong>AQA GCSE English Language</strong>.
+
+Paper 1 focuses on creative reading and writing.
+
+Paper 2 focuses on writers' viewpoints and perspectives.
+
+In the exam practice section you will be given an extract
+and answer questions based on it.
+
+</div>
+
+</section>
+
+
+
+<!-- PAPER 1 -->
+
+<section id="paper1">
+
+<h2>📘 Paper 1</h2>
+
+<div class="card paper-card">
+
+<h3>
+Explorations in Creative Reading and Writing
+</h3>
+
+<p>
+Paper 1 uses a fiction extract.
+You answer four reading questions and one writing question.
+</p>
+
+<table class="question-table">
+
+<tr>
+<th>Question</th>
+<th>Skill</th>
+<th>Marks</th>
+</tr>
+
+<tr>
+<td><strong>Q1</strong></td>
+<td>Find information</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td><strong>Q2</strong></td>
+<td>Language Analysis</td>
+<td>8</td>
+</tr>
+
+<tr>
+<td><strong>Q3</strong></td>
+<td>Structure</td>
+<td>8</td>
+</tr>
+
+<tr>
+<td><strong>Q4</strong></td>
+<td>Evaluation</td>
+<td>20</td>
+</tr>
+
+<tr>
+<td><strong>Q5</strong></td>
+<td>Creative Writing</td>
+<td>40</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+
+<!-- PAPER 2 -->
+
+<section id="paper2">
+
+<h2>📙 Paper 2</h2>
+
+<div class="card paper-card">
+
+<h3>
+Writers' Viewpoints and Perspectives
+</h3>
+
+<p>
+Paper 2 uses two non-fiction sources.
+You compare information, language and viewpoints.
+</p>
+
+<table class="question-table">
+
+<tr>
+<th>Question</th>
+<th>Skill</th>
+<th>Marks</th>
+</tr>
+
+<tr>
+<td><strong>Q1</strong></td>
+<td>Select true statements</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td><strong>Q2</strong></td>
+<td>Summary / Comparison</td>
+<td>8</td>
+</tr>
+
+<tr>
+<td><strong>Q3</strong></td>
+<td>Language Analysis</td>
+<td>12</td>
+</tr>
+
+<tr>
+<td><strong>Q4</strong></td>
+<td>Compare Viewpoints</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td><strong>Q5</strong></td>
+<td>Viewpoint Writing</td>
+<td>40</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+
+<!-- PRACTICE -->
+
+<section id="practice">
+
+<h2>🧠 AQA Exam Practice</h2>
+
+<div class="quizbox">
+
+
+<!-- MENU -->
+
+<div id="practiceMenu">
+
+<p style="text-align:center;font-size:1.1rem">
+
+Choose the paper you want to practise.
+
+</p>
+
+
+<div class="paper-buttons">
+
+<button
+class="primary paper-button"
+onclick="showPaper1()">
+
+📘 Paper 1 Practice
+
+</button>
+
+
+<button
+class="primary paper-button"
+onclick="showPaper2()">
+
+📙 Paper 2 Practice
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- ========================================= -->
+<!-- PAPER 1 PRACTICE -->
+<!-- ========================================= -->
+
+<div id="paper1Practice" class="hidden">
+
+<span class="level">
+
+AQA PAPER 1
+
+</span>
+
+
+<h2>
+Paper 1 Practice
+</h2>
+
+
+<div class="extract">
+
+<h3>
+📖 Fiction Extract
+</h3>
+
+<p>
+<strong>Read the following extract carefully before answering the questions.</strong>
+</p>
 
 <p>
 The road disappeared into the forest.
@@ -56,175 +725,1095 @@ Closer this time.
 
 Maya started to run.
 </p>
-`,
 
-questions: [
-
-{
-q: "Paper 1 – Q1: Which statement is true about Maya?",
-options: [
-"She is walking through a forest.",
-"She is travelling by train.",
-"She is at school.",
-"She is walking with her family."
-],
-answer: 0,
-explanation:
-"Maya is walking along a path through the forest."
-},
-
-{
-q: "Paper 1 – Q2 LANGUAGE: How does the writer use language to make the forest seem threatening?",
-options: [
-"The writer uses words such as 'twisted' and the simile 'like silent guards' to make the trees seem threatening and watchful.",
-"The writer only tells us that the forest is green.",
-"The writer uses statistics.",
-"The writer explains the history of the forest."
-],
-answer: 0,
-explanation:
-"For Q2, analyse specific words and language techniques and explain their effect."
-},
-
-{
-q: "Paper 1 – Q3 STRUCTURE: How does the writer structure the extract to build tension?",
-options: [
-"The writer moves from a peaceful forest to silence, strange noises and finally Maya running.",
-"The writer keeps the same mood throughout.",
-"The writer only describes Maya's appearance.",
-"The writer begins with the ending."
-],
-answer: 0,
-explanation:
-"For Q3, focus on how the text changes from beginning to middle to end."
-},
-
-{
-q: "Paper 1 – Q4 EVALUATION: A student says, 'The writer successfully makes Maya seem increasingly frightened.' How far do you agree?",
-options: [
-"I agree because the writer builds tension through silence, repeated cracking sounds and finally 'Maya started to run.'",
-"I agree because the extract has paragraphs.",
-"I disagree because forests are always safe.",
-"The writer does not show any change in Maya."
-],
-answer: 0,
-explanation:
-"For Q4, give a clear judgement and support it with evidence from the extract."
-}
-
-]
-
-},
+</div>
 
 
-paper2: {
 
-title: "AQA PAPER 2",
+<!-- P1 Q1 -->
 
-extract: `
-<h3>Paper 2 Sources</h3>
+<div class="exam-question">
 
-<h4>Source A – Modern Article</h4>
+<h3>
+Paper 1 – Question 1
+</h3>
+
+<span class="marks">
+4 marks
+</span>
 
 <p>
-Last summer, I decided to spend a week without my phone.
-
-On the first morning, I reached for it before I had even opened my eyes.
-Then I remembered that it was locked in a drawer downstairs.
-
-At first, the silence felt uncomfortable. I normally checked messages,
-videos and news before breakfast. Without the screen, the morning seemed
-strangely long.
-
-By the third day, however, something had changed. I noticed how much time
-I usually wasted scrolling. I began walking more, reading books and talking
-to people without checking notifications every few minutes.
-
-The experiment did not make me hate technology. In fact, I still think
-phones are incredibly useful. But it showed me that sometimes we need to
-switch them off before they start controlling our attention.
+Which statement about Maya is correct?
 </p>
 
-<h4>Source B – Older Account</h4>
+<div class="options"
+id="p1q1options">
+
+<button
+class="option"
+onclick="checkMCQ(this,true,'p1feedback')">
+
+Maya has walked far enough that she can no longer see the village.
+
+</button>
+
+<button
+class="option"
+onclick="checkMCQ(this,false,'p1feedback')">
+
+Maya is travelling with her friends.
+
+</button>
+
+<button
+class="option"
+onclick="checkMCQ(this,false,'p1feedback')">
+
+Maya begins the extract inside the village.
+
+</button>
+
+<button
+class="option"
+onclick="checkMCQ(this,false,'p1feedback')">
+
+Maya is completely relaxed throughout the extract.
+
+</button>
+
+</div>
+
+<div
+class="feedback"
+id="p1feedback">
+
+✅ Correct. The village is hidden by the hill,
+showing that Maya has walked some distance.
+
+</div>
+
+</div>
+
+
+
+<!-- P1 Q2 -->
+
+<div class="exam-question">
+
+<h3>
+Paper 1 – Question 2: Language
+</h3>
+
+<span class="marks">
+8 marks
+</span>
 
 <p>
+
+How does the writer use language to make the forest
+seem threatening?
+
+</p>
+
+<textarea
+class="answer-box"
+placeholder="Type your Q2 answer here...
+
+Try to:
+• use a quotation
+• identify an important word or technique
+• explain the effect on the reader"></textarea>
+
+
+<div class="checklist">
+
+<strong>Q2 Self-check</strong>
+
+<ul>
+
+<li>Have you used quotations?</li>
+
+<li>Have you analysed important words?</li>
+
+<li>Have you identified a language technique where useful?</li>
+
+<li>Have you explained the effect on the reader?</li>
+
+</ul>
+
+</div>
+
+
+<button
+class="primary"
+onclick="toggleModel('p1q2model',this)">
+
+Show Model Answer
+
+</button>
+
+
+<div
+class="model-answer"
+id="p1q2model">
+
+<strong>Model Answer:</strong>
+
+<p>
+
+The writer makes the forest seem threatening through
+the description of the trees. The branches are described
+as being <strong>"twisted together"</strong>. The word
+<strong>"twisted"</strong> suggests that the trees are
+unnatural and tangled, making the forest seem difficult
+to escape from.
+
+The writer also uses the simile
+<strong>"like silent guards"</strong> to describe the tree trunks.
+This makes the trees seem almost human, as if they are watching
+Maya and preventing her from leaving. The adjective
+<strong>"silent"</strong> also creates an uncomfortable atmosphere
+because the forest has become strangely quiet.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- P1 Q3 -->
+
+<div class="exam-question">
+
+<h3>
+Paper 1 – Question 3: Structure
+</h3>
+
+<span class="marks">
+8 marks
+</span>
+
+<p>
+
+How has the writer structured the text to interest
+you as a reader?
+
+</p>
+
+
+<textarea
+class="answer-box"
+placeholder="Type your Q3 answer here...
+
+Think about:
+• the beginning
+• changes in focus
+• changes in pace
+• the ending"></textarea>
+
+
+<div class="checklist">
+
+<strong>Q3 Self-check</strong>
+
+<ul>
+
+<li>Have you discussed the beginning, middle or ending?</li>
+
+<li>Have you explained changes in focus?</li>
+
+<li>Have you considered sentence length or pacing?</li>
+
+<li>Have you explained why the structural choices interest the reader?</li>
+
+</ul>
+
+</div>
+
+
+<button
+class="primary"
+onclick="toggleModel('p1q3model',this)">
+
+Show Model Answer
+
+</button>
+
+
+<div
+class="model-answer"
+id="p1q3model">
+
+<strong>Model Answer:</strong>
+
+<p>
+
+At the beginning, the writer focuses on Maya entering
+the forest and establishes the isolated setting. The village
+disappearing behind the hill makes the reader realise that
+Maya is becoming increasingly alone.
+
+The focus then changes from the wider forest to small sounds
+and details. The writer tells us that
+<strong>"The birds had stopped"</strong>, followed by the very
+short sentence <strong>"Nothing moved."</strong> This slows down
+the action and makes the silence more noticeable.
+
+Towards the end, the pace becomes faster. The repeated
+cracking sounds become closer to Maya, and the extract finishes
+with <strong>"Maya started to run."</strong> Ending at this moment
+creates suspense because the reader does not yet know what is
+following her.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- P1 Q4 -->
+
+<div class="exam-question">
+
+<h3>
+Paper 1 – Question 4: Evaluation
+</h3>
+
+<span class="marks">
+20 marks
+</span>
+
+<p>
+
+A student said:
+
+<strong>
+"The writer successfully makes Maya seem increasingly frightened
+as the extract develops."
+</strong>
+
+</p>
+
+<p>
+To what extent do you agree?
+</p>
+
+
+<textarea
+class="answer-box"
+placeholder="Type your Q4 answer here...
+
+Remember:
+• give your opinion
+• use quotations
+• analyse the writer's methods
+• explain why they are effective"></textarea>
+
+
+<div class="checklist">
+
+<strong>Q4 Self-check</strong>
+
+<ul>
+
+<li>Have you clearly said how far you agree?</li>
+
+<li>Have you used evidence?</li>
+
+<li>Have you analysed language or structure?</li>
+
+<li>Have you evaluated how effective the writer is?</li>
+
+</ul>
+
+</div>
+
+
+<button
+class="primary"
+onclick="toggleModel('p1q4model',this)">
+
+Show Model Answer
+
+</button>
+
+
+<div
+class="model-answer"
+id="p1q4model">
+
+<strong>Model Answer:</strong>
+
+<p>
+
+I strongly agree that the writer makes Maya seem increasingly
+frightened. At first, Maya appears reasonably calm as she walks
+through the forest. However, the mood begins to change when
+<strong>"The birds had stopped."</strong> The sudden silence makes
+the setting feel unnatural and alerts both Maya and the reader
+that something may be wrong.
+
+The writer then introduces the repeated sound of a
+<strong>"sharp crack"</strong>. Repeating this sound makes the
+danger seem as if it is moving closer to Maya.
+
+The short sentences also reflect her growing fear:
+<strong>"She stopped too. Nothing moved."</strong>
+The short structure slows the reader down and increases suspense.
+
+Finally, the writer ends with
+<strong>"Maya started to run."</strong>
+This is effective because Maya has changed from walking calmly
+to escaping from something she believes may be following her.
+Therefore, the writer successfully shows her fear increasing
+throughout the extract.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- P1 Q5 -->
+
+<div class="exam-question">
+
+<h3>
+Paper 1 – Question 5: Creative Writing
+</h3>
+
+<span class="marks">
+40 marks
+</span>
+
+<p>
+
+Write a story about a time when someone feels that
+they are being followed.
+
+</p>
+
+<textarea
+class="answer-box big-answer"
+placeholder="Write your creative writing answer here..."></textarea>
+
+
+<div class="checklist">
+
+<strong>Q5 Self-check</strong>
+
+<ul>
+
+<li>Have you created an interesting opening?</li>
+
+<li>Have you used description and imagery?</li>
+
+<li>Have you varied sentence lengths?</li>
+
+<li>Have you organised your paragraphs carefully?</li>
+
+<li>Have you checked spelling and punctuation?</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+
+<button
+class="secondary"
+onclick="backToMenu()">
+
+← Choose Another Paper
+
+</button>
+
+</div>
+
+
+
+<!-- ========================================= -->
+<!-- PAPER 2 -->
+<!-- ========================================= -->
+
+<div id="paper2Practice" class="hidden">
+
+<span class="level">
+
+AQA PAPER 2
+
+</span>
+
+
+<h2>
+Paper 2 Practice
+</h2>
+
+
+<div class="extract">
+
+<h3>
+📄 Source A – Modern Article
+</h3>
+
+<p>
+
+Last summer, I decided to spend a week without my phone.
+
+On the first morning, I reached for it before I had even opened
+my eyes. Then I remembered that it was locked in a drawer downstairs.
+
+At first, the silence felt uncomfortable. I normally checked messages,
+videos and news before breakfast. Without the screen, the morning
+seemed strangely long.
+
+By the third day, however, something had changed. I noticed how much
+time I usually wasted scrolling. I began walking more, reading books
+and talking to people without checking notifications every few minutes.
+
+The experiment did not make me hate technology. In fact, I still think
+phones are incredibly useful. But it showed me that sometimes we need
+to switch them off before they start controlling our attention.
+
+</p>
+
+
+<h3>
+📜 Source B – Older Account
+</h3>
+
+<p>
+
 During my childhood, evenings were rarely spent indoors.
 
 After supper, the children of the neighbourhood gathered outside.
-We invented games, explored the fields and stayed out until the street
-lamps appeared.
+We invented games, explored the fields and stayed out until the
+street lamps appeared.
 
 There were no glowing screens demanding our attention and no machines
-buzzing in our pockets. Entertainment depended upon imagination and
-company.
+buzzing in our pockets. Entertainment depended upon imagination
+and company.
 
 Of course, life was not perfect. Rain could ruin our plans and winter
-evenings were often dull. Yet I remember those simple hours with great
-affection.
+evenings were often dull. Yet I remember those simple hours with
+great affection.
 
-We had fewer forms of entertainment, perhaps, but we were rarely short
-of things to do.
+We had fewer forms of entertainment, perhaps, but we were rarely
+short of things to do.
+
 </p>
-`,
 
-questions: [
+</div>
 
-{
-q: "Paper 2 – Q1: Which statement about Source A is true?",
-options: [
-"The writer spends a week without using their phone.",
-"The writer buys a new phone.",
-"The writer travels abroad.",
-"The writer says phones are useless."
-],
-answer: 0,
-explanation:
-"Source A says the writer decided to spend one week without their phone."
-},
 
-{
-q: "Paper 2 – Q2 COMPARISON / SUMMARY: What is one important difference between the experiences in Source A and Source B?",
-options: [
-"Source A describes choosing to stop using a phone, while Source B describes growing up at a time without modern mobile technology.",
-"Both writers buy a new phone.",
-"Both writers spend all their time indoors.",
-"Both writers dislike talking to other people."
-],
-answer: 0,
-explanation:
-"For Paper 2 Q2, use information from BOTH sources and compare the differences or similarities."
-},
 
-{
-q: "Paper 2 – Q3 LANGUAGE: How does the writer of Source B use language to describe technology?",
-options: [
-"The phrase 'glowing screens demanding our attention' personifies technology and makes it seem powerful and difficult to ignore.",
-"The writer uses a mathematical formula.",
-"The writer says technology is always good.",
-"The writer gives instructions for using a phone."
-],
-answer: 0,
-explanation:
-"For Paper 2 Q3, analyse language from the specified source and explain its effect."
-},
+<!-- P2 Q1 -->
 
-{
-q: "Paper 2 – Q4 VIEWPOINT COMPARISON: How do the writers' viewpoints about technology differ?",
-options: [
-"Source A has a balanced view and accepts that phones are useful, while Source B is more nostalgic about life without modern technology.",
-"Both writers completely hate technology.",
-"Both writers believe phones should be banned.",
-"Neither writer gives an opinion."
-],
-answer: 0,
-explanation:
-"For Paper 2 Q4, compare BOTH writers' viewpoints and how they communicate those viewpoints."
+<div class="exam-question">
+
+<h3>
+Paper 2 – Question 1
+</h3>
+
+<span class="marks">
+4 marks
+</span>
+
+<p>
+Which statement about Source A is correct?
+</p>
+
+
+<div class="options">
+
+<button
+class="option"
+onclick="checkMCQ(this,true,'p2feedback')">
+
+The writer spends a week without using their phone.
+
+</button>
+
+
+<button
+class="option"
+onclick="checkMCQ(this,false,'p2feedback')">
+
+The writer decides to buy a new phone.
+
+</button>
+
+
+<button
+class="option"
+onclick="checkMCQ(this,false,'p2feedback')">
+
+The writer believes phones have no benefits.
+
+</button>
+
+
+<button
+class="option"
+onclick="checkMCQ(this,false,'p2feedback')">
+
+The writer never uses technology again.
+
+</button>
+
+</div>
+
+
+<div
+class="feedback"
+id="p2feedback">
+
+✅ Correct. Source A says the writer deliberately
+spent one week without their phone.
+
+</div>
+
+</div>
+
+
+
+<!-- P2 Q2 -->
+
+<div class="exam-question">
+
+<h3>
+Paper 2 – Question 2: Summary / Comparison
+</h3>
+
+<span class="marks">
+8 marks
+</span>
+
+<p>
+
+Use details from both sources.
+
+Write a summary of the differences between the writers'
+experiences of spending their free time.
+
+</p>
+
+
+<textarea
+class="answer-box"
+placeholder="Type your Paper 2 Q2 answer here...
+
+Remember to use BOTH sources."></textarea>
+
+
+<div class="checklist">
+
+<strong>Q2 Self-check</strong>
+
+<ul>
+
+<li>Have you used information from Source A?</li>
+
+<li>Have you used information from Source B?</li>
+
+<li>Have you identified differences?</li>
+
+<li>Have you made an inference about those differences?</li>
+
+</ul>
+
+</div>
+
+
+<button
+class="primary"
+onclick="toggleModel('p2q2model',this)">
+
+Show Model Answer
+
+</button>
+
+
+<div
+class="model-answer"
+id="p2q2model">
+
+<strong>Model Answer:</strong>
+
+<p>
+
+The two writers have different experiences of spending
+their free time without technology.
+
+In Source A, being without a phone initially feels unusual
+and uncomfortable. The writer says that
+<strong>"the morning seemed strangely long"</strong>, suggesting
+that they are used to filling their free time by checking
+their phone.
+
+In contrast, the writer in Source B remembers naturally
+spending free time outdoors with other children. They
+<strong>"invented games"</strong> and
+<strong>"explored the fields"</strong>, suggesting that they
+were used to creating their own entertainment.
+
+Therefore, Source A presents being without technology as
+something the writer has to learn to enjoy, whereas in Source B
+it was a normal part of everyday childhood.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- P2 Q3 -->
+
+<div class="exam-question">
+
+<h3>
+Paper 2 – Question 3: Language
+</h3>
+
+<span class="marks">
+12 marks
+</span>
+
+<p>
+
+How does the writer of Source B use language to describe
+life without modern technology?
+
+</p>
+
+
+<textarea
+class="answer-box"
+placeholder="Type your Paper 2 Q3 answer here...
+
+Analyse words, phrases and techniques from Source B."></textarea>
+
+
+<div class="checklist">
+
+<strong>Q3 Self-check</strong>
+
+<ul>
+
+<li>Have you selected quotations from Source B?</li>
+
+<li>Have you analysed individual words?</li>
+
+<li>Have you identified useful techniques?</li>
+
+<li>Have you explained the effects?</li>
+
+</ul>
+
+</div>
+
+
+<button
+class="primary"
+onclick="toggleModel('p2q3model',this)">
+
+Show Model Answer
+
+</button>
+
+
+<div
+class="model-answer"
+id="p2q3model">
+
+<strong>Model Answer:</strong>
+
+<p>
+
+The writer presents childhood without modern technology
+in a positive and nostalgic way.
+
+The children
+<strong>"invented games"</strong> and
+<strong>"explored the fields"</strong>.
+The verbs <strong>"invented"</strong> and
+<strong>"explored"</strong> suggest creativity and adventure,
+making their childhood seem active and exciting.
+
+The writer also describes
+<strong>"glowing screens demanding our attention"</strong>.
+The verb <strong>"demanding"</strong> personifies modern
+technology as something forceful that constantly asks people
+to pay attention to it.
+
+In contrast, the writer says that entertainment depended
+on <strong>"imagination and company"</strong>.
+These positive nouns emphasise creativity and friendship,
+suggesting that the writer values the simpler childhood
+they experienced.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- P2 Q4 -->
+
+<div class="exam-question">
+
+<h3>
+Paper 2 – Question 4: Compare Viewpoints
+</h3>
+
+<span class="marks">
+16 marks
+</span>
+
+<p>
+
+Compare how the writers convey their different attitudes
+towards technology and life without it.
+
+</p>
+
+
+<textarea
+class="answer-box"
+placeholder="Type your Paper 2 Q4 answer here...
+
+Compare BOTH writers:
+• viewpoints
+• quotations
+• methods
+• effects"></textarea>
+
+
+<div class="checklist">
+
+<strong>Q4 Self-check</strong>
+
+<ul>
+
+<li>Have you compared both writers?</li>
+
+<li>Have you explained each writer's viewpoint?</li>
+
+<li>Have you used quotations from both sources?</li>
+
+<li>Have you compared methods as well as ideas?</li>
+
+</ul>
+
+</div>
+
+
+<button
+class="primary"
+onclick="toggleModel('p2q4model',this)">
+
+Show Model Answer
+
+</button>
+
+
+<div
+class="model-answer"
+id="p2q4model">
+
+<strong>Model Answer:</strong>
+
+<p>
+
+Both writers recognise benefits to spending time without
+technology, but their viewpoints are different.
+
+The writer of Source A has a balanced attitude towards
+technology. They admit that phones are
+<strong>"incredibly useful"</strong>, showing that they are
+not completely against them. However, the writer warns that
+people sometimes need to switch phones off before they begin
+<strong>"controlling our attention"</strong>. This personification
+suggests that phones can gain too much influence over people's lives.
+
+In contrast, the writer of Source B is much more nostalgic.
+They remember childhood evenings with
+<strong>"great affection"</strong>. The phrase shows the writer's
+warm emotional connection to a childhood without modern screens.
+
+Source B also contrasts modern technology with
+<strong>"imagination and company"</strong>, suggesting that
+friendship and creativity were more important forms of
+entertainment.
+
+Therefore, Source A argues mainly for balance when using
+technology, whereas Source B looks back positively on a time
+when modern technology was not central to everyday life.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- P2 Q5 -->
+
+<div class="exam-question">
+
+<h3>
+Paper 2 – Question 5: Viewpoint Writing
+</h3>
+
+<span class="marks">
+40 marks
+</span>
+
+<p>
+
+<strong>
+"Young people spend far too much time looking at screens.
+They should spend more of their free time doing activities
+away from technology."
+</strong>
+
+</p>
+
+<p>
+
+Write an article for a school or college website in which
+you argue your point of view on this statement.
+
+</p>
+
+
+<textarea
+class="answer-box big-answer"
+placeholder="Write your Paper 2 Q5 answer here..."></textarea>
+
+
+<div class="checklist">
+
+<strong>Q5 Self-check</strong>
+
+<ul>
+
+<li>Have you clearly expressed your viewpoint?</li>
+
+<li>Have you used persuasive techniques?</li>
+
+<li>Have you varied your paragraphs and sentences?</li>
+
+<li>Have you considered the audience?</li>
+
+<li>Have you used accurate spelling and punctuation?</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+
+<button
+class="secondary"
+onclick="backToMenu()">
+
+← Choose Another Paper
+
+</button>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+© 2026 AQA GCSE English Language Revision Website
+
+</footer>
+
+
+
+<script>
+
+
+/* SHOW PAPER 1 */
+
+function showPaper1(){
+
+document
+.getElementById("practiceMenu")
+.classList.add("hidden");
+
+document
+.getElementById("paper2Practice")
+.classList.add("hidden");
+
+document
+.getElementById("paper1Practice")
+.classList.remove("hidden");
+
+document
+.getElementById("paper1Practice")
+.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
 }
 
-]
+
+
+/* SHOW PAPER 2 */
+
+function showPaper2(){
+
+document
+.getElementById("practiceMenu")
+.classList.add("hidden");
+
+document
+.getElementById("paper1Practice")
+.classList.add("hidden");
+
+document
+.getElementById("paper2Practice")
+.classList.remove("hidden");
+
+document
+.getElementById("paper2Practice")
+.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
 
 }
 
-};
+
+
+/* BACK TO MENU */
+
+function backToMenu(){
+
+document
+.getElementById("paper1Practice")
+.classList.add("hidden");
+
+document
+.getElementById("paper2Practice")
+.classList.add("hidden");
+
+document
+.getElementById("practiceMenu")
+.classList.remove("hidden");
+
+document
+.getElementById("practice")
+.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+}
+
+
+
+/* MULTIPLE CHOICE */
+
+function checkMCQ(button,correct,feedbackId){
+
+const container =
+button.parentElement;
+
+const buttons =
+container.querySelectorAll(".option");
+
+buttons.forEach(btn=>{
+btn.disabled=true;
+});
+
+if(correct){
+
+button.classList.add("correct");
+
+document
+.getElementById(feedbackId)
+.style.display="block";
+
+}
+
+else{
+
+button.classList.add("wrong");
+
+const feedback =
+document.getElementById(feedbackId);
+
+feedback.innerHTML =
+"❌ Not quite. Read the extract carefully and try to identify information that is directly stated.";
+
+feedback.style.display="block";
+
+}
+
+}
+
+
+
+/* MODEL ANSWERS */
+
+function toggleModel(id,button){
+
+const model =
+document.getElementById(id);
+
+if(model.style.display==="block"){
+
+model.style.display="none";
+
+button.textContent =
+"Show Model Answer";
+
+}
+
+else{
+
+model.style.display="block";
+
+button.textContent =
+"Hide Model Answer";
+
+}
+
+}
+
 
 </script>
+
+
+</body>
+
+</html>
