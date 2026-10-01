@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AQA GCSE French Revision</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:#f4f7fb;
+  color:#222;
+  line-height:1.6;
+}
+
+header{
+  background:linear-gradient(135deg,#173f8a,#2d63bf);
+  color:white;
+  text-align:center;
+  padding:35px 20px;
+}
+
+header h1{
+  font-size:38px;
+  margin-bottom:8px;
+}
+
+nav{
+  background:#102b60;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+nav button{
+  background:none;
+  border:none;
+  color:white;
+  padding:15px 18px;
+  cursor:pointer;
+  font-size:15px;
+}
+
+nav button:hover{
+  background:#2d63bf;
+}
+
+.container{
+  width:92%;
+  max-width:1150px;
+  margin:auto;
+  padding:30px 0 60px;
+}
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+h2{
+  color:#173f8a;
+  margin-bottom:20px;
+}
+
+h3{
+  color:#2458ad;
+  margin-bottom:10px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:white;
+  padding:22px;
+  border-radius:14px;
+  box-shadow:0 3px 12px rgba(0,0,0,0.09);
+}
+
+.card p{
+  margin-bottom:12px;
+}
+
+.btn{
+  background:#2458ad;
+  color:white;
+  border:none;
+  padding:10px 17px;
+  border-radius:7px;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+.btn:hover{
+  background:#173f8a;
+}
+
+.foundation-card{
+  border-top:5px solid #43a047;
+}
+
+.higher-card{
+  border-top:5px solid #8e24aa;
+}
+
+.quiz-card{
+  border-top:5px solid #ff9800;
+}
+
+.info{
+  background:#eaf2ff;
+  border-left:5px solid #2458ad;
+  padding:15px;
+  border-radius:8px;
+  margin-bottom:20px;
+}
+
+.paper{
+  background:white;
+  border-left:6px solid #2458ad;
+  padding:20px;
+  border-radius:10px;
+  margin-bottom:18px;
+  box-shadow:0 2px 9px rgba(0,0,0,0.07);
+}
+
+.question{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:18px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.question p{
+  margin-bottom:10px;
+}
+
+.question label{
+  display:block;
+  padding:8px;
+  margin:6px 0;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.question label:hover{
+  background:#eef4ff;
+}
+
+.correct{
+  background:#d9f7df !important;
+  border:1px solid #4caf50;
+}
+
+.wrong{
+  background:#ffdada !important;
+  border:1px solid #f44336;
+}
+
+.result{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  margin-top:20px;
+  text-align:center;
+  font-size:20px;
+  font-weight:bold;
+}
+
+.achievement{
+  background:#eceff1;
+  border:3px solid #90a4ae;
+  padding:22px;
+  border-radius:15px;
+  margin-top:20px;
+  text-align:center;
+}
+
+.achievement.unlocked{
+  background:#fff3c4;
+  border-color:#f9a825;
+}
+
+.trophy{
+  font-size:60px;
+}
+
+.badge{
+  display:inline-block;
+  padding:5px 11px;
+  border-radius:20px;
+  color:white;
+  margin-bottom:15px;
+}
+
+.foundation-badge{
+  background:#2e7d32;
+}
+
+.higher-badge{
+  background:#7b1fa2;
+}
+
+footer{
+  background:#102b60;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+@media(max-width:700px){
+  header h1{
+    font-size:28px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>AQA GCSE French Revision</h1>
+  <p>Foundation and Higher</p>
+</header>
+
+<nav>
+  <button onclick="showPage('home')">Home</button>
+  <button onclick="showPage('foundation')">Foundation</button>
+  <button onclick="showPage('higher')">Higher</button>
+  <button onclick="showPage('foundationQuiz')">Foundation Quiz</button>
+  <button onclick="showPage('higherQuiz')">Higher Quiz</button>
+</nav>
+
+<div class="container">
+
+<!-- HOME -->
+
+<section id="home" class="page active">
+
+<h2>Welcome</h2>
+
+<div class="info">
+Choose Foundation or Higher. Each tier has its own 10-question quiz.
+Get 10/10 to unlock an achievement.
+</div>
+
+<div class="grid">
+
+<div class="card foundation-card">
+<h3>Foundation</h3>
+<p>Revision for Foundation French.</p>
+<button class="btn" onclick="showPage('foundation')">
+Go to Foundation
+</button>
+</div>
+
+<div class="card higher-card">
+<h3>Higher</h3>
+<p>Revision for Higher French.</p>
+<button class="btn" onclick="showPage('higher')">
+Go to Higher
+</button>
+</div>
+
+<div class="card quiz-card">
+<h3>Foundation Quiz</h3>
+<p>10 Foundation questions.</p>
+<button class="btn" onclick="showPage('foundationQuiz')">
+Start Quiz
+</button>
+</div>
+
+<div class="card quiz-card">
+<h3>Higher Quiz</h3>
+<p>10 Higher questions.</p>
+<button class="btn" onclick="showPage('higherQuiz')">
+Start Quiz
+</button>
+</div>
+
+</div>
+
+<h2 style="margin-top:35px;">Achievements</h2>
+
+<div id="foundationAchievement" class="achievement">
+
+<div id="foundationIcon" class="trophy">🔒</div>
+
+<h3>Foundation French Master</h3>
+
+<p id="foundationAchievementText">
+Get 10/10 in the Foundation Quiz.
+</p>
+
+</div>
+
+
+<div id="higherAchievement" class="achievement">
+
+<div id="higherIcon" class="trophy">🔒</div>
+
+<h3>Higher French Master</h3>
+
+<p id="higherAchievementText">
+Get 10/10 in the Higher Quiz.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- FOUNDATION -->
+
+<section id="foundation" class="page">
+
+<h2>Foundation Tier</h2>
+
+<span class="badge foundation-badge">
+Foundation
+</span>
+
+<div class="grid">
+
+<div class="card">
+<h3>Listening</h3>
+<p>Practise recognising key words, opinions and simple details.</p>
+</div>
+
+<div class="card">
+<h3>Speaking</h3>
+<p>Use opinions, reasons and simple past and future phrases.</p>
+</div>
+
+<div class="card">
+<h3>Reading</h3>
+<p>Practise short French texts and questions.</p>
+</div>
+
+<div class="card">
+<h3>Writing</h3>
+<p>Build simple sentences and use different tenses.</p>
+</div>
+
+<div class="card quiz-card">
+<h3>Foundation Quiz</h3>
+<p>Test what you know with 10 questions.</p>
+
+<button class="btn" onclick="showPage('foundationQuiz')">
+Start Foundation Quiz
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- HIGHER -->
+
+<section id="higher" class="page">
+
+<h2>Higher Tier</h2>
+
+<span class="badge higher-badge">
+Higher
+</span>
+
+<div class="grid">
+
+<div class="card">
+<h3>Listening</h3>
+<p>Practise longer passages and less familiar vocabulary.</p>
+</div>
+
+<div class="card">
+<h3>Speaking</h3>
+<p>Use more developed answers and a range of tenses.</p>
+</div>
+
+<div class="card">
+<h3>Reading</h3>
+<p>Practise longer French texts and implied meaning.</p>
+</div>
+
+<div class="card">
+<h3>Writing</h3>
+<p>Use complex structures, connectives and detailed opinions.</p>
+</div>
+
+<div class="card quiz-card">
+<h3>Higher Quiz</h3>
+<p>Test your Higher French with 10 harder questions.</p>
+
+<button class="btn" onclick="showPage('higherQuiz')">
+Start Higher Quiz
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOUNDATION QUIZ -->
+
+<section id="foundationQuiz" class="page">
+
+<h2>Foundation French Quiz</h2>
+
+<div class="info">
+Answer all 10 questions.
+Get 10/10 to unlock the 🏆 Foundation French Master achievement.
+</div>
+
+
+<div class="question">
+
+<p><b>1. What does "Bonjour" mean?</b></p>
+
+<label>
+<input type="radio" name="f1" value="1">
+Hello
+</label>
+
+<label>
+<input type="radio" name="f1" value="0">
+Goodbye
+</label>
+
+<label>
+<input type="radio" name="f1" value="0">
+Thank you
+</label>
+
+</div>
+
+
+<div class="question">
+
+<p><b>2. What does "J'aime" mean?</b></p>
+
+<label>
+<input type="radio" name="f2" value="1">
+I like
+</label>
+
+<label>
+<input type="radio" name="f2" value="0">
+I hate
+</label>
+
+<label>
+<input type="radio" name="f2" value="0">
+I went
+</label>
+
+</div>
+
+
+<div class="question">
+
+<p><b>3. What does "la famille" mean?</b></p>
+
+<label>
+<input type="radio" name="f3" value="0">
+Food
+</label>
+
+<label>
+<input type="radio" name="f3" value="1">
+Family
+</label>
+
+<label>
+<input type="radio" name="f3" value="0">
+School
+</label>
+
+</div>
+
+
+<div class="question">
+
+<p><b>4. What does "parce que" mean?</b></p>
+
+<label>
+<input type="radio" name="f4" value="1">
+Because
+</label>
+
+<label>
+<input type="radio" name="f4" value="0">
+But
+</label>
+
+<label>
+<input type="radio" name="f4" value="0">
+Yesterday
+</label>
+
+</div>
+
+
+<div class="question">
+
+<p><b>5. What does "Je n'aime pas" mean?</b></p>
+
+<label>
+<input type="radio" name="f5" value="0">
+I really like
+</label>
+
+<label>
+<input type="radio" name="f5" value="1">
+I do not like
+</label>
+
+<label>
+<input type="radio" name="f5" value="0">
+I am going
+</label>
+
+</div>
+
+
+<div class="question">
+
+<p><b>6. What does "la santé" mean?</b></p>
+
+<label>
+<input type="radio" name="f6" value="1">
+Health
+</label>
+
+<label>
+<input type="radio" name="f6" value="0">
+Holiday
+</label>
+
+<label>
+<input type="radio" name="f6" value="0">
+Weather
+</label>
+
+</div>
+
+
+<div class="question">
+
+<p><b>7. Which sentence is in the past tense?</b></p>
+
+<label>
+<input type="radio" name="f7" value="0">
+Je joue au football.
+</label>
+
+<label>
+<input type="radio" name="f7" value="1">
+J'ai joué au football.
+</label>
+
+<label>
+<input type="radio" name="f7" value="0">
+Je vais jouer au football.
+</label>
+
+</div>
+
+
+<div class="question">
+
+<p><b>8. What does "les vacances" mean?</b></p>
+
+<label>
+<input type="radio" name="f8" value="0">
+Lessons
+</label>
+
+<label>
+<input type="radio" name="f8" value="1">
+Holidays
+</label>
+
+<label>
+<input type="radio" name="f8" value="0">
+Homework
+</label>
+
+</div>
+
+
+<div class="question">
+
+<p><b>9. What does "Je vais jouer" mean?</b></p>
+
+<label>
+<input type="radio" name="f9" value="0">
+I played
+</label>
+
+<label>
+<input type="radio" name="f9" value="1">
+I am going to play
+</label>
+
+<label>
+<input type="radio" name="f9" value="0">
+I used to play
+</label>
+
+</div>
+
+
+<div class="question">
+
+<p><b>10. What does "À mon avis" mean?</b></p>
+
+<label>
+<input type="radio" name="f10" value="1">
+In my opinion
+</label>
+
+<label>
+<input type="radio" name="f10" value="0">
+Last week
+</label>
+
+<label>
+<input type="radio" name="f10" value="0">
+At school
+</label>
+
+</div>
+
+
+<button class="btn" onclick="markFoundationQuiz()">
+Submit Foundation Quiz
+</button>
+
+<button class="btn" onclick="resetFoundationQuiz()">
+Try Again
+</button>
+
+<div id="foundationResult"></div>
+
+</section>
+
+
+<!-- HIGHER QUIZ -->
+
+<section id="higherQuiz" class="page">
+
+<h2>Higher French Quiz</h2>
+
+<div class="info">
+Answer all 10 questions.
+Get 10/10 to unlock the 🏆 Higher French Master achievement.
+</div>
+
+
+<div class="question">
+
+<p><b>1. What does "Je voudrais" mean?</b></p>
+
+<label>
+<input type="radio" name="h1" value="1">
+I would like
+</label>
+
+<label>
+<input type="radio" name="h1" value="0">
+I must
+</label>
+
+<label>
+<input type="radio" name="h1" value="0">
+I went
+</label>
+
+</div>
+
+
+<div class="question">
+
+<p><b>2. What does "Même si" mean?</b></p>
+
+<label>
+<input type="radio" name="h2" value="1">
+Even though
+</label>
+
+<label>
+<input type="radio" name="h2" value="0">
+Therefore
+</label>
+
+<label>
+<input type="radio" name="h2" value="0">
+Before
+</label>
+
+</div>
+
+
+<div class="question">
+
+<p><b>3. What does "Bien que" mean?</b></p>
+
+<label>
+<input type="radio" name="h3" value="0">
+Because
+</label>
+
+<label>
+<input type="radio" name="h3" value="1">
+Although
+</label>
+
+<label>
+<input type="radio" name="h3" value="0">
+Never
+</label>
+
+</div>
+
+
+<div class="question">
+
+<p><b>4. What does "Si j'avais le choix" mean?</b></p>
+
+<label>
+<input type="radio" name="h4" value="1">
+If I had the choice
+</label>
+
+<label>
+<input type="radio" name="h4" value="0">
+If I go
+</label>
+
+<label>
+<input type="radio" name="h4" value="0">
+When I was young
+</label>
+
+</div>
+
+
+<div class="question">
+
+<p><b>5. Which sentence uses the imperfect tense?</b></p>
+
+<label>
+<input type="radio" name="h5" value="0">
+J'ai joué au football.
+</label>
+
+<label>
+<input type="radio" name="h5" value="1">
+Je jouais au football quand j'étais jeune.
+</label>
+
+<label>
+<input type="radio" name="h5" value="0">
+Je vais jouer au football.
+</label>
+
+</div>
+
+
+<div class="question">
+
+<p><b>6. What does "cependant" mean?</b></p>
+
+<label>
+<input type="radio" name="h6" value="0">
+Therefore
+</label>
+
+<label>
+<input type="radio" name="h6" value="1">
+However
+</label>
+
+<label>
+<input type="radio" name="h6" value="0">
+Always
+</label>
+
+</div>
+
+
+<div class="question">
+
+<p><b>7. What does "à l'avenir" mean?</b></p>
+
+<label>
+<input type="radio" name="h7" value="0">
+In the past
+</label>
+
+<label>
+<input type="radio" name="h7" value="1">
+In the future
+</label>
+
+<label>
+<input type="radio" name="h7" value="0">
+Every day
+</label>
+
+</div>
+
+
+<div class="question">
+
+<p><b>8. What does "il faut" mean?</b></p>
+
+<label>
+<input type="radio" name="h8" value="1">
+It is necessary / you must
+</label>
+
+<label>
+<input type="radio" name="h8" value="0">
+I prefer
+</label>
+
+<label>
+<input type="radio" name="h8" value="0">
+It was
+</label>
+
+</div>
+
+
+<div class="question">
+
+<p><b>9. What does "puisque" mean?</b></p>
+
+<label>
+<input type="radio" name="h9" value="0">
+Despite
+</label>
+
+<label>
+<input type="radio" name="h9" value="1">
+Since / because
+</label>
+
+<label>
+<input type="radio" name="h9" value="0">
+Before
+</label>
+
+</div>
+
+
+<div class="question">
+
+<p><b>10. Which sentence is the most developed answer?</b></p>
+
+<label>
+<input type="radio" name="h10" value="0">
+J'aime le sport.
+</label>
+
+<label>
+<input type="radio" name="h10" value="0">
+J'aime le sport parce que c'est amusant.
+</label>
+
+<label>
+<input type="radio" name="h10" value="1">
+J'aime le sport parce que c'est amusant et, la semaine dernière, j'ai joué au tennis avec mes amis.
+</label>
+
+</div>
+
+
+<button class="btn" onclick="markHigherQuiz()">
+Submit Higher Quiz
+</button>
+
+<button class="btn" onclick="resetHigherQuiz()">
+Try Again
+</button>
+
+<div id="higherResult"></div>
+
+</section>
+
+</div>
+
+
+<footer>
+AQA GCSE French Revision Website
+</footer>
+
+
+<script>
+
+function showPage(id){
+
+  document.querySelectorAll(".page").forEach(function(page){
+    page.classList.remove("active");
+  });
+
+  document.getElementById(id).classList.add("active");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+
+/* FOUNDATION QUIZ */
+
+function markFoundationQuiz(){
+
+  let score = 0;
+  let answered = 0;
+
+  clearQuizColours("foundationQuiz");
+
+  for(let i=1;i<=10;i++){
+
+    const answer =
+    document.querySelector('input[name="f'+i+'"]:checked');
+
+    if(answer){
+
+      answered++;
+
+      if(answer.value==="1"){
+
+        score++;
+        answer.parentElement.classList.add("correct");
+
+      }else{
+
+        answer.parentElement.classList.add("wrong");
+
+        const correct =
+        document.querySelector('input[name="f'+i+'"][value="1"]');
+
+        correct.parentElement.classList.add("correct");
+
+      }
+    }
+  }
+
+  if(answered<10){
+
+    document.getElementById("foundationResult").innerHTML =
+    '<div class="result">Please answer all 10 questions.</div>';
+
+    return;
+  }
+
+  let message="";
+
+  if(score===10){
+
+    message=
+    "🏆 Perfect! Foundation French Master unlocked!";
+
+    localStorage.setItem(
+      "foundationFrenchAchievement",
+      "yes"
+    );
+
+    updateAchievements();
+
+  }else if(score>=8){
+
+    message=
+    "Excellent! You are very close to the achievement.";
+
+  }else if(score>=6){
+
+    message=
+    "Good work. Review your mistakes and try again.";
+
+  }else{
+
+    message=
+    "Keep practising and try the quiz again.";
+
+  }
+
+  document.getElementById("foundationResult").innerHTML =
+  '<div class="result">' +
+  'Score: '+score+'/10<br><br>'+message+
+  '</div>';
+
+}
+
+
+/* HIGHER QUIZ */
+
+function markHigherQuiz(){
+
+  let score = 0;
+  let answered = 0;
+
+  clearQuizColours("higherQuiz");
+
+  for(let i=1;i<=10;i++){
+
+    const answer =
+    document.querySelector('input[name="h'+i+'"]:checked');
+
+    if(answer){
+
+      answered++;
+
+      if(answer.value==="1"){
+
+        score++;
+        answer.parentElement.classList.add("correct");
+
+      }else{
+
+        answer.parentElement.classList.add("wrong");
+
+        const correct =
+        document.querySelector('input[name="h'+i+'"][value="1"]');
+
+        correct.parentElement.classList.add("correct");
+
+      }
+    }
+  }
+
+  if(answered<10){
+
+    document.getElementById("higherResult").innerHTML =
+    '<div class="result">Please answer all 10 questions.</div>';
+
+    return;
+  }
+
+  let message="";
+
+  if(score===10){
+
+    message=
+    "🏆 Perfect! Higher French Master unlocked!";
+
+    localStorage.setItem(
+      "higherFrenchAchievement",
+      "yes"
+    );
+
+    updateAchievements();
+
+  }else if(score>=8){
+
+    message=
+    "Excellent! You are very close to the achievement.";
+
+  }else if(score>=6){
+
+    message=
+    "Good work. Review your mistakes and try again.";
+
+  }else{
+
+    message=
+    "Keep practising and try the quiz again.";
+
+  }
+
+  document.getElementById("higherResult").innerHTML =
+  '<div class="result">' +
+  'Score: '+score+'/10<br><br>'+message+
+  '</div>';
+
+}
+
+
+function clearQuizColours(section){
+
+  document.querySelectorAll(
+    "#" + section + " label"
+  ).forEach(function(label){
+
+    label.classList.remove("correct");
+    label.classList.remove("wrong");
+
+  });
+
+}
+
+
+function resetFoundationQuiz(){
+
+  document.querySelectorAll(
+    '#foundationQuiz input[type="radio"]'
+  ).forEach(function(input){
+    input.checked=false;
+  });
+
+  clearQuizColours("foundationQuiz");
+
+  document.getElementById("foundationResult").innerHTML="";
+
+}
+
+
+function resetHigherQuiz(){
+
+  document.querySelectorAll(
+    '#higherQuiz input[type="radio"]'
+  ).forEach(function(input){
+    input.checked=false;
+  });
+
+  clearQuizColours("higherQuiz");
+
+  document.getElementById("higherResult").innerHTML="";
+
+}
+
+
+/* ACHIEVEMENTS */
+
+function updateAchievements(){
+
+  const foundation =
+  localStorage.getItem("foundationFrenchAchievement");
+
+  const higher =
+  localStorage.getItem("higherFrenchAchievement");
+
+
+  if(foundation==="yes"){
+
+    document
+    .getElementById("foundationAchievement")
+    .classList.add("unlocked");
+
+    document.getElementById("foundationIcon").innerHTML="🏆";
+
+    document.getElementById("foundationAchievementText").innerHTML=
+    "Achievement unlocked! You scored 10/10.";
+
+  }
+
+
+  if(higher==="yes"){
+
+    document
+    .getElementById("higherAchievement")
+    .classList.add("unlocked");
+
+    document.getElementById("higherIcon").innerHTML="🏆";
+
+    document.getElementById("higherAchievementText").innerHTML=
+    "Achievement unlocked! You scored 10/10.";
+
+  }
+
+}
+
+
+window.onload=function(){
+  updateAchievements();
+};
+
+</script>
+
+</body>
+</html>
