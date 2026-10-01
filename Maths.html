@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GCSE Higher & A-Level Maths</title>
+<title>GCSE Higher, A-Level & Mechanics Maths</title>
 
 <style>
-
 :root{
   --navy:#34433a;
   --brown:#8a5a3b;
   --light:#f5f0e6;
   --card:#fffdf8;
   --text:#252525;
-  --muted:#666057;
   --line:#ded5c8;
   --good:#2f6b3b;
   --bad:#a93838;
@@ -32,14 +29,11 @@ html{
 
 body{
   margin:0;
-  font-family:Arial,sans-serif;
+  font-family:Arial, sans-serif;
   background:var(--light);
   color:var(--text);
   line-height:1.6;
 }
-
-
-/* HEADER */
 
 header{
   background:linear-gradient(135deg,#34433a,#26342d);
@@ -58,56 +52,15 @@ header p{
   font-size:1.05rem;
 }
 
-
-/* BACK BUTTON */
-
-.back-button{
-  position:fixed;
-  top:16px;
-  left:16px;
-  z-index:30;
-
-  display:inline-flex;
-  align-items:center;
-
-  background:var(--card);
-  color:var(--navy);
-
-  text-decoration:none;
-  font-weight:bold;
-
-  padding:10px 15px;
-
-  border-radius:999px;
-  border:1px solid var(--line);
-
-  box-shadow:0 6px 18px rgba(45,52,47,.18);
-
-  transition:.2s;
-}
-
-.back-button:hover{
-  background:#fff8ef;
-  transform:translateY(-1px);
-}
-
-
-/* NAV */
-
 nav{
   background:#34433a;
-
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
-
   gap:10px;
-
   padding:12px;
-
   position:sticky;
   top:0;
-
   z-index:10;
 }
 
@@ -115,9 +68,7 @@ nav a{
   color:white;
   text-decoration:none;
   font-weight:bold;
-
   padding:8px 12px;
-
   border-radius:8px;
 }
 
@@ -125,13 +76,9 @@ nav a:hover{
   background:var(--brown);
 }
 
-
-/* MAIN */
-
 main{
   width:min(1100px,92%);
   margin:auto;
-
   padding:35px 0;
 }
 
@@ -143,223 +90,122 @@ h2{
   margin-top:0;
 }
 
-
-/* INTRO */
-
 .intro,
 .quiz-shell{
   background:var(--card);
-
   border:1px solid var(--line);
-
   border-radius:18px;
-
   padding:25px;
-
   box-shadow:var(--shadow);
 }
 
-
-/* TOPICS */
-
 .topic-grid{
   display:grid;
-
   grid-template-columns:repeat(2,1fr);
-
   gap:18px;
 }
 
 .card{
   background:var(--card);
-
   border:1px solid var(--line);
-
   border-radius:15px;
-
   padding:20px;
-
   box-shadow:var(--shadow);
-
-  transition:.2s;
 }
-
-.card:hover{
-  transform:translateY(-3px);
-}
-
-
-/* BIG TOPIC ICONS */
 
 .topic-icon{
   width:76px;
   height:76px;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
-  font-size:2.3rem;
-  font-weight:bold;
-
-  color:var(--brown);
-
+  font-size:2.1rem;
   margin-bottom:14px;
-
   border-radius:18px;
-
-  background:linear-gradient(
-    135deg,
-    #fff6e8,
-    #ffffff
-  );
-
+  background:linear-gradient(135deg,#fff6e8,#ffffff);
   border:1px solid var(--line);
-
-  box-shadow:0 6px 16px rgba(45,52,47,.08);
-
-  transition:.2s;
+  font-weight:bold;
+  color:var(--brown);
 }
 
-.card:hover .topic-icon{
-  transform:scale(1.05);
+.award{
+  text-align:center;
+  background:#fff4cf;
+  border:1px solid #d9b754;
+  color:#684b09;
+  padding:12px;
+  border-radius:10px;
+  font-weight:bold;
+  margin-bottom:20px;
 }
 
+.player-panel{
+  background:#f8fafc;
+  border:1px solid var(--line);
+  padding:18px;
+  border-radius:14px;
+  margin-bottom:20px;
+}
+
+.player-select-row{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+#playerSelect{
+  padding:10px;
+  border-radius:8px;
+  border:1px solid var(--line);
+  min-width:220px;
+  font-size:1rem;
+  background:white;
+  font-weight:bold;
+}
 
 /* LEADERBOARD */
 
 .leaderboard{
   border:1px solid #d9b754;
-
   background:#fffdf4;
-
   padding:22px;
-
-  border-radius:16px;
-
+  border-radius:14px;
+  margin-bottom:30px;
   box-shadow:var(--shadow);
 }
 
 .leaderboard h2{
   text-align:center;
-  color:var(--navy);
 }
 
 .leaderboard-list{
   display:grid;
-
-  gap:10px;
+  gap:9px;
 }
 
 .leader-row{
   display:grid;
-
-  grid-template-columns:50px 1fr auto;
-
+  grid-template-columns:55px 1fr auto;
   gap:10px;
-
   align-items:center;
-
-  background:var(--card);
-
+  background:white;
   border:1px solid #eadfb7;
-
   border-radius:10px;
-
   padding:12px 14px;
-
   font-weight:bold;
 }
 
-
-/* QUIZ AWARD MESSAGE */
-
-.award{
-  text-align:center;
-
-  background:#fff4cf;
-
-  border:1px solid #d9b754;
-
-  color:#684b09;
-
-  padding:10px;
-
-  border-radius:10px;
-
-  font-weight:bold;
-
-  margin-bottom:20px;
+.leader-xp{
+  color:var(--brown);
 }
-
-
-/* PLAYER */
-
-.player-panel{
-  background:var(--card);
-
-  border:1px solid var(--line);
-
-  padding:18px;
-
-  border-radius:14px;
-
-  margin-bottom:20px;
-}
-
-.player-panel h3{
-  color:var(--navy);
-}
-
-.player-select-row{
-  display:flex;
-
-  gap:10px;
-
-  align-items:center;
-
-  flex-wrap:wrap;
-}
-
-
-/* PLAYER SELECTION - SAME COLOUR SCHEME */
-
-#playerSelect{
-  padding:10px 14px;
-
-  min-width:220px;
-
-  font-size:1rem;
-  font-weight:bold;
-
-  color:var(--text);
-
-  background:var(--card);
-
-  border:1px solid var(--brown);
-
-  border-radius:8px;
-}
-
-#playerSelect:hover{
-  border-color:var(--navy);
-}
-
-#playerSelect:focus{
-  outline:2px solid var(--brown);
-  outline-offset:2px;
-}
-
 
 /* QUIZ BUTTONS */
 
 .topic-buttons{
   display:grid;
-
-  grid-template-columns:repeat(2,1fr);
-
+  grid-template-columns:repeat(3,1fr);
   gap:12px;
-
   margin-bottom:25px;
 }
 
@@ -372,15 +218,10 @@ button{
 .next-btn,
 .restart-btn{
   border:none;
-
   background:#161616;
-
   color:white;
-
   border-radius:10px;
-
   padding:12px;
-
   font-weight:bold;
 }
 
@@ -394,9 +235,6 @@ button{
   background:var(--brown);
 }
 
-
-/* QUESTION */
-
 .question-area{
   display:none;
 }
@@ -407,90 +245,58 @@ button{
 
 .level-row{
   display:flex;
-
   justify-content:space-between;
-
-  gap:10px;
-
   margin-bottom:10px;
-
-  color:var(--muted);
-
-  font-weight:bold;
+  color:#666;
 }
 
 .context-box{
-  background:#fff8ef;
-
+  background:#eff6ff;
   border-left:5px solid var(--brown);
-
   padding:15px;
-
   border-radius:10px;
-
   margin-bottom:15px;
-}
-
-.context-box strong{
-  margin-right:8px;
 }
 
 .question{
   font-weight:bold;
-
   font-size:1.15rem;
-
   margin-bottom:15px;
 }
 
 .answers{
   display:grid;
-
   gap:10px;
 }
 
 .answer-btn{
-  background:var(--card);
-
-  border:1px solid var(--line);
-
+  background:white;
+  border:1px solid #ccc;
   border-radius:10px;
-
   padding:12px;
-
   text-align:left;
 }
 
 .answer-btn:hover:not(:disabled){
   background:#fff8ef;
-
   border-color:var(--brown);
 }
 
 .answer-btn.correct{
   background:#ecfdf3;
-
   border-color:#86d7a3;
-
   color:#14532d;
 }
 
 .answer-btn.wrong{
   background:#fff1f2;
-
   border-color:#f5a4ab;
-
   color:#7f1d1d;
 }
 
-
-/* FEEDBACK */
-
 .feedback{
-  min-height:35px;
-
+  min-height:40px;
   margin-top:15px;
-
   font-weight:bold;
 }
 
@@ -502,41 +308,25 @@ button{
   color:var(--bad);
 }
 
-
-/* CONTROLS */
-
 .controls{
   display:flex;
-
   justify-content:space-between;
-
   align-items:center;
-
   margin-top:15px;
-
   gap:10px;
-
   flex-wrap:wrap;
 }
 
 .score-wrap{
   display:flex;
-
   gap:15px;
-
   flex-wrap:wrap;
-
   font-weight:bold;
 }
 
-
-/* RESULT */
-
 .result{
   display:none;
-
   text-align:center;
-
   padding:25px;
 }
 
@@ -544,22 +334,13 @@ button{
   display:block;
 }
 
-
-/* CERTIFICATE */
-
 .award-certificate{
   display:none;
-
   text-align:center;
-
   background:#fff4cf;
-
   border:5px double #b88716;
-
   padding:30px;
-
   margin-top:25px;
-
   border-radius:15px;
 }
 
@@ -571,32 +352,32 @@ button{
   font-size:4rem;
 }
 
-
-/* FOOTER */
+.back-button{
+  position:fixed;
+  top:16px;
+  left:16px;
+  z-index:30;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  background:white;
+  color:var(--navy);
+  text-decoration:none;
+  font-weight:bold;
+  padding:10px 15px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  box-shadow:0 6px 18px rgba(45,52,47,.18);
+}
 
 footer{
   background:#34433a;
-
   color:white;
-
   text-align:center;
-
   padding:20px;
 }
 
-
-/* MOBILE */
-
-@media(max-width:700px){
-
-  .back-button{
-    top:10px;
-    left:10px;
-
-    padding:8px 12px;
-
-    font-size:.88rem;
-  }
+@media(max-width:800px){
 
   .topic-grid{
     grid-template-columns:1fr;
@@ -606,41 +387,31 @@ footer{
     grid-template-columns:1fr;
   }
 
-  .leader-row{
-    grid-template-columns:42px 1fr auto;
-  }
-
   header h1{
     font-size:2.2rem;
   }
 
+  .leader-row{
+    grid-template-columns:45px 1fr auto;
+  }
 }
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<a
-href="index.html"
-class="back-button">
-
-← Back to Main Page
-
+<a href="index.html" class="back-button">
+  ← Back to Main Page
 </a>
-
 
 <header>
 
 <h1>
-GCSE Higher & A-Level Maths
+GCSE Higher, A-Level & Mechanics Maths
 </h1>
 
 <p>
-Number • Algebra • Geometry • Trigonometry • Statistics • A-Level Maths
+Number • Algebra • Geometry • Trigonometry • Statistics • Calculus • Mechanics
 </p>
 
 </header>
@@ -648,13 +419,9 @@ Number • Algebra • Geometry • Trigonometry • Statistics • A-Level Math
 
 <nav>
 
-<a href="#about">
-About
-</a>
+<a href="#about">About</a>
 
-<a href="#topics">
-Topics
-</a>
+<a href="#topics">Topics</a>
 
 <a href="#leaderboard">
 🏆 Leaderboard
@@ -672,54 +439,38 @@ Quiz
 
 <!-- ABOUT -->
 
-<section
-id="about"
-class="intro">
+<section id="about" class="intro">
 
-<h2>
-GCSE Higher Maths
-</h2>
+<h2>Maths Revision</h2>
 
 <p>
-
-Revise the main GCSE Higher Maths topics including
-Number, Algebra, Ratio, Geometry, Trigonometry,
-Probability and Statistics.
-
+Revise GCSE Higher Maths, A-Level Maths and Mechanics Maths.
 </p>
 
 <p>
-
-You can also practise A-Level Maths.
-Every correct answer gives the selected player XP.
-
+Every correct quiz answer gives the selected player
+<strong>+1 XP</strong>.
 </p>
 
 </section>
-
 
 
 <!-- TOPICS -->
 
 <section id="topics">
 
-<h2>
-Maths Topics
-</h2>
-
+<h2>Maths Topics</h2>
 
 <div class="topic-grid">
 
 
 <div class="card">
 
-<span class="topic-icon">
+<div class="topic-icon">
 123
-</span>
+</div>
 
-<h3>
-Number
-</h3>
+<h3>Number</h3>
 
 <p>
 Fractions, percentages, standard form,
@@ -729,16 +480,13 @@ surds, indices and bounds.
 </div>
 
 
-
 <div class="card">
 
-<span class="topic-icon">
+<div class="topic-icon">
 x
-</span>
+</div>
 
-<h3>
-Algebra
-</h3>
+<h3>Algebra</h3>
 
 <p>
 Equations, inequalities, sequences,
@@ -748,16 +496,13 @@ quadratics and functions.
 </div>
 
 
-
 <div class="card">
 
-<span class="topic-icon">
+<div class="topic-icon">
 △
-</span>
+</div>
 
-<h3>
-Geometry
-</h3>
+<h3>Geometry</h3>
 
 <p>
 Angles, transformations,
@@ -767,16 +512,13 @@ circles, area, volume and vectors.
 </div>
 
 
-
 <div class="card">
 
-<span class="topic-icon">
+<div class="topic-icon">
 sin
-</span>
+</div>
 
-<h3>
-Trigonometry
-</h3>
+<h3>Trigonometry</h3>
 
 <p>
 Pythagoras, SOHCAHTOA,
@@ -786,16 +528,13 @@ sine rule and cosine rule.
 </div>
 
 
-
 <div class="card">
 
-<span class="topic-icon">
+<div class="topic-icon">
 📊
-</span>
+</div>
 
-<h3>
-Statistics
-</h3>
+<h3>Statistics</h3>
 
 <p>
 Averages, probability,
@@ -805,20 +544,34 @@ graphs and data.
 </div>
 
 
+<div class="card">
+
+<div class="topic-icon">
+📐
+</div>
+
+<h3>A-Level Maths</h3>
+
+<p>
+Advanced algebra,
+calculus, vectors and statistics.
+</p>
+
+</div>
+
 
 <div class="card">
 
-<span class="topic-icon">
-📐
-</span>
+<div class="topic-icon">
+⚙️
+</div>
 
-<h3>
-A-Level Maths
-</h3>
+<h3>Mechanics Maths</h3>
 
 <p>
-More advanced algebra,
-calculus, vectors and statistics.
+Motion, SUVAT equations,
+forces, Newton's laws,
+momentum and moments.
 </p>
 
 </div>
@@ -827,7 +580,6 @@ calculus, vectors and statistics.
 </div>
 
 </section>
-
 
 
 <!-- LEADERBOARD -->
@@ -840,13 +592,11 @@ class="leaderboard">
 🏆 XP Leaderboard
 </h2>
 
-<p style="
-text-align:center;
-margin-bottom:18px;
-">
+<p style="text-align:center;">
 
 Every correct quiz answer gives
 the selected player
+
 <strong>+1 XP</strong>.
 
 </p>
@@ -855,10 +605,10 @@ the selected player
 <div
 id="leaderboardList"
 class="leaderboard-list">
+
 </div>
 
 </section>
-
 
 
 <!-- QUIZ -->
@@ -872,16 +622,17 @@ class="quiz-shell">
 </h2>
 
 <p>
-Choose GCSE Higher Maths or A-Level Maths.
+Choose GCSE Higher Maths,
+A-Level Maths or Mechanics Maths.
 </p>
 
 
 <div class="award">
 
-🏆 Score 10 / 10 to unlock the Maths Teacher Award!
+🏆 Score 10 / 10 to unlock
+the Maths Teacher Award!
 
 </div>
-
 
 
 <!-- PLAYER -->
@@ -904,25 +655,48 @@ Player:
 
 <select id="playerSelect">
 
+
 <option value="">
+
 Choose a player
+
 </option>
+
 
 <option value="Mr Sharratt">
+
 Mr Sharratt
+
 </option>
+
 
 <option value="Mr Davidson">
+
 Mr Davidson
+
 </option>
+
 
 <option value="Mrs Dubey">
+
 Mrs Dubey
+
 </option>
 
+
 <option value="Juju">
+
 Juju
+
 </option>
+
+
+<option value="Mr Playfoot">
+
+Mr Playfoot
+
+</option>
+
 
 </select>
 
@@ -931,19 +705,17 @@ Juju
 
 <p>
 
-Every correct answer gives the selected player
+Every correct answer gives
+the selected player
 
-<strong>
-+1 XP
-</strong>.
+<strong>+1 XP</strong>.
 
 </p>
 
 </div>
 
 
-
-<!-- QUIZ CHOICE -->
+<!-- QUIZ BUTTONS -->
 
 <div class="topic-buttons">
 
@@ -966,8 +738,16 @@ data-topic="alevel">
 </button>
 
 
-</div>
+<button
+class="topic-btn"
+data-topic="mechanics">
 
+⚙️ Mechanics Maths
+
+</button>
+
+
+</div>
 
 
 <!-- QUESTIONS -->
@@ -991,7 +771,7 @@ class="question-area">
 <div class="context-box">
 
 <strong>
-Context
+Context:
 </strong>
 
 <span id="contextText">
@@ -1003,18 +783,21 @@ Context
 <div
 id="questionText"
 class="question">
+
 </div>
 
 
 <div
 id="answers"
 class="answers">
+
 </div>
 
 
 <div
 id="feedback"
 class="feedback">
+
 </div>
 
 
@@ -1022,6 +805,7 @@ class="feedback">
 
 
 <div class="score-wrap">
+
 
 <div id="score">
 
@@ -1035,6 +819,7 @@ Score: 0 / 10
 Player XP: —
 
 </div>
+
 
 </div>
 
@@ -1054,7 +839,6 @@ Next Question
 </div>
 
 
-
 <!-- RESULT -->
 
 <div
@@ -1064,7 +848,7 @@ class="result">
 
 <div
 id="resultTrophy"
-style="font-size:3rem">
+style="font-size:3rem;">
 
 🎓
 
@@ -1094,8 +878,7 @@ Try This Topic Again
 </div>
 
 
-
-<!-- CERTIFICATE -->
+<!-- AWARD -->
 
 <div
 id="certificate"
@@ -1110,7 +893,9 @@ class="award-certificate">
 
 
 <h2>
+
 Maths Teacher Award
+
 </h2>
 
 
@@ -1130,22 +915,23 @@ Awarded for achieving
 
 </section>
 
-
 </main>
 
 
 <footer>
 
-© 2026 GCSE Higher & A-Level Maths
+© 2026 GCSE Higher, A-Level & Mechanics Maths
 
 </footer>
-
 
 
 <script type="module">
 
 
-/* FIREBASE */
+/* ==================================================
+   FIREBASE
+================================================== */
+
 
 import {
   initializeApp
@@ -1197,295 +983,244 @@ getFirestore(app);
 
 
 
-/* QUIZZES */
+/* ==================================================
+   QUIZZES
+================================================== */
+
 
 const quizzes = {
 
 
-gcse:{
+/* ==================================================
+   GCSE HIGHER
+================================================== */
 
-name:"GCSE Higher Maths",
 
-questions:[
+gcse: {
+
+name:
+"GCSE Higher Maths",
+
+questions: [
 
 
 {
-
 context:
 "Higher GCSE algebra often asks you to solve quadratic equations by factorising.",
 
 q:
 "Solve x² - 7x + 12 = 0.",
 
-options:[
-
+options: [
 "x = 3 or 4",
-
 "x = -3 or -4",
-
 "x = 2 or 6",
-
 "x = 1 or 12"
-
 ],
 
-answer:0,
+answer:
+0,
 
 explain:
-"x² - 7x + 12 = (x-3)(x-4), so x = 3 or x = 4."
-
+"x² - 7x + 12 = (x - 3)(x - 4), so x = 3 or x = 4."
 },
 
 
 {
-
 context:
 "Surds can be simplified by taking square factors outside the square root.",
 
 q:
 "Simplify √72.",
 
-options:[
-
+options: [
 "6√2",
-
 "8√2",
-
 "12√2",
-
 "36√2"
-
 ],
 
-answer:0,
+answer:
+0,
 
 explain:
 "√72 = √(36 × 2) = 6√2."
-
 },
 
 
 {
-
 context:
 "Simultaneous equations can be solved by eliminating one variable.",
 
 q:
 "Solve x + y = 9 and x - y = 3. What is x?",
 
-options:[
-
+options: [
 "3",
-
 "4",
-
 "6",
-
 "12"
-
 ],
 
-answer:2,
+answer:
+2,
 
 explain:
-"Add the two equations. 2x = 12, so x = 6."
-
+"Add the equations: 2x = 12, so x = 6."
 },
 
 
 {
-
 context:
-"SOH CAH TOA can be used in right-angled triangles.",
+"SOH CAH TOA is used with right-angled triangles.",
 
 q:
 "Opposite = 6 cm and hypotenuse = 10 cm. What is sin θ?",
 
-options:[
-
+options: [
 "0.4",
-
 "0.6",
-
 "1.67",
-
 "16"
-
 ],
 
-answer:1,
+answer:
+1,
 
 explain:
 "sin θ = opposite ÷ hypotenuse = 6 ÷ 10 = 0.6."
-
 },
 
 
 {
-
 context:
 "The angle at the centre is twice the angle at the circumference on the same arc.",
 
 q:
 "An angle at the circumference is 35°. What is the angle at the centre?",
 
-options:[
-
+options: [
 "17.5°",
-
 "35°",
-
 "70°",
-
 "145°"
-
 ],
 
-answer:2,
+answer:
+2,
 
 explain:
 "35° × 2 = 70°."
-
 },
 
 
 {
-
 context:
 "Repeated percentage increases use a multiplier.",
 
 q:
 "£800 increases by 5% each year. What is it worth after 2 years?",
 
-options:[
-
+options: [
 "£840",
-
 "£880",
-
 "£882",
-
 "£900"
-
 ],
 
-answer:2,
+answer:
+2,
 
 explain:
 "800 × 1.05² = £882."
-
 },
 
 
 {
-
 context:
-"Bounds describe the possible values of a rounded measurement.",
+"Bounds describe possible values of a rounded measurement.",
 
 q:
 "A length is 12.4 cm correct to the nearest 0.1 cm. What is the upper bound?",
 
-options:[
-
+options: [
 "12.40 cm",
-
 "12.45 cm",
-
 "12.49 cm",
-
 "12.50 cm"
-
 ],
 
-answer:1,
+answer:
+1,
 
 explain:
 "The upper bound is 12.45 cm."
-
 },
 
 
 {
-
 context:
-"For independent events, multiply their probabilities.",
+"For independent events, multiply the probabilities.",
 
 q:
 "A fair coin is tossed twice. What is the probability of two heads?",
 
-options:[
-
+options: [
 "1/2",
-
 "1/3",
-
 "1/4",
-
 "3/4"
-
 ],
 
-answer:2,
+answer:
+2,
 
 explain:
 "1/2 × 1/2 = 1/4."
-
 },
 
 
 {
-
 context:
 "Vectors are added by adding matching components.",
 
 q:
 "If a = (3,-2) and b = (1,5), find a + b.",
 
-options:[
-
+options: [
 "(4,3)",
-
 "(2,-7)",
-
 "(3,3)",
-
 "(4,7)"
-
 ],
 
-answer:0,
+answer:
+0,
 
 explain:
-"(3+1, -2+5) = (4,3)."
-
+"(3 + 1, -2 + 5) = (4,3)."
 },
 
 
 {
-
 context:
 "A quadratic sequence has a constant second difference.",
 
 q:
 "What is the nth term of 3, 8, 15, 24, 35, ...?",
 
-options:[
-
+options: [
 "n² + 2",
-
 "n² + 2n",
-
 "2n² + 1",
-
 "n² + n + 1"
-
 ],
 
-answer:1,
+answer:
+1,
 
 explain:
 "n² + 2n gives 3, 8, 15, 24 and 35."
-
 }
 
 
@@ -1495,291 +1230,475 @@ explain:
 
 
 
-alevel:{
+/* ==================================================
+   A-LEVEL
+================================================== */
+
+
+alevel: {
 
 name:
 "A-Level Maths",
 
-questions:[
+questions: [
 
 
 {
-
 context:
 "Quadratic equations can often be solved by factorising.",
 
 q:
 "Solve x² - 5x + 6 = 0.",
 
-options:[
-
+options: [
 "x = 1 or 6",
-
 "x = 2 or 3",
-
 "x = -2 or -3",
-
 "x = 3 only"
-
 ],
 
-answer:1,
+answer:
+1,
 
 explain:
-"(x-2)(x-3)=0, so x = 2 or 3."
-
+"(x - 2)(x - 3) = 0, so x = 2 or x = 3."
 },
 
 
 {
-
 context:
-"Use the power rule when differentiating powers of x.",
+"Differentiation finds the gradient function.",
 
 q:
-"Differentiate y = 3x⁴ - 5x² + 7.",
+"Differentiate y = x³ + 4x.",
 
-options:[
-
-"12x³ - 10x",
-
-"12x⁴ - 10x²",
-
-"3x³ - 5x",
-
-"4x³ - 2x"
-
+options: [
+"3x² + 4",
+"x² + 4",
+"3x + 4",
+"3x²"
 ],
 
-answer:0,
+answer:
+0,
 
 explain:
-"dy/dx = 12x³ - 10x."
-
+"The derivative of x³ is 3x² and the derivative of 4x is 4."
 },
 
 
 {
-
 context:
-"Integration reverses differentiation.",
+"Integration is the reverse of differentiation.",
 
 q:
-"Find ∫(6x² - 4x) dx.",
+"Integrate 6x².",
 
-options:[
-
-"2x³ - 2x² + C",
-
-"6x³ - 4x² + C",
-
-"3x² - 4 + C",
-
-"2x³ - 4x + C"
-
+options: [
+"2x³ + C",
+"6x³ + C",
+"3x² + C",
+"12x + C"
 ],
 
-answer:0,
+answer:
+0,
 
 explain:
-"The answer is 2x³ - 2x² + C."
-
+"∫6x² dx = 2x³ + C."
 },
 
 
 {
-
 context:
-"sin²θ + cos²θ = 1.",
+"Logarithm rules can simplify expressions.",
 
 q:
-"If sin θ = 3/5 and θ is acute, what is cos θ?",
+"Simplify log(a) + log(b).",
 
-options:[
-
-"2/5",
-
-"3/4",
-
-"4/5",
-
-"5/4"
-
+options: [
+"log(a+b)",
+"log(ab)",
+"log(a-b)",
+"log(a/b)"
 ],
 
-answer:2,
+answer:
+1,
 
 explain:
-"cos θ = 4/5."
-
+"log(a) + log(b) = log(ab)."
 },
 
 
 {
-
 context:
-"A geometric sequence has a constant ratio.",
+"The binomial distribution models a fixed number of independent trials.",
 
 q:
-"3, 6, 12, ... What is the 6th term?",
+"If X ~ B(5,0.2), what is P(X = 0)?",
 
-options:[
-
-"48",
-
-"96",
-
-"192",
-
-"384"
-
+options: [
+"0.2⁵",
+"0.8⁵",
+"5 × 0.2",
+"1 - 0.8⁵"
 ],
 
-answer:1,
+answer:
+1,
 
 explain:
-"3 × 2⁵ = 96."
-
+"P(X = 0) = (1 - 0.2)⁵ = 0.8⁵."
 },
 
 
 {
-
 context:
-"For X ~ B(n,p), E(X)=np.",
+"Independent events satisfy P(A ∩ B) = P(A)P(B).",
 
 q:
-"If X ~ B(20,0.3), what is E(X)?",
+"If P(A)=0.4 and P(B)=0.5 and they are independent, find P(A∩B).",
 
-options:[
-
-"3",
-
-"6",
-
-"10",
-
-"14"
-
+options: [
+"0.2",
+"0.4",
+"0.5",
+"0.9"
 ],
 
-answer:1,
+answer:
+0,
 
 explain:
-"20 × 0.3 = 6."
-
+"0.4 × 0.5 = 0.2."
 },
 
 
 {
-
 context:
-"Gradient = change in y ÷ change in x.",
+"For a geometric sequence, each term is multiplied by the same number.",
 
 q:
-"What is the gradient between (2,5) and (6,13)?",
+"What is the common ratio of 3, 6, 12, 24, ...?",
 
-options:[
-
+options: [
 "1",
-
 "2",
-
 "3",
-
-"4"
-
+"6"
 ],
 
-answer:1,
+answer:
+1,
 
 explain:
-"(13-5) ÷ (6-2) = 2."
-
+"Each term is multiplied by 2."
 },
 
 
 {
-
 context:
-"The discriminant is b² - 4ac.",
+"The discriminant b² - 4ac tells us how many real roots a quadratic has.",
 
 q:
 "How many real roots does 2x² + 4x + 5 = 0 have?",
 
-options:[
-
+options: [
 "Two",
-
 "One",
-
 "None",
-
 "Infinitely many"
-
 ],
 
-answer:2,
+answer:
+2,
 
 explain:
-"The discriminant is negative, so there are no real roots."
-
+"The discriminant is 4² - 4(2)(5) = -24, so there are no real roots."
 },
 
 
 {
-
 context:
 "For the scalar product, multiply matching components and add.",
 
 q:
 "Find (2,3) · (4,-1).",
 
-options:[
-
+options: [
 "5",
-
 "8",
-
 "11",
-
 "-5"
-
 ],
 
-answer:0,
+answer:
+0,
 
 explain:
-"2×4 + 3×(-1) = 5."
-
+"2 × 4 + 3 × (-1) = 8 - 3 = 5."
 },
 
 
 {
-
 context:
-"e⁰ = 1.",
+"Any non-zero number raised to the power 0 equals 1.",
 
 q:
 "If y = 5e^(0.2t), what is y when t = 0?",
 
-options:[
-
+options: [
 "0",
-
 "1",
-
 "5",
-
 "e"
-
 ],
 
-answer:2,
+answer:
+2,
 
 explain:
-"5 × e⁰ = 5."
+"When t = 0, e⁰ = 1, so y = 5."
+}
 
+
+]
+
+},
+
+
+
+/* ==================================================
+   MECHANICS
+================================================== */
+
+
+mechanics: {
+
+name:
+"Mechanics Maths",
+
+questions: [
+
+
+{
+context:
+"Acceleration is the change in velocity divided by time.",
+
+q:
+"A car increases its velocity from 5 m/s to 25 m/s in 4 seconds. What is its acceleration?",
+
+options: [
+"4 m/s²",
+"5 m/s²",
+"6 m/s²",
+"20 m/s²"
+],
+
+answer:
+1,
+
+explain:
+"Acceleration = (25 - 5) ÷ 4 = 5 m/s²."
+},
+
+
+{
+context:
+"The SUVAT equation v = u + at connects velocity, acceleration and time.",
+
+q:
+"A particle starts at 3 m/s and accelerates at 2 m/s² for 5 seconds. Find its final velocity.",
+
+options: [
+"10 m/s",
+"13 m/s",
+"15 m/s",
+"25 m/s"
+],
+
+answer:
+1,
+
+explain:
+"v = u + at = 3 + (2 × 5) = 13 m/s."
+},
+
+
+{
+context:
+"Newton's second law is F = ma.",
+
+q:
+"A 4 kg object accelerates at 3 m/s². What force is acting on it?",
+
+options: [
+"7 N",
+"12 N",
+"16 N",
+"24 N"
+],
+
+answer:
+1,
+
+explain:
+"F = ma = 4 × 3 = 12 N."
+},
+
+
+{
+context:
+"Momentum is mass multiplied by velocity.",
+
+q:
+"A 5 kg object moves at 6 m/s. What is its momentum?",
+
+options: [
+"11 kg m/s",
+"30 kg m/s",
+"36 kg m/s",
+"60 kg m/s"
+],
+
+answer:
+1,
+
+explain:
+"Momentum = mv = 5 × 6 = 30 kg m/s."
+},
+
+
+{
+context:
+"Weight is calculated using W = mg.",
+
+q:
+"Find the weight of a 10 kg object using g = 9.8 m/s².",
+
+options: [
+"9.8 N",
+"19.6 N",
+"98 N",
+"980 N"
+],
+
+answer:
+2,
+
+explain:
+"W = mg = 10 × 9.8 = 98 N."
+},
+
+
+{
+context:
+"Moments are calculated using force × perpendicular distance.",
+
+q:
+"A force of 20 N acts 0.5 m from a pivot. What is the moment?",
+
+options: [
+"10 Nm",
+"20 Nm",
+"40 Nm",
+"100 Nm"
+],
+
+answer:
+0,
+
+explain:
+"Moment = force × distance = 20 × 0.5 = 10 Nm."
+},
+
+
+{
+context:
+"For constant acceleration, s = ut + ½at².",
+
+q:
+"An object starts from rest and accelerates at 4 m/s² for 3 seconds. How far does it travel?",
+
+options: [
+"6 m",
+"12 m",
+"18 m",
+"36 m"
+],
+
+answer:
+2,
+
+explain:
+"s = 0 + ½ × 4 × 3² = 18 m."
+},
+
+
+{
+context:
+"The resultant force is found by combining forces in their directions.",
+
+q:
+"A 12 N force acts right and a 7 N force acts left. What is the resultant force?",
+
+options: [
+"5 N right",
+"5 N left",
+"19 N right",
+"19 N left"
+],
+
+answer:
+0,
+
+explain:
+"12 - 7 = 5 N to the right."
+},
+
+
+{
+context:
+"Speed is distance divided by time.",
+
+q:
+"A runner travels 400 m in 50 seconds. What is their average speed?",
+
+options: [
+"5 m/s",
+"8 m/s",
+"10 m/s",
+"20 m/s"
+],
+
+answer:
+1,
+
+explain:
+"Speed = 400 ÷ 50 = 8 m/s."
+},
+
+
+{
+context:
+"Impulse equals force multiplied by time and is equal to the change in momentum.",
+
+q:
+"A force of 15 N acts for 4 seconds. What impulse is produced?",
+
+options: [
+"19 Ns",
+"30 Ns",
+"60 Ns",
+"75 Ns"
+],
+
+answer:
+2,
+
+explain:
+"Impulse = force × time = 15 × 4 = 60 Ns."
 }
 
 
@@ -1791,21 +1710,36 @@ explain:
 
 
 
-/* VARIABLES */
-
-let currentTopic = null;
-
-let currentIndex = 0;
-
-let score = 0;
-
-let answered = false;
-
-let currentPlayer = "";
+/* ==================================================
+   VARIABLES
+================================================== */
 
 
+let currentTopic =
+null;
 
-/* PLAYERS */
+
+let currentIndex =
+0;
+
+
+let score =
+0;
+
+
+let answered =
+false;
+
+
+let currentPlayer =
+"";
+
+
+
+/* ==================================================
+   PLAYERS
+================================================== */
+
 
 const players = [
 
@@ -1815,10 +1749,19 @@ const players = [
 
 "Mrs Dubey",
 
-"Juju"
+"Juju",
+
+"Mr Playfoot"
 
 ];
 
+
+
+/*
+IMPORTANT:
+Keep this as v4 so your existing XP
+is NOT reset.
+*/
 
 const localXpKey =
 "mathsLeaderboardXP_v4";
@@ -1833,72 +1776,132 @@ loadLocalXp();
 
 
 
-/* ELEMENTS */
+/* ==================================================
+   ELEMENTS
+================================================== */
+
 
 const questionArea =
-document.getElementById("questionArea");
+document.getElementById(
+"questionArea"
+);
+
 
 const contextText =
-document.getElementById("contextText");
+document.getElementById(
+"contextText"
+);
+
 
 const questionText =
-document.getElementById("questionText");
+document.getElementById(
+"questionText"
+);
+
 
 const answers =
-document.getElementById("answers");
+document.getElementById(
+"answers"
+);
+
 
 const feedback =
-document.getElementById("feedback");
+document.getElementById(
+"feedback"
+);
+
 
 const scoreEl =
-document.getElementById("score");
+document.getElementById(
+"score"
+);
+
 
 const nextBtn =
-document.getElementById("nextBtn");
+document.getElementById(
+"nextBtn"
+);
+
 
 const topicLabel =
-document.getElementById("topicLabel");
+document.getElementById(
+"topicLabel"
+);
+
 
 const progressLabel =
-document.getElementById("progressLabel");
+document.getElementById(
+"progressLabel"
+);
+
 
 const result =
-document.getElementById("result");
+document.getElementById(
+"result"
+);
+
 
 const resultTitle =
-document.getElementById("resultTitle");
+document.getElementById(
+"resultTitle"
+);
+
 
 const resultText =
-document.getElementById("resultText");
+document.getElementById(
+"resultText"
+);
+
 
 const resultTrophy =
-document.getElementById("resultTrophy");
+document.getElementById(
+"resultTrophy"
+);
+
 
 const certificate =
-document.getElementById("certificate");
+document.getElementById(
+"certificate"
+);
+
 
 const playerSelect =
-document.getElementById("playerSelect");
+document.getElementById(
+"playerSelect"
+);
+
 
 const leaderboardList =
-document.getElementById("leaderboardList");
+document.getElementById(
+"leaderboardList"
+);
+
 
 const playerXp =
-document.getElementById("playerXp");
+document.getElementById(
+"playerXp"
+);
 
 
 
-/* LOCAL XP */
+/* ==================================================
+   XP
+================================================== */
+
 
 function blankXp(){
 
 const clean = {};
 
-players.forEach(name => {
+
+players.forEach(
+function(name){
 
 clean[name] = 0;
 
-});
+}
+);
+
 
 return clean;
 
@@ -1912,7 +1915,11 @@ try{
 
 const saved =
 JSON.parse(
-localStorage.getItem(localXpKey) || "{}"
+
+localStorage.getItem(
+localXpKey
+) || "{}"
+
 );
 
 
@@ -1920,12 +1927,14 @@ const clean =
 blankXp();
 
 
-players.forEach(name => {
+players.forEach(
+function(name){
 
 clean[name] =
 Number(saved[name]) || 0;
 
-});
+}
+);
 
 
 return clean;
@@ -1948,7 +1957,9 @@ localStorage.setItem(
 
 localXpKey,
 
-JSON.stringify(xpData)
+JSON.stringify(
+xpData
+)
 
 );
 
@@ -1956,34 +1967,54 @@ JSON.stringify(xpData)
 
 
 
-/* LEADERBOARD */
+/* ==================================================
+   LEADERBOARD
+================================================== */
+
 
 function renderLeaderboard(){
 
 const ordered =
-
 players
 
-.map((name,index) => ({
+.map(
+function(name,index){
+
+return{
 
 name:name,
 
-xp:Number(xpData[name]) || 0,
+xp:
+Number(
+xpData[name]
+) || 0,
 
 order:index
 
-}))
+};
 
-.sort((a,b) =>
+}
+)
 
-b.xp - a.xp ||
+.sort(
+function(a,b){
 
-a.order - b.order
+return (
+
+b.xp -
+a.xp ||
+
+a.order -
+b.order
 
 );
 
+}
+);
 
-leaderboardList.innerHTML = "";
+
+leaderboardList.innerHTML =
+"";
 
 
 const medals = [
@@ -1998,52 +2029,59 @@ const medals = [
 
 
 ordered.forEach(
-
-(player,index) => {
-
+function(player,index){
 
 const row =
-document.createElement("div");
+document.createElement(
+"div"
+);
 
 
 row.className =
 "leader-row";
 
 
+const position =
+medals[index] ||
+"#" + (index + 1);
+
+
 row.innerHTML = `
 
 <span>
-${medals[index] || "#" + (index+1)}
+${position}
 </span>
 
 <span>
 ${player.name}
 </span>
 
-<span>
+<span class="leader-xp">
 ${player.xp} XP
 </span>
 
 `;
 
 
-leaderboardList.appendChild(row);
-
+leaderboardList
+.appendChild(
+row
+);
 
 }
-
 );
 
 
 if(currentPlayer){
 
 playerXp.textContent =
-
-"Player XP: "
-
-+ (Number(xpData[currentPlayer]) || 0)
-
-+ " XP";
+"Player XP: " +
+(
+Number(
+xpData[currentPlayer]
+) || 0
+) +
+" XP";
 
 }
 
@@ -2058,36 +2096,39 @@ playerXp.textContent =
 
 
 
-/* AWARD XP */
+/* ==================================================
+   GIVE XP
+================================================== */
 
-async function awardOneXp(playerName){
+
+async function awardOneXp(
+playerName
+){
 
 if(!playerName){
+
 return;
+
 }
 
 
 xpData[playerName] =
+(
+Number(
+xpData[playerName]
+) || 0
+) + 1;
 
-(Number(xpData[playerName]) || 0) + 1;
-
-
-/* SAVE LOCALLY */
 
 saveLocalXp();
 
 
-/* UPDATE LEADERBOARD IMMEDIATELY */
-
 renderLeaderboard();
 
-
-/* SAVE ONLINE */
 
 try{
 
 const playerDoc =
-
 doc(
 
 db,
@@ -2096,7 +2137,10 @@ db,
 
 playerName
 .toLowerCase()
-.replace(/\s+/g,"_")
+.replace(
+/\s+/g,
+"_"
+)
 
 );
 
@@ -2107,14 +2151,18 @@ playerDoc,
 
 {
 
-name:playerName,
+name:
+playerName,
 
-xp:xpData[playerName]
+xp:
+xpData[playerName]
 
 },
 
 {
+
 merge:true
+
 }
 
 );
@@ -2125,7 +2173,7 @@ catch(error){
 
 console.error(
 
-"Could not save XP online:",
+"Could not save XP to Firebase:",
 
 error
 
@@ -2137,14 +2185,17 @@ error
 
 
 
-/* PLAYER CHANGE */
+/* ==================================================
+   PLAYER SELECT
+================================================== */
 
-playerSelect.addEventListener(
+
+playerSelect
+.addEventListener(
 
 "change",
 
 function(){
-
 
 currentPlayer =
 playerSelect.value;
@@ -2165,9 +2216,7 @@ currentPlayer
 else{
 
 localStorage.removeItem(
-
 currentPlayerKey
-
 );
 
 }
@@ -2181,23 +2230,21 @@ renderLeaderboard();
 
 
 
-/* REMEMBER PLAYER */
+/* REMEMBER CURRENT PLAYER */
+
 
 const rememberedPlayer =
-
 localStorage.getItem(
-
 currentPlayerKey
-
 );
 
 
 if(
 
+rememberedPlayer &&
+
 players.includes(
-
 rememberedPlayer
-
 )
 
 ){
@@ -2213,29 +2260,28 @@ rememberedPlayer;
 
 
 
-/* GET FIREBASE SCORES */
+/* ==================================================
+   LOAD FIREBASE XP
+================================================== */
+
+
+async function loadOnlineLeaderboard(){
 
 try{
 
 const querySnapshot =
-
 await getDocs(
 
 collection(
-
 db,
-
 "players"
-
 )
 
 );
 
 
 querySnapshot.forEach(
-
-docSnap => {
-
+function(docSnap){
 
 const data =
 docSnap.data();
@@ -2243,42 +2289,29 @@ docSnap.data();
 
 if(
 
+data.name &&
+
 players.includes(
-
 data.name
-
 )
 
 ){
 
-const onlineXp =
-Number(data.xp) || 0;
-
-
-const localXp =
-Number(xpData[data.name]) || 0;
-
-
-/* USE THE BIGGER SCORE */
-
 xpData[data.name] =
-
-Math.max(
-
-onlineXp,
-
-localXp
-
-);
+Number(
+data.xp
+) || 0;
 
 }
 
 }
-
 );
 
 
 saveLocalXp();
+
+
+renderLeaderboard();
 
 }
 
@@ -2292,23 +2325,33 @@ error
 
 );
 
+
+renderLeaderboard();
+
 }
+
+}
+
 
 
 renderLeaderboard();
 
 
+loadOnlineLeaderboard();
 
-/* TOPIC BUTTONS */
+
+
+/* ==================================================
+   QUIZ BUTTONS
+================================================== */
+
 
 document
-
-.querySelectorAll(".topic-btn")
-
+.querySelectorAll(
+".topic-btn"
+)
 .forEach(
-
 function(button){
-
 
 button.addEventListener(
 
@@ -2316,36 +2359,34 @@ button.addEventListener(
 
 function(){
 
-
 startQuiz(
-
 button.dataset.topic
-
 );
 
+}
+
+);
 
 }
 
 );
 
 
-}
 
-);
+/* ==================================================
+   START QUIZ
+================================================== */
 
 
-
-/* START QUIZ */
-
-function startQuiz(topic){
-
+function startQuiz(
+topic
+){
 
 if(!currentPlayer){
 
-
 alert(
 
-"Please choose Mr Sharratt, Mr Davidson, Mrs Dubey or Juju before starting the quiz."
+"Please choose Mr Sharratt, Mr Davidson, Mrs Dubey, Juju or Mr Playfoot before starting the quiz."
 
 );
 
@@ -2374,61 +2415,46 @@ answered =
 false;
 
 
-
 document
-
-.querySelectorAll(".topic-btn")
-
+.querySelectorAll(
+".topic-btn"
+)
 .forEach(
-
 function(button){
 
 button.classList.remove(
-
 "active"
-
 );
 
 }
-
 );
-
 
 
 document
-
 .querySelector(
 
-'[data-topic="' + topic + '"]'
+'[data-topic="' +
+topic +
+'"]'
 
 )
-
 .classList.add(
-
 "active"
-
 );
 
 
-
 result.classList.remove(
-
 "show"
-
 );
 
 
 certificate.classList.remove(
-
 "show"
-
 );
 
 
 questionArea.classList.add(
-
 "show"
-
 );
 
 
@@ -2438,10 +2464,12 @@ renderQuestion();
 
 
 
-/* SHOW QUESTION */
+/* ==================================================
+   SHOW QUESTION
+================================================== */
+
 
 function renderQuestion(){
-
 
 answered =
 false;
@@ -2464,25 +2492,21 @@ quizzes[currentTopic];
 
 
 const item =
-quiz.questions[currentIndex];
+quiz.questions[
+currentIndex
+];
 
 
 topicLabel.textContent =
-
-"Topic: "
-
-+ quiz.name;
+"Topic: " +
+quiz.name;
 
 
 progressLabel.textContent =
-
-"Question "
-
-+ (currentIndex + 1)
-
-+ " of "
-
-+ quiz.questions.length;
+"Question " +
+(currentIndex + 1) +
+" of " +
+quiz.questions.length;
 
 
 contextText.textContent =
@@ -2494,14 +2518,10 @@ item.q;
 
 
 scoreEl.textContent =
-
-"Score: "
-
-+ score
-
-+ " / "
-
-+ quiz.questions.length;
+"Score: " +
+score +
+" / " +
+quiz.questions.length;
 
 
 answers.innerHTML =
@@ -2509,16 +2529,11 @@ answers.innerHTML =
 
 
 item.options.forEach(
-
 function(option,index){
 
-
 const button =
-
 document.createElement(
-
 "button"
-
 );
 
 
@@ -2536,15 +2551,10 @@ button.addEventListener(
 
 function(){
 
-
 chooseAnswer(
-
 index,
-
 button
-
 );
-
 
 }
 
@@ -2552,22 +2562,17 @@ button
 
 
 answers.appendChild(
-
 button
-
 );
-
 
 }
 
 );
 
 
-
 if(
 
 currentIndex ===
-
 quiz.questions.length - 1
 
 ){
@@ -2588,16 +2593,15 @@ nextBtn.textContent =
 
 
 
-/* ANSWER */
+/* ==================================================
+   CHOOSE ANSWER
+================================================== */
+
 
 function chooseAnswer(
-
 index,
-
 clickedButton
-
 ){
-
 
 if(answered){
 
@@ -2611,42 +2615,27 @@ true;
 
 
 const item =
-
 quizzes[currentTopic]
-
 .questions[currentIndex];
 
 
 const buttons =
-
-document
-
-.querySelectorAll(
-
+document.querySelectorAll(
 ".answer-btn"
-
 );
 
 
 buttons.forEach(
-
 function(button,i){
-
 
 button.disabled =
 true;
 
 
-if(
-
-i === item.answer
-
-){
+if(i === item.answer){
 
 button.classList.add(
-
 "correct"
-
 );
 
 }
@@ -2657,66 +2646,48 @@ button.classList.add(
 
 
 
-if(
-
-index === item.answer
-
-){
-
+if(index === item.answer){
 
 score++;
 
 
-/* +1 XP */
-
 awardOneXp(
-
 currentPlayer
-
 );
 
 
 feedback.innerHTML =
 
-"✓ Correct! +1 XP<br>"
+"✓ Correct! +1 XP<br>" +
 
-+ item.explain;
+item.explain;
 
 
 feedback.classList.add(
-
 "good"
-
 );
-
 
 }
 
 else{
 
-
 clickedButton
-
-.classList.add(
-
+.classList
+.add(
 "wrong"
-
 );
 
 
 feedback.textContent =
 
-"✗ Not quite. "
+"✗ Not quite. " +
 
-+ item.explain;
+item.explain;
 
 
 feedback.classList.add(
-
 "bad"
-
 );
-
 
 }
 
@@ -2724,14 +2695,13 @@ feedback.classList.add(
 
 scoreEl.textContent =
 
-"Score: "
+"Score: " +
 
-+ score
+score +
 
-+ " / "
+" / " +
 
-+ quizzes[currentTopic]
-
+quizzes[currentTopic]
 .questions.length;
 
 
@@ -2742,14 +2712,16 @@ false;
 
 
 
-/* NEXT */
+/* ==================================================
+   NEXT
+================================================== */
+
 
 nextBtn.addEventListener(
 
 "click",
 
 function(){
-
 
 const quiz =
 quizzes[currentTopic];
@@ -2758,25 +2730,20 @@ quizzes[currentTopic];
 if(
 
 currentIndex <
-
 quiz.questions.length - 1
 
 ){
-
 
 currentIndex++;
 
 
 renderQuestion();
 
-
 }
 
 else{
 
-
 showResult();
-
 
 }
 
@@ -2786,45 +2753,34 @@ showResult();
 
 
 
-/* RESULT */
+/* ==================================================
+   RESULTS
+================================================== */
+
 
 function showResult(){
 
-
 questionArea
-
 .classList
-
 .remove(
-
 "show"
-
 );
 
 
 result
-
 .classList
-
 .add(
-
 "show"
-
 );
 
 
 
 if(score === 10){
 
-
 certificate
-
 .classList
-
 .add(
-
 "show"
-
 );
 
 
@@ -2838,31 +2794,26 @@ resultTitle.textContent =
 
 resultText.innerHTML =
 
-"<strong>Perfect score: "
+"<strong>Perfect score: " +
 
-+ score
+score +
 
-+ "/10!</strong><br>"
+"/10!</strong><br>" +
 
-+ currentPlayer
+currentPlayer +
 
-+ " earned 10 XP.";
-
+" earned 10 XP.";
 
 }
 
 
+
 else if(score >= 8){
 
-
 certificate
-
 .classList
-
 .remove(
-
 "show"
-
 );
 
 
@@ -2876,33 +2827,28 @@ resultTitle.textContent =
 
 resultText.textContent =
 
-currentPlayer
+currentPlayer +
 
-+ " scored "
+" scored " +
 
-+ score
+score +
 
-+ "/10 and earned "
+"/10 and earned " +
 
-+ score
+score +
 
-+ " XP.";
-
+" XP.";
 
 }
 
 
+
 else if(score >= 5){
 
-
 certificate
-
 .classList
-
 .remove(
-
 "show"
-
 );
 
 
@@ -2916,33 +2862,28 @@ resultTitle.textContent =
 
 resultText.textContent =
 
-currentPlayer
+currentPlayer +
 
-+ " scored "
+" scored " +
 
-+ score
+score +
 
-+ "/10 and earned "
+"/10 and earned " +
 
-+ score
+score +
 
-+ " XP.";
-
+" XP.";
 
 }
 
 
+
 else{
 
-
 certificate
-
 .classList
-
 .remove(
-
 "show"
-
 );
 
 
@@ -2956,48 +2897,42 @@ resultTitle.textContent =
 
 resultText.textContent =
 
-currentPlayer
+currentPlayer +
 
-+ " scored "
+" scored " +
 
-+ score
+score +
 
-+ "/10 and earned "
+"/10 and earned " +
 
-+ score
+score +
 
-+ " XP.";
-
-
-}
+" XP.";
 
 }
 
+}
 
 
-/* RESTART */
+
+/* ==================================================
+   RESTART
+================================================== */
+
 
 document
-
 .getElementById(
-
 "restartBtn"
-
 )
-
 .addEventListener(
 
 "click",
 
 function(){
 
-
 startQuiz(
-
 currentTopic
-
 );
-
 
 }
 
@@ -3006,7 +2941,5 @@ currentTopic
 
 </script>
 
-
 </body>
-
 </html>
