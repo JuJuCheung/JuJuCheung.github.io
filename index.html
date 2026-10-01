@@ -2,423 +2,421 @@
 <html lang="en">
 
 <head>
-
-<meta charset="UTF-8" />
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Master Subjects Hub</title>
 
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
 }
 
 body{
-background:
-linear-gradient(
-135deg,
-#eef3f8,
-#dfe8f2
-);
-color:#222;
-line-height:1.6;
+  background:linear-gradient(135deg,#eef3f8,#dfe8f2);
+  color:#222;
+  line-height:1.6;
 }
 
 /* HEADER */
 
 header{
-background:
-linear-gradient(
-rgba(0,0,0,.6),
-rgba(0,0,0,.6)
-),
-url(
-"https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1400&q=80"
-)
-center/cover no-repeat;
+  background:
+  linear-gradient(
+    rgba(0,0,0,.6),
+    rgba(0,0,0,.6)
+  ),
+  url(
+    "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1400&q=80"
+  )
+  center/cover no-repeat;
 
-color:white;
-text-align:center;
-padding:90px 20px;
+  color:white;
+  text-align:center;
+  padding:90px 20px;
 }
 
 header h1{
-font-size:3rem;
-margin-bottom:10px;
+  font-size:3rem;
+  margin-bottom:10px;
 }
 
 header p{
-font-size:1.15rem;
+  font-size:1.15rem;
 }
 
 /* NAVIGATION */
 
 nav{
-background:#111;
-text-align:center;
-padding:15px;
-position:sticky;
-top:0;
-z-index:999;
+  background:#111;
+  text-align:center;
+  padding:15px;
+  position:sticky;
+  top:0;
+  z-index:999;
 }
 
 nav a{
-color:white;
-text-decoration:none;
-margin:0 10px;
-font-weight:bold;
-transition:.3s;
-display:inline-block;
+  color:white;
+  text-decoration:none;
+  margin:0 10px;
+  font-weight:bold;
+  transition:.3s;
+  display:inline-block;
 }
 
 nav a:hover{
-color:#ffd54f;
+  color:#ffd54f;
 }
 
 /* MAIN */
 
 .container{
-width:90%;
-max-width:1200px;
-margin:40px auto;
+  width:90%;
+  max-width:1200px;
+  margin:40px auto;
 }
 
 /* INTRO */
 
 .intro{
-background:white;
-padding:30px;
-border-radius:18px;
-box-shadow:
-0 8px 20px
-rgba(0,0,0,.08);
-margin-bottom:30px;
-text-align:center;
+  background:white;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  margin-bottom:30px;
+  text-align:center;
 }
 
 .intro h2{
-margin-bottom:10px;
+  margin-bottom:10px;
 }
 
 /* GRID */
 
 .grid{
-display:grid;
-grid-template-columns:
-repeat(
-auto-fit,
-minmax(280px,1fr)
-);
-gap:25px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
 }
 
 /* CARDS */
 
 .card{
-background:white;
-border-radius:18px;
-overflow:hidden;
-box-shadow:
-0 8px 20px
-rgba(0,0,0,.08);
-transition:.3s;
+  background:white;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  transition:.3s;
 }
 
 .card:hover{
-transform:
-translateY(-8px);
-
-box-shadow:
-0 15px 30px
-rgba(0,0,0,.15);
+  transform:translateY(-8px);
+  box-shadow:0 15px 30px rgba(0,0,0,.15);
 }
 
 .card-image{
-height:200px;
-background-size:cover;
-background-position:center;
+  height:200px;
+  overflow:hidden;
+  background:#e9edf2;
+}
+
+.card-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:.3s;
+}
+
+.card:hover .card-image img{
+  transform:scale(1.04);
 }
 
 .card-content{
-padding:22px;
+  padding:22px;
 }
 
 .card-content h2{
-margin-bottom:10px;
-color:#111;
+  margin-bottom:10px;
+  color:#111;
 }
 
 .card-content p{
-margin-bottom:18px;
+  margin-bottom:18px;
 }
 
 /* BUTTON */
 
 .btn{
-display:inline-block;
-background:#111;
-color:white;
-text-decoration:none;
-padding:12px 18px;
-border-radius:10px;
-font-weight:bold;
-transition:.3s;
+  display:inline-block;
+  background:#111;
+  color:white;
+  text-decoration:none;
+  padding:12px 18px;
+  border-radius:10px;
+  font-weight:bold;
+  transition:.3s;
 }
 
 .btn:hover{
-background:#ffd54f;
-color:#111;
+  background:#ffd54f;
+  color:#111;
 }
 
 /* SECTION TITLE */
 
 .section-title{
-grid-column:1 / -1;
-margin-top:15px;
-margin-bottom:-5px;
-padding:12px 5px;
-font-size:1.7rem;
-color:#111;
-border-bottom:
-3px solid #ffd54f;
+  grid-column:1 / -1;
+  margin-top:15px;
+  margin-bottom:-5px;
+  padding:12px 5px;
+  font-size:1.7rem;
+  color:#111;
+  border-bottom:3px solid #ffd54f;
 }
 
 /* FOOTER */
 
 footer{
-background:#111;
-color:white;
-text-align:center;
-padding:18px;
-margin-top:40px;
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:18px;
+  margin-top:40px;
+}
+
+/* PASSWORD */
+
+#passwordGate{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:linear-gradient(135deg,#eef3f8,#dfe8f2);
+}
+
+.password-box{
+  width:min(420px,92vw);
+  background:white;
+  padding:32px;
+  border-radius:18px;
+  box-shadow:0 15px 40px rgba(0,0,0,.18);
+  text-align:center;
+}
+
+.password-box h2{
+  margin-bottom:10px;
+}
+
+.password-box p{
+  margin-bottom:18px;
+}
+
+.password-row{
+  position:relative;
+}
+
+.password-row input{
+  width:100%;
+  padding:13px 50px 13px 14px;
+  border:1px solid #bbb;
+  border-radius:10px;
+  font-size:1rem;
+  margin-bottom:12px;
+}
+
+.eye-button{
+  position:absolute;
+  right:8px;
+  top:7px;
+  width:38px;
+  height:38px;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  font-size:1.2rem;
+}
+
+.password-box > button{
+  width:100%;
+  border:0;
+  background:#111;
+  color:white;
+  padding:13px 18px;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.password-box > button:hover{
+  background:#ffd54f;
+  color:#111;
+}
+
+#passwordError{
+  min-height:24px;
+  margin-top:10px;
+  color:#b91c1c;
+  font-weight:bold;
 }
 
 /* MOBILE */
 
 @media(max-width:768px){
 
-header h1{
-font-size:2.2rem;
-}
+  header h1{
+    font-size:2.2rem;
+  }
 
-header p{
-font-size:1rem;
-}
+  header p{
+    font-size:1rem;
+  }
 
-nav a{
-margin:8px 8px;
-}
+  nav a{
+    margin:8px;
+  }
 
-}
-
-/* PASSWORD GATE */
-
-#passwordGate{
-position:fixed;
-inset:0;
-z-index:99999;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px;
-background:linear-gradient(135deg,#eef3f8,#dfe8f2);
-}
-
-.password-box{
-width:min(420px,92vw);
-background:white;
-padding:32px;
-border-radius:18px;
-box-shadow:0 15px 40px rgba(0,0,0,.18);
-text-align:center;
-}
-
-.password-box h2{
-margin-bottom:10px;
-}
-
-.password-box p{
-margin-bottom:18px;
-}
-
-.password-row{
-position:relative;
-}
-
-.password-row input{
-width:100%;
-padding:13px 50px 13px 14px;
-border:1px solid #bbb;
-border-radius:10px;
-font-size:1rem;
-margin-bottom:12px;
-}
-
-.eye-button{
-position:absolute;
-right:8px;
-top:7px;
-width:38px;
-height:38px;
-border:0;
-background:transparent;
-cursor:pointer;
-font-size:1.2rem;
-}
-
-.password-box > button{
-width:100%;
-border:0;
-background:#111;
-color:white;
-padding:13px 18px;
-border-radius:10px;
-font-weight:bold;
-cursor:pointer;
-}
-
-.password-box > button:hover{
-background:#ffd54f;
-color:#111;
-}
-
-#passwordError{
-min-height:24px;
-margin-top:10px;
-color:#b91c1c;
-font-weight:bold;
 }
 
 </style>
 
 </head>
 
+
 <body>
+
+<!-- PASSWORD -->
 
 <div id="passwordGate">
 
-<div class="password-box">
+  <div class="password-box">
 
-<h2>
-🔒 Master Subjects Hub
-</h2>
+    <h2>🔒 Master Subjects Hub</h2>
 
-<p>
-Please enter the password to continue.
-</p>
+    <p>
+      Please enter the password to continue.
+    </p>
 
-<div class="password-row">
+    <div class="password-row">
 
-<input
-id="sitePassword"
-type="password"
-placeholder="Enter password"
-autocomplete="current-password"
-/>
+      <input
+        id="sitePassword"
+        type="password"
+        placeholder="Enter password"
+        autocomplete="current-password"
+      >
 
-<button
-id="togglePassword"
-class="eye-button"
-type="button"
-aria-label="Show password"
-title="Show password">
-👁️
-</button>
+      <button
+        id="togglePassword"
+        class="eye-button"
+        type="button"
+        aria-label="Show password"
+        title="Show password"
+      >
+        👁️
+      </button>
 
-</div>
+    </div>
 
-<button
-id="passwordButton"
-type="button">
+    <button
+      id="passwordButton"
+      type="button"
+    >
+      Enter Website
+    </button>
 
-Enter Website
+    <div id="passwordError"></div>
 
-</button>
-
-<div id="passwordError">
-</div>
-
-</div>
+  </div>
 
 </div>
+
 
 <!-- HEADER -->
 
 <header>
 
-<h1>
-Master Subjects Hub
-</h1>
+  <h1>
+    Master Subjects Hub
+  </h1>
 
-<p>
-Click a subject below to open its own learning page.
-</p>
+  <p>
+    Click a subject below to open its own learning page.
+  </p>
 
 </header>
+
 
 <!-- NAVIGATION -->
 
 <nav>
 
-<a href="./DT.html">
-DT
-</a>
+  <a href="./DT.html">
+    DT
+  </a>
 
-<a href="./A2B.html">
-A2B
-</a>
+  <a href="./A2B.html">
+    A2B
+  </a>
 
-<a href="./History.html">
-History
-</a>
+  <a href="./History.html">
+    History
+  </a>
 
-<a href="./Engineering.html">
-Engineering
-</a>
+  <a href="./Engineering.html">
+    Engineering
+  </a>
 
-<a href="./ICT.html">
-ICT
-</a>
+  <a href="./ICT.html">
+    ICT
+  </a>
 
-<a href="./Maths.html">
-Maths
-</a>
+  <a href="./Maths.html">
+    Maths
+  </a>
 
-<a href="./Biology.html">
-Biology
-</a>
+  <a href="./Biology.html">
+    Biology
+  </a>
 
-<a href="./Chemistry.html">
-Chemistry
-</a>
+  <a href="./Chemistry.html">
+    Chemistry
+  </a>
 
-<a href="./Physics.html">
-Physics
-</a>
+  <a href="./Physics.html">
+    Physics
+  </a>
 
-<a href="./Geography.html">
-Geography
-</a>
+  <a href="./Geography.html">
+    Geography
+  </a>
 
-<a href="./EnglishLiterature.html">
-English Lit
-</a>
+  <a href="./EnglishLiterature.html">
+    English Lit
+  </a>
 
-<a href="./EnglishLanguage.html">
-English Language
-</a>
+  <a href="./EnglishLanguage.html">
+    English Language
+  </a>
 
-<a href="./ClassChartsPro.html">
-ClassCharts Pro
-</a>
+  <a href="./French.html">
+    French
+  </a>
+
+  <a href="./ClassChartsPro.html">
+    ClassCharts Pro
+  </a>
 
 </nav>
+
 
 <div class="container">
 
@@ -426,703 +424,729 @@ ClassCharts Pro
 
 <section class="intro">
 
-<h2>
-Welcome
-</h2>
+  <h2>
+    Welcome
+  </h2>
 
-<p>
-
-This is the main page for all your subjects.
-
-Choose a subject below to open its revision,
-learning and quiz page.
-
-</p>
+  <p>
+    This is the main page for all your subjects.
+    Choose a subject below to open its revision,
+    learning and quiz page.
+  </p>
 
 </section>
 
+
 <section class="grid">
+
 
 <!-- SUBJECTS -->
 
 <h2 class="section-title">
-📚 Subjects
+  📚 Subjects
 </h2>
+
 
 <!-- DT -->
 
 <div class="card">
 
-<div
-class="card-image"
+  <div class="card-image">
 
-style="
-background-image:
-url(
-'https://images.unsplash.com/photo-1519947486511-46149fa0a254?auto=format&fit=crop&w=1200&q=80'
-);
-">
-</div>
+    <img
+      src="https://images.unsplash.com/photo-1519947486511-46149fa0a254?auto=format&fit=crop&w=1200&q=85"
+      alt="Design Technology"
+    >
 
-<div class="card-content">
+  </div>
 
-<h2>
-🛠️ DT
-</h2>
+  <div class="card-content">
 
-<p>
-Design Technology,
-product design and project work.
-</p>
+    <h2>
+      🛠️ DT
+    </h2>
 
-<a
-class="btn"
-href="./DT.html">
+    <p>
+      Design Technology,
+      product design and project work.
+    </p>
 
-Open DT Page
+    <a
+      class="btn"
+      href="./DT.html"
+    >
+      Open DT Page
+    </a>
 
-</a>
-
-</div>
+  </div>
 
 </div>
+
 
 <!-- A2B -->
 
 <div class="card">
 
-<div
-class="card-image"
+  <div class="card-image">
 
-style="
-background-image:
-url(
-'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=80'
-);
-">
-</div>
+    <img
+      src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=85"
+      alt="A2B"
+    >
 
-<div class="card-content">
+  </div>
 
-<h2>
-💻 A2B
-</h2>
+  <div class="card-content">
 
-<p>
-Online safety,
-digital skills and responsible use of technology.
-</p>
+    <h2>
+      💻 A2B
+    </h2>
 
-<a
-class="btn"
-href="./A2B.html">
+    <p>
+      Online safety,
+      digital skills and responsible use of technology.
+    </p>
 
-Open A2B Page
+    <a
+      class="btn"
+      href="./A2B.html"
+    >
+      Open A2B Page
+    </a>
 
-</a>
-
-</div>
+  </div>
 
 </div>
+
 
 <!-- HISTORY -->
 
 <div class="card">
 
-<div
-class="card-image"
+  <div class="card-image">
 
-style="
-background-image:
-url(
-'https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1400&q=80'
-);
-">
-</div>
+    <img
+      src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1400&q=85"
+      alt="History"
+    >
 
-<div class="card-content">
+  </div>
 
-<h2>
-🏛️ History
-</h2>
+  <div class="card-content">
 
-<p>
-Historical topics,
-revision and adaptive quizzes.
-</p>
+    <h2>
+      🏛️ History
+    </h2>
 
-<a
-class="btn"
-href="./History.html">
+    <p>
+      Historical topics,
+      revision and adaptive quizzes.
+    </p>
 
-Open History Page
+    <a
+      class="btn"
+      href="./History.html"
+    >
+      Open History Page
+    </a>
 
-</a>
-
-</div>
+  </div>
 
 </div>
+
 
 <!-- ENGINEERING -->
 
 <div class="card">
 
-<div
-class="card-image"
+  <div class="card-image">
 
-style="
-background-image:
-url(
-'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=80'
-);
-">
-</div>
+    <img
+      src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=85"
+      alt="Engineering"
+    >
 
-<div class="card-content">
+  </div>
 
-<h2>
-⚙️ Engineering
-</h2>
+  <div class="card-content">
 
-<p>
-Engineering concepts,
-design and problem solving.
-</p>
+    <h2>
+      ⚙️ Engineering
+    </h2>
 
-<a
-class="btn"
-href="./Engineering.html">
+    <p>
+      Engineering concepts,
+      design and problem solving.
+    </p>
 
-Open Engineering Page
+    <a
+      class="btn"
+      href="./Engineering.html"
+    >
+      Open Engineering Page
+    </a>
 
-</a>
-
-</div>
+  </div>
 
 </div>
+
 
 <!-- ICT -->
 
 <div class="card">
 
-<div
-class="card-image"
+  <div class="card-image">
 
-style="
-background-image:
-url(
-'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80'
-);
-">
-</div>
+    <img
+      src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=85"
+      alt="ICT"
+    >
 
-<div class="card-content">
+  </div>
 
-<h2>
-🖥️ ICT
-</h2>
+  <div class="card-content">
 
-<p>
-Computing,
-ICT and digital technology.
-</p>
+    <h2>
+      🖥️ ICT
+    </h2>
 
-<a
-class="btn"
-href="./ICT.html">
+    <p>
+      Computing,
+      ICT and digital technology.
+    </p>
 
-Open ICT Page
+    <a
+      class="btn"
+      href="./ICT.html"
+    >
+      Open ICT Page
+    </a>
 
-</a>
-
-</div>
+  </div>
 
 </div>
+
 
 <!-- MATHS -->
 
 <div class="card">
 
-<div
-class="card-image"
+  <div class="card-image">
 
-style="
-background-image:
-url(
-'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1400&q=80'
-);
-">
-</div>
+    <img
+      src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1400&q=85"
+      alt="Maths"
+    >
 
-<div class="card-content">
+  </div>
 
-<h2>
-➗ Maths
-</h2>
+  <div class="card-content">
 
-<p>
-GCSE Higher, A-Level and Mechanics Maths
-with quizzes, explanations and achievements.
-</p>
+    <h2>
+      ➗ Maths
+    </h2>
 
-<a
-class="btn"
-href="./Maths.html">
+    <p>
+      GCSE Higher, A-Level and Mechanics Maths
+      with quizzes, explanations and achievements.
+    </p>
 
-Open Maths Page
+    <a
+      class="btn"
+      href="./Maths.html"
+    >
+      Open Maths Page
+    </a>
 
-</a>
-
-</div>
+  </div>
 
 </div>
 
-<!-- SCIENCE -->
+
+<!-- SCIENCES -->
 
 <h2 class="section-title">
-🔬 Sciences
+  🔬 Sciences
 </h2>
+
 
 <!-- BIOLOGY -->
 
 <div class="card">
 
-<div
-class="card-image"
+  <div class="card-image">
 
-style="
-background-image:
-url(
-'https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=1200&q=80'
-);
-background-size:cover;
-background-position:center;
-">
-</div>
+    <img
+      src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=1400&q=85"
+      alt="Biology"
+    >
 
-<div class="card-content">
+  </div>
 
-<h2>
-🧬 Biology
-</h2>
+  <div class="card-content">
 
-<p>
-Cells, organisation,
-bioenergetics, homeostasis,
-genetics and ecology.
-</p>
+    <h2>
+      🧬 Biology
+    </h2>
 
-<a
-class="btn"
-href="./Biology.html">
+    <p>
+      Cells, organisation,
+      bioenergetics, homeostasis,
+      genetics and ecology.
+    </p>
 
-Open Biology Page
+    <a
+      class="btn"
+      href="./Biology.html"
+    >
+      Open Biology Page
+    </a>
 
-</a>
+  </div>
 
 </div>
 
-</div>
 
 <!-- CHEMISTRY -->
 
 <div class="card">
 
-<div
-class="card-image"
+  <div class="card-image">
 
-style="
-background-image:
-url(
-'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=80'
-);
-background-size:cover;
-background-position:center;
-">
-</div>
+    <img
+      src="https://images.unsplash.com/photo-1532634993-15f421e42ec0?auto=format&fit=crop&w=1400&q=85"
+      alt="Chemistry"
+    >
 
-<div class="card-content">
+  </div>
 
-<h2>
-⚗️ Chemistry
-</h2>
+  <div class="card-content">
 
-<p>
-Atomic structure,
-bonding, reactions,
-organic chemistry and analysis.
-</p>
+    <h2>
+      ⚗️ Chemistry
+    </h2>
 
-<a
-class="btn"
-href="./Chemistry.html">
+    <p>
+      Atomic structure,
+      bonding, reactions,
+      organic chemistry and analysis.
+    </p>
 
-Open Chemistry Page
+    <a
+      class="btn"
+      href="./Chemistry.html"
+    >
+      Open Chemistry Page
+    </a>
 
-</a>
+  </div>
 
 </div>
 
-</div>
 
 <!-- PHYSICS -->
 
 <div class="card">
 
-<div
-class="card-image"
+  <div class="card-image">
 
-style="
-background-image:
-url(
-'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1200&q=80'
-);
-background-size:cover;
-background-position:center;
-">
-</div>
+    <img
+      src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1400&q=85"
+      alt="Physics"
+    >
 
-<div class="card-content">
+  </div>
 
-<h2>
-⚛️ Physics
-</h2>
+  <div class="card-content">
 
-<p>
-Energy, electricity,
-forces, waves,
-atomic physics and space.
-</p>
+    <h2>
+      ⚛️ Physics
+    </h2>
 
-<a
-class="btn"
-href="./Physics.html">
+    <p>
+      Energy, electricity,
+      forces, waves,
+      atomic physics and space.
+    </p>
 
-Open Physics Page
+    <a
+      class="btn"
+      href="./Physics.html"
+    >
+      Open Physics Page
+    </a>
 
-</a>
+  </div>
 
 </div>
 
-</div>
 
 <!-- HUMANITIES -->
 
 <h2 class="section-title">
-🌍 Humanities
+  🌍 Humanities
 </h2>
+
 
 <!-- GEOGRAPHY -->
 
 <div class="card">
 
-<div
-class="card-image"
+  <div class="card-image">
 
-style="
-background-image:
-url(
-'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80'
-);
-background-size:cover;
-background-position:center;
-">
-</div>
+    <img
+      src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1400&q=85"
+      alt="Geography"
+    >
 
-<div class="card-content">
+  </div>
 
-<h2>
-🌍 Geography
-</h2>
+  <div class="card-content">
 
-<p>
-Natural hazards,
-ecosystems, coasts,
-rivers, cities and fieldwork.
-</p>
+    <h2>
+      🌍 Geography
+    </h2>
 
-<a
-class="btn"
-href="./Geography.html">
+    <p>
+      Natural hazards,
+      ecosystems, coasts,
+      rivers, cities and fieldwork.
+    </p>
 
-Open Geography Page
+    <a
+      class="btn"
+      href="./Geography.html"
+    >
+      Open Geography Page
+    </a>
 
-</a>
+  </div>
 
 </div>
 
-</div>
 
 <!-- ENGLISH -->
 
 <h2 class="section-title">
-✍️ English
+  ✍️ English
 </h2>
+
 
 <!-- ENGLISH LITERATURE -->
 
 <div class="card">
 
-<div
-class="card-image"
+  <div class="card-image">
 
-style="
-background-image:
-url(
-'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1200&q=80'
-);
-background-size:cover;
-background-position:center;
-">
-</div>
+    <img
+      src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1400&q=85"
+      alt="English Literature"
+    >
 
-<div class="card-content">
+  </div>
 
-<h2>
-📚 English Literature
-</h2>
+  <div class="card-content">
 
-<p>
-Shakespeare,
-novels, modern texts,
-poetry and literary analysis.
-</p>
+    <h2>
+      📚 English Literature
+    </h2>
 
-<a
-class="btn"
-href="./EnglishLiterature.html">
+    <p>
+      Shakespeare,
+      novels, modern texts,
+      poetry and literary analysis.
+    </p>
 
-Open English Literature
+    <a
+      class="btn"
+      href="./EnglishLiterature.html"
+    >
+      Open English Literature
+    </a>
 
-</a>
+  </div>
 
 </div>
 
-</div>
 
 <!-- ENGLISH LANGUAGE -->
 
 <div class="card">
 
-<div
-class="card-image"
+  <div class="card-image">
 
-style="
-background-image:
-url(
-'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80'
-);
-background-size:cover;
-background-position:center;
-">
+    <img
+      src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1400&q=85"
+      alt="English Language"
+    >
+
+  </div>
+
+  <div class="card-content">
+
+    <h2>
+      ✍️ English Language
+    </h2>
+
+    <p>
+      Reading,
+      language analysis,
+      structure, creative writing
+      and transactional writing.
+    </p>
+
+    <a
+      class="btn"
+      href="./EnglishLanguage.html"
+    >
+      Open English Language
+    </a>
+
+  </div>
+
 </div>
 
-<div class="card-content">
 
-<h2>
-✍️ English Language
+<!-- LANGUAGES -->
+
+<h2 class="section-title">
+  🌐 Languages
 </h2>
 
-<p>
-Reading,
-language analysis,
-structure, creative writing
-and transactional writing.
-</p>
 
-<a
-class="btn"
-href="./EnglishLanguage.html">
+<!-- FRENCH -->
 
-Open English Language
+<div class="card">
 
-</a>
+  <div class="card-image">
+
+    <img
+      src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1400&q=85"
+      alt="French Paris"
+    >
+
+  </div>
+
+  <div class="card-content">
+
+    <h2>
+      🇫🇷 French
+    </h2>
+
+    <p>
+      AQA GCSE French Foundation and Higher,
+      vocabulary, grammar, reading, writing,
+      listening, speaking and quizzes.
+    </p>
+
+    <a
+      class="btn"
+      href="./French.html"
+    >
+      Open French Page
+    </a>
+
+  </div>
 
 </div>
 
-</div>
 
 <!-- SCHOOL TOOLS -->
 
 <h2 class="section-title">
-🏆 School Tools
+  🏆 School Tools
 </h2>
+
 
 <!-- CLASSCHARTS PRO -->
 
 <div class="card">
 
-<div
-class="card-image"
+  <div class="card-image">
 
-style="
-background-image:
-url(
-'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80'
-);
-">
-</div>
+    <img
+      src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=85"
+      alt="Students"
+    >
 
-<div class="card-content">
+  </div>
 
-<h2>
-🏆 ClassCharts Pro
-</h2>
+  <div class="card-content">
 
-<p>
-Professional behaviour tracking,
-achievement points, rewards,
-teacher comments and student progress.
-</p>
+    <h2>
+      🏆 ClassCharts Pro
+    </h2>
 
-<a
-class="btn"
-href="./ClassChartsPro.html">
+    <p>
+      Professional behaviour tracking,
+      achievement points, rewards,
+      teacher comments and student progress.
+    </p>
 
-Open ClassCharts Pro
+    <a
+      class="btn"
+      href="./ClassChartsPro.html"
+    >
+      Open ClassCharts Pro
+    </a>
 
-</a>
-
-</div>
+  </div>
 
 </div>
+
 
 </section>
 
 </div>
 
+
 <footer>
 
-© 2026 Master Subjects Hub
+  © 2026 Master Subjects Hub
 
 </footer>
 
+
 <script>
 
-(function () {
+(function(){
 
-const PASSWORD = "Study2026!";
+  const PASSWORD =
+  "Study2026!";
 
-const gate =
-document.getElementById("passwordGate");
+  const gate =
+  document.getElementById(
+    "passwordGate"
+  );
 
-const input =
-document.getElementById("sitePassword");
+  const input =
+  document.getElementById(
+    "sitePassword"
+  );
 
-const enterButton =
-document.getElementById("passwordButton");
+  const enterButton =
+  document.getElementById(
+    "passwordButton"
+  );
 
-const toggleButton =
-document.getElementById("togglePassword");
+  const toggleButton =
+  document.getElementById(
+    "togglePassword"
+  );
 
-const error =
-document.getElementById("passwordError");
-
-
-function unlockWebsite(){
-
-if(input.value === PASSWORD){
-
-sessionStorage.setItem(
-"masterSubjectsUnlocked",
-"yes"
-);
-
-gate.style.display =
-"none";
-
-error.textContent =
-"";
-
-}
-
-else{
-
-error.textContent =
-"Incorrect password. Please try again.";
-
-input.focus();
-
-input.select();
-
-}
-
-}
+  const error =
+  document.getElementById(
+    "passwordError"
+  );
 
 
-function togglePasswordVisibility(){
+  function unlockWebsite(){
 
-const showing =
-input.type === "text";
+    if(
+      input.value === PASSWORD
+    ){
 
-input.type =
-showing
-? "password"
-: "text";
+      sessionStorage.setItem(
+        "masterSubjectsUnlocked",
+        "yes"
+      );
 
-toggleButton.textContent =
-showing
-? "👁️"
-: "🙈";
+      gate.style.display =
+      "none";
 
-toggleButton.setAttribute(
-"aria-label",
-showing
-? "Show password"
-: "Hide password"
-);
+      error.textContent =
+      "";
 
-toggleButton.title =
-showing
-? "Show password"
-: "Hide password";
+    }
 
-input.focus();
+    else{
 
-}
+      error.textContent =
+      "Incorrect password. Please try again.";
 
+      input.focus();
 
-if(
-sessionStorage.getItem(
-"masterSubjectsUnlocked"
-) === "yes"
-){
+      input.select();
 
-gate.style.display =
-"none";
+    }
 
-}
+  }
 
 
-enterButton.addEventListener(
-"click",
-unlockWebsite
-);
+  function togglePasswordVisibility(){
+
+    const showing =
+    input.type === "text";
+
+    input.type =
+    showing
+    ? "password"
+    : "text";
+
+    toggleButton.textContent =
+    showing
+    ? "👁️"
+    : "🙈";
+
+    toggleButton.setAttribute(
+      "aria-label",
+      showing
+      ? "Show password"
+      : "Hide password"
+    );
+
+    toggleButton.title =
+    showing
+    ? "Show password"
+    : "Hide password";
+
+    input.focus();
+
+  }
 
 
-toggleButton.addEventListener(
-"click",
-togglePasswordVisibility
-);
+  if(
+    sessionStorage.getItem(
+      "masterSubjectsUnlocked"
+    ) === "yes"
+  ){
+
+    gate.style.display =
+    "none";
+
+  }
 
 
-input.addEventListener(
-"keydown",
-function(event){
+  enterButton.addEventListener(
+    "click",
+    unlockWebsite
+  );
 
-if(event.key === "Enter"){
 
-unlockWebsite();
+  toggleButton.addEventListener(
+    "click",
+    togglePasswordVisibility
+  );
 
-}
 
-}
-);
+  input.addEventListener(
+    "keydown",
+    function(event){
+
+      if(
+        event.key === "Enter"
+      ){
+
+        unlockWebsite();
+
+      }
+
+    }
+  );
 
 })();
 
 </script>
 
 </body>
-
 </html>
