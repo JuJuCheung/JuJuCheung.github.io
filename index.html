@@ -10,7 +10,6 @@ content="width=device-width, initial-scale=1.0" />
 
 <title>Master Subjects Hub</title>
 
-
 <style>
 
 *{
@@ -20,545 +19,301 @@ box-sizing:border-box;
 font-family:Arial,sans-serif;
 }
 
-
 body{
-
 background:
 linear-gradient(
 135deg,
 #eef3f8,
 #dfe8f2
 );
-
 color:#222;
-
 line-height:1.6;
-
 }
-
 
 /* HEADER */
 
 header{
-
 background:
-
 linear-gradient(
 rgba(0,0,0,.6),
 rgba(0,0,0,.6)
 ),
-
 url(
 "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1400&q=80"
 )
-
 center/cover no-repeat;
 
 color:white;
-
 text-align:center;
-
 padding:90px 20px;
-
 }
-
 
 header h1{
-
 font-size:3rem;
-
 margin-bottom:10px;
-
 }
-
 
 header p{
-
 font-size:1.15rem;
-
 }
-
 
 /* NAVIGATION */
 
 nav{
-
 background:#111;
-
 text-align:center;
-
 padding:15px;
-
 position:sticky;
-
 top:0;
-
 z-index:999;
-
 }
-
 
 nav a{
-
 color:white;
-
 text-decoration:none;
-
 margin:0 10px;
-
 font-weight:bold;
-
 transition:.3s;
-
 display:inline-block;
-
 }
-
 
 nav a:hover{
-
 color:#ffd54f;
-
 }
-
 
 /* MAIN */
 
 .container{
-
 width:90%;
-
 max-width:1200px;
-
 margin:40px auto;
-
 }
-
 
 /* INTRO */
 
 .intro{
-
 background:white;
-
 padding:30px;
-
 border-radius:18px;
-
 box-shadow:
 0 8px 20px
 rgba(0,0,0,.08);
-
 margin-bottom:30px;
-
 text-align:center;
-
 }
-
 
 .intro h2{
-
 margin-bottom:10px;
-
 }
-
 
 /* GRID */
 
 .grid{
-
 display:grid;
-
 grid-template-columns:
 repeat(
 auto-fit,
 minmax(280px,1fr)
 );
-
 gap:25px;
-
 }
-
 
 /* CARDS */
 
 .card{
-
 background:white;
-
 border-radius:18px;
-
 overflow:hidden;
-
 box-shadow:
 0 8px 20px
 rgba(0,0,0,.08);
-
 transition:.3s;
-
 }
 
-
 .card:hover{
-
 transform:
 translateY(-8px);
 
 box-shadow:
 0 15px 30px
 rgba(0,0,0,.15);
-
 }
-
 
 .card-image{
-
-position:relative;
-
 height:200px;
-
-overflow:hidden;
-
-background:#e9edf2;
-
+background-size:cover;
+background-position:center;
 }
-
-
-.card-image img{
-
-width:100%;
-
-height:100%;
-
-object-fit:cover;
-
-display:block;
-
-}
-
-
-.card-image .fallback-picture{
-
-width:100%;
-
-height:100%;
-
-display:none;
-
-}
-
-
-.card-image .subject-colour-overlay{
-
-position:absolute;
-
-inset:0;
-
-pointer-events:none;
-
-}
-
 
 .card-content{
-
 padding:22px;
-
 }
-
 
 .card-content h2{
-
 margin-bottom:10px;
-
 color:#111;
-
 }
-
 
 .card-content p{
-
 margin-bottom:18px;
-
 }
-
 
 /* BUTTON */
 
 .btn{
-
 display:inline-block;
-
 background:#111;
-
 color:white;
-
 text-decoration:none;
-
 padding:12px 18px;
-
 border-radius:10px;
-
 font-weight:bold;
-
 transition:.3s;
-
 }
-
 
 .btn:hover{
-
 background:#ffd54f;
-
 color:#111;
-
 }
-
 
 /* SECTION TITLE */
 
 .section-title{
-
 grid-column:1 / -1;
-
 margin-top:15px;
-
 margin-bottom:-5px;
-
 padding:12px 5px;
-
 font-size:1.7rem;
-
 color:#111;
-
 border-bottom:
 3px solid #ffd54f;
-
 }
-
 
 /* FOOTER */
 
 footer{
-
 background:#111;
-
 color:white;
-
 text-align:center;
-
 padding:18px;
-
 margin-top:40px;
-
 }
-
 
 /* MOBILE */
 
 @media(max-width:768px){
 
 header h1{
-
 font-size:2.2rem;
-
 }
-
 
 header p{
-
 font-size:1rem;
-
 }
-
 
 nav a{
-
 margin:8px 8px;
-
 }
 
 }
-
 
 /* PASSWORD GATE */
 
 #passwordGate{
-
 position:fixed;
-
 inset:0;
-
 z-index:99999;
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
 padding:20px;
-
-background:
-linear-gradient(
-135deg,
-#eef3f8,
-#dfe8f2
-);
-
+background:linear-gradient(135deg,#eef3f8,#dfe8f2);
 }
-
 
 .password-box{
-
 width:min(420px,92vw);
-
 background:white;
-
 padding:32px;
-
 border-radius:18px;
-
-box-shadow:
-0 15px 40px
-rgba(0,0,0,.18);
-
+box-shadow:0 15px 40px rgba(0,0,0,.18);
 text-align:center;
-
 }
-
 
 .password-box h2{
-
 margin-bottom:10px;
-
 }
-
 
 .password-box p{
-
 margin-bottom:18px;
-
 }
-
 
 .password-row{
-
 position:relative;
-
 }
-
 
 .password-row input{
-
 width:100%;
-
-padding:
-13px 50px 13px 14px;
-
-border:
-1px solid #bbb;
-
+padding:13px 50px 13px 14px;
+border:1px solid #bbb;
 border-radius:10px;
-
 font-size:1rem;
-
 margin-bottom:12px;
-
 }
-
 
 .eye-button{
-
 position:absolute;
-
 right:8px;
-
 top:7px;
-
 width:38px;
-
 height:38px;
-
 border:0;
-
 background:transparent;
-
 cursor:pointer;
-
 font-size:1.2rem;
-
 }
-
 
 .password-box > button{
-
 width:100%;
-
 border:0;
-
 background:#111;
-
 color:white;
-
 padding:13px 18px;
-
 border-radius:10px;
-
 font-weight:bold;
-
 cursor:pointer;
-
 }
-
 
 .password-box > button:hover{
-
 background:#ffd54f;
-
 color:#111;
-
 }
 
-
 #passwordError{
-
 min-height:24px;
-
 margin-top:10px;
-
 color:#b91c1c;
-
 font-weight:bold;
-
 }
 
 </style>
 
 </head>
 
-
-
 <body>
-
 
 <div id="passwordGate">
 
-
 <div class="password-box">
-
 
 <h2>
 🔒 Master Subjects Hub
 </h2>
 
-
 <p>
 Please enter the password to continue.
 </p>
 
-
 <div class="password-row">
-
 
 <input
 id="sitePassword"
@@ -567,21 +322,16 @@ placeholder="Enter password"
 autocomplete="current-password"
 />
 
-
 <button
 id="togglePassword"
 class="eye-button"
 type="button"
 aria-label="Show password"
 title="Show password">
-
 👁️
-
 </button>
 
-
 </div>
-
 
 <button
 id="passwordButton"
@@ -591,190 +341,128 @@ Enter Website
 
 </button>
 
-
 <div id="passwordError">
 </div>
 
-
 </div>
 
-
 </div>
-
-
 
 <!-- HEADER -->
 
-
 <header>
-
 
 <h1>
 Master Subjects Hub
 </h1>
 
-
 <p>
 Click a subject below to open its own learning page.
 </p>
 
-
 </header>
-
-
 
 <!-- NAVIGATION -->
 
-
 <nav>
-
 
 <a href="./DT.html">
 DT
 </a>
 
-
 <a href="./A2B.html">
 A2B
 </a>
-
 
 <a href="./History.html">
 History
 </a>
 
-
 <a href="./Engineering.html">
 Engineering
 </a>
-
 
 <a href="./ICT.html">
 ICT
 </a>
 
-
 <a href="./Maths.html">
 Maths
 </a>
-
 
 <a href="./Biology.html">
 Biology
 </a>
 
-
 <a href="./Chemistry.html">
 Chemistry
 </a>
-
 
 <a href="./Physics.html">
 Physics
 </a>
 
-
 <a href="./Geography.html">
 Geography
 </a>
-
 
 <a href="./EnglishLiterature.html">
 English Lit
 </a>
 
-
 <a href="./EnglishLanguage.html">
 English Language
 </a>
-
-
-<a href="./French.html">
-French
-</a>
-
 
 <a href="./ClassChartsPro.html">
 ClassCharts Pro
 </a>
 
-
 </nav>
-
-
 
 <div class="container">
 
-
 <!-- INTRO -->
 
-
 <section class="intro">
-
 
 <h2>
 Welcome
 </h2>
 
-
 <p>
+
 This is the main page for all your subjects.
+
 Choose a subject below to open its revision,
 learning and quiz page.
-</p>
 
+</p>
 
 </section>
 
-
-
 <section class="grid">
 
-
+<!-- SUBJECTS -->
 
 <h2 class="section-title">
 📚 Subjects
 </h2>
 
-
-
 <!-- DT -->
-
 
 <div class="card">
 
-<div class="card-image">
+<div
+class="card-image"
 
-<svg
-class="fallback-picture"
-style="display:block"
-viewBox="0 0 600 300"
-xmlns="http://www.w3.org/2000/svg">
-
-<rect width="600" height="300" fill="#6c757d"/>
-
-<text
-x="300"
-y="150"
-text-anchor="middle"
-font-size="92">
-🛠️
-</text>
-
-<text
-x="300"
-y="260"
-text-anchor="middle"
-font-size="26"
-fill="white"
-font-weight="700">
-DT
-</text>
-
-</svg>
-
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1519947486511-46149fa0a254?auto=format&fit=crop&w=1200&q=80'
+);
+">
 </div>
-
 
 <div class="card-content">
 
@@ -799,45 +487,20 @@ Open DT Page
 
 </div>
 
-
-
 <!-- A2B -->
-
 
 <div class="card">
 
-<div class="card-image">
+<div
+class="card-image"
 
-<svg
-class="fallback-picture"
-style="display:block"
-viewBox="0 0 600 300"
-xmlns="http://www.w3.org/2000/svg">
-
-<rect width="600" height="300" fill="#52796f"/>
-
-<text
-x="300"
-y="150"
-text-anchor="middle"
-font-size="92">
-💻
-</text>
-
-<text
-x="300"
-y="260"
-text-anchor="middle"
-font-size="26"
-fill="white"
-font-weight="700">
-A2B
-</text>
-
-</svg>
-
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=80'
+);
+">
 </div>
-
 
 <div class="card-content">
 
@@ -862,45 +525,20 @@ Open A2B Page
 
 </div>
 
-
-
 <!-- HISTORY -->
-
 
 <div class="card">
 
-<div class="card-image">
+<div
+class="card-image"
 
-<svg
-class="fallback-picture"
-style="display:block"
-viewBox="0 0 600 300"
-xmlns="http://www.w3.org/2000/svg">
-
-<rect width="600" height="300" fill="#8d6e63"/>
-
-<text
-x="300"
-y="150"
-text-anchor="middle"
-font-size="92">
-🏛️
-</text>
-
-<text
-x="300"
-y="260"
-text-anchor="middle"
-font-size="26"
-fill="white"
-font-weight="700">
-HISTORY
-</text>
-
-</svg>
-
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1400&q=80'
+);
+">
 </div>
-
 
 <div class="card-content">
 
@@ -925,45 +563,20 @@ Open History Page
 
 </div>
 
-
-
 <!-- ENGINEERING -->
-
 
 <div class="card">
 
-<div class="card-image">
+<div
+class="card-image"
 
-<svg
-class="fallback-picture"
-style="display:block"
-viewBox="0 0 600 300"
-xmlns="http://www.w3.org/2000/svg">
-
-<rect width="600" height="300" fill="#6b7280"/>
-
-<text
-x="300"
-y="150"
-text-anchor="middle"
-font-size="92">
-⚙️
-</text>
-
-<text
-x="300"
-y="260"
-text-anchor="middle"
-font-size="26"
-fill="white"
-font-weight="700">
-ENGINEERING
-</text>
-
-</svg>
-
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=80'
+);
+">
 </div>
-
 
 <div class="card-content">
 
@@ -988,45 +601,20 @@ Open Engineering Page
 
 </div>
 
-
-
 <!-- ICT -->
-
 
 <div class="card">
 
-<div class="card-image">
+<div
+class="card-image"
 
-<svg
-class="fallback-picture"
-style="display:block"
-viewBox="0 0 600 300"
-xmlns="http://www.w3.org/2000/svg">
-
-<rect width="600" height="300" fill="#2563eb"/>
-
-<text
-x="300"
-y="150"
-text-anchor="middle"
-font-size="92">
-🖥️
-</text>
-
-<text
-x="300"
-y="260"
-text-anchor="middle"
-font-size="26"
-fill="white"
-font-weight="700">
-ICT
-</text>
-
-</svg>
-
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80'
+);
+">
 </div>
-
 
 <div class="card-content">
 
@@ -1051,45 +639,20 @@ Open ICT Page
 
 </div>
 
-
-
 <!-- MATHS -->
-
 
 <div class="card">
 
-<div class="card-image">
+<div
+class="card-image"
 
-<svg
-class="fallback-picture"
-style="display:block"
-viewBox="0 0 600 300"
-xmlns="http://www.w3.org/2000/svg">
-
-<rect width="600" height="300" fill="#455a64"/>
-
-<text
-x="300"
-y="150"
-text-anchor="middle"
-font-size="92">
-➗
-</text>
-
-<text
-x="300"
-y="260"
-text-anchor="middle"
-font-size="26"
-fill="white"
-font-weight="700">
-MATHS
-</text>
-
-</svg>
-
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1400&q=80'
+);
+">
 </div>
-
 
 <div class="card-content">
 
@@ -1098,7 +661,7 @@ MATHS
 </h2>
 
 <p>
-A-Level and university-level Maths
+GCSE Higher, A-Level and Mechanics Maths
 with quizzes, explanations and achievements.
 </p>
 
@@ -1114,54 +677,28 @@ Open Maths Page
 
 </div>
 
-
-
-<!-- SCIENCES -->
-
+<!-- SCIENCE -->
 
 <h2 class="section-title">
 🔬 Sciences
 </h2>
 
-
-
 <!-- BIOLOGY -->
-
 
 <div class="card">
 
-<div class="card-image">
+<div
+class="card-image"
 
-<svg
-class="fallback-picture"
-style="display:block"
-viewBox="0 0 600 300"
-xmlns="http://www.w3.org/2000/svg">
-
-<rect width="600" height="300" fill="#22c55e"/>
-
-<text
-x="300"
-y="150"
-text-anchor="middle"
-font-size="92">
-🧬
-</text>
-
-<text
-x="300"
-y="260"
-text-anchor="middle"
-font-size="26"
-fill="white"
-font-weight="700">
-BIOLOGY
-</text>
-
-</svg>
-
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=1200&q=80'
+);
+background-size:cover;
+background-position:center;
+">
 </div>
-
 
 <div class="card-content">
 
@@ -1187,45 +724,22 @@ Open Biology Page
 
 </div>
 
-
-
 <!-- CHEMISTRY -->
-
 
 <div class="card">
 
-<div class="card-image">
+<div
+class="card-image"
 
-<svg
-class="fallback-picture"
-style="display:block"
-viewBox="0 0 600 300"
-xmlns="http://www.w3.org/2000/svg">
-
-<rect width="600" height="300" fill="#9333ea"/>
-
-<text
-x="300"
-y="150"
-text-anchor="middle"
-font-size="92">
-⚗️
-</text>
-
-<text
-x="300"
-y="260"
-text-anchor="middle"
-font-size="26"
-fill="white"
-font-weight="700">
-CHEMISTRY
-</text>
-
-</svg>
-
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=80'
+);
+background-size:cover;
+background-position:center;
+">
 </div>
-
 
 <div class="card-content">
 
@@ -1251,45 +765,22 @@ Open Chemistry Page
 
 </div>
 
-
-
 <!-- PHYSICS -->
-
 
 <div class="card">
 
-<div class="card-image">
+<div
+class="card-image"
 
-<svg
-class="fallback-picture"
-style="display:block"
-viewBox="0 0 600 300"
-xmlns="http://www.w3.org/2000/svg">
-
-<rect width="600" height="300" fill="#3b82f6"/>
-
-<text
-x="300"
-y="150"
-text-anchor="middle"
-font-size="92">
-⚛️
-</text>
-
-<text
-x="300"
-y="260"
-text-anchor="middle"
-font-size="26"
-fill="white"
-font-weight="700">
-PHYSICS
-</text>
-
-</svg>
-
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1200&q=80'
+);
+background-size:cover;
+background-position:center;
+">
 </div>
-
 
 <div class="card-content">
 
@@ -1315,54 +806,28 @@ Open Physics Page
 
 </div>
 
-
-
 <!-- HUMANITIES -->
-
 
 <h2 class="section-title">
 🌍 Humanities
 </h2>
 
-
-
 <!-- GEOGRAPHY -->
-
 
 <div class="card">
 
-<div class="card-image">
+<div
+class="card-image"
 
-<svg
-class="fallback-picture"
-style="display:block"
-viewBox="0 0 600 300"
-xmlns="http://www.w3.org/2000/svg">
-
-<rect width="600" height="300" fill="#10b981"/>
-
-<text
-x="300"
-y="150"
-text-anchor="middle"
-font-size="92">
-🌍
-</text>
-
-<text
-x="300"
-y="260"
-text-anchor="middle"
-font-size="26"
-fill="white"
-font-weight="700">
-GEOGRAPHY
-</text>
-
-</svg>
-
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80'
+);
+background-size:cover;
+background-position:center;
+">
 </div>
-
 
 <div class="card-content">
 
@@ -1388,54 +853,28 @@ Open Geography Page
 
 </div>
 
-
-
 <!-- ENGLISH -->
-
 
 <h2 class="section-title">
 ✍️ English
 </h2>
 
-
-
 <!-- ENGLISH LITERATURE -->
-
 
 <div class="card">
 
-<div class="card-image">
+<div
+class="card-image"
 
-<svg
-class="fallback-picture"
-style="display:block"
-viewBox="0 0 600 300"
-xmlns="http://www.w3.org/2000/svg">
-
-<rect width="600" height="300" fill="#c2410c"/>
-
-<text
-x="300"
-y="150"
-text-anchor="middle"
-font-size="92">
-📚
-</text>
-
-<text
-x="300"
-y="260"
-text-anchor="middle"
-font-size="26"
-fill="white"
-font-weight="700">
-ENGLISH LITERATURE
-</text>
-
-</svg>
-
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1200&q=80'
+);
+background-size:cover;
+background-position:center;
+">
 </div>
-
 
 <div class="card-content">
 
@@ -1461,45 +900,22 @@ Open English Literature
 
 </div>
 
-
-
 <!-- ENGLISH LANGUAGE -->
-
 
 <div class="card">
 
-<div class="card-image">
+<div
+class="card-image"
 
-<svg
-class="fallback-picture"
-style="display:block"
-viewBox="0 0 600 300"
-xmlns="http://www.w3.org/2000/svg">
-
-<rect width="600" height="300" fill="#e11d48"/>
-
-<text
-x="300"
-y="150"
-text-anchor="middle"
-font-size="92">
-✍️
-</text>
-
-<text
-x="300"
-y="260"
-text-anchor="middle"
-font-size="26"
-fill="white"
-font-weight="700">
-ENGLISH LANGUAGE
-</text>
-
-</svg>
-
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80'
+);
+background-size:cover;
+background-position:center;
+">
 </div>
-
 
 <div class="card-content">
 
@@ -1526,169 +942,26 @@ Open English Language
 
 </div>
 
-
-
-<!-- LANGUAGES -->
-
-
-<h2 class="section-title">
-🌐 Languages
-</h2>
-
-
-
-<!-- FRENCH -->
-
-
-<div class="card">
-
-<div class="card-image">
-
-<svg
-class="fallback-picture"
-style="display:block"
-viewBox="0 0 600 300"
-xmlns="http://www.w3.org/2000/svg">
-
-<defs>
-
-<linearGradient
-id="frenchGradient"
-x1="0"
-x2="1">
-
-<stop
-offset="0%"
-stop-color="#0055A4"/>
-
-<stop
-offset="50%"
-stop-color="#ffffff"/>
-
-<stop
-offset="100%"
-stop-color="#EF4135"/>
-
-</linearGradient>
-
-</defs>
-
-
-<rect
-width="600"
-height="300"
-fill="url(#frenchGradient)"
-/>
-
-
-<circle
-cx="300"
-cy="125"
-r="78"
-fill="rgba(255,255,255,.35)"
-/>
-
-
-<text
-x="300"
-y="150"
-text-anchor="middle"
-font-size="92">
-🇫🇷
-</text>
-
-
-<text
-x="300"
-y="260"
-text-anchor="middle"
-font-size="26"
-fill="#111"
-font-weight="700">
-
-FRENCH
-
-</text>
-
-</svg>
-
-</div>
-
-
-<div class="card-content">
-
-<h2>
-🇫🇷 French
-</h2>
-
-
-<p>
-AQA GCSE French Foundation and Higher,
-vocabulary, grammar, listening,
-speaking, reading, writing and quizzes.
-</p>
-
-
-<a
-class="btn"
-href="./French.html">
-
-Open French Page
-
-</a>
-
-</div>
-
-</div>
-
-
-
 <!-- SCHOOL TOOLS -->
-
 
 <h2 class="section-title">
 🏆 School Tools
 </h2>
 
-
-
 <!-- CLASSCHARTS PRO -->
-
 
 <div class="card">
 
-<div class="card-image">
+<div
+class="card-image"
 
-<svg
-class="fallback-picture"
-style="display:block"
-viewBox="0 0 600 300"
-xmlns="http://www.w3.org/2000/svg">
-
-<rect width="600" height="300" fill="#f59e0b"/>
-
-<text
-x="300"
-y="150"
-text-anchor="middle"
-font-size="92">
-🏆
-</text>
-
-<text
-x="300"
-y="260"
-text-anchor="middle"
-font-size="26"
-fill="white"
-font-weight="700">
-CLASSCHARTS PRO
-</text>
-
-</svg>
-
+style="
+background-image:
+url(
+'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80'
+);
+">
 </div>
-
 
 <div class="card-content">
 
@@ -1714,226 +987,141 @@ Open ClassCharts Pro
 
 </div>
 
-
-
 </section>
 
 </div>
 
-
-
 <footer>
+
 © 2026 Master Subjects Hub
+
 </footer>
-
-
 
 <script>
 
 (function () {
 
-
-const PASSWORD =
-"Study2026!";
-
+const PASSWORD = "Study2026!";
 
 const gate =
-document.getElementById(
-"passwordGate"
-);
-
+document.getElementById("passwordGate");
 
 const input =
-document.getElementById(
-"sitePassword"
-);
-
+document.getElementById("sitePassword");
 
 const enterButton =
-document.getElementById(
-"passwordButton"
-);
-
+document.getElementById("passwordButton");
 
 const toggleButton =
-document.getElementById(
-"togglePassword"
-);
-
+document.getElementById("togglePassword");
 
 const error =
-document.getElementById(
-"passwordError"
-);
-
+document.getElementById("passwordError");
 
 
 function unlockWebsite(){
 
-
-if(
-input.value ===
-PASSWORD
-){
-
+if(input.value === PASSWORD){
 
 sessionStorage.setItem(
 "masterSubjectsUnlocked",
 "yes"
 );
 
-
 gate.style.display =
 "none";
-
 
 error.textContent =
 "";
 
-
 }
 
-
 else{
-
 
 error.textContent =
 "Incorrect password. Please try again.";
 
-
 input.focus();
-
 
 input.select();
 
-
 }
 
-
 }
-
 
 
 function togglePasswordVisibility(){
 
-
 const showing =
-input.type ===
-"text";
-
+input.type === "text";
 
 input.type =
 showing
-?
-"password"
-:
-"text";
-
+? "password"
+: "text";
 
 toggleButton.textContent =
 showing
-?
-"👁️"
-:
-"🙈";
-
+? "👁️"
+: "🙈";
 
 toggleButton.setAttribute(
-
 "aria-label",
-
 showing
-?
-"Show password"
-:
-"Hide password"
-
+? "Show password"
+: "Hide password"
 );
-
 
 toggleButton.title =
 showing
-?
-"Show password"
-:
-"Hide password";
-
+? "Show password"
+: "Hide password";
 
 input.focus();
-
 
 }
 
 
-
 if(
-
 sessionStorage.getItem(
 "masterSubjectsUnlocked"
-)
-
-===
-
-"yes"
-
+) === "yes"
 ){
-
 
 gate.style.display =
 "none";
 
-
 }
 
 
-
 enterButton.addEventListener(
-
 "click",
-
 unlockWebsite
-
 );
 
 
 toggleButton.addEventListener(
-
 "click",
-
 togglePasswordVisibility
-
 );
 
 
 input.addEventListener(
-
 "keydown",
-
 function(event){
 
-
-if(
-event.key ===
-"Enter"
-){
-
+if(event.key === "Enter"){
 
 unlockWebsite();
 
-
 }
 
-
 }
-
 );
-
 
 })();
 
-
 </script>
-
 
 </body>
 
