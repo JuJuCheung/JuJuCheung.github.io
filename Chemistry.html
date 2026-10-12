@@ -1,1901 +1,569 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Chemistry Learning Website</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GCSE Chemistry | Topic Revision</title>
 
 <style>
-:root{
-  --ink:#1f2937;
-  --muted:#64748b;
-  --navy:#0f2747;
-  --navy2:#173a65;
-  --paper:#f5f7fb;
-  --card:#ffffff;
-  --line:#dbe3ee;
-  --gold:#f5c451;
-  --green:#1f8f62;
+:root {
+  font-family: system-ui, Arial, sans-serif;
+  color: #e9f3ff;
+  background: #091527;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+
+header {
+  background: #10243d;
+  border-bottom: 1px solid #294766;
+  padding: 22px max(18px, calc((100vw - 1050px)/2));
+}
+header h1 { margin: 0; font-size: 30px; }
+header p { color: #bcd1e8; margin: 8px 0 0; }
+
+main {
+  max-width: 1050px;
+  margin: auto;
+  padding: 24px 18px 70px;
+}
+h2 { font-size: 25px; }
+h3 { margin-bottom: 8px; }
+.muted { color: #bcd1e8; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+  gap: 16px;
 }
 
-*{
-  box-sizing:border-box;
+.tile, .panel {
+  background: #142841;
+  border: 1px solid #31506e;
+  border-radius: 16px;
+  padding: 20px;
+}
+.tile {
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  transition: .15s;
+  min-height: 150px;
+}
+.tile:hover, .tile:focus {
+  border-color: #68cbef;
+  transform: translateY(-2px);
+  outline: none;
+}
+.tile strong {
+  font-size: 19px;
+  display: block;
+  margin: 10px 0;
 }
 
-html{
-  scroll-behavior:smooth;
+.chip {
+  color: #a6dffc;
+  font-size: 13px;
+  font-weight: 700;
 }
-
-body{
-  margin:0;
-  font-family:Arial, Helvetica, sans-serif;
-  color:var(--ink);
-  background:var(--paper);
-  line-height:1.65;
+.button {
+  border: 0;
+  background: #3dbdeb;
+  color: #06192a;
+  border-radius: 10px;
+  font-weight: 800;
+  padding: 12px 18px;
+  cursor: pointer;
 }
-
-
-/* BACK TO MAIN PAGE */
-
-.back-button{
-  position:fixed;
-  top:16px;
-  left:16px;
-  z-index:20;
-
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-
-  background:white;
-  color:var(--navy);
-
-  text-decoration:none;
-  font-weight:800;
-
-  padding:10px 15px;
-
-  border-radius:999px;
-  border:1px solid var(--line);
-
-  box-shadow:0 6px 18px rgba(15,39,71,.18);
-
-  transition:.2s;
+.button.secondary {
+  background: #294563;
+  color: #fff;
 }
-
-.back-button:hover{
-  background:#edf2f8;
-  transform:translateY(-1px);
+.button:focus-visible,
+.answer:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
 }
+.back { margin-bottom: 18px; }
+ul { line-height: 1.8; }
 
-
-/* HERO */
-
-.hero{
-  background:linear-gradient(135deg,var(--navy),var(--navy2));
-  color:white;
-  padding:72px 22px 60px;
-  text-align:center;
+.example {
+  background: #0c1e32;
+  border-left: 4px solid #3dbdeb;
+  padding: 16px;
+  border-radius: 7px;
+  margin: 12px 0 25px;
 }
-
-.hero h1{
-  margin:0;
-  font-size:clamp(2.3rem,6vw,4.6rem);
+.quiz-question {
+  margin: 22px 0;
+  border-top: 1px solid #35506b;
+  padding-top: 16px;
 }
-
-.hero p{
-  margin:10px auto 0;
-  max-width:900px;
-  font-size:1.08rem;
-  opacity:.94;
+.answer {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 8px 0;
+  padding: 12px 14px;
+  border: 1px solid #4b6885;
+  border-radius: 10px;
+  background: #203853;
+  color: #f2f7ff;
+  cursor: pointer;
+  font: inherit;
 }
-
-
-/* NAVIGATION */
-
-nav{
-  position:sticky;
-  top:0;
-  z-index:5;
-  background:white;
-  border-bottom:1px solid var(--line);
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  flex-wrap:wrap;
-  padding:10px;
+.answer.selected {
+  border-color: #3dbdeb;
+  background: #145471;
 }
-
-nav a{
-  color:var(--navy);
-  text-decoration:none;
-  font-weight:700;
-  padding:8px 12px;
-  border-radius:999px;
+.answer.correct {
+  border-color: #50cf87;
+  background: #17553c;
 }
-
-nav a:hover{
-  background:#edf2f8;
+.answer.wrong {
+  border-color: #fa8080;
+  background: #642f3a;
 }
-
-
-/* MAIN */
-
-main{
-  max-width:1080px;
-  margin:auto;
-  padding:28px 18px 70px;
+.correct { color: #8ff0b1; }
+.wrong { color: #ffb4b4; }
+.hidden { display: none; }
+.score { font-weight: 800; font-size: 19px; }
+.footer {
+  font-size: 13px;
+  color: #bcd1e8;
+  margin-top: 35px;
 }
-
-section{
-  scroll-margin-top:80px;
-  margin:26px 0 46px;
-}
-
-h2{
-  color:var(--navy);
-  font-size:2rem;
-  margin-bottom:14px;
-}
-
-h3{
-  color:var(--navy);
-  margin-top:0;
-}
-
-.lead{
-  font-size:1.08rem;
-  background:white;
-  border-left:5px solid var(--gold);
-  padding:20px 22px;
-  border-radius:12px;
-  box-shadow:0 8px 25px rgba(15,39,71,.06);
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:16px;
-}
-
-.card{
-  background:white;
-  padding:20px;
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 8px 22px rgba(15,39,71,.06);
-}
-
-
-/* BIG CHEMISTRY PICTURES */
-
-.card .emoji{
-  width:76px;
-  height:76px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-size:3rem;
-  line-height:1;
-
-  margin-bottom:14px;
-
-  border-radius:18px;
-
-  background:linear-gradient(
-    135deg,
-    #eef4fa,
-    #ffffff
-  );
-
-  border:1px solid var(--line);
-
-  box-shadow:
-    0 6px 16px
-    rgba(15,39,71,.08);
-
-  transition:.2s;
-}
-
-.card:hover .emoji{
-  transform:scale(1.05);
-}
-
-
-.quote{
-  background:var(--navy);
-  color:white;
-  padding:22px;
-  border-radius:16px;
-  font-size:1.08rem;
-  font-style:italic;
-}
-
-
-/* QUIZ */
-
-.quizbox{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:24px;
-  box-shadow:0 10px 30px rgba(15,39,71,.09);
-}
-
-.quizhead{
-  text-align:center;
-}
-
-.rules{
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin:16px 0;
-}
-
-.rule{
-  background:#eef4fa;
-  border-radius:12px;
-  padding:10px 13px;
-  font-weight:700;
-}
-
-button{
-  cursor:pointer;
-  border:0;
-  border-radius:11px;
-  padding:11px 16px;
-  font-weight:800;
-  font-size:1rem;
-}
-
-.primary{
-  background:var(--navy);
-  color:white;
-}
-
-.primary:hover{
-  background:var(--navy2);
-}
-
-.secondary{
-  background:#e8eef6;
-  color:var(--navy);
-}
-
-.secondary:hover{
-  background:#dce6f2;
-}
-
-.quizarea{
-  margin-top:20px;
-}
-
-.level{
-  display:inline-block;
-  background:var(--gold);
-  color:#4d3900;
-  font-weight:900;
-  padding:5px 10px;
-  border-radius:999px;
-  font-size:.8rem;
-  letter-spacing:.5px;
-}
-
-.question{
-  font-size:1.2rem;
-  font-weight:800;
-  margin:15px 0;
-}
-
-.options{
-  display:grid;
-  gap:10px;
-}
-
-.option{
-  background:#f4f7fb;
-  border:2px solid transparent;
-  text-align:left;
-  color:var(--ink);
-}
-
-.option:hover{
-  border-color:#9eb4cf;
-}
-
-.option.correct{
-  background:#e7f7ef;
-  border-color:#55a97f;
-}
-
-.option.wrong{
-  background:#fdecec;
-  border-color:#dd7777;
-}
-
-.feedback{
-  margin:14px 0 0;
-  padding:12px 14px;
-  border-radius:10px;
-  background:#f7f9fc;
-  display:none;
-}
-
-.progress{
-  height:9px;
-  background:#e5eaf1;
-  border-radius:99px;
-  overflow:hidden;
-  margin:14px 0;
-}
-
-.bar{
-  height:100%;
-  width:0;
-  background:var(--navy);
-}
-
-.scoreline{
-  font-weight:800;
-  margin-top:12px;
-}
-
-
-/* ACHIEVEMENTS */
-
-.achievements{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-  gap:12px;
-}
-
-.badge{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:15px;
-  padding:17px;
-  text-align:center;
-  opacity:.38;
-  filter:grayscale(1);
-  transition:.2s;
-}
-
-.badge.unlocked{
-  opacity:1;
-  filter:none;
-  box-shadow:0 8px 20px rgba(15,39,71,.08);
-}
-
-.badge .medal{
-  font-size:2.1rem;
-}
-
-.badge strong{
-  display:block;
-  color:var(--navy);
-}
-
-.small{
-  font-size:.9rem;
-  color:var(--muted);
-}
-
-.hidden{
-  display:none !important;
-}
-
-footer{
-  text-align:center;
-  background:var(--navy);
-  color:white;
-  padding:24px;
-}
-
-
-/* MOBILE */
-
-@media(max-width:600px){
-
-  .back-button{
-    top:10px;
-    left:10px;
-    padding:8px 12px;
-    font-size:.88rem;
-  }
-
-  .hero{
-    padding:50px 16px 42px;
-  }
-
-  .hero h1{
-    font-size:2.35rem;
-  }
-
-  .quizbox{
-    padding:17px;
-  }
-
-}
+a { color: #8cdeff; }
 </style>
 </head>
 
-
 <body>
 
-<a href="index.html" class="back-button">
-  ← Back to Main Page
-</a>
-
-
-<header class="hero">
-
-<h1>⚗️ Chemistry</h1>
-
-<p>
-Atomic Structure • Bonding • Quantitative Chemistry •
-Chemical Changes • Energy • Rates • Organic Chemistry • Analysis
-</p>
-
+<header>
+  <h1>⚗️ GCSE Chemistry Revision</h1>
+  <p>AQA • Paper 1 and Paper 2 • Choose a topic</p>
 </header>
-
-
-<nav>
-
-<a href="#about">About</a>
-<a href="#topics">Topics</a>
-<a href="#revision">Revision</a>
-<a href="#skills">Exam Skills</a>
-<a href="#achievements">Achievements</a>
-<a href="#quiz">Quiz</a>
-
-</nav>
-
 
 <main>
 
+<section id="home">
+  <h2>Choose a Chemistry topic</h2>
+  <p class="muted">
+    Select a topic to see key facts,
+    a worked example and a short quiz.
+  </p>
 
-<section id="about">
+  <h3>Paper 1</h3>
+  <div class="grid" id="paper1"></div>
 
-<h2>Chemistry</h2>
-
-<div class="lead">
-
-Chemistry studies matter, particles, bonding, reactions
-and energy. Strong Chemistry answers connect particle-level
-explanations to observations, equations and calculations.
-
-</div>
-
+  <h3>Paper 2</h3>
+  <div class="grid" id="paper2"></div>
 </section>
 
+<section id="detail" class="hidden">
+  <button class="button secondary back" onclick="goHome()">
+    ← All Chemistry topics
+  </button>
 
-<section id="topics">
+  <div class="panel">
+    <span class="chip" id="paperLabel"></span>
+    <h2 id="topicTitle"></h2>
+    <p id="summary"></p>
 
-<h2>Key Topics</h2>
+    <h3>Key facts</h3>
+    <ul id="facts"></ul>
 
-<div class="grid">
+    <h3>Worked example</h3>
+    <div class="example" id="example"></div>
 
+    <h3>Quick quiz</h3>
+    <p class="muted">
+      Choose one answer for each question,
+      then check your score.
+    </p>
 
-<div class="card">
+    <div id="questions"></div>
 
-<div class="emoji">⚛️</div>
+    <button class="button" onclick="markQuiz()">
+      Check answers
+    </button>
 
-<h3>Atomic Structure</h3>
+    <p id="result" class="score" aria-live="polite"></p>
 
-<p>
-Atoms, isotopes, electronic structure and the periodic table.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="emoji">🔗</div>
-
-<h3>Bonding</h3>
-
-<p>
-Ionic, covalent and metallic bonding,
-structure and properties.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="emoji">🧮</div>
-
-<h3>Quantitative Chemistry</h3>
-
-<p>
-Relative mass, moles, concentration,
-percentage yield and atom economy.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="emoji">🧪</div>
-
-<h3>Chemical Changes</h3>
-
-<p>
-Reactivity, electrolysis, acids,
-salts and redox reactions.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="emoji">🔥</div>
-
-<h3>Energy & Rates</h3>
-
-<p>
-Energy changes, collision theory,
-catalysts and equilibrium.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="emoji">🛢️</div>
-
-<h3>Organic Chemistry & Analysis</h3>
-
-<p>
-Hydrocarbons, polymers,
-chemical tests and instrumental analysis.
-</p>
-
-</div>
-
-
-</div>
-
+    <button class="button secondary" onclick="resetQuiz()">
+      Try again
+    </button>
+  </div>
 </section>
 
-
-<section id="revision">
-
-<h2>Revision Guide</h2>
-
-<div class="grid">
-
-
-<div class="card">
-
-<h3>Particles</h3>
-
-<p>
-Use atomic structure and electron arrangements
-to explain periodic trends.
+<p class="footer">
+  AQA GCSE Chemistry (8462) revision overview.
+  <a href="https://www.aqa.org.uk/subjects/chemistry/gcse/chemistry-8462/specification/specification-at-a-glance" target="_blank">
+    Official AQA Specification
+  </a>
 </p>
-
-</div>
-
-
-<div class="card">
-
-<h3>Bonding</h3>
-
-<p>
-Always link bonding and structure to melting point,
-conductivity and strength.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>Calculations</h3>
-
-<p>
-Show the equation, substitution, units
-and sensible significant figures.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>Reactivity</h3>
-
-<p>
-Learn ionic equations, electrolysis rules
-and oxidation and reduction.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>Rates & Equilibrium</h3>
-
-<p>
-Explain rates using collision theory
-and equilibrium using Le Chatelier's principle.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>Organic & Analysis</h3>
-
-<p>
-Know homologous series, reactions,
-chemical tests and chromatography.
-</p>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<section id="skills">
-
-<h2>Exam Skills</h2>
-
-<div class="grid">
-
-
-<div class="card">
-
-<div class="emoji">🧮</div>
-
-<h3>Calculations</h3>
-
-<p>
-Write every working step clearly
-and carry units through the calculation.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="emoji">🧪</div>
-
-<h3>Practical Chemistry</h3>
-
-<p>
-Identify variables, hazards,
-apparatus choices and sources of uncertainty.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="emoji">⚖️</div>
-
-<h3>Particle Explanations</h3>
-
-<p>
-Move from observations to particles,
-bonds, forces and energy.
-</p>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<div class="quote">
-
-“Strong Chemistry answers connect what we can observe
-to particles, bonding, energy and quantitative evidence.”
-
-</div>
-
-
-<section id="achievements">
-
-<h2>🏆 Achievements</h2>
-
-<p class="small">
-Achievements are saved on this device.
-</p>
-
-
-<div class="achievements">
-
-
-<div class="badge" data-badge="starter">
-
-<div class="medal">🚀</div>
-
-<strong>First Steps</strong>
-
-<span class="small">
-Start the Entry Quiz
-</span>
-
-</div>
-
-
-<div class="badge" data-badge="practice">
-
-<div class="medal">📘</div>
-
-<strong>Practice Pro</strong>
-
-<span class="small">
-Complete the Practice Quiz
-</span>
-
-</div>
-
-
-<div class="badge" data-badge="perfectEntry">
-
-<div class="medal">💯</div>
-
-<strong>Perfect Entry</strong>
-
-<span class="small">
-Score 10/10 on Entry
-</span>
-
-</div>
-
-
-<div class="badge" data-badge="uniUnlocked">
-
-<div class="medal">🔓</div>
-
-<strong>University Unlocked</strong>
-
-<span class="small">
-Unlock University Level
-</span>
-
-</div>
-
-
-<div class="badge" data-badge="uniScholar">
-
-<div class="medal">🎓</div>
-
-<strong>University Scholar</strong>
-
-<span class="small">
-Score 7+/10 at University Level
-</span>
-
-</div>
-
-
-<div class="badge" data-badge="uniMaster">
-
-<div class="medal">🏅</div>
-
-<strong>University Master</strong>
-
-<span class="small">
-Score 10/10 at University Level
-</span>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<section id="quiz">
-
-<div class="quizbox">
-
-<div class="quizhead">
-
-<h2>⚗️ Chemistry Adaptive Quiz</h2>
-
-<p>
-Start with the 10-question Entry Quiz.
-</p>
-
-
-<div class="rules">
-
-
-<div class="rule">
-
-🏆 10 / 10 → University-Level Quiz unlocks
-
-</div>
-
-
-<div class="rule">
-
-📘 Below 10 / 10 → Practice Quiz first
-
-</div>
-
-
-<div class="rule">
-
-🎓 University Quiz uses undergraduate Chemistry
-
-</div>
-
-
-</div>
-
-
-<button class="primary" id="startBtn">
-
-Start Chemistry Quiz
-
-</button>
-
-
-</div>
-
-
-<div id="quizArea" class="quizarea hidden">
-
-
-<span class="level" id="levelLabel">
-
-ENTRY LEVEL
-
-</span>
-
-
-<div class="progress">
-
-<div class="bar" id="bar"></div>
-
-</div>
-
-
-<div class="small" id="qcount"></div>
-
-
-<div class="question" id="question"></div>
-
-
-<div class="options" id="options"></div>
-
-
-<div class="feedback" id="feedback"></div>
-
-
-<div class="scoreline" id="scoreline">
-
-Score: 0 / 10
-
-</div>
-
-
-<div style="margin-top:15px;display:flex;gap:10px;flex-wrap:wrap">
-
-
-<button class="primary hidden" id="nextBtn">
-
-Next Question
-
-</button>
-
-
-<button class="secondary hidden" id="practiceBtn">
-
-Start Practice Quiz
-
-</button>
-
-
-<button class="secondary hidden" id="retryBtn">
-
-Retry Entry Quiz
-
-</button>
-
-
-<button class="primary hidden" id="universityBtn">
-
-🎓 Start University-Level Quiz
-
-</button>
-
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
 
 </main>
 
-
-<footer>
-
-© 2026 Chemistry | Learning Website
-
-</footer>
-
-
-
 <script>
 
-const DATA = {
-
-
-entry:[
-
+const topics = [
 
 {
-q:"What is the charge of a proton?",
-options:[
-"-1",
-"0",
-"+1",
-"+2"
-],
-answer:2,
-explanation:
-"A proton has a relative charge of +1."
+ title: "Atomic Structure and the Periodic Table",
+ short: "Atoms, elements and patterns",
+ facts: [
+  "Atoms contain protons, neutrons and electrons.",
+  "Atomic number = number of protons.",
+  "Elements in the same group have similar chemical properties."
+ ],
+ example:
+  "Sodium has atomic number 11 and mass number 23. " +
+  "It has 11 protons, 11 electrons and 12 neutrons. " +
+  "Neutrons = 23 - 11 = 12.",
+ quiz: [
+  ["What is the atomic number?",
+   ["Number of protons", "Number of neutrons", "Total particles"], 0],
+  ["What charge does an electron have?",
+   ["Positive", "Negative", "Neutral"], 1],
+  ["Elements in the same group have similar...",
+   ["Masses only", "Chemical properties", "Colours only"], 1]
+ ]
 },
 
-
 {
-q:"Which particle determines an element's atomic number?",
-options:[
-"Neutron",
-"Proton",
-"Electron shell",
-"Ion"
-],
-answer:1,
-explanation:
-"The atomic number is equal to the number of protons in the nucleus."
+ title: "Bonding, Structure and Properties",
+ short: "Ionic, covalent and metallic bonding",
+ facts: [
+  "Ionic bonding involves electron transfer and attraction between oppositely charged ions.",
+  "Covalent bonds form when atoms share pairs of electrons.",
+  "Metallic bonding involves positive metal ions and delocalised electrons."
+ ],
+ example:
+  "In sodium chloride, sodium loses one electron to form Na+. " +
+  "Chlorine gains one electron to form Cl-. " +
+  "The oppositely charged ions attract.",
+ quiz: [
+  ["In covalent bonding, atoms...",
+   ["Share electrons", "Transfer protons", "Lose nuclei"], 0],
+  ["An ionic bond is between...",
+   ["Oppositely charged ions", "Two neutrons", "Two molecules only"], 0],
+  ["Why do metals conduct electricity?",
+   ["Moving protons", "Delocalised electrons", "No particles"], 1]
+ ]
 },
 
-
 {
-q:"What type of bonding is present in sodium chloride?",
-options:[
-"Metallic",
-"Ionic",
-"Covalent",
-"Hydrogen bonding"
-],
-answer:1,
-explanation:
-"Sodium transfers an electron to chlorine, producing oppositely charged ions."
+ title: "Quantitative Chemistry",
+ short: "Mass, moles and calculations",
+ facts: [
+  "Relative formula mass (Mr) is the sum of relative atomic masses.",
+  "Number of moles = mass / Mr.",
+  "In a closed system, total mass is conserved during a reaction."
+ ],
+ example:
+  "For 18 g of water, Mr(H2O) = (2 x 1) + 16 = 18. " +
+  "Moles = 18 / 18 = 1 mol.",
+ quiz: [
+  ["Moles = ...",
+   ["mass x Mr", "mass / Mr", "Mr / mass"], 1],
+  ["What is the Mr of CO2? (C=12, O=16)",
+   ["28", "32", "44"], 2],
+  ["In a closed reaction, mass is...",
+   ["Conserved", "Always doubled", "Lost"], 0]
+ ]
 },
 
-
 {
-q:"What is one mole of particles?",
-options:[
-"Exactly 1 gram",
-"6.022 × 10²³ particles",
-"One atom",
-"One litre of every gas at every temperature"
-],
-answer:1,
-explanation:
-"One mole contains approximately 6.022 × 10²³ particles."
+ title: "Chemical Changes",
+ short: "Reactivity, acids and electrolysis",
+ facts: [
+  "More reactive metals can displace less reactive metals from compounds.",
+  "Acid + suitable metal produces a salt and hydrogen.",
+  "Electrolysis uses electricity to decompose molten or dissolved ionic substances."
+ ],
+ example:
+  "Magnesium + hydrochloric acid produces magnesium chloride " +
+  "and hydrogen. Balanced equation: Mg + 2HCl → MgCl2 + H2.",
+ quiz: [
+  ["Metal + acid usually makes...",
+   ["Salt and hydrogen", "Salt and oxygen", "Water only"], 0],
+  ["Electrolysis requires...",
+   ["Electric current", "Sunlight only", "No energy"], 0],
+  ["Which metal is more reactive?",
+   ["Gold", "Magnesium", "Silver"], 1]
+ ]
 },
 
-
 {
-q:"Acids usually have a pH:",
-options:[
-"Below 7",
-"Exactly 7",
-"Above 7",
-"Always equal to 14"
-],
-answer:0,
-explanation:
-"Acidic solutions normally have a pH below 7."
+ title: "Energy Changes",
+ short: "Exothermic and endothermic reactions",
+ facts: [
+  "Exothermic reactions transfer energy to the surroundings.",
+  "Endothermic reactions take in energy from the surroundings.",
+  "Breaking bonds requires energy; making bonds releases energy."
+ ],
+ example:
+  "If breaking bonds requires 500 kJ and making bonds " +
+  "releases 650 kJ, the overall energy change is " +
+  "500 - 650 = -150 kJ. This is exothermic.",
+ quiz: [
+  ["Exothermic reactions make surroundings...",
+   ["Warmer", "Always colder", "Unchanged"], 0],
+  ["Breaking bonds...",
+   ["Releases energy", "Requires energy", "Produces atoms from nothing"], 1],
+  ["A negative overall energy change is usually...",
+   ["Exothermic", "Endothermic", "Neither"], 0]
+ ]
 },
 
-
 {
-q:"Oxidation can be defined as:",
-options:[
-"Gain of electrons",
-"Loss of electrons",
-"Gain of neutrons",
-"Loss of protons only"
-],
-answer:1,
-explanation:
-"Oxidation is the loss of electrons. Remember OIL RIG."
+ title: "Rate and Extent of Chemical Change",
+ short: "Collision theory and equilibrium",
+ facts: [
+  "Increasing concentration, temperature or surface area can increase reaction rate.",
+  "A catalyst increases the rate without being used up.",
+  "Reversible reactions can reach dynamic equilibrium in a closed system."
+ ],
+ example:
+  "Crushing a solid reactant into powder increases its " +
+  "surface area, increasing the frequency of successful collisions.",
+ quiz: [
+  ["Which increases surface area?",
+   ["Using a large lump", "Grinding into powder", "Cooling"], 1],
+  ["A catalyst...",
+   ["Is always consumed", "Speeds up reaction", "Stops all collisions"], 1],
+  ["At dynamic equilibrium...",
+   ["Both reactions stop", "Forward and reverse rates are equal", "Products disappear"], 1]
+ ]
 },
 
-
 {
-q:"What does a catalyst do?",
-options:[
-"Raises activation energy",
-"Provides an alternative pathway with lower activation energy",
-"Changes the equilibrium yield permanently",
-"Gets completely used up"
-],
-answer:1,
-explanation:
-"A catalyst increases reaction rate by providing an alternative reaction pathway with lower activation energy."
+ title: "Organic Chemistry",
+ short: "Hydrocarbons and polymers",
+ facts: [
+  "Crude oil is a mixture of hydrocarbons separated by fractional distillation.",
+  "Alkanes are saturated hydrocarbons with single bonds.",
+  "Alkenes contain at least one carbon-carbon double bond."
+ ],
+ example:
+  "Ethene (C2H4) is an alkene. " +
+  "It changes bromine water from orange to colourless.",
+ quiz: [
+  ["Hydrocarbons contain...",
+   ["Carbon and hydrogen", "Hydrogen and oxygen", "Carbon and nitrogen only"], 0],
+  ["Alkenes contain a...",
+   ["C=C bond", "Metallic bond only", "C=O bond"], 0],
+  ["Crude oil is separated by...",
+   ["Filtration", "Fractional distillation", "Electrolysis"], 1]
+ ]
 },
 
-
 {
-q:"Which gas produces a squeaky pop with a lit splint?",
-options:[
-"Oxygen",
-"Carbon dioxide",
-"Hydrogen",
-"Chlorine"
-],
-answer:2,
-explanation:
-"Hydrogen burns with a characteristic squeaky pop."
+ title: "Chemical Analysis",
+ short: "Testing substances and purity",
+ facts: [
+  "A pure substance has a sharp melting point at a given pressure.",
+  "Chromatography separates mixtures and can identify substances.",
+  "Flame tests can identify certain metal ions."
+ ],
+ example:
+  "A yellow flame suggests sodium ions are present. " +
+  "Further tests may be required to confirm the substance.",
+ quiz: [
+  ["A yellow flame suggests...",
+   ["Sodium", "Copper", "Lithium"], 0],
+  ["Chromatography is useful for...",
+   ["Separating mixtures", "Making electricity", "Measuring mass only"], 0],
+  ["A pure substance has...",
+   ["A sharp melting point", "No melting point", "Every possible melting point"], 0]
+ ]
 },
 
-
 {
-q:"Crude oil is separated mainly by:",
-options:[
-"Filtration",
-"Fractional distillation",
-"Chromatography",
-"Crystallisation"
-],
-answer:1,
-explanation:
-"Fractional distillation separates hydrocarbons according to their different boiling points."
+ title: "Chemistry of the Atmosphere",
+ short: "Earth's gases and climate",
+ facts: [
+  "The modern atmosphere contains approximately 78% nitrogen and 21% oxygen.",
+  "Carbon dioxide and methane are greenhouse gases.",
+  "Burning fossil fuels produces carbon dioxide and other pollutants."
+ ],
+ example:
+  "Complete combustion of methane: " +
+  "CH4 + 2O2 → CO2 + 2H2O. " +
+  "Carbon dioxide is a greenhouse gas.",
+ quiz: [
+  ["Most of Earth's atmosphere is...",
+   ["Oxygen", "Nitrogen", "Carbon dioxide"], 1],
+  ["Which is a greenhouse gas?",
+   ["Methane", "Argon", "Neon"], 0],
+  ["Complete combustion of hydrocarbons makes...",
+   ["Carbon dioxide and water", "Only nitrogen", "Only hydrogen"], 0]
+ ]
 },
 
-
 {
-q:"At equilibrium in a closed system:",
-options:[
-"All reactions stop",
-"Forward and reverse reaction rates are equal",
-"Reactant and product concentrations must be equal",
-"The temperature becomes 0°C"
-],
-answer:1,
-explanation:
-"Dynamic equilibrium occurs when the forward and reverse reaction rates are equal."
+ title: "Using Resources",
+ short: "Water, life cycles and materials",
+ facts: [
+  "Potable water is safe to drink but is not necessarily pure H2O.",
+  "Life cycle assessments consider environmental impacts across a product's life.",
+  "Recycling can reduce the need to extract new raw materials."
+ ],
+ example:
+  "Distillation makes fresh water from seawater by " +
+  "evaporating the water and condensing the vapour, " +
+  "leaving dissolved salts behind.",
+ quiz: [
+  ["Potable water means...",
+   ["Safe to drink", "100% pure H2O", "Always seawater"], 0],
+  ["Distillation can separate...",
+   ["Water from dissolved salts", "Atoms into protons", "Magnetism"], 0],
+  ["Recycling can reduce...",
+   ["Resource extraction", "All energy use to zero", "All pollution instantly"], 0]
+ ]
 }
 
+];
 
-],
+let current = -1;
+let selected = {};
 
+const $ = id => document.getElementById(id);
 
+function makeTiles() {
+  topics.forEach((t, i) => {
+    let b = document.createElement("button");
+    b.className = "tile";
 
-practice:[
+    b.innerHTML = `
+      <span class="chip">
+        PAPER ${i < 5 ? 1 : 2} • TOPIC ${i + 1}
+      </span>
+      <strong>${t.title}</strong>
+      <span class="muted">${t.short} →</span>
+    `;
 
+    b.addEventListener("click", () => {
+      location.hash = "topic-" + (i + 1);
+    });
 
-{
-q:"Isotopes of the same element have different numbers of:",
-options:[
-"Protons",
-"Neutrons",
-"Atomic numbers",
-"Chemical symbols"
-],
-answer:1,
-explanation:
-"Isotopes have the same number of protons but different numbers of neutrons."
-},
-
-
-{
-q:"Why do metals conduct electricity?",
-options:[
-"Their protons move",
-"They contain delocalised electrons",
-"Their ions leave the solid",
-"They are always liquids"
-],
-answer:1,
-explanation:
-"Delocalised electrons are free to move through the metallic structure and carry charge."
-},
-
-
-{
-q:"What is the relative formula mass of H₂O? H = 1 and O = 16",
-options:[
-"17",
-"18",
-"20",
-"34"
-],
-answer:1,
-explanation:
-"Mr of H₂O = 2 × 1 + 16 = 18."
-},
-
-
-{
-q:"Which electrode attracts positive ions during electrolysis?",
-options:[
-"Anode",
-"Cathode",
-"Salt bridge",
-"Neither electrode"
-],
-answer:1,
-explanation:
-"Positive ions are attracted to the negatively charged cathode."
-},
-
-
-{
-q:"Which reaction is usually exothermic?",
-options:[
-"Thermal decomposition",
-"Combustion",
-"Electrolysis",
-"Photosynthesis"
-],
-answer:1,
-explanation:
-"Combustion transfers energy from the reacting chemicals to the surroundings."
-},
-
-
-{
-q:"Increasing temperature usually increases reaction rate because:",
-options:[
-"Particles shrink",
-"Particles collide more frequently and with greater energy",
-"Activation energy increases",
-"Concentration always decreases"
-],
-answer:1,
-explanation:
-"At a higher temperature, particles move faster and a larger proportion of collisions have enough energy to react."
-},
-
-
-{
-q:"What is the general formula of alkanes?",
-options:[
-"CnH2n",
-"CnH2n+2",
-"CnH2n-2",
-"CnHn"
-],
-answer:1,
-explanation:
-"Alkanes have the general formula CnH2n+2."
-},
-
-
-{
-q:"Bromine water is decolourised by:",
-options:[
-"An alkane",
-"An alkene",
-"A noble gas",
-"Sodium chloride solution"
-],
-answer:1,
-explanation:
-"Alkenes react with bromine because they contain a carbon-carbon double bond."
-},
-
-
-{
-q:"A high atom economy means:",
-options:[
-"A large proportion of reactant atoms become the desired product",
-"The reaction is slower",
-"The activation energy is higher",
-"More waste is produced"
-],
-answer:0,
-explanation:
-"High atom economy means more of the reactant atoms are incorporated into the desired product."
-},
-
-
-{
-q:"Which technique can separate coloured substances dissolved in a solvent?",
-options:[
-"Filtration",
-"Paper chromatography",
-"Electrolysis",
-"Neutralisation"
-],
-answer:1,
-explanation:
-"Chromatography separates substances according to their different attractions to the mobile and stationary phases."
+    $(i < 5 ? "paper1" : "paper2").appendChild(b);
+  });
 }
 
+function render() {
+  let m = location.hash.match(/^#topic-(\d+)$/);
+  let idx = m ? Number(m[1]) - 1 : -1;
 
-],
+  if (idx < 0 || idx >= topics.length) {
+    $("home").classList.remove("hidden");
+    $("detail").classList.add("hidden");
+    current = -1;
+    return;
+  }
 
+  current = idx;
+  let t = topics[idx];
 
+  $("home").classList.add("hidden");
+  $("detail").classList.remove("hidden");
 
-university:[
+  $("paperLabel").textContent =
+    "PAPER " + (idx < 5 ? 1 : 2) + " • TOPIC " + (idx + 1);
 
+  $("topicTitle").textContent = t.title;
+  $("summary").textContent = t.short;
 
-{
-q:"For a first-order chemical reaction, which graph should give a straight line?",
-options:[
-"[A] against time",
-"ln[A] against time",
-"1/[A] against time",
-"Rate against [A]²"
-],
-answer:1,
-explanation:
-"For a first-order reaction, the integrated rate law is ln[A] = ln[A]₀ − kt, so ln[A] plotted against time is linear."
-},
+  $("facts").innerHTML =
+    t.facts.map(f => `<li>${f}</li>`).join("");
 
+  $("example").textContent = t.example;
 
-{
-q:"What does a negative Gibbs free energy change, ΔG < 0, indicate at constant temperature and pressure?",
-options:[
-"The process is thermodynamically favourable in the stated direction",
-"The reaction must be fast",
-"Entropy must decrease",
-"The reaction cannot reach equilibrium"
-],
-answer:0,
-explanation:
-"A negative ΔG means the process is thermodynamically spontaneous under the stated conditions. It does not tell us how quickly it occurs."
-},
-
-
-{
-q:"Why does adding a catalyst not change the equilibrium constant of a reaction?",
-options:[
-"It raises the energy of the products",
-"It lowers activation barriers for both forward and reverse reactions without changing ΔG°",
-"It removes products",
-"It changes the reaction stoichiometry"
-],
-answer:1,
-explanation:
-"The equilibrium constant is determined by thermodynamics. A catalyst changes reaction kinetics but not the relative thermodynamic stability of reactants and products."
-},
-
-
-{
-q:"In molecular orbital theory, why is O₂ paramagnetic?",
-options:[
-"It has no electrons",
-"It contains two unpaired electrons in antibonding π* orbitals",
-"It contains only paired bonding electrons",
-"It contains a quadruple bond"
-],
-answer:1,
-explanation:
-"The molecular orbital configuration of O₂ contains two unpaired electrons in degenerate π* antibonding orbitals."
-},
-
-
-{
-q:"What is the conjugate base of H₂PO₄⁻?",
-options:[
-"H₃PO₄",
-"HPO₄²⁻",
-"PO₄³⁻",
-"H₃O⁺"
-],
-answer:1,
-explanation:
-"A conjugate base is formed when an acid loses one proton. H₂PO₄⁻ loses H⁺ to become HPO₄²⁻."
-},
-
-
-{
-q:"Which statement best describes an SN2 substitution reaction?",
-options:[
-"It occurs in two steps through a carbocation intermediate",
-"It occurs by a concerted backside attack and can invert a stereocentre",
-"It is a radical chain reaction",
-"It requires an aromatic ring"
-],
-answer:1,
-explanation:
-"SN2 substitution is a one-step bimolecular process involving backside nucleophilic attack and inversion of configuration."
-},
-
-
-{
-q:"What does the chemical shift in NMR spectroscopy mainly provide information about?",
-options:[
-"Molar mass",
-"The electronic environment around a nucleus",
-"Reaction enthalpy",
-"Boiling point"
-],
-answer:1,
-explanation:
-"The electronic environment changes the shielding experienced by a nucleus, which affects its resonance frequency and therefore its chemical shift."
-},
-
-
-{
-q:"For an ideal solution, Raoult's law relates a component's partial vapour pressure to:",
-options:[
-"Only its molecular mass",
-"Its mole fraction and pure-component vapour pressure",
-"Only the solution pH",
-"Its activation energy"
-],
-answer:1,
-explanation:
-"Raoult's law states that partial vapour pressure equals the liquid-phase mole fraction multiplied by the pure-component vapour pressure."
-},
-
-
-{
-q:"Which orbital hybridisation is commonly associated with a tetrahedral carbon atom?",
-options:[
-"sp",
-"sp²",
-"sp³",
-"dsp²"
-],
-answer:2,
-explanation:
-"A carbon atom with four approximately tetrahedral sigma-bond directions is described using sp³ hybridisation."
-},
-
-
-{
-q:"What is the physical meaning of the partition function in statistical thermodynamics?",
-options:[
-"It counts only the number of protons",
-"It is a Boltzmann-weighted sum over accessible states that connects microscopic states to thermodynamic properties",
-"It is identical to pH",
-"It measures only reaction speed"
-],
-answer:1,
-explanation:
-"The partition function sums over the possible microscopic states with their Boltzmann weightings and is used to derive macroscopic thermodynamic properties."
+  resetQuiz();
+  window.scrollTo(0, 0);
 }
 
+function resetQuiz() {
+  if (current < 0) return;
 
-]
+  selected = {};
+  $("result").textContent = "";
+  $("questions").innerHTML = "";
 
+  topics[current].quiz.forEach(([q, options], i) => {
+    let section = document.createElement("div");
+    section.className = "quiz-question";
 
-};
+    let heading = document.createElement("h3");
+    heading.textContent = (i + 1) + ". " + q;
+    section.append(heading);
 
+    options.forEach((answer, j) => {
+      let b = document.createElement("button");
+      b.className = "answer";
+      b.textContent = answer;
 
+      b.onclick = () => {
+        selected[i] = j;
 
-const KEY = "achievements-chemistry";
+        section.querySelectorAll(".answer").forEach(x => {
+          x.classList.remove("selected");
+        });
 
-let achievements =
-JSON.parse(localStorage.getItem(KEY) || "{}");
+        b.classList.add("selected");
+      };
 
-let mode = "entry";
-let index = 0;
-let score = 0;
-let locked = false;
+      section.append(b);
+    });
 
-
-
-const startBtn =
-document.getElementById("startBtn");
-
-const quizArea =
-document.getElementById("quizArea");
-
-const levelLabel =
-document.getElementById("levelLabel");
-
-const bar =
-document.getElementById("bar");
-
-const qcount =
-document.getElementById("qcount");
-
-const question =
-document.getElementById("question");
-
-const options =
-document.getElementById("options");
-
-const feedback =
-document.getElementById("feedback");
-
-const scoreline =
-document.getElementById("scoreline");
-
-const nextBtn =
-document.getElementById("nextBtn");
-
-const practiceBtn =
-document.getElementById("practiceBtn");
-
-const retryBtn =
-document.getElementById("retryBtn");
-
-const universityBtn =
-document.getElementById("universityBtn");
-
-
-
-function saveAchievement(key){
-
-achievements[key] = true;
-
-localStorage.setItem(
-KEY,
-JSON.stringify(achievements)
-);
-
-renderAchievements();
-
+    $("questions").append(section);
+  });
 }
 
+function markQuiz() {
+  if (current < 0) return;
 
+  let t = topics[current];
+  let score = 0;
 
-function renderAchievements(){
+  t.quiz.forEach((q, i) => {
+    let correct = q[2];
 
-document
-.querySelectorAll(".badge")
-.forEach(badge => {
+    if (selected[i] === correct) score++;
 
-badge.classList.toggle(
-"unlocked",
-!!achievements[badge.dataset.badge]
-);
+    let answers =
+      $("questions").children[i].querySelectorAll(".answer");
 
-});
+    answers.forEach((b, j) => {
+      b.classList.remove("correct", "wrong");
 
+      if (j === correct) {
+        b.classList.add("correct");
+      } else if (j === selected[i]) {
+        b.classList.add("wrong");
+      }
+    });
+  });
+
+  $("result").textContent =
+    `You scored ${score}/${t.quiz.length}! ` +
+    (score === t.quiz.length
+      ? "Excellent work! 🎉"
+      : "Review the correct answers shown in green.");
 }
 
-
-
-function questions(){
-
-return DATA[mode];
-
+function goHome() {
+  location.hash = "";
+  render();
 }
 
-
-
-function levelText(){
-
-if(mode === "entry")
-return "ENTRY LEVEL";
-
-if(mode === "practice")
-return "PRACTICE LEVEL";
-
-return "UNIVERSITY LEVEL";
-
-}
-
-
-
-function begin(newMode){
-
-mode = newMode;
-
-index = 0;
-score = 0;
-locked = false;
-
-quizArea.classList.remove("hidden");
-
-startBtn.classList.add("hidden");
-
-practiceBtn.classList.add("hidden");
-
-retryBtn.classList.add("hidden");
-
-universityBtn.classList.add("hidden");
-
-nextBtn.classList.add("hidden");
-
-feedback.style.display = "none";
-
-if(mode === "entry"){
-
-saveAchievement("starter");
-
-}
-
-renderQuestion();
-
-quizArea.scrollIntoView({
-behavior:"smooth",
-block:"start"
-});
-
-}
-
-
-
-function renderQuestion(){
-
-const arr = questions();
-
-const item = arr[index];
-
-locked = false;
-
-levelLabel.textContent =
-levelText();
-
-bar.style.width =
-(index / arr.length * 100) + "%";
-
-qcount.textContent =
-"Question " +
-(index + 1) +
-" of " +
-arr.length;
-
-question.textContent =
-item.q;
-
-scoreline.textContent =
-"Score: " +
-score +
-" / " +
-arr.length;
-
-feedback.style.display =
-"none";
-
-feedback.textContent = "";
-
-nextBtn.classList.add("hidden");
-
-options.innerHTML = "";
-
-
-item.options.forEach(
-(opt, i) => {
-
-const button =
-document.createElement("button");
-
-button.className =
-"option";
-
-button.textContent =
-opt;
-
-button.addEventListener(
-"click",
-() => answer(i,button)
-);
-
-options.appendChild(button);
-
-});
-
-}
-
-
-
-function answer(choice,button){
-
-if(locked)
-return;
-
-locked = true;
-
-const item =
-questions()[index];
-
-
-[...options.children]
-.forEach(
-(btn,i) => {
-
-btn.disabled = true;
-
-if(i === item.answer){
-
-btn.classList.add("correct");
-
-}
-
-});
-
-
-if(choice === item.answer){
-
-score++;
-
-button.classList.add(
-"correct"
-);
-
-feedback.textContent =
-"✅ Correct. " +
-item.explanation;
-
-}
-
-else{
-
-button.classList.add(
-"wrong"
-);
-
-feedback.textContent =
-"❌ Not quite. " +
-item.explanation;
-
-}
-
-
-feedback.style.display =
-"block";
-
-
-scoreline.textContent =
-"Score: " +
-score +
-" / " +
-questions().length;
-
-
-if(
-index ===
-questions().length - 1
-){
-
-nextBtn.textContent =
-"See Result";
-
-}
-
-else{
-
-nextBtn.textContent =
-"Next Question";
-
-}
-
-nextBtn.classList.remove(
-"hidden"
-);
-
-}
-
-
-
-function finish(){
-
-bar.style.width =
-"100%";
-
-options.innerHTML = "";
-
-qcount.textContent = "";
-
-question.textContent =
-levelText() +
-" complete — " +
-score +
-" / " +
-questions().length;
-
-feedback.style.display =
-"block";
-
-nextBtn.classList.add(
-"hidden"
-);
-
-
-/* ENTRY QUIZ */
-
-if(mode === "entry"){
-
-if(
-score ===
-questions().length
-){
-
-saveAchievement(
-"perfectEntry"
-);
-
-saveAchievement(
-"uniUnlocked"
-);
-
-feedback.textContent =
-"🏆 Perfect 10/10! The University-Level Chemistry Quiz is now unlocked.";
-
-universityBtn.classList.remove(
-"hidden"
-);
-
-}
-
-else{
-
-feedback.textContent =
-"📘 Complete the easier Practice Quiz, then retry the Entry Quiz. Score 10/10 to unlock University Level.";
-
-practiceBtn.classList.remove(
-"hidden"
-);
-
-retryBtn.classList.remove(
-"hidden"
-);
-
-}
-
-}
-
-
-/* PRACTICE QUIZ */
-
-else if(mode === "practice"){
-
-saveAchievement(
-"practice"
-);
-
-feedback.textContent =
-"📘 Practice complete. Review the explanations, then retry the Entry Quiz and aim for 10/10.";
-
-retryBtn.classList.remove(
-"hidden"
-);
-
-}
-
-
-/* UNIVERSITY QUIZ */
-
-else{
-
-if(score >= 7){
-
-saveAchievement(
-"uniScholar"
-);
-
-}
-
-if(
-score ===
-questions().length
-){
-
-saveAchievement(
-"uniMaster"
-);
-
-}
-
-
-if(score === 10){
-
-feedback.textContent =
-"🏅 Outstanding — 10/10 at University Level! You have earned University Master.";
-
-}
-
-else if(score >= 7){
-
-feedback.textContent =
-"🎓 University Scholar achieved! Strong undergraduate-level Chemistry performance.";
-
-}
-
-else{
-
-feedback.textContent =
-"🎓 University-Level Chemistry Quiz complete. Review the explanations and try again to reach 7/10 or above.";
-
-}
-
-
-universityBtn.textContent =
-"Retry University-Level Quiz";
-
-universityBtn.classList.remove(
-"hidden"
-);
-
-}
-
-}
-
-
-
-nextBtn.addEventListener(
-"click",
-() => {
-
-index++;
-
-if(
-index >=
-questions().length
-){
-
-finish();
-
-}
-
-else{
-
-renderQuestion();
-
-}
-
-});
-
-
-
-startBtn.addEventListener(
-"click",
-() => begin("entry")
-);
-
-
-
-practiceBtn.addEventListener(
-"click",
-() => begin("practice")
-);
-
-
-
-retryBtn.addEventListener(
-"click",
-() => begin("entry")
-);
-
-
-
-universityBtn.addEventListener(
-"click",
-() => begin("university")
-);
-
-
-
-renderAchievements();
+makeTiles();
+window.addEventListener("hashchange", render);
+render();
 
 </script>
-
 </body>
 </html>
