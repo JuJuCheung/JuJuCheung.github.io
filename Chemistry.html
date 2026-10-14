@@ -3,566 +3,3327 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GCSE Chemistry | Topic Revision</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>GCSE Chemistry Learning Website</title>
 
 <style>
-:root {
-  font-family: system-ui, Arial, sans-serif;
-  color: #e9f3ff;
-  background: #091527;
-}
-* { box-sizing: border-box; }
-body { margin: 0; }
 
-header {
-  background: #10243d;
-  border-bottom: 1px solid #294766;
-  padding: 22px max(18px, calc((100vw - 1050px)/2));
+/* ===== COLOURS ===== */
+
+:root {
+  --navy: #0f2747;
+  --navy2: #173a65;
+  --paper: #f5f7fb;
+  --card: #ffffff;
+  --ink: #1f2937;
+  --muted: #64748b;
+  --line: #dbe3ee;
+  --gold: #f5c451;
+  --green: #1f8f62;
+  --red: #c0392b;
 }
-header h1 { margin: 0; font-size: 30px; }
-header p { color: #bcd1e8; margin: 8px 0 0; }
+
+/* ===== GENERAL ===== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.65;
+}
+
+h2 {
+  color: var(--navy);
+  font-size: 2rem;
+}
+
+h3 {
+  color: var(--navy);
+}
+
+p {
+  line-height: 1.7;
+}
+
+/* ===== HEADER ===== */
+
+.hero {
+  background: linear-gradient(
+    135deg,
+    var(--navy),
+    var(--navy2)
+  );
+  color: white;
+  padding: 72px 22px 60px;
+  text-align: center;
+}
+
+.hero h1 {
+  color: white;
+  font-size: clamp(2.3rem, 6vw, 4.6rem);
+  margin: 0;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  max-width: 900px;
+  margin: 12px auto;
+}
+
+/* ===== BACK BUTTON ===== */
+
+.back-button {
+  display: inline-block;
+  background: white;
+  color: var(--navy);
+  padding: 10px 17px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.back-button:hover {
+  background: var(--gold);
+}
+
+/* ===== NAVIGATION ===== */
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: white;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+nav a {
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+
+nav a:hover {
+  background: #edf2f8;
+}
+
+/* ===== MAIN CONTENT ===== */
 
 main {
-  max-width: 1050px;
+  max-width: 1080px;
   margin: auto;
-  padding: 24px 18px 70px;
+  padding: 28px 18px 70px;
 }
-h2 { font-size: 25px; }
-h3 { margin-bottom: 8px; }
-.muted { color: #bcd1e8; }
+
+section {
+  scroll-margin-top: 90px;
+  margin: 26px 0 46px;
+}
+
+.lead {
+  font-size: 1.08rem;
+  background: white;
+  border-left: 5px solid var(--gold);
+  padding: 20px 22px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(15,39,71,.06);
+}
+
+/* ===== TOPIC GRID ===== */
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+  grid-template-columns:
+    repeat(auto-fit, minmax(250px, 1fr));
   gap: 16px;
 }
 
-.tile, .panel {
-  background: #142841;
-  border: 1px solid #31506e;
-  border-radius: 16px;
+.card {
+  background: white;
   padding: 20px;
-}
-.tile {
-  cursor: pointer;
-  text-align: left;
-  color: inherit;
-  font: inherit;
-  transition: .15s;
-  min-height: 150px;
-}
-.tile:hover, .tile:focus {
-  border-color: #68cbef;
-  transform: translateY(-2px);
-  outline: none;
-}
-.tile strong {
-  font-size: 19px;
-  display: block;
-  margin: 10px 0;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(15,39,71,.06);
 }
 
-.chip {
-  color: #a6dffc;
-  font-size: 13px;
-  font-weight: 700;
+.topic-card {
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  transition: transform .2s, border-color .2s;
 }
-.button {
-  border: 0;
-  background: #3dbdeb;
-  color: #06192a;
+
+.topic-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--navy2);
+}
+
+.emoji {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  margin-bottom: 14px;
+  border-radius: 18px;
+  background: #eef4fa;
+}
+
+/* ===== BUTTONS ===== */
+
+button {
+  font-family: inherit;
+}
+
+.primary,
+.secondary {
+  padding: 12px 20px;
+  border: none;
   border-radius: 10px;
-  font-weight: 800;
-  padding: 12px 18px;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
 }
-.button.secondary {
-  background: #294563;
-  color: #fff;
+
+.primary {
+  background: var(--navy);
+  color: white;
 }
-.button:focus-visible,
-.answer:focus-visible {
-  outline: 3px solid #fff;
+
+.primary:hover {
+  background: var(--navy2);
+}
+
+.secondary {
+  background: #e6edf5;
+  color: var(--navy);
+}
+
+.secondary:hover {
+  background: #d4e2f2;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #e5a500;
   outline-offset: 3px;
 }
-.back { margin-bottom: 18px; }
-ul { line-height: 1.8; }
 
-.example {
-  background: #0c1e32;
-  border-left: 4px solid #3dbdeb;
-  padding: 16px;
-  border-radius: 7px;
-  margin: 12px 0 25px;
+/* ===== REVISION NOTES ===== */
+
+.revision-box {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 24px;
+  margin: 20px 0;
 }
-.quiz-question {
-  margin: 22px 0;
-  border-top: 1px solid #35506b;
-  padding-top: 16px;
+
+.revision-box ul {
+  padding-left: 24px;
 }
+
+.revision-box li {
+  margin-bottom: 12px;
+}
+
+.example-box {
+  background: #eef4fb;
+  padding: 20px;
+  border-left: 5px solid var(--gold);
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+.example-box h3 {
+  margin-top: 0;
+}
+
+/* ===== QUIZ ===== */
+
+.quizbox {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(15,39,71,.09);
+}
+
+.question-box {
+  border-top: 1px solid var(--line);
+  padding: 18px 0;
+}
+
+.question-title {
+  font-weight: bold;
+  font-size: 1.08rem;
+}
+
 .answer {
   display: block;
-  width: 100%;
-  text-align: left;
-  margin: 8px 0;
-  padding: 12px 14px;
-  border: 1px solid #4b6885;
+  background: #f4f7fb;
+  border: 1px solid #ccd8e5;
   border-radius: 10px;
-  background: #203853;
-  color: #f2f7ff;
+  padding: 12px;
+  margin: 8px 0;
   cursor: pointer;
-  font: inherit;
 }
-.answer.selected {
-  border-color: #3dbdeb;
-  background: #145471;
+
+.answer:hover {
+  background: #e9f1fc;
 }
-.answer.correct {
-  border-color: #50cf87;
-  background: #17553c;
+
+.answer:has(input:checked) {
+  background: #dceafa;
+  border-color: var(--navy);
 }
-.answer.wrong {
-  border-color: #fa8080;
-  background: #642f3a;
+
+.answer input {
+  margin-right: 10px;
 }
-.correct { color: #8ff0b1; }
-.wrong { color: #ffb4b4; }
-.hidden { display: none; }
-.score { font-weight: 800; font-size: 19px; }
-.footer {
-  font-size: 13px;
-  color: #bcd1e8;
-  margin-top: 35px;
+
+.feedback {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 9px;
 }
-a { color: #8cdeff; }
+
+.correct {
+  background: #e2f5e9;
+  color: #126035;
+}
+
+.incorrect {
+  background: #fff0ef;
+  color: #a22a22;
+}
+
+.score {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 18px 0;
+}
+
+/* ===== PROGRESS BAR ===== */
+
+.progress {
+  height: 14px;
+  background: #e4ebf4;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 18px 0;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background: var(--green);
+  transition: width .3s;
+}
+
+/* ===== ACHIEVEMENTS ===== */
+
+.badge {
+  text-align: center;
+  opacity: .45;
+}
+
+.badge.earned {
+  opacity: 1;
+  background: #fff9de;
+  border-color: #d7b84b;
+}
+
+.medal {
+  font-size: 3rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+  text-align: center;
+  background: var(--navy);
+  color: white;
+  padding: 24px;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 50px 16px 42px;
+  }
+
+  .hero h1 {
+    font-size: 2.35rem;
+  }
+
+  .quizbox,
+  .revision-box {
+    padding: 17px;
+  }
+
+  nav a {
+    font-size: .9rem;
+  }
+}
+
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>⚗️ GCSE Chemistry Revision</h1>
-  <p>AQA • Paper 1 and Paper 2 • Choose a topic</p>
+<!-- ===== HEADER ===== -->
+
+<header class="hero">
+
+  <a href="index.html" class="back-button">
+    ← Back to Main Page
+  </a>
+
+  <h1>⚗️ Chemistry</h1>
+
+  <p>
+    AQA GCSE Chemistry | Paper 1 & Paper 2
+  </p>
+
+  <p>
+    Learn • Revise • Practise • Achieve
+  </p>
+
 </header>
+
+
+<!-- ===== NAVIGATION ===== -->
+
+<nav>
+
+  <a href="#about">About</a>
+
+  <a href="#topics">Topics</a>
+
+  <a href="#revision">Revision</a>
+
+  <a href="#skills">Exam Skills</a>
+
+  <a href="#achievements">Achievements</a>
+
+  <a href="#quiz">Quiz</a>
+
+</nav>
+
 
 <main>
 
-<section id="home">
-  <h2>Choose a Chemistry topic</h2>
-  <p class="muted">
-    Select a topic to see key facts,
-    a worked example and a short quiz.
-  </p>
 
-  <h3>Paper 1</h3>
-  <div class="grid" id="paper1"></div>
+<!-- ===== ABOUT CHEMISTRY ===== -->
 
-  <h3>Paper 2</h3>
-  <div class="grid" id="paper2"></div>
-</section>
+<section id="about">
 
-<section id="detail" class="hidden">
-  <button class="button secondary back" onclick="goHome()">
-    ← All Chemistry topics
-  </button>
+  <h2>⚗️ About Chemistry</h2>
 
-  <div class="panel">
-    <span class="chip" id="paperLabel"></span>
-    <h2 id="topicTitle"></h2>
-    <p id="summary"></p>
+  <div class="lead">
 
-    <h3>Key facts</h3>
-    <ul id="facts"></ul>
+    Chemistry is the study of substances,
+    their properties, structures and
+    chemical reactions.
 
-    <h3>Worked example</h3>
-    <div class="example" id="example"></div>
-
-    <h3>Quick quiz</h3>
-    <p class="muted">
-      Choose one answer for each question,
-      then check your score.
+    <p>
+      In GCSE Chemistry, you will learn
+      about atoms, bonding, chemical
+      reactions, energy changes and
+      how chemistry is used in everyday life.
     </p>
 
-    <div id="questions"></div>
+    <p>
+      This website covers all 10 main
+      AQA GCSE Chemistry topics.
+    </p>
 
-    <button class="button" onclick="markQuiz()">
-      Check answers
-    </button>
+    <p>
+      Each topic includes:
+    </p>
 
-    <p id="result" class="score" aria-live="polite"></p>
+    <ul>
+      <li>GCSE-level revision notes</li>
+      <li>Important scientific definitions</li>
+      <li>Worked examples</li>
+      <li>10 multiple-choice questions</li>
+      <li>Answers and explanations</li>
+      <li>Scores and achievements</li>
+    </ul>
 
-    <button class="button secondary" onclick="resetQuiz()">
-      Try again
-    </button>
   </div>
+
 </section>
 
-<p class="footer">
-  AQA GCSE Chemistry (8462) revision overview.
-  <a href="https://www.aqa.org.uk/subjects/chemistry/gcse/chemistry-8462/specification/specification-at-a-glance" target="_blank">
-    Official AQA Specification
-  </a>
-</p>
+
+<!-- ===== CHEMISTRY TOPICS ===== -->
+
+<section id="topics">
+
+  <h2>🧪 Key Chemistry Topics</h2>
+
+  <p>
+    Select a topic to open its revision
+    notes, worked example and quiz.
+  </p>
+
+
+  <!-- PAPER 1 -->
+
+  <h3>📘 Paper 1 Topics</h3>
+
+  <div class="grid" id="paper1">
+
+    <!-- Generated by JavaScript in Section 5 -->
+
+  </div>
+
+
+  <!-- PAPER 2 -->
+
+  <h3 style="margin-top:35px;">
+    📗 Paper 2 Topics
+  </h3>
+
+  <div class="grid" id="paper2">
+
+    <!-- Generated by JavaScript in Section 5 -->
+
+  </div>
+
+</section>
+
+
+<!-- ===== REVISION GUIDE ===== -->
+
+<section id="revision">
+
+  <h2>📚 GCSE Chemistry Revision Guide</h2>
+
+  <p>
+    These are the main areas you should
+    understand before your GCSE exams.
+  </p>
+
+  <div class="grid">
+
+
+    <div class="card">
+
+      <div class="emoji">⚛️</div>
+
+      <h3>Atomic Structure</h3>
+
+      <p>
+        Understand protons, neutrons,
+        electrons, isotopes and the
+        periodic table.
+      </p>
+
+      <p>
+        Practise calculating the number
+        of particles inside atoms.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="emoji">🔗</div>
+
+      <h3>Chemical Bonding</h3>
+
+      <p>
+        Learn ionic, covalent and
+        metallic bonding.
+      </p>
+
+      <p>
+        Explain how bonding affects
+        melting points, conductivity
+        and physical properties.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="emoji">⚖️</div>
+
+      <h3>Chemistry Calculations</h3>
+
+      <p>
+        Practise relative formula mass,
+        moles, concentration and
+        percentage yield.
+      </p>
+
+      <p>
+        Remember to show your working.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="emoji">🧫</div>
+
+      <h3>Chemical Reactions</h3>
+
+      <p>
+        Revise acids, metals,
+        neutralisation, electrolysis
+        and displacement reactions.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="emoji">🔥</div>
+
+      <h3>Energy Changes</h3>
+
+      <p>
+        Understand exothermic and
+        endothermic reactions.
+      </p>
+
+      <p>
+        Learn activation energy and
+        reaction profile diagrams.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="emoji">⏱️</div>
+
+      <h3>Reaction Rates</h3>
+
+      <p>
+        Understand collision theory,
+        catalysts and how temperature,
+        concentration and surface area
+        affect reaction speed.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="emoji">🛢️</div>
+
+      <h3>Organic Chemistry</h3>
+
+      <p>
+        Learn about crude oil,
+        hydrocarbons, alkanes,
+        alkenes and cracking.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="emoji">🔬</div>
+
+      <h3>Chemical Analysis</h3>
+
+      <p>
+        Revise chromatography,
+        gas tests, flame tests
+        and identifying unknown
+        substances.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="emoji">🌍</div>
+
+      <h3>The Atmosphere</h3>
+
+      <p>
+        Understand greenhouse gases,
+        climate change, air pollution
+        and Earth's early atmosphere.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="emoji">♻️</div>
+
+      <h3>Using Resources</h3>
+
+      <p>
+        Learn about recycling,
+        water treatment, corrosion,
+        sustainability and
+        the Haber process.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ===== EXAM SKILLS ===== -->
+
+<section id="skills">
+
+  <h2>📝 GCSE Chemistry Exam Skills</h2>
+
+  <div class="grid">
+
+
+    <div class="card">
+
+      <h3>🧮 Calculations</h3>
+
+      <p>
+        For calculation questions:
+      </p>
+
+      <ol>
+        <li>Write the correct formula.</li>
+        <li>Substitute the numbers.</li>
+        <li>Calculate carefully.</li>
+        <li>Write the correct units.</li>
+      </ol>
+
+      <p>
+        <strong>Example:</strong>
+      </p>
+
+      <p>
+        Moles = Mass ÷ Mr
+      </p>
+
+      <p>
+        36 ÷ 18 = 2 mol
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>💬 Scientific Explanations</h3>
+
+      <p>
+        Use correct scientific
+        vocabulary in your answers.
+      </p>
+
+      <p>
+        Important words include:
+      </p>
+
+      <ul>
+        <li>Electrostatic attraction</li>
+        <li>Delocalised electrons</li>
+        <li>Activation energy</li>
+        <li>Collision frequency</li>
+        <li>Oxidation and reduction</li>
+      </ul>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>🧪 Required Practicals</h3>
+
+      <p>
+        Revise the methods used
+        in chemistry experiments.
+      </p>
+
+      <p>
+        Remember:
+      </p>
+
+      <ul>
+        <li>Independent variable</li>
+        <li>Dependent variable</li>
+        <li>Control variables</li>
+        <li>Safety precautions</li>
+        <li>Accuracy and improvements</li>
+      </ul>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>📊 Graph Questions</h3>
+
+      <p>
+        When drawing a graph:
+      </p>
+
+      <ul>
+        <li>Label both axes.</li>
+        <li>Include units.</li>
+        <li>Use a suitable scale.</li>
+        <li>Plot points accurately.</li>
+        <li>Draw an appropriate line.</li>
+      </ul>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>📖 Command Words</h3>
+
+      <p>
+        <strong>Describe:</strong>
+        Say what happens.
+      </p>
+
+      <p>
+        <strong>Explain:</strong>
+        Give scientific reasons.
+      </p>
+
+      <p>
+        <strong>Compare:</strong>
+        Give similarities
+        and differences.
+      </p>
+
+      <p>
+        <strong>Evaluate:</strong>
+        Consider advantages,
+        disadvantages and evidence.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>🎯 Exam Technique</h3>
+
+      <p>
+        Read each question carefully.
+      </p>
+
+      <ul>
+        <li>Underline important words.</li>
+        <li>Check the number of marks.</li>
+        <li>Use scientific terminology.</li>
+        <li>Show calculation steps.</li>
+        <li>Check answers and units.</li>
+      </ul>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- ===== ACHIEVEMENTS ===== -->
+
+<section id="achievements">
+
+  <h2>🏆 Chemistry Achievements</h2>
+
+  <p>
+    Complete quizzes to unlock
+    your Chemistry awards.
+  </p>
+
+  <div class="grid">
+
+
+    <div class="card badge"
+         id="firstBadge">
+
+      <div class="medal">🧪</div>
+
+      <h3>First Experiment</h3>
+
+      <p>
+        Complete your first
+        Chemistry topic quiz.
+      </p>
+
+    </div>
+
+
+    <div class="card badge"
+         id="perfectBadge">
+
+      <div class="medal">💯</div>
+
+      <h3>Chemistry Teacher Award</h3>
+
+      <p>
+        Score 10/10 on
+        any Chemistry topic quiz.
+      </p>
+
+    </div>
+
+
+    <div class="card badge"
+         id="masterBadge">
+
+      <div class="medal">🎓</div>
+
+      <h3>Chemistry Master</h3>
+
+      <p>
+        Score 10/10 on
+        all 10 Chemistry topics.
+      </p>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="revision-box">
+
+    <h3>📈 Your Chemistry Progress</h3>
+
+    <p id="progressText">
+      0 out of 10 topics completed perfectly.
+    </p>
+
+    <div class="progress">
+
+      <div class="progress-bar"
+           id="progressBar">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ===== QUIZ SECTION ===== -->
+
+<section id="quiz">
+
+  <h2>❓ Chemistry Topic Quiz</h2>
+
+  <div class="quizbox"
+       id="quizPanel">
+
+    <h3>Choose a Chemistry Topic</h3>
+
+    <p>
+      Select a topic from the
+      Key Chemistry Topics section.
+    </p>
+
+    <p>
+      You will be able to:
+    </p>
+
+    <ul>
+      <li>Read GCSE revision notes.</li>
+      <li>Study a worked example.</li>
+      <li>Answer 10 quiz questions.</li>
+      <li>Check your answers.</li>
+      <li>See your score out of 10.</li>
+      <li>Earn achievements.</li>
+    </ul>
+
+    <a href="#topics"
+       class="back-button"
+       style="
+         background:#0f2747;
+         color:white;
+         margin-top:10px;
+       ">
+
+      Choose a Topic ↑
+
+    </a>
+
+  </div>
+
+</section>
+
 
 </main>
 
+
+<!-- ===== FOOTER ===== -->
+
+<footer>
+
+  <p>
+    © 2026 Chemistry Learning Website
+  </p>
+
+  <p>
+    GCSE Chemistry • AQA
+  </p>
+
+</footer>
+
+
+<!-- JavaScript starts below -->
 <script>
 
 const topics = [
 
 {
- title: "Atomic Structure and the Periodic Table",
- short: "Atoms, elements and patterns",
- facts: [
-  "Atoms contain protons, neutrons and electrons.",
-  "Atomic number = number of protons.",
-  "Elements in the same group have similar chemical properties."
- ],
- example:
-  "Sodium has atomic number 11 and mass number 23. " +
-  "It has 11 protons, 11 electrons and 12 neutrons. " +
-  "Neutrons = 23 - 11 = 12.",
- quiz: [
-  ["What is the atomic number?",
-   ["Number of protons", "Number of neutrons", "Total particles"], 0],
-  ["What charge does an electron have?",
-   ["Positive", "Negative", "Neutral"], 1],
-  ["Elements in the same group have similar...",
-   ["Masses only", "Chemical properties", "Colours only"], 1]
- ]
+  title: "Atomic Structure and the Periodic Table",
+  icon: "⚛️",
+  paper: 1,
+
+  intro: "Atoms are the building blocks of matter. The periodic table arranges elements in order of increasing atomic number.",
+
+  notes: [
+    "Atoms contain protons, neutrons and electrons. Protons and neutrons are in the nucleus, while electrons occupy shells around the nucleus.",
+
+    "A proton has a relative charge of +1 and relative mass of 1. A neutron has charge 0 and relative mass of 1. An electron has charge -1 and a very small relative mass.",
+
+    "Atomic number = number of protons. Every atom of the same element has the same number of protons.",
+
+    "Mass number = number of protons + number of neutrons. Number of neutrons = mass number - atomic number.",
+
+    "A neutral atom has equal numbers of protons and electrons. An ion forms when an atom or group of atoms gains or loses electrons.",
+
+    "Isotopes are atoms of the same element with the same number of protons but different numbers of neutrons.",
+
+    "Electrons occupy energy levels or shells. For the first 20 elements, GCSE electron arrangements can be written using 2, 8 and 8 electrons in the first three shells.",
+
+    "Elements in the same group of the periodic table have the same number of outer-shell electrons and similar chemical properties.",
+
+    "Group 1 alkali metals become more reactive down the group because their outer electron is more easily lost.",
+
+    "Group 7 halogens become less reactive down the group because the attraction for an incoming electron becomes weaker.",
+
+    "Group 0 noble gases are very unreactive because they have full outer electron shells.",
+
+    "The modern periodic table is arranged by atomic number. Mendeleev left gaps for undiscovered elements and predicted their properties."
+  ],
+
+  example: `
+    <h3>Worked Example: Sodium Atom</h3>
+
+    Sodium has:
+
+    <ul>
+      <li>Atomic number = 11</li>
+      <li>Mass number = 23</li>
+    </ul>
+
+    <strong>Step 1:</strong> Number of protons = 11.
+
+    <p><strong>Step 2:</strong> A neutral atom has 11 electrons.</p>
+
+    <p><strong>Step 3:</strong> Neutrons = 23 - 11 = 12.</p>
+
+    <p><strong>Step 4:</strong> Electron arrangement = 2,8,1.</p>
+
+    <p><strong>Exam tip:</strong> Sodium is in Group 1 because it has one outer-shell electron.</p>
+  `,
+
+  qs: [
+    [
+      "Which particle has a positive charge?",
+      "Proton",
+      "Electron",
+      "Neutron",
+      "Atom"
+    ],
+    [
+      "What does atomic number tell us?",
+      "Number of protons",
+      "Number of neutrons",
+      "Number of shells",
+      "Total number of particles"
+    ],
+    [
+      "What is the relative charge of an electron?",
+      "-1",
+      "+1",
+      "0",
+      "+2"
+    ],
+    [
+      "Where are protons and neutrons found?",
+      "Inside the nucleus",
+      "In electron shells",
+      "Outside the atom",
+      "Between atoms"
+    ],
+    [
+      "What are isotopes?",
+      "Atoms with the same protons but different neutrons",
+      "Atoms with different protons",
+      "Atoms with no electrons",
+      "Atoms with identical numbers of all particles"
+    ],
+    [
+      "An atom has atomic number 8 and mass number 16. How many neutrons does it have?",
+      "8",
+      "16",
+      "24",
+      "4"
+    ],
+    [
+      "What is the electron arrangement of magnesium?",
+      "2,8,2",
+      "2,6",
+      "2,8,8",
+      "2,8,1"
+    ],
+    [
+      "Why do elements in the same group have similar properties?",
+      "They have the same number of outer-shell electrons",
+      "They have the same atomic mass",
+      "They have the same number of neutrons",
+      "They have the same number of shells"
+    ],
+    [
+      "What happens to Group 1 reactivity down the group?",
+      "It increases",
+      "It decreases",
+      "It stays the same",
+      "The elements stop reacting"
+    ],
+    [
+      "Why are noble gases very unreactive?",
+      "They have full outer electron shells",
+      "They have no protons",
+      "They have no neutrons",
+      "They are all metals"
+    ]
+  ]
 },
 
-{
- title: "Bonding, Structure and Properties",
- short: "Ionic, covalent and metallic bonding",
- facts: [
-  "Ionic bonding involves electron transfer and attraction between oppositely charged ions.",
-  "Covalent bonds form when atoms share pairs of electrons.",
-  "Metallic bonding involves positive metal ions and delocalised electrons."
- ],
- example:
-  "In sodium chloride, sodium loses one electron to form Na+. " +
-  "Chlorine gains one electron to form Cl-. " +
-  "The oppositely charged ions attract.",
- quiz: [
-  ["In covalent bonding, atoms...",
-   ["Share electrons", "Transfer protons", "Lose nuclei"], 0],
-  ["An ionic bond is between...",
-   ["Oppositely charged ions", "Two neutrons", "Two molecules only"], 0],
-  ["Why do metals conduct electricity?",
-   ["Moving protons", "Delocalised electrons", "No particles"], 1]
- ]
-},
 
 {
- title: "Quantitative Chemistry",
- short: "Mass, moles and calculations",
- facts: [
-  "Relative formula mass (Mr) is the sum of relative atomic masses.",
-  "Number of moles = mass / Mr.",
-  "In a closed system, total mass is conserved during a reaction."
- ],
- example:
-  "For 18 g of water, Mr(H2O) = (2 x 1) + 16 = 18. " +
-  "Moles = 18 / 18 = 1 mol.",
- quiz: [
-  ["Moles = ...",
-   ["mass x Mr", "mass / Mr", "Mr / mass"], 1],
-  ["What is the Mr of CO2? (C=12, O=16)",
-   ["28", "32", "44"], 2],
-  ["In a closed reaction, mass is...",
-   ["Conserved", "Always doubled", "Lost"], 0]
- ]
+  title: "Bonding, Structure and Properties",
+  icon: "🔗",
+  paper: 1,
+
+  intro: "Chemical bonding explains how atoms join together and why substances have different physical properties.",
+
+  notes: [
+    "There are three main types of bonding at GCSE: ionic, covalent and metallic bonding.",
+
+    "Ionic bonding usually occurs between metals and non-metals. A metal atom loses electrons to form a positive ion, while a non-metal atom gains electrons to form a negative ion.",
+
+    "Ionic bonding is the strong electrostatic attraction between oppositely charged ions.",
+
+    "Ionic compounds form giant ionic lattices. They usually have high melting and boiling points because large amounts of energy are needed to overcome strong electrostatic attractions.",
+
+    "Solid ionic compounds do not conduct electricity because their ions cannot move. When molten or dissolved in water, the ions become mobile and can carry charge.",
+
+    "Covalent bonding usually occurs between non-metal atoms. The atoms share pairs of electrons.",
+
+    "Simple molecular substances often have low melting and boiling points because the intermolecular forces between molecules are relatively weak.",
+
+    "Giant covalent substances have many strong covalent bonds. Diamond is very hard because each carbon atom forms four covalent bonds.",
+
+    "Graphite contains carbon atoms bonded in layers. Each carbon forms three covalent bonds and has one delocalised electron, allowing graphite to conduct electricity.",
+
+    "Graphene is a single layer of carbon atoms. It is strong and conducts electricity.",
+
+    "Metallic bonding is the strong electrostatic attraction between positive metal ions and delocalised electrons.",
+
+    "Metals conduct electricity and heat because delocalised electrons can move through their structures.",
+
+    "Metals can be bent and shaped because layers of atoms can slide over each other while metallic bonding is maintained.",
+
+    "Nanoparticles have sizes between approximately 1 and 100 nanometres. Their high surface area to volume ratio can give them useful properties."
+  ],
+
+  example: `
+    <h3>Worked Example: Sodium Chloride</h3>
+
+    <p>Sodium has the electron arrangement 2,8,1.</p>
+
+    <p>Chlorine has the electron arrangement 2,8,7.</p>
+
+    <strong>Step 1:</strong> Sodium transfers one electron to chlorine.
+
+    <p><strong>Step 2:</strong> Sodium becomes a positive ion, Na+.</p>
+
+    <p><strong>Step 3:</strong> Chlorine becomes a negative ion, Cl-.</p>
+
+    <p><strong>Step 4:</strong> The oppositely charged ions attract each other.</p>
+
+    <p>This forms an ionic compound, sodium chloride (NaCl).</p>
+
+    <h4>GCSE Explanation</h4>
+
+    <p>Sodium chloride has a high melting point because strong electrostatic attractions between oppositely charged ions require a large amount of energy to overcome.</p>
+  `,
+
+  qs: [
+    [
+      "What happens during ionic bonding?",
+      "Electrons are transferred from one atom to another",
+      "Protons are shared",
+      "Neutrons are transferred",
+      "Electrons are destroyed"
+    ],
+    [
+      "What happens during covalent bonding?",
+      "Atoms share pairs of electrons",
+      "Atoms share protons",
+      "Electrons are always transferred",
+      "Atoms lose their nuclei"
+    ],
+    [
+      "What type of bonding is found in sodium chloride?",
+      "Ionic bonding",
+      "Covalent bonding",
+      "Metallic bonding",
+      "Hydrogen bonding only"
+    ],
+    [
+      "Why do ionic compounds usually have high melting points?",
+      "Strong electrostatic attractions between ions",
+      "Very weak attractions between ions",
+      "Electrons move freely in the solid",
+      "They contain small molecules only"
+    ],
+    [
+      "Why can molten sodium chloride conduct electricity?",
+      "Its ions can move and carry charge",
+      "Its protons leave the nucleus",
+      "It contains free neutrons",
+      "Its molecules have no charges"
+    ],
+    [
+      "Why is diamond very hard?",
+      "It has a giant structure of strong covalent bonds",
+      "It contains weak intermolecular forces only",
+      "Its carbon atoms can slide freely",
+      "It contains moving positive ions"
+    ],
+    [
+      "Why can graphite conduct electricity?",
+      "It contains delocalised electrons",
+      "It contains mobile protons",
+      "Its covalent bonds are weak",
+      "It contains sodium ions"
+    ],
+    [
+      "Which description matches metallic bonding?",
+      "Positive metal ions attracted to delocalised electrons",
+      "Negative ions sharing neutrons",
+      "Molecules sharing protons",
+      "Atoms joined by gravity"
+    ],
+    [
+      "Why do simple molecular substances often have low melting points?",
+      "They have relatively weak intermolecular forces",
+      "Their covalent bonds always break easily",
+      "They contain mobile ions",
+      "Their atoms have no electrons"
+    ],
+    [
+      "Which substance has a giant covalent structure?",
+      "Diamond",
+      "Methane",
+      "Water",
+      "Oxygen"
+    ]
+  ]
 },
 
-{
- title: "Chemical Changes",
- short: "Reactivity, acids and electrolysis",
- facts: [
-  "More reactive metals can displace less reactive metals from compounds.",
-  "Acid + suitable metal produces a salt and hydrogen.",
-  "Electrolysis uses electricity to decompose molten or dissolved ionic substances."
- ],
- example:
-  "Magnesium + hydrochloric acid produces magnesium chloride " +
-  "and hydrogen. Balanced equation: Mg + 2HCl → MgCl2 + H2.",
- quiz: [
-  ["Metal + acid usually makes...",
-   ["Salt and hydrogen", "Salt and oxygen", "Water only"], 0],
-  ["Electrolysis requires...",
-   ["Electric current", "Sunlight only", "No energy"], 0],
-  ["Which metal is more reactive?",
-   ["Gold", "Magnesium", "Silver"], 1]
- ]
-},
 
 {
- title: "Energy Changes",
- short: "Exothermic and endothermic reactions",
- facts: [
-  "Exothermic reactions transfer energy to the surroundings.",
-  "Endothermic reactions take in energy from the surroundings.",
-  "Breaking bonds requires energy; making bonds releases energy."
- ],
- example:
-  "If breaking bonds requires 500 kJ and making bonds " +
-  "releases 650 kJ, the overall energy change is " +
-  "500 - 650 = -150 kJ. This is exothermic.",
- quiz: [
-  ["Exothermic reactions make surroundings...",
-   ["Warmer", "Always colder", "Unchanged"], 0],
-  ["Breaking bonds...",
-   ["Releases energy", "Requires energy", "Produces atoms from nothing"], 1],
-  ["A negative overall energy change is usually...",
-   ["Exothermic", "Endothermic", "Neither"], 0]
- ]
+  title: "Quantitative Chemistry",
+  icon: "⚖️",
+  paper: 1,
+
+  intro: "Quantitative chemistry involves calculating the amounts of substances used and produced in chemical reactions.",
+
+  notes: [
+    "The law of conservation of mass states that no atoms are created or destroyed during a chemical reaction. In a closed system, the total mass remains constant.",
+
+    "Chemical equations must be balanced to show the same number of atoms of each element on both sides.",
+
+    "Relative atomic mass (Ar) compares the average mass of atoms of an element with one-twelfth of the mass of carbon-12.",
+
+    "Relative formula mass (Mr) is calculated by adding together the relative atomic masses of all atoms in a formula.",
+
+    "A mole is an amount of substance containing 6.02 × 10^23 specified particles.",
+
+    "Number of moles = mass in grams ÷ relative formula mass.",
+
+    "Mass in grams = number of moles × relative formula mass.",
+
+    "The coefficients in balanced equations show the mole ratios between reactants and products.",
+
+    "Concentration in g/dm³ = mass of solute in grams ÷ volume of solution in dm³.",
+
+    "Concentration in mol/dm³ = moles of solute ÷ volume of solution in dm³.",
+
+    "One dm³ is equal to 1000 cm³. Divide cm³ by 1000 to convert to dm³.",
+
+    "Percentage yield = actual yield ÷ theoretical yield × 100.",
+
+    "Atom economy = relative formula mass of desired product ÷ sum of relative formula masses of all products × 100.",
+
+    "At room temperature and pressure, one mole of any gas occupies approximately 24 dm³."
+  ],
+
+  example: `
+    <h3>Worked Example 1: Calculating Moles</h3>
+
+    <p>Calculate the number of moles in 36 g of water.</p>
+
+    <p>Relative atomic masses: H = 1 and O = 16.</p>
+
+    <strong>Step 1:</strong> Calculate Mr of H2O.
+
+    <p>Mr = (2 × 1) + 16 = 18.</p>
+
+    <strong>Step 2:</strong> Use the formula.
+
+    <p>Moles = mass ÷ Mr</p>
+
+    <p>Moles = 36 ÷ 18</p>
+
+    <p><strong>Answer = 2 mol</strong></p>
+
+    <h3>Worked Example 2: Percentage Yield</h3>
+
+    <p>The theoretical yield is 50 g, but only 40 g is obtained.</p>
+
+    <p>Percentage yield = (40 ÷ 50) × 100</p>
+
+    <p><strong>Answer = 80%</strong></p>
+  `,
+
+  qs: [
+    [
+      "What is conserved during a chemical reaction in a closed system?",
+      "Total mass",
+      "Volume always",
+      "Number of molecules",
+      "Temperature"
+    ],
+    [
+      "What is the relative formula mass of water, H2O?",
+      "18",
+      "16",
+      "20",
+      "10"
+    ],
+    [
+      "Which formula calculates the number of moles?",
+      "Mass ÷ Mr",
+      "Mass × Mr",
+      "Mr ÷ mass",
+      "Mass + Mr"
+    ],
+    [
+      "What is the mass of 2 moles of CO2 if Mr = 44?",
+      "88 g",
+      "22 g",
+      "44 g",
+      "46 g"
+    ],
+    [
+      "How many cm³ are in 1 dm³?",
+      "1000",
+      "100",
+      "10",
+      "10000"
+    ],
+    [
+      "What is the relative formula mass of CO2? (C = 12, O = 16)",
+      "44",
+      "28",
+      "32",
+      "18"
+    ],
+    [
+      "A reaction produces 80 g instead of the theoretical 100 g. What is the percentage yield?",
+      "80%",
+      "20%",
+      "125%",
+      "100%"
+    ],
+    [
+      "What is the formula for concentration in g/dm³?",
+      "Mass of solute ÷ volume of solution",
+      "Volume ÷ mass",
+      "Mass × volume",
+      "Mr ÷ mass"
+    ],
+    [
+      "How many moles are in 12 g of carbon if Ar = 12?",
+      "1 mol",
+      "2 mol",
+      "12 mol",
+      "0.5 mol"
+    ],
+    [
+      "What volume does 1 mole of gas occupy at room temperature and pressure?",
+      "24 dm³",
+      "12 dm³",
+      "1 dm³",
+      "100 dm³"
+    ]
+  ]
 },
 
-{
- title: "Rate and Extent of Chemical Change",
- short: "Collision theory and equilibrium",
- facts: [
-  "Increasing concentration, temperature or surface area can increase reaction rate.",
-  "A catalyst increases the rate without being used up.",
-  "Reversible reactions can reach dynamic equilibrium in a closed system."
- ],
- example:
-  "Crushing a solid reactant into powder increases its " +
-  "surface area, increasing the frequency of successful collisions.",
- quiz: [
-  ["Which increases surface area?",
-   ["Using a large lump", "Grinding into powder", "Cooling"], 1],
-  ["A catalyst...",
-   ["Is always consumed", "Speeds up reaction", "Stops all collisions"], 1],
-  ["At dynamic equilibrium...",
-   ["Both reactions stop", "Forward and reverse rates are equal", "Products disappear"], 1]
- ]
-},
 
 {
- title: "Organic Chemistry",
- short: "Hydrocarbons and polymers",
- facts: [
-  "Crude oil is a mixture of hydrocarbons separated by fractional distillation.",
-  "Alkanes are saturated hydrocarbons with single bonds.",
-  "Alkenes contain at least one carbon-carbon double bond."
- ],
- example:
-  "Ethene (C2H4) is an alkene. " +
-  "It changes bromine water from orange to colourless.",
- quiz: [
-  ["Hydrocarbons contain...",
-   ["Carbon and hydrogen", "Hydrogen and oxygen", "Carbon and nitrogen only"], 0],
-  ["Alkenes contain a...",
-   ["C=C bond", "Metallic bond only", "C=O bond"], 0],
-  ["Crude oil is separated by...",
-   ["Filtration", "Fractional distillation", "Electrolysis"], 1]
- ]
+  title: "Chemical Changes",
+  icon: "🧫",
+  paper: 1,
+
+  intro: "Chemical changes include reactions between acids, metals, bases and salts, as well as electrolysis and redox reactions.",
+
+  notes: [
+    "The reactivity series arranges metals in order of their tendency to form positive ions.",
+
+    "A more reactive metal can displace a less reactive metal from a solution of its compound.",
+
+    "Metals above carbon in the reactivity series generally need electrolysis to be extracted from their ores.",
+
+    "Metals less reactive than carbon can sometimes be extracted by reduction using carbon.",
+
+    "Acids produce hydrogen ions, H+, in aqueous solution.",
+
+    "Acid + metal → salt + hydrogen.",
+
+    "Acid + metal oxide → salt + water.",
+
+    "Acid + metal carbonate → salt + water + carbon dioxide.",
+
+    "Neutralisation involves hydrogen ions reacting with hydroxide ions to produce water: H+ + OH- → H2O.",
+
+    "Hydrochloric acid forms chloride salts, sulfuric acid forms sulfate salts and nitric acid forms nitrate salts.",
+
+    "A neutral solution has pH 7 at approximately 25°C. Acidic solutions have pH below 7 and alkaline solutions have pH above 7.",
+
+    "During electrolysis, positive ions move to the negative cathode and negative ions move to the positive anode.",
+
+    "Reduction is gain of electrons. Oxidation is loss of electrons. Remember OIL RIG.",
+
+    "In aqueous electrolysis, hydrogen may be formed at the cathode instead of a reactive metal.",
+
+    "Aluminium is extracted by electrolysis of molten aluminium oxide dissolved in cryolite."
+  ],
+
+  example: `
+    <h3>Worked Example 1: Acid and Metal</h3>
+
+    <p>Magnesium reacts with hydrochloric acid.</p>
+
+    <p><strong>Word equation:</strong></p>
+
+    <p>Magnesium + hydrochloric acid → magnesium chloride + hydrogen</p>
+
+    <p><strong>Balanced symbol equation:</strong></p>
+
+    <p>Mg + 2HCl → MgCl2 + H2</p>
+
+    <p>The hydrogen gas can be tested using a lit splint. It produces a squeaky pop.</p>
+
+    <h3>Worked Example 2: Displacement</h3>
+
+    <p>Iron is more reactive than copper, so iron displaces copper from copper sulfate solution.</p>
+
+    <p>Fe + CuSO4 → FeSO4 + Cu</p>
+
+    <p>The blue solution changes towards pale green as iron(II) sulfate forms.</p>
+  `,
+
+  qs: [
+    [
+      "What are the products when an acid reacts with a metal?",
+      "Salt and hydrogen",
+      "Salt and oxygen",
+      "Water only",
+      "Carbon dioxide only"
+    ],
+    [
+      "What is the pH of a neutral solution at approximately 25°C?",
+      "7",
+      "1",
+      "14",
+      "0"
+    ],
+    [
+      "Which gas forms when an acid reacts with a carbonate?",
+      "Carbon dioxide",
+      "Hydrogen",
+      "Oxygen",
+      "Nitrogen"
+    ],
+    [
+      "Which electrode attracts positive ions during electrolysis?",
+      "Cathode",
+      "Anode",
+      "Both equally",
+      "Neither"
+    ],
+    [
+      "What is oxidation in terms of electrons?",
+      "Loss of electrons",
+      "Gain of electrons",
+      "Gain of neutrons",
+      "Loss of protons"
+    ],
+    [
+      "What is reduction in terms of electrons?",
+      "Gain of electrons",
+      "Loss of electrons",
+      "Gain of protons",
+      "Loss of neutrons"
+    ],
+    [
+      "Which acid produces chloride salts?",
+      "Hydrochloric acid",
+      "Nitric acid",
+      "Sulfuric acid",
+      "Carbonic acid"
+    ],
+    [
+      "How is aluminium extracted from aluminium oxide?",
+      "Electrolysis",
+      "Filtration",
+      "Simple distillation",
+      "Crystallisation"
+    ],
+    [
+      "Which metal can displace copper from copper sulfate solution?",
+      "Magnesium",
+      "Silver",
+      "Gold",
+      "Platinum"
+    ],
+    [
+      "What is the ionic equation for neutralisation?",
+      "H+ + OH- → H2O",
+      "H2 + O2 → H2O",
+      "Na + Cl → NaCl",
+      "C + O2 → CO2"
+    ]
+  ]
 },
 
-{
- title: "Chemical Analysis",
- short: "Testing substances and purity",
- facts: [
-  "A pure substance has a sharp melting point at a given pressure.",
-  "Chromatography separates mixtures and can identify substances.",
-  "Flame tests can identify certain metal ions."
- ],
- example:
-  "A yellow flame suggests sodium ions are present. " +
-  "Further tests may be required to confirm the substance.",
- quiz: [
-  ["A yellow flame suggests...",
-   ["Sodium", "Copper", "Lithium"], 0],
-  ["Chromatography is useful for...",
-   ["Separating mixtures", "Making electricity", "Measuring mass only"], 0],
-  ["A pure substance has...",
-   ["A sharp melting point", "No melting point", "Every possible melting point"], 0]
- ]
-},
 
 {
- title: "Chemistry of the Atmosphere",
- short: "Earth's gases and climate",
- facts: [
-  "The modern atmosphere contains approximately 78% nitrogen and 21% oxygen.",
-  "Carbon dioxide and methane are greenhouse gases.",
-  "Burning fossil fuels produces carbon dioxide and other pollutants."
- ],
- example:
-  "Complete combustion of methane: " +
-  "CH4 + 2O2 → CO2 + 2H2O. " +
-  "Carbon dioxide is a greenhouse gas.",
- quiz: [
-  ["Most of Earth's atmosphere is...",
-   ["Oxygen", "Nitrogen", "Carbon dioxide"], 1],
-  ["Which is a greenhouse gas?",
-   ["Methane", "Argon", "Neon"], 0],
-  ["Complete combustion of hydrocarbons makes...",
-   ["Carbon dioxide and water", "Only nitrogen", "Only hydrogen"], 0]
- ]
+  title: "Energy Changes",
+  icon: "🔥",
+  paper: 1,
+
+  intro: "Chemical reactions involve energy transfers. Some reactions release energy, while others absorb energy from the surroundings.",
+
+  notes: [
+    "An exothermic reaction transfers energy to the surroundings, usually causing the temperature of the surroundings to increase.",
+
+    "An endothermic reaction takes in energy from the surroundings, usually causing their temperature to decrease.",
+
+    "Combustion, respiration and many neutralisation reactions are exothermic.",
+
+    "Thermal decomposition and the reaction between citric acid and sodium hydrogencarbonate are examples of endothermic processes.",
+
+    "Activation energy is the minimum energy particles must have for a successful reaction.",
+
+    "Reaction profile diagrams show the relative energies of reactants, products and the activation energy.",
+
+    "An exothermic reaction has products at a lower energy level than its reactants.",
+
+    "An endothermic reaction has products at a higher energy level than its reactants.",
+
+    "Breaking chemical bonds requires energy, while forming chemical bonds releases energy.",
+
+    "Overall energy change = energy needed to break bonds - energy released when new bonds form.",
+
+    "If the overall energy change is negative, the reaction is exothermic. If positive, it is endothermic.",
+
+    "Chemical cells produce electrical energy from chemical reactions.",
+
+    "Batteries contain two or more cells connected together.",
+
+    "Hydrogen fuel cells use hydrogen and oxygen to produce electricity. The overall chemical product is water.",
+
+    "Hydrogen fuel cells do not release carbon dioxide during operation, but hydrogen production may cause environmental impacts."
+  ],
+
+  example: `
+    <h3>Worked Example: Bond Energy Calculation</h3>
+
+    <p>A reaction requires 500 kJ to break bonds.</p>
+
+    <p>Making new bonds releases 650 kJ.</p>
+
+    <strong>Step 1:</strong> Use the formula.
+
+    <p>Energy change = energy in - energy out</p>
+
+    <strong>Step 2:</strong> Substitute the values.
+
+    <p>Energy change = 500 - 650</p>
+
+    <p><strong>Answer = -150 kJ</strong></p>
+
+    <h4>Conclusion</h4>
+
+    <p>The reaction is <strong>exothermic</strong> because more energy is released when bonds form than is absorbed when bonds break.</p>
+
+    <h4>Exam Tip</h4>
+
+    <p>Remember: Breaking bonds requires energy; making bonds releases energy.</p>
+  `,
+
+  qs: [
+    [
+      "What happens during an exothermic reaction?",
+      "Energy is transferred to the surroundings",
+      "Energy is always absorbed",
+      "No energy is transferred",
+      "Atoms disappear"
+    ],
+    [
+      "What happens during an endothermic reaction?",
+      "Energy is taken in from the surroundings",
+      "Energy is always released",
+      "Mass is created",
+      "Electrons disappear"
+    ],
+    [
+      "Combustion is usually which type of reaction?",
+      "Exothermic",
+      "Endothermic",
+      "Neutral",
+      "Non-chemical"
+    ],
+    [
+      "What is activation energy?",
+      "The minimum energy needed for a successful reaction",
+      "The total mass of reactants",
+      "The final temperature",
+      "The energy stored in protons"
+    ],
+    [
+      "What happens when chemical bonds are broken?",
+      "Energy is required",
+      "Energy is always released",
+      "Atoms are destroyed",
+      "No energy change occurs"
+    ],
+    [
+      "What happens when chemical bonds are formed?",
+      "Energy is released",
+      "Energy is always absorbed",
+      "Protons are created",
+      "Mass disappears"
+    ],
+    [
+      "What sign does the overall energy change have for an exothermic reaction?",
+      "Negative",
+      "Positive",
+      "Always zero",
+      "Undefined"
+    ],
+    [
+      "Which substances react in a hydrogen fuel cell?",
+      "Hydrogen and oxygen",
+      "Carbon and nitrogen",
+      "Sodium and chlorine",
+      "Copper and sulfur"
+    ],
+    [
+      "A decrease in the surroundings' temperature usually indicates which reaction?",
+      "Endothermic",
+      "Exothermic",
+      "Neutralisation always",
+      "Complete combustion"
+    ],
+    [
+      "Breaking bonds needs 400 kJ and making bonds releases 600 kJ. What is the overall energy change?",
+      "-200 kJ",
+      "+200 kJ",
+      "+1000 kJ",
+      "0 kJ"
+    ]
+  ]
 },
 
+
 {
- title: "Using Resources",
- short: "Water, life cycles and materials",
- facts: [
-  "Potable water is safe to drink but is not necessarily pure H2O.",
-  "Life cycle assessments consider environmental impacts across a product's life.",
-  "Recycling can reduce the need to extract new raw materials."
- ],
- example:
-  "Distillation makes fresh water from seawater by " +
-  "evaporating the water and condensing the vapour, " +
-  "leaving dissolved salts behind.",
- quiz: [
-  ["Potable water means...",
-   ["Safe to drink", "100% pure H2O", "Always seawater"], 0],
-  ["Distillation can separate...",
-   ["Water from dissolved salts", "Atoms into protons", "Magnetism"], 0],
-  ["Recycling can reduce...",
-   ["Resource extraction", "All energy use to zero", "All pollution instantly"], 0]
- ]
+  title: "Rates and Extent of Chemical Change",
+  icon: "⏱️",
+  paper: 2,
+
+  intro: "Reaction rates tell us how quickly chemical reactions happen. Reversible reactions and equilibrium explain how some reactions can proceed in both directions.",
+
+  notes: [
+    "The rate of reaction measures how quickly reactants are used up or products are formed.",
+
+    "Rate of reaction = quantity of reactant used or product formed ÷ time taken.",
+
+    "Rates can be measured in units such as g/s or cm³/s, depending on the quantities measured.",
+
+    "Collision theory explains that reacting particles must collide with enough energy for a successful reaction.",
+
+    "Increasing temperature usually increases reaction rate because particles move faster, collide more frequently and a greater proportion have enough energy to react.",
+
+    "Increasing the concentration of a solution increases the number of reacting particles per unit volume, so collisions occur more frequently.",
+
+    "Increasing the pressure of reacting gases increases the number of particles per unit volume, which increases collision frequency.",
+
+    "Increasing the surface area of a solid reactant exposes more particles to collisions. Powder usually reacts faster than a large lump of the same substance.",
+
+    "A catalyst increases reaction rate by providing an alternative reaction pathway with a lower activation energy.",
+
+    "A catalyst is not used up overall during a chemical reaction.",
+
+    "A reversible reaction is a reaction in which the products can react to form the original reactants.",
+
+    "Dynamic equilibrium occurs in a closed system when the forward and reverse reactions take place at equal rates.",
+
+    "At dynamic equilibrium, the concentrations of reactants and products remain constant, but reactions continue.",
+
+    "Increasing temperature favours the endothermic direction of a reversible reaction.",
+
+    "Increasing pressure favours the side of the equilibrium with fewer molecules of gas.",
+
+    "A catalyst speeds up both the forward and reverse reactions. It does not change the equilibrium position."
+  ],
+
+  example: `
+    <h3>Worked Example 1: Rate of Reaction</h3>
+
+    <p>A chemical reaction produces 120 cm³ of gas in 60 seconds.</p>
+
+    <strong>Step 1:</strong> Write the formula.
+
+    <p>Rate = volume of gas ÷ time</p>
+
+    <strong>Step 2:</strong> Substitute the values.
+
+    <p>Rate = 120 ÷ 60</p>
+
+    <p><strong>Answer = 2 cm³/s</strong></p>
+
+    <h3>Worked Example 2: Collision Theory</h3>
+
+    <p>Explain why magnesium powder reacts faster than a magnesium ribbon of the same mass.</p>
+
+    <p><strong>GCSE Answer:</strong></p>
+
+    <p>Magnesium powder has a larger surface area exposed to the acid. This means acid particles collide with the magnesium more frequently, producing more successful collisions per second and increasing the reaction rate.</p>
+
+    <h3>Worked Example 3: Equilibrium</h3>
+
+    <p>The forward reaction is exothermic:</p>
+
+    <p>A + B ⇌ C + heat</p>
+
+    <p>Increasing temperature favours the endothermic reverse reaction.</p>
+
+    <p>Therefore, the equilibrium shifts towards A and B.</p>
+  `,
+
+  qs: [
+    [
+      "What is the rate of a chemical reaction?",
+      "The quantity of reactant used or product formed per unit time",
+      "The total mass of a substance",
+      "The temperature at the end",
+      "The number of atoms in a molecule"
+    ],
+    [
+      "A reaction produces 80 cm³ of gas in 40 seconds. What is the average rate?",
+      "2 cm³/s",
+      "40 cm³/s",
+      "3200 cm³/s",
+      "0.5 cm³/s"
+    ],
+    [
+      "Why does increasing temperature usually increase reaction rate?",
+      "More particles have enough energy for successful collisions",
+      "Particles become larger",
+      "Activation energy increases",
+      "The number of protons increases"
+    ],
+    [
+      "Why does increasing concentration increase the rate of a solution reaction?",
+      "Collisions between reacting particles become more frequent",
+      "Particles lose their electrons",
+      "The particles stop moving",
+      "The activation energy always rises"
+    ],
+    [
+      "Why does a powdered solid usually react faster than a large lump?",
+      "It has a larger surface area",
+      "It has a larger atomic number",
+      "It has fewer particles",
+      "It has a lower relative atomic mass"
+    ],
+    [
+      "How does a catalyst increase reaction rate?",
+      "It provides an alternative pathway with lower activation energy",
+      "It increases activation energy",
+      "It creates extra atoms",
+      "It permanently increases the mass of reactants"
+    ],
+    [
+      "What is dynamic equilibrium?",
+      "Forward and reverse reactions occur at equal rates",
+      "Both reactions stop completely",
+      "All reactants have disappeared",
+      "The forward reaction is always faster"
+    ],
+    [
+      "What condition is necessary for a reaction to reach dynamic equilibrium?",
+      "A closed system",
+      "An open container",
+      "No products",
+      "No activation energy"
+    ],
+    [
+      "Increasing temperature favours which direction of a reversible reaction?",
+      "The endothermic direction",
+      "The exothermic direction",
+      "Always the forward direction",
+      "Always the reverse direction"
+    ],
+    [
+      "Increasing pressure favours which side of a gas equilibrium?",
+      "The side with fewer gas molecules",
+      "The side with more gas molecules",
+      "The side containing more solid particles",
+      "Always the product side"
+    ]
+  ]
+},
+
+
+{
+  title: "Organic Chemistry",
+  icon: "🛢️",
+  paper: 2,
+
+  intro: "Organic chemistry studies carbon compounds, including hydrocarbons, crude oil, fuels, alkenes, alcohols and polymers.",
+
+  notes: [
+    "Crude oil is a finite resource formed from the remains of ancient organisms over millions of years.",
+
+    "Crude oil is a mixture of hydrocarbons. Hydrocarbons contain carbon and hydrogen atoms only.",
+
+    "The hydrocarbons in crude oil are separated by fractional distillation because they have different boiling points.",
+
+    "Short-chain hydrocarbons usually have lower boiling points, are more volatile and are less viscous than long-chain hydrocarbons.",
+
+    "Long-chain hydrocarbons have higher boiling points and are generally harder to ignite.",
+
+    "Alkanes are saturated hydrocarbons with only single carbon-carbon bonds. Their general formula is CnH2n+2.",
+
+    "Methane (CH4), ethane (C2H6), propane (C3H8) and butane (C4H10) are examples of alkanes.",
+
+    "Complete combustion occurs when there is sufficient oxygen. Hydrocarbons react to form carbon dioxide and water.",
+
+    "Incomplete combustion occurs when oxygen is limited. It can produce carbon monoxide or carbon particulates, as well as water.",
+
+    "Carbon monoxide is poisonous because it reduces the ability of blood to transport oxygen.",
+
+    "Cracking breaks long-chain hydrocarbons into smaller, more useful molecules by heating and using a catalyst or steam.",
+
+    "Cracking can produce shorter alkanes and alkenes.",
+
+    "Alkenes are unsaturated hydrocarbons containing a carbon-carbon double bond. Acyclic alkenes with one double bond have the general formula CnH2n.",
+
+    "Ethene (C2H4) and propene (C3H6) are examples of alkenes.",
+
+    "Alkenes react with bromine water, changing its colour from orange to colourless.",
+
+    "Alkenes can undergo addition polymerisation. Many small alkene molecules, called monomers, join together to make a long-chain polymer.",
+
+    "Ethanol is an alcohol that can be made by fermentation or hydration of ethene.",
+
+    "Carboxylic acids are weak acids that contain the -COOH functional group."
+  ],
+
+  example: `
+    <h3>Worked Example 1: Complete Combustion</h3>
+
+    <p>Methane burns in oxygen to produce carbon dioxide and water.</p>
+
+    <p><strong>Word equation:</strong></p>
+
+    <p>Methane + oxygen → carbon dioxide + water</p>
+
+    <p><strong>Balanced equation:</strong></p>
+
+    <p>CH4 + 2O2 → CO2 + 2H2O</p>
+
+    <p>Complete combustion requires sufficient oxygen.</p>
+
+    <h3>Worked Example 2: Cracking</h3>
+
+    <p>A long-chain hydrocarbon breaks down into a shorter alkane and an alkene:</p>
+
+    <p><strong>C10H22 → C8H18 + C2H4</strong></p>
+
+    <p>Decane produces octane and ethene.</p>
+
+    <p>Both carbon and hydrogen atoms are conserved.</p>
+
+    <h3>Worked Example 3: Bromine Water Test</h3>
+
+    <p>Ethene is an alkene and contains a carbon-carbon double bond.</p>
+
+    <p>When ethene reacts with bromine water, the orange solution becomes colourless.</p>
+
+    <p>This is a positive test for an alkene.</p>
+  `,
+
+  qs: [
+    [
+      "What is a hydrocarbon?",
+      "A compound containing carbon and hydrogen only",
+      "A compound containing carbon and oxygen only",
+      "A compound containing hydrogen and oxygen only",
+      "Any substance containing carbon"
+    ],
+    [
+      "What is the general formula of alkanes?",
+      "CnH2n+2",
+      "CnH2n",
+      "CnH2n-2",
+      "CnHn"
+    ],
+    [
+      "Which formula represents ethene?",
+      "C2H4",
+      "C2H6",
+      "CH4",
+      "C3H8"
+    ],
+    [
+      "What does the term saturated mean?",
+      "The hydrocarbon contains only single carbon-carbon bonds",
+      "The hydrocarbon contains a double carbon-carbon bond",
+      "The hydrocarbon contains oxygen",
+      "The hydrocarbon contains no hydrogen"
+    ],
+    [
+      "What is fractional distillation used for?",
+      "Separating crude oil into fractions with different boiling points",
+      "Turning carbon into oxygen",
+      "Removing all hydrogen from crude oil",
+      "Producing pure metals"
+    ],
+    [
+      "What does cracking do?",
+      "Breaks long hydrocarbons into shorter molecules",
+      "Joins all small molecules into one giant molecule",
+      "Removes carbon atoms from the periodic table",
+      "Converts water into hydrogen"
+    ],
+    [
+      "What are the products of complete combustion of a hydrocarbon?",
+      "Carbon dioxide and water",
+      "Carbon monoxide only",
+      "Hydrogen and oxygen",
+      "Carbon and nitrogen"
+    ],
+    [
+      "Which poisonous gas can form during incomplete combustion?",
+      "Carbon monoxide",
+      "Oxygen",
+      "Nitrogen",
+      "Helium"
+    ],
+    [
+      "What happens when an alkene is added to bromine water?",
+      "The orange colour disappears",
+      "The solution turns bright blue",
+      "The solution turns purple",
+      "No colour change ever occurs"
+    ],
+    [
+      "What happens during addition polymerisation?",
+      "Many alkene monomers join together to form a polymer",
+      "A polymer breaks into individual atoms",
+      "Metals form positive ions",
+      "Water splits into hydrogen and oxygen"
+    ]
+  ]
+},
+
+
+{
+  title: "Chemical Analysis",
+  icon: "🔬",
+  paper: 2,
+
+  intro: "Chemical analysis helps scientists identify substances, separate mixtures and determine whether samples are pure.",
+
+  notes: [
+    "A pure substance contains only one element or compound and has a fixed melting and boiling point at a given pressure.",
+
+    "A mixture usually melts or boils over a range of temperatures rather than at one sharp temperature.",
+
+    "Paper chromatography is used to separate and identify soluble substances in a mixture.",
+
+    "In chromatography, the stationary phase is the chromatography paper and the mobile phase is the solvent.",
+
+    "Different substances travel different distances because of their relative attraction to the stationary phase and their solubility in the mobile phase.",
+
+    "The baseline should be drawn using pencil because graphite does not dissolve and travel with the solvent.",
+
+    "The solvent level must be below the spots on the baseline so the samples are not washed into the solvent reservoir.",
+
+    "Rf value = distance moved by substance ÷ distance moved by solvent front.",
+
+    "A pure substance normally produces one spot on a chromatogram using a suitable solvent, although one spot does not prove purity in every case.",
+
+    "Flame tests can identify some metal ions because they produce characteristic colours.",
+
+    "Lithium ions produce a crimson flame, sodium ions produce yellow, potassium ions produce lilac, calcium ions produce orange-red and copper ions produce green.",
+
+    "Sodium hydroxide can be used to test for some metal ions by observing the colour of the precipitate.",
+
+    "Copper(II) ions form a blue precipitate with sodium hydroxide.",
+
+    "Iron(II) ions form a green precipitate, while iron(III) ions form a brown precipitate.",
+
+    "Hydrogen produces a squeaky pop when a lit splint is placed near it.",
+
+    "Oxygen relights a glowing splint.",
+
+    "Carbon dioxide turns limewater cloudy.",
+
+    "Chlorine bleaches damp litmus paper, usually turning it white.",
+
+    "Carbonates produce carbon dioxide when a dilute acid is added. Sulfate ions can be tested using acidified barium chloride solution, producing a white precipitate."
+  ],
+
+  example: `
+    <h3>Worked Example 1: Chromatography</h3>
+
+    <p>A dye travels 4 cm from the baseline.</p>
+
+    <p>The solvent front travels 8 cm.</p>
+
+    <strong>Step 1:</strong> Write the formula.
+
+    <p>Rf = distance moved by dye ÷ distance moved by solvent</p>
+
+    <strong>Step 2:</strong> Substitute the numbers.
+
+    <p>Rf = 4 ÷ 8</p>
+
+    <p><strong>Answer = 0.5</strong></p>
+
+    <p>The Rf value has no unit.</p>
+
+    <h3>Worked Example 2: Identifying a Gas</h3>
+
+    <p>An unknown gas turns limewater cloudy.</p>
+
+    <p><strong>Conclusion:</strong> The gas is carbon dioxide.</p>
+
+    <h3>Worked Example 3: Flame Test</h3>
+
+    <p>A sample produces a lilac flame.</p>
+
+    <p><strong>Conclusion:</strong> Potassium ions are present.</p>
+
+    <p><strong>Exam tip:</strong> Always learn the test, observation and conclusion.</p>
+  `,
+
+  qs: [
+    [
+      "What is chromatography used for?",
+      "Separating substances in mixtures",
+      "Counting the number of protons",
+      "Producing electricity",
+      "Extracting iron from its ore"
+    ],
+    [
+      "What is the formula for an Rf value?",
+      "Distance moved by substance ÷ distance moved by solvent front",
+      "Distance moved by solvent ÷ distance moved by substance",
+      "Mass ÷ volume",
+      "Temperature ÷ time"
+    ],
+    [
+      "Why should the baseline in paper chromatography be drawn in pencil?",
+      "Pencil marks do not dissolve and move with the solvent",
+      "Pencil marks always move faster than the solvent",
+      "Pencil marks increase the temperature",
+      "Pencil contains no carbon"
+    ],
+    [
+      "What flame colour indicates sodium ions?",
+      "Yellow",
+      "Lilac",
+      "Green",
+      "Crimson"
+    ],
+    [
+      "What flame colour indicates potassium ions?",
+      "Lilac",
+      "Yellow",
+      "Blue",
+      "Orange"
+    ],
+    [
+      "What colour precipitate is produced by copper(II) ions with sodium hydroxide?",
+      "Blue",
+      "Green",
+      "White",
+      "Brown"
+    ],
+    [
+      "Which gas makes a squeaky pop with a lit splint?",
+      "Hydrogen",
+      "Oxygen",
+      "Carbon dioxide",
+      "Chlorine"
+    ],
+    [
+      "Which gas relights a glowing splint?",
+      "Oxygen",
+      "Hydrogen",
+      "Carbon dioxide",
+      "Nitrogen"
+    ],
+    [
+      "Which gas turns limewater cloudy?",
+      "Carbon dioxide",
+      "Oxygen",
+      "Hydrogen",
+      "Helium"
+    ],
+    [
+      "A spot moves 3 cm and the solvent front moves 6 cm. What is the Rf value?",
+      "0.5",
+      "2",
+      "3",
+      "18"
+    ]
+  ]
+},
+
+
+{
+  title: "Chemistry of the Atmosphere",
+  icon: "🌍",
+  paper: 2,
+
+  intro: "The Earth's atmosphere has changed over billions of years. Human activities now affect the atmosphere, climate and air quality.",
+
+  notes: [
+    "The current atmosphere contains approximately 78% nitrogen, 21% oxygen, 0.9% argon and about 0.04% carbon dioxide, although carbon dioxide levels vary.",
+
+    "The Earth's early atmosphere was probably formed mainly by gases released from volcanoes.",
+
+    "The early atmosphere contained large amounts of carbon dioxide and water vapour, but very little oxygen.",
+
+    "As the Earth cooled, water vapour condensed and formed oceans.",
+
+    "Carbon dioxide dissolved in the oceans and became locked into sedimentary rocks and fossil fuels, reducing the amount in the atmosphere.",
+
+    "Algae and plants began photosynthesising, removing carbon dioxide and releasing oxygen.",
+
+    "Photosynthesis caused the amount of oxygen in the atmosphere to increase over time.",
+
+    "Greenhouse gases include carbon dioxide, methane and water vapour.",
+
+    "Greenhouse gases absorb and emit infrared radiation, slowing the loss of energy from Earth to space.",
+
+    "The natural greenhouse effect helps keep the Earth warm enough for life.",
+
+    "Human activities such as burning fossil fuels and deforestation have increased atmospheric greenhouse gas concentrations.",
+
+    "Increasing greenhouse gases enhances the greenhouse effect and contributes to global warming and climate change.",
+
+    "Methane can be released by cattle, rice farming, decomposition and natural gas leaks.",
+
+    "Carbon monoxide is a poisonous gas produced by incomplete combustion.",
+
+    "Sulfur dioxide forms when fuels containing sulfur are burned. It contributes to acid rain.",
+
+    "Nitrogen oxides can form when nitrogen and oxygen react at high temperatures, for example inside car engines.",
+
+    "Nitrogen oxides contribute to acid rain and respiratory problems.",
+
+    "Particulates from incomplete combustion can cause respiratory problems and contribute to global dimming."
+  ],
+
+  example: `
+    <h3>Worked Example 1: Composition of Air</h3>
+
+    <p>Approximately 78% of the atmosphere is nitrogen.</p>
+
+    <p>Approximately 21% is oxygen.</p>
+
+    <p>Other gases, including argon and carbon dioxide, make up the remaining approximately 1%.</p>
+
+    <h3>Worked Example 2: Greenhouse Effect</h3>
+
+    <p>Explain how increasing carbon dioxide concentrations contribute to global warming.</p>
+
+    <p><strong>GCSE Answer:</strong></p>
+
+    <p>Carbon dioxide absorbs outgoing infrared radiation from the Earth. Increasing its concentration reduces the rate at which energy escapes into space, creating an energy imbalance. This causes Earth's average temperature to increase until a new balance is reached.</p>
+
+    <h3>Worked Example 3: Air Pollution</h3>
+
+    <p>Burning a fuel containing sulfur produces sulfur dioxide.</p>
+
+    <p>Sulfur dioxide can react in the atmosphere and contribute to acid rain.</p>
+
+    <p>Acid rain can damage plants, aquatic ecosystems and buildings.</p>
+  `,
+
+  qs: [
+    [
+      "Approximately what percentage of the atmosphere is nitrogen?",
+      "78%",
+      "21%",
+      "50%",
+      "1%"
+    ],
+    [
+      "Approximately what percentage of the atmosphere is oxygen?",
+      "21%",
+      "78%",
+      "50%",
+      "0.04%"
+    ],
+    [
+      "What was a major source of gases in the Earth's early atmosphere?",
+      "Volcanic activity",
+      "Cars",
+      "Factories",
+      "Aeroplanes"
+    ],
+    [
+      "Which process increased atmospheric oxygen over time?",
+      "Photosynthesis",
+      "Combustion",
+      "Respiration",
+      "Cracking"
+    ],
+    [
+      "Which of these is a greenhouse gas?",
+      "Carbon dioxide",
+      "Nitrogen",
+      "Argon",
+      "Neon"
+    ],
+    [
+      "Which type of radiation do greenhouse gases absorb and emit?",
+      "Infrared radiation",
+      "Gamma radiation only",
+      "X-rays only",
+      "Visible light only"
+    ],
+    [
+      "Which human activity increases atmospheric carbon dioxide?",
+      "Burning fossil fuels",
+      "Photosynthesis",
+      "Condensation",
+      "Freezing water"
+    ],
+    [
+      "Which poisonous gas can form from incomplete combustion?",
+      "Carbon monoxide",
+      "Oxygen",
+      "Nitrogen",
+      "Argon"
+    ],
+    [
+      "Which pollutant contributes to acid rain?",
+      "Sulfur dioxide",
+      "Helium",
+      "Hydrogen",
+      "Neon"
+    ],
+    [
+      "What can increasing greenhouse gas concentrations cause?",
+      "Global warming",
+      "A reduction in atomic number",
+      "The disappearance of gravity",
+      "All atmospheric oxygen turning into nitrogen"
+    ]
+  ]
+},
+
+
+{
+  title: "Using Resources",
+  icon: "♻️",
+  paper: 2,
+
+  intro: "Chemistry helps us use Earth's finite resources responsibly, produce useful materials and reduce environmental damage.",
+
+  notes: [
+    "Earth provides finite and renewable resources. Finite resources are used faster than they can be naturally replaced.",
+
+    "Sustainable development means meeting current needs without preventing future generations from meeting their needs.",
+
+    "Recycling metals, glass, paper and plastics can reduce the demand for raw materials and energy.",
+
+    "The three Rs are reduce, reuse and recycle. Reducing consumption usually prevents waste most directly.",
+
+    "Potable water is water that is safe to drink. It does not have to be chemically pure.",
+
+    "In the UK, fresh water is often treated by sedimentation, filtration and sterilisation.",
+
+    "Sterilisation may use chlorine, ozone or ultraviolet light to kill microorganisms.",
+
+    "Desalination removes dissolved salts from seawater. Methods include distillation and reverse osmosis.",
+
+    "Desalination requires significant energy and can be more expensive than treating fresh water.",
+
+    "Wastewater treatment includes screening, sedimentation, aerobic biological treatment and treatment of sludge.",
+
+    "Life cycle assessments evaluate environmental impacts throughout a product's life, including obtaining raw materials, manufacture, use and disposal.",
+
+    "Alloys are mixtures containing at least one metal. Alloys can be harder than pure metals because different-sized atoms disrupt the regular layers.",
+
+    "Corrosion is the destruction of materials by chemical reactions with substances in the environment.",
+
+    "Rusting is the corrosion of iron and requires both oxygen and water.",
+
+    "Painting, oiling, galvanising and sacrificial protection can reduce rusting.",
+
+    "Galvanising covers iron or steel with zinc. Zinc provides a protective barrier and can offer sacrificial protection.",
+
+    "The Haber process produces ammonia from nitrogen and hydrogen.",
+
+    "N2 + 3H2 ⇌ 2NH3 is the balanced equation for the Haber process.",
+
+    "Typical industrial Haber process conditions are approximately 450°C, 200 atmospheres of pressure and an iron catalyst.",
+
+    "Ammonia is used to manufacture fertilisers, which help improve crop growth.",
+
+    "NPK fertilisers contain compounds providing nitrogen, phosphorus and potassium for plant growth."
+  ],
+
+  example: `
+    <h3>Worked Example 1: Rusting</h3>
+
+    <p>An iron nail is left outside in damp air.</p>
+
+    <p>The iron reacts with oxygen in the presence of water.</p>
+
+    <p>Hydrated iron(III) oxide, commonly called rust, forms.</p>
+
+    <h4>How can rusting be prevented?</h4>
+
+    <p>Painting creates a barrier that prevents water and oxygen from reaching the iron.</p>
+
+    <h3>Worked Example 2: The Haber Process</h3>
+
+    <p><strong>Balanced equation:</strong></p>
+
+    <p>N2 + 3H2 ⇌ 2NH3</p>
+
+    <p>The forward reaction is exothermic.</p>
+
+    <p>Increasing pressure favours ammonia because the product side has fewer gas molecules.</p>
+
+    <p>A temperature of approximately 450°C is used as a compromise between reaction rate and equilibrium yield.</p>
+
+    <h3>Worked Example 3: Life Cycle Assessment</h3>
+
+    <p>When comparing glass and plastic bottles, scientists should consider:</p>
+
+    <ul>
+      <li>Raw materials</li>
+      <li>Energy used during manufacturing</li>
+      <li>Transport and use</li>
+      <li>Reuse and recycling</li>
+      <li>Disposal and pollution</li>
+    </ul>
+
+    <p>A life cycle assessment helps compare the environmental impacts of different products.</p>
+  `,
+
+  qs: [
+    [
+      "What does potable water mean?",
+      "Water that is safe to drink",
+      "Completely pure H2O",
+      "Water containing no dissolved minerals",
+      "Seawater"
+    ],
+    [
+      "What does desalination remove from seawater?",
+      "Dissolved salts",
+      "All hydrogen atoms",
+      "All oxygen atoms",
+      "The water itself"
+    ],
+    [
+      "What is an alloy?",
+      "A mixture containing at least one metal",
+      "A pure non-metal element",
+      "A single atom",
+      "A mixture containing gases only"
+    ],
+    [
+      "What is a major benefit of recycling?",
+      "It conserves raw materials",
+      "It increases the atomic number of metals",
+      "It creates unlimited new elements",
+      "It prevents all pollution completely"
+    ],
+    [
+      "What is galvanising?",
+      "Coating iron or steel with zinc",
+      "Adding sugar to metal",
+      "Heating water",
+      "Adding oxygen to iron"
+    ],
+    [
+      "Which substances are necessary for iron to rust?",
+      "Oxygen and water",
+      "Nitrogen and helium",
+      "Carbon dioxide only",
+      "Hydrogen only"
+    ],
+    [
+      "What does a life cycle assessment examine?",
+      "Environmental impacts throughout a product's life",
+      "Only the selling price",
+      "Only the colour of the product",
+      "Only the number of electrons"
+    ],
+    [
+      "What chemical does the Haber process produce?",
+      "Ammonia",
+      "Ethanol",
+      "Sulfuric acid",
+      "Oxygen"
+    ],
+    [
+      "Which catalyst is used in the Haber process?",
+      "Iron",
+      "Gold",
+      "Silver",
+      "Zinc"
+    ],
+    [
+      "What do the letters NPK represent in fertilisers?",
+      "Nitrogen, phosphorus and potassium",
+      "Nitrogen, platinum and krypton",
+      "Nickel, phosphorus and krypton",
+      "Neon, potassium and krypton"
+    ]
+  ]
 }
 
-];
+]; // END OF THE TOPICS ARRAY
 
-let current = -1;
-let selected = {};
 
-const $ = id => document.getElementById(id);
+// =============================================
+// SECTION 5: CHEMISTRY WEBSITE FUNCTIONALITY
+// =============================================
 
-function makeTiles() {
-  topics.forEach((t, i) => {
-    let b = document.createElement("button");
-    b.className = "tile";
+// Each quiz has 10 questions.
+// In Section 3 and Section 4, the FIRST answer
+// in each question array is the correct answer.
+// This script shuffles the answer choices.
 
-    b.innerHTML = `
-      <span class="chip">
-        PAPER ${i < 5 ? 1 : 2} • TOPIC ${i + 1}
-      </span>
-      <strong>${t.title}</strong>
-      <span class="muted">${t.short} →</span>
-    `;
+// ---------------------------------------------
+// 1. VARIABLES AND SAVED PROGRESS
+// ---------------------------------------------
 
-    b.addEventListener("click", () => {
-      location.hash = "topic-" + (i + 1);
+const STORAGE_KEY = "chemistry_gcse_progress_v1";
+
+let currentTopic = -1;
+let currentQuestions = [];
+let submitted = false;
+
+let progress = {
+  completed: {},
+  perfect: {}
+};
+
+// Safely load previously saved results.
+function loadProgress() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+
+    if (saved) {
+      const data = JSON.parse(saved);
+
+      if (data && typeof data === "object") {
+        progress.completed = data.completed || {};
+        progress.perfect = data.perfect || {};
+      }
+    }
+  } catch (error) {
+    console.warn("Saved progress could not be loaded.");
+  }
+}
+
+// Save quiz results on this browser.
+function saveProgress() {
+  try {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(progress)
+    );
+  } catch (error) {
+    console.warn("Progress could not be saved.");
+  }
+}
+
+
+// ---------------------------------------------
+// 2. SHUFFLE ANSWER CHOICES
+// ---------------------------------------------
+
+function shuffleArray(items) {
+  const result = [...items];
+
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [result[i], result[j]] =
+      [result[j], result[i]];
+  }
+
+  return result;
+}
+
+
+// ---------------------------------------------
+// 3. CREATE TEXT ELEMENTS
+// ---------------------------------------------
+
+function makeElement(tag, text, className = "") {
+  const element = document.createElement(tag);
+
+  element.textContent = text;
+
+  if (className) {
+    element.className = className;
+  }
+
+  return element;
+}
+
+
+// ---------------------------------------------
+// 4. DISPLAY THE CHEMISTRY TOPIC CARDS
+// ---------------------------------------------
+
+function displayTopics() {
+  const paper1 = document.getElementById("paper1");
+  const paper2 = document.getElementById("paper2");
+
+  paper1.replaceChildren();
+  paper2.replaceChildren();
+
+  topics.forEach((topic, index) => {
+    const card = document.createElement("button");
+
+    card.type = "button";
+    card.className = "card topic-card";
+
+    const emoji = makeElement(
+      "div",
+      topic.icon,
+      "emoji"
+    );
+
+    const heading = makeElement(
+      "h3",
+      topic.title
+    );
+
+    const description = makeElement(
+      "p",
+      topic.intro
+    );
+
+    const status = makeElement(
+      "p",
+      progress.perfect[index]
+        ? "🏆 Completed: 10/10"
+        : progress.completed[index] !== undefined
+          ? "✅ Best score: " +
+            progress.completed[index] + "/10"
+          : "📖 Open revision and quiz"
+    );
+
+    status.style.fontWeight = "bold";
+    status.style.color = "#173a65";
+
+    card.append(
+      emoji,
+      heading,
+      description,
+      status
+    );
+
+    card.addEventListener("click", () => {
+      openTopic(index);
     });
 
-    $(i < 5 ? "paper1" : "paper2").appendChild(b);
+    if (topic.paper === 1) {
+      paper1.appendChild(card);
+    } else {
+      paper2.appendChild(card);
+    }
   });
 }
 
-function render() {
-  let m = location.hash.match(/^#topic-(\d+)$/);
-  let idx = m ? Number(m[1]) - 1 : -1;
 
-  if (idx < 0 || idx >= topics.length) {
-    $("home").classList.remove("hidden");
-    $("detail").classList.add("hidden");
-    current = -1;
+// ---------------------------------------------
+// 5. OPEN A CHEMISTRY TOPIC
+// ---------------------------------------------
+
+function openTopic(index) {
+  currentTopic = index;
+  submitted = false;
+
+  const topic = topics[index];
+
+  const panel = document.getElementById("quizPanel");
+
+  panel.replaceChildren();
+
+  // Topic heading
+
+  const heading = makeElement(
+    "h3",
+    topic.icon + " " + topic.title
+  );
+
+  const paperLabel = makeElement(
+    "p",
+    "AQA GCSE Chemistry — Paper " + topic.paper
+  );
+
+  const intro = makeElement(
+    "p",
+    topic.intro
+  );
+
+  panel.append(
+    heading,
+    paperLabel,
+    intro
+  );
+
+  // Revision notes
+
+  const revision = document.createElement("div");
+
+  revision.className = "revision-box";
+
+  revision.appendChild(
+    makeElement("h3", "📘 GCSE Revision Notes")
+  );
+
+  const noteList = document.createElement("ul");
+
+  topic.notes.forEach(note => {
+    noteList.appendChild(
+      makeElement("li", note)
+    );
+  });
+
+  revision.appendChild(noteList);
+
+  panel.appendChild(revision);
+
+  // Worked example
+
+  const example = document.createElement("div");
+
+  example.className = "example-box";
+
+  // The worked examples are trusted HTML
+  // already written in Sections 3 and 4.
+  example.innerHTML = topic.example;
+
+  panel.appendChild(example);
+
+  // Quiz heading
+
+  panel.appendChild(
+    makeElement(
+      "h3",
+      "❓ Test Your Knowledge — 10 Questions"
+    )
+  );
+
+  panel.appendChild(
+    makeElement(
+      "p",
+      "Select one answer for each question, " +
+      "then click Check Answers."
+    )
+  );
+
+  // Question container
+
+  const questionContainer =
+    document.createElement("div");
+
+  questionContainer.id = "questionContainer";
+
+  panel.appendChild(questionContainer);
+
+  // Quiz controls
+
+  const controls = document.createElement("div");
+
+  const markButton =
+    document.createElement("button");
+
+  markButton.type = "button";
+  markButton.className = "primary";
+  markButton.textContent = "✅ Check Answers";
+  markButton.id = "markButton";
+
+  markButton.addEventListener(
+    "click",
+    markQuiz
+  );
+
+  const retryButton =
+    document.createElement("button");
+
+  retryButton.type = "button";
+  retryButton.className = "secondary";
+  retryButton.textContent = "🔄 Try Again";
+
+  retryButton.addEventListener(
+    "click",
+    resetQuiz
+  );
+
+  controls.append(
+    markButton,
+    retryButton
+  );
+
+  panel.appendChild(controls);
+
+  // Score and feedback
+
+  const result = document.createElement("div");
+
+  result.id = "quizResult";
+  result.setAttribute("aria-live", "polite");
+
+  panel.appendChild(result);
+
+  // Return to the topics
+
+  const backButton =
+    document.createElement("button");
+
+  backButton.type = "button";
+  backButton.className = "secondary";
+  backButton.textContent = "← Choose Another Topic";
+
+  backButton.addEventListener("click", () => {
+    document.getElementById("topics")
+      .scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+  });
+
+  panel.appendChild(backButton);
+
+  // Prepare and display the questions
+
+  prepareQuestions();
+  displayQuestions();
+
+  // Move to the selected quiz section
+
+  document.getElementById("quiz")
+    .scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+}
+
+
+// ---------------------------------------------
+// 6. PREPARE AND SHUFFLE THE QUIZ
+// ---------------------------------------------
+
+function prepareQuestions() {
+  const topic = topics[currentTopic];
+
+  currentQuestions = topic.qs.map((question) => {
+    const correctAnswer = question[1];
+
+    const options = shuffleArray(
+      question.slice(1)
+    );
+
+    return {
+      question: question[0],
+      correctAnswer: correctAnswer,
+      options: options
+    };
+  });
+
+  submitted = false;
+}
+
+
+// ---------------------------------------------
+// 7. DISPLAY THE 10 QUESTIONS
+// ---------------------------------------------
+
+function displayQuestions() {
+  const container =
+    document.getElementById("questionContainer");
+
+  container.replaceChildren();
+
+  currentQuestions.forEach((item, questionIndex) => {
+    const questionBox =
+      document.createElement("div");
+
+    questionBox.className = "question-box";
+    questionBox.id = "question-" + questionIndex;
+
+    const title = makeElement(
+      "p",
+      (questionIndex + 1) + ". " + item.question,
+      "question-title"
+    );
+
+    questionBox.appendChild(title);
+
+    item.options.forEach((option, optionIndex) => {
+      const label = document.createElement("label");
+
+      label.className = "answer";
+
+      const radio = document.createElement("input");
+
+      radio.type = "radio";
+      radio.name = "question_" + questionIndex;
+      radio.value = optionIndex;
+
+      const optionText =
+        document.createTextNode(option);
+
+      label.append(
+        radio,
+        optionText
+      );
+
+      questionBox.appendChild(label);
+    });
+
+    const feedback = document.createElement("div");
+
+    feedback.id = "feedback-" + questionIndex;
+
+    questionBox.appendChild(feedback);
+
+    container.appendChild(questionBox);
+  });
+}
+
+
+// ---------------------------------------------
+// 8. MARK THE QUIZ
+// ---------------------------------------------
+
+function markQuiz() {
+  if (submitted || currentTopic < 0) {
     return;
   }
 
-  current = idx;
-  let t = topics[idx];
+  let score = 0;
+  let unanswered = 0;
 
-  $("home").classList.add("hidden");
-  $("detail").classList.remove("hidden");
+  // Check that all questions have answers.
 
-  $("paperLabel").textContent =
-    "PAPER " + (idx < 5 ? 1 : 2) + " • TOPIC " + (idx + 1);
+  currentQuestions.forEach((item, index) => {
+    const selected = document.querySelector(
+      'input[name="question_' + index + '"]:checked'
+    );
 
-  $("topicTitle").textContent = t.title;
-  $("summary").textContent = t.short;
+    if (!selected) {
+      unanswered++;
+    }
+  });
 
-  $("facts").innerHTML =
-    t.facts.map(f => `<li>${f}</li>`).join("");
+  if (unanswered > 0) {
+    alert(
+      "Please answer all 10 questions " +
+      "before checking your answers.\n\n" +
+      unanswered + " question(s) remaining."
+    );
 
-  $("example").textContent = t.example;
+    return;
+  }
 
-  resetQuiz();
-  window.scrollTo(0, 0);
+  submitted = true;
+
+  // Mark each question.
+
+  currentQuestions.forEach((item, index) => {
+    const selected = document.querySelector(
+      'input[name="question_' + index + '"]:checked'
+    );
+
+    const chosenIndex = Number(selected.value);
+
+    const chosenAnswer =
+      item.options[chosenIndex];
+
+    const feedback =
+      document.getElementById("feedback-" + index);
+
+    const correct =
+      chosenAnswer === item.correctAnswer;
+
+    feedback.className = correct
+      ? "feedback correct"
+      : "feedback incorrect";
+
+    if (correct) {
+      score++;
+
+      feedback.textContent =
+        "✅ Correct! " +
+        explainAnswer(
+          currentTopic,
+          index,
+          item.correctAnswer
+        );
+    } else {
+      feedback.textContent =
+        "❌ Incorrect. Correct answer: " +
+        item.correctAnswer +
+        ". " +
+        explainAnswer(
+          currentTopic,
+          index,
+          item.correctAnswer
+        );
+    }
+
+    // Disable all answer choices after marking.
+
+    const inputs = document.querySelectorAll(
+      'input[name="question_' + index + '"]'
+    );
+
+    inputs.forEach(input => {
+      input.disabled = true;
+    });
+  });
+
+  // Show score.
+
+  const result = document.getElementById("quizResult");
+
+  result.replaceChildren();
+
+  const scoreText = makeElement(
+    "p",
+    "Your Score: " + score + " / 10",
+    "score"
+  );
+
+  result.appendChild(scoreText);
+
+  const percentage = score * 10;
+
+  result.appendChild(
+    makeElement(
+      "p",
+      "Percentage: " + percentage + "%"
+    )
+  );
+
+  if (score === 10) {
+    result.appendChild(
+      makeElement(
+        "h3",
+        "🏆 Perfect Score! Chemistry Teacher Award!"
+      )
+    );
+
+    result.appendChild(
+      makeElement(
+        "p",
+        "Excellent work! You answered every " +
+        "question correctly."
+      )
+    );
+  } else if (score >= 7) {
+    result.appendChild(
+      makeElement(
+        "p",
+        "🌟 Great work! Review your mistakes " +
+        "and try for 10/10."
+      )
+    );
+  } else if (score >= 5) {
+    result.appendChild(
+      makeElement(
+        "p",
+        "👍 Good effort! Read the notes again " +
+        "and retry the quiz."
+      )
+    );
+  } else {
+    result.appendChild(
+      makeElement(
+        "p",
+        "📘 Keep practising. Review the GCSE " +
+        "notes and worked example."
+      )
+    );
+  }
+
+  // Save the best score for the topic.
+
+  const previousBest =
+    Number(progress.completed[currentTopic] || 0);
+
+  progress.completed[currentTopic] = Math.max(
+    previousBest,
+    score
+  );
+
+  if (score === 10) {
+    progress.perfect[currentTopic] = true;
+  }
+
+  saveProgress();
+
+  updateAchievements();
+  displayTopics();
+
+  document.getElementById("markButton").disabled = true;
+
+  result.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
 }
+
+
+// ---------------------------------------------
+// 9. EXPLAIN THE CORRECT ANSWERS
+// ---------------------------------------------
+
+function explainAnswer(topicIndex, questionIndex, answer) {
+  // These are short explanations for the
+  // 10 questions in each Chemistry topic.
+
+  const explanations = [
+
+    // TOPIC 1: ATOMIC STRUCTURE
+    [
+      "A proton has a relative charge of +1.",
+      "The atomic number is the number of protons in an atom.",
+      "An electron has a relative charge of -1.",
+      "Protons and neutrons are located in the nucleus.",
+      "Isotopes of an element have equal proton numbers but different neutron numbers.",
+      "Neutrons = mass number - atomic number = 16 - 8 = 8.",
+      "Magnesium has 12 electrons arranged 2,8,2.",
+      "Elements in the same group have the same number of outer-shell electrons.",
+      "The outer electron becomes easier to lose down Group 1.",
+      "Noble gases have complete outer electron shells."
+    ],
+
+    // TOPIC 2: BONDING
+    [
+      "Ionic bonding involves electron transfer and attraction between oppositely charged ions.",
+      "Covalent bonding involves sharing pairs of electrons.",
+      "Sodium chloride contains positive sodium ions and negative chloride ions.",
+      "Strong electrostatic attractions in the ionic lattice require substantial energy to overcome.",
+      "Molten sodium chloride contains mobile ions that carry electric charge.",
+      "Diamond has a giant covalent structure with strong bonds throughout.",
+      "Graphite has delocalised electrons that can carry electrical charge.",
+      "Metallic bonding is attraction between positive metal ions and delocalised electrons.",
+      "Simple molecular substances often have weak forces between molecules.",
+      "Diamond is a giant covalent form of carbon."
+    ],
+
+    // TOPIC 3: QUANTITATIVE CHEMISTRY
+    [
+      "In a closed system, atoms are conserved so total mass remains constant.",
+      "The Mr of H2O is (2 × 1) + 16 = 18.",
+      "The formula is number of moles = mass ÷ Mr.",
+      "Mass = moles × Mr = 2 × 44 = 88 g.",
+      "One cubic decimetre equals 1000 cubic centimetres.",
+      "The Mr of CO2 is 12 + (2 × 16) = 44.",
+      "Percentage yield = (80 ÷ 100) × 100 = 80%.",
+      "Concentration in g/dm³ is mass of solute divided by solution volume in dm³.",
+      "Moles = 12 ÷ 12 = 1 mol.",
+      "At room temperature and pressure, the approximate molar gas volume is 24 dm³/mol."
+    ],
+
+    // TOPIC 4: CHEMICAL CHANGES
+    [
+      "A reactive metal and dilute acid generally form a salt and hydrogen.",
+      "A neutral aqueous solution has a pH of approximately 7 at 25°C.",
+      "Acids react with metal carbonates to produce carbon dioxide, salt and water.",
+      "Positive ions move towards the negative cathode.",
+      "Oxidation means loss of electrons.",
+      "Reduction means gain of electrons.",
+      "Hydrochloric acid produces chloride salts.",
+      "Aluminium is extracted using electrolysis because it is more reactive than carbon.",
+      "Magnesium is more reactive than copper and can displace it.",
+      "Hydrogen ions react with hydroxide ions to produce water."
+    ],
+
+    // TOPIC 5: ENERGY CHANGES
+    [
+      "An exothermic reaction transfers energy to the surroundings.",
+      "An endothermic reaction takes in energy from its surroundings.",
+      "Combustion releases energy and is exothermic.",
+      "Activation energy is the minimum energy needed for a successful reaction.",
+      "Energy must be supplied to break chemical bonds.",
+      "Energy is released when new chemical bonds form.",
+      "Exothermic reactions have a negative overall energy change.",
+      "Hydrogen and oxygen react in a fuel cell to form water.",
+      "A fall in surroundings' temperature indicates that energy has been taken in.",
+      "Energy change = 400 - 600 = -200 kJ."
+    ],
+
+    // TOPIC 6: RATES
+    [
+      "Rate measures how much reactant is used or product is formed per unit time.",
+      "Rate = 80 ÷ 40 = 2 cm³/s.",
+      "Higher temperature gives more particles sufficient energy for successful collisions.",
+      "Higher concentration causes more frequent collisions between reactants.",
+      "Powder has a larger exposed surface area than a lump.",
+      "Catalysts offer an alternative reaction pathway with lower activation energy.",
+      "At dynamic equilibrium, the forward and reverse reaction rates are equal.",
+      "A closed system prevents reactants or products from escaping.",
+      "Increasing temperature favours the endothermic direction.",
+      "Higher pressure favours the side with fewer gas molecules."
+    ],
+
+    // TOPIC 7: ORGANIC CHEMISTRY
+    [
+      "Hydrocarbons are compounds made from carbon and hydrogen only.",
+      "The general formula of alkanes is CnH2n+2.",
+      "Ethene has two carbon atoms and four hydrogen atoms: C2H4.",
+      "Saturated hydrocarbons have only single carbon-carbon bonds.",
+      "Fractional distillation separates substances by differences in boiling points.",
+      "Cracking breaks large hydrocarbons into smaller molecules.",
+      "Complete combustion produces carbon dioxide and water.",
+      "Incomplete combustion can produce poisonous carbon monoxide.",
+      "Alkenes react with bromine, decolourising orange bromine water.",
+      "Addition polymerisation joins many monomers to make long polymer chains."
+    ],
+
+    // TOPIC 8: CHEMICAL ANALYSIS
+    [
+      "Chromatography separates soluble components of mixtures.",
+      "Rf is the distance travelled by a substance divided by the solvent-front distance.",
+      "Graphite in pencil does not dissolve and travel with the solvent.",
+      "Sodium produces a yellow flame.",
+      "Potassium produces a lilac flame.",
+      "Copper(II) ions produce a blue hydroxide precipitate.",
+      "Hydrogen gives a squeaky pop with a lit splint.",
+      "Oxygen relights a glowing splint.",
+      "Carbon dioxide turns limewater cloudy.",
+      "Rf = 3 ÷ 6 = 0.5."
+    ],
+
+    // TOPIC 9: ATMOSPHERE
+    [
+      "Nitrogen makes up approximately 78% of the atmosphere.",
+      "Oxygen makes up approximately 21% of the atmosphere.",
+      "Volcanic activity released gases into the Earth's early atmosphere.",
+      "Photosynthesis releases oxygen into the atmosphere.",
+      "Carbon dioxide is a greenhouse gas.",
+      "Greenhouse gases absorb and emit infrared radiation.",
+      "Burning fossil fuels releases carbon dioxide.",
+      "Incomplete combustion can produce poisonous carbon monoxide.",
+      "Sulfur dioxide contributes to acid rain.",
+      "Increasing greenhouse gases enhances the greenhouse effect and causes warming."
+    ],
+
+    // TOPIC 10: USING RESOURCES
+    [
+      "Potable water is safe to drink but is not necessarily chemically pure.",
+      "Desalination removes dissolved salts from seawater.",
+      "An alloy is a mixture containing at least one metal.",
+      "Recycling reduces the need for new raw materials.",
+      "Galvanising protects iron or steel using a zinc coating.",
+      "Both oxygen and water are needed for iron to rust.",
+      "Life cycle assessments examine environmental impacts from raw materials to disposal.",
+      "The Haber process produces ammonia from nitrogen and hydrogen.",
+      "Iron is the catalyst used in the Haber process.",
+      "NPK fertilisers provide nitrogen, phosphorus and potassium."
+    ]
+  ];
+
+  return explanations[topicIndex]?.[questionIndex] ||
+    "The correct answer is " + answer + ".";
+}
+
+
+// ---------------------------------------------
+// 10. RETRY A QUIZ
+// ---------------------------------------------
 
 function resetQuiz() {
-  if (current < 0) return;
+  if (currentTopic < 0) {
+    return;
+  }
 
-  selected = {};
-  $("result").textContent = "";
-  $("questions").innerHTML = "";
+  submitted = false;
 
-  topics[current].quiz.forEach(([q, options], i) => {
-    let section = document.createElement("div");
-    section.className = "quiz-question";
+  // Shuffle choices again.
+  prepareQuestions();
 
-    let heading = document.createElement("h3");
-    heading.textContent = (i + 1) + ". " + q;
-    section.append(heading);
+  // Show a fresh copy of the questions.
+  displayQuestions();
 
-    options.forEach((answer, j) => {
-      let b = document.createElement("button");
-      b.className = "answer";
-      b.textContent = answer;
+  // Clear previous result.
+  document.getElementById("quizResult")
+    .replaceChildren();
 
-      b.onclick = () => {
-        selected[i] = j;
+  // Re-enable marking.
+  document.getElementById("markButton").disabled = false;
 
-        section.querySelectorAll(".answer").forEach(x => {
-          x.classList.remove("selected");
-        });
-
-        b.classList.add("selected");
-      };
-
-      section.append(b);
+  // Scroll to the quiz.
+  document.getElementById("questionContainer")
+    .scrollIntoView({
+      behavior: "smooth",
+      block: "start"
     });
-
-    $("questions").append(section);
-  });
 }
 
-function markQuiz() {
-  if (current < 0) return;
 
-  let t = topics[current];
-  let score = 0;
+// ---------------------------------------------
+// 11. UPDATE ACHIEVEMENTS
+// ---------------------------------------------
 
-  t.quiz.forEach((q, i) => {
-    let correct = q[2];
+function updateAchievements() {
+  const firstBadge =
+    document.getElementById("firstBadge");
 
-    if (selected[i] === correct) score++;
+  const perfectBadge =
+    document.getElementById("perfectBadge");
 
-    let answers =
-      $("questions").children[i].querySelectorAll(".answer");
+  const masterBadge =
+    document.getElementById("masterBadge");
 
-    answers.forEach((b, j) => {
-      b.classList.remove("correct", "wrong");
+  const completedCount =
+    Object.keys(progress.completed).length;
 
-      if (j === correct) {
-        b.classList.add("correct");
-      } else if (j === selected[i]) {
-        b.classList.add("wrong");
-      }
-    });
-  });
+  const perfectCount = topics.filter(
+    (topic, index) => progress.perfect[index] === true
+  ).length;
 
-  $("result").textContent =
-    `You scored ${score}/${t.quiz.length}! ` +
-    (score === t.quiz.length
-      ? "Excellent work! 🎉"
-      : "Review the correct answers shown in green.");
+  // First quiz completed
+  firstBadge.classList.toggle(
+    "earned",
+    completedCount > 0
+  );
+
+  // At least one score of 10/10
+  perfectBadge.classList.toggle(
+    "earned",
+    perfectCount > 0
+  );
+
+  // Perfect scores on all topics
+  masterBadge.classList.toggle(
+    "earned",
+    perfectCount === topics.length
+  );
+
+  // Progress text
+  document.getElementById("progressText")
+    .textContent =
+      perfectCount + " out of " +
+      topics.length +
+      " topics completed perfectly.";
+
+  // Progress bar
+  const percent =
+    (perfectCount / topics.length) * 100;
+
+  document.getElementById("progressBar")
+    .style.width = percent + "%";
 }
 
-function goHome() {
-  location.hash = "";
-  render();
-}
 
-makeTiles();
-window.addEventListener("hashchange", render);
-render();
+// ---------------------------------------------
+// 12. START THE CHEMISTRY WEBSITE
+// ---------------------------------------------
+
+loadProgress();
+displayTopics();
+updateAchievements();
 
 </script>
 </body>
