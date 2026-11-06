@@ -986,9 +986,10 @@ import {
 import {
   getFirestore,
   collection,
-  getDocs,
+  onSnapshot,
   doc,
-  setDoc
+  setDoc,
+  increment
 } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
 
@@ -3244,169 +3245,81 @@ function renderLeaderboard(){
 }
 
 
-async function loadFirebaseXp(){
+function showSyncStatus(message, state = "") {
+  if (!syncStatus) return;
+  syncStatus.textContent = message;
+  syncStatus.classList.remove("online", "offline");
+  if (state) syncStatus.classList.add(state);
+}
 
-  try{
-
-    const querySnapshot =
-    await getDocs(
-      collection(
-        db,
-        "players"
-      )
-    );
-
-
-    querySnapshot
-    .forEach(
-
-      (docSnap) => {
-
-
-        const data =
-        docSnap.data();
-
-
-        if(
-          players.includes(
-            data.name
-          )
-        ){
-
-          xpData[data.name] =
-          Number(
-            data.xp
-          ) || 0;
-
-        }
-
-
-      }
-
-    );
-
-
-    if(syncStatus){
-
-      syncStatus.textContent =
-      "🌐 Shared Firebase leaderboard connected.";
-
-
-      syncStatus
-      .classList
-      .add(
-        "online"
-      );
-
-    }
-
+// Listen to existing Firestore records without creating or resetting any scores.
+function loadFirebaseXp() {
+  if (location.protocol === "file:") {
+    showSyncStatus("⚠️ Open this page from a website or local server (not file://) to test Firebase.", "offline");
   }
+  showSyncStatus("🌐 Connecting to the shared Firebase leaderboard...");
 
-  catch(error){
+  onSnapshot(
+    collection(db, "players"),
+    { includeMetadataChanges: true },
+    (snapshot) => {
+      const fresh = blankXp();
+      snapshot.forEach((playerDoc) => {
+        const data = playerDoc.data();
+        if (players.includes(data.name)) {
+          const value = Number(data.xp);
+          fresh[data.name] = Number.isFinite(value) ? value : 0;
+        }
+      });
+      xpData = fresh;
+      renderLeaderboard();
 
-    console.error(
-      "Firebase leaderboard error:",
-      error
-    );
-
-
-    if(syncStatus){
-
-      syncStatus.textContent =
-      "⚠️ Firebase could not be reached. Existing online scores were not changed.";
-
-
-      syncStatus
-      .classList
-      .add(
+      if (snapshot.metadata.fromCache) {
+        showSyncStatus(
+          "⚠️ Showing locally cached scores. Firebase has not confirmed the latest online scores.",
+          "offline"
+        );
+      } else if (snapshot.metadata.hasPendingWrites) {
+        showSyncStatus("⏳ XP change pending Firebase confirmation...");
+      } else {
+        showSyncStatus("🌐 Shared Firebase leaderboard connected and up to date.", "online");
+      }
+    },
+    (error) => {
+      console.error("Firebase leaderboard error:", error);
+      showSyncStatus(
+        `⚠️ Firebase error (${error.code || "unknown"}): ${error.message || "Unable to load scores"}. Existing online scores were not changed.`,
         "offline"
       );
-
     }
-
-  }
-
-
-  renderLeaderboard();
-
+  );
 }
 
+// Firestore increment is atomic: it will not overwrite the old total with
+// an out-of-date value from a different browser or tab.
+async function awardOneXp(playerName) {
+  if (!players.includes(playerName)) return;
 
-async function awardOneXp(
-  playerName
-){
-
-  if(!playerName){
-    return;
-  }
-
-
-  xpData[playerName] =
-
-  (
-    Number(
-      xpData[playerName]
-    ) || 0
-  )
-
-  + 1;
-
-
-  renderLeaderboard();
-
-
-  const playerDoc =
-  doc(
-
+  const playerDoc = doc(
     db,
-
     "players",
-
-    playerName
-    .toLowerCase()
-    .replace(
-      /\s+/g,
-      "_"
-    )
-
+    playerName.toLowerCase().replace(/\s+/g, "_")
   );
 
-
-  try{
-
+  try {
     await setDoc(
-
       playerDoc,
-
-      {
-
-        name:
-        playerName,
-
-        xp:
-        xpData[playerName]
-
-      },
-
-      {
-        merge:true
-      }
-
+      { name: playerName, xp: increment(1) },
+      { merge: true }
     );
-
-  }
-
-  catch(error){
-
-    console.error(
-      "Could not save XP to Firebase:",
-      error
+  } catch (error) {
+    console.error("Could not save XP to Firebase:", error);
+    showSyncStatus(
+      `⚠️ XP was not saved (${error.code || "unknown"}): ${error.message || "Please try again"}.`,
+      "offline"
     );
-
   }
-
 }
-
 
 playerSelect
 .addEventListener(
@@ -3469,7 +3382,7 @@ if(
 }
 
 
-await loadFirebaseXp();
+loadFirebaseXp();
 
 
 document
@@ -3803,7 +3716,7 @@ async function chooseAnswer(
     score++;
 
 
-    await awardOneXp(
+    awardOneXp(
       currentPlayer
     );
 
