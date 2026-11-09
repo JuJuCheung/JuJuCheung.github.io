@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>French Revolution & Napoleon | History</title>
+
 <style>
 :root {
   --green: #2f3b2f;
@@ -13,25 +14,32 @@
   --gold: #cda44d;
   --border: #e2dbcd;
 }
+
 * { box-sizing: border-box; }
+
 html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   background: var(--cream);
   color: #27302b;
   font: 16px/1.65 Arial, sans-serif;
 }
+
 header {
   padding: 75px 20px;
   background: linear-gradient(120deg,#18261f,#56634b);
   color: white;
   text-align: center;
 }
+
 header h1 {
   font: bold clamp(2.4rem,6vw,4.5rem) Georgia,serif;
   margin: 0 0 15px;
 }
+
 header p { color: #ffe6bd; }
+
 nav {
   position: sticky;
   top: 0;
@@ -41,45 +49,58 @@ nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: 15px;
 }
+
 nav a {
   color: white;
   text-decoration: none;
   font-weight: bold;
 }
+
 nav a:hover { color: var(--gold); }
-nav .main-menu {
+
+.main-menu {
   color: #ffe3a0;
   border: 1px solid var(--gold);
   border-radius: 8px;
-  padding: 3px 10px;
+  padding: 6px 12px;
+  text-decoration: none;
+  display: inline-block;
 }
-nav .main-menu:hover {
+
+.main-menu:hover {
   background: var(--gold);
   color: #1e261e;
 }
+
 main {
   max-width: 1100px;
   margin: auto;
   padding: 30px 20px;
 }
+
 section {
   margin-bottom: 55px;
-  scroll-margin-top: 85px;
+  scroll-margin-top: 100px;
 }
+
 h2 {
   font: bold 2rem Georgia,serif;
   color: var(--green);
   border-bottom: 3px solid var(--gold);
   padding-bottom: 12px;
 }
+
 h3 { color: var(--brown); }
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2,minmax(0,1fr));
   gap: 20px;
 }
+
 .card, .panel, .timeline-item {
   background: white;
   padding: 24px;
@@ -87,22 +108,27 @@ h3 { color: var(--brown); }
   border-radius: 15px;
   box-shadow: 0 4px 14px #0000000a;
 }
+
 .card:hover {
   transform: translateY(-3px);
   transition: .2s;
 }
+
 .tag {
   color: var(--brown);
   font-size: .85rem;
   font-weight: bold;
 }
+
 .timeline {
   border-left: 4px solid var(--brown);
   padding-left: 25px;
   display: grid;
   gap: 15px;
 }
+
 .timeline-item { position: relative; }
+
 .timeline-item::before {
   content: "";
   position: absolute;
@@ -114,19 +140,26 @@ h3 { color: var(--brown); }
   border-radius: 50%;
   background: var(--gold);
 }
-.year { color: var(--brown); font-weight: bold; }
+
+.year {
+  color: var(--brown);
+  font-weight: bold;
+}
+
 .quiz-box {
   background: white;
   padding: 28px;
   border-radius: 18px;
   border: 1px solid var(--border);
 }
+
 .rules {
   background: #f8f4eb;
   padding: 15px;
   border-radius: 10px;
   margin: 20px 0;
 }
+
 button {
   background: #252525;
   border: 0;
@@ -136,11 +169,26 @@ button {
   font: bold 15px Arial,sans-serif;
   cursor: pointer;
 }
-button:hover:not(:disabled) { background: var(--brown); }
-button:disabled { opacity: .45; cursor: default; }
+
+button:hover:not(:disabled) {
+  background: var(--brown);
+}
+
+button:disabled {
+  opacity: .55;
+  cursor: default;
+}
+
 .secondary { background: var(--green); }
-.buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .hidden { display: none !important; }
+
 .progress {
   background: #e5e3dd;
   height: 10px;
@@ -148,36 +196,43 @@ button:disabled { opacity: .45; cursor: default; }
   overflow: hidden;
   margin: 17px 0;
 }
+
 #progress-fill {
   background: var(--brown);
   height: 100%;
   width: 0%;
   transition: .3s;
 }
+
 .context {
   background: #f8f4eb;
   border-left: 4px solid var(--gold);
   padding: 15px;
   border-radius: 8px;
 }
+
 .answers {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
+
 .answer {
   width: 100%;
   text-align: left;
   min-height: 64px;
 }
+
 .answer.correct { background: #267449; }
 .answer.wrong { background: #a43838; }
+
 #feedback {
   background: #f0f1e9;
   padding: 15px;
   border-radius: 10px;
   margin-top: 18px;
 }
+
 .quiz-footer {
   display: flex;
   justify-content: space-between;
@@ -185,11 +240,14 @@ button:disabled { opacity: .45; cursor: default; }
   align-items: center;
   margin-top: 20px;
 }
+
 #result { text-align: center; }
+
 #result-score {
   font: bold 4rem Georgia,serif;
   color: var(--brown);
 }
+
 .certificate {
   background: #fff4cc;
   border: 8px double #b98a28;
@@ -198,34 +256,40 @@ button:disabled { opacity: .45; cursor: default; }
   margin: 25px auto;
   max-width: 600px;
 }
+
 .certificate h3 {
   color: #795314;
   font-size: 2rem;
 }
+
 footer {
   background: #1e261e;
   color: white;
   text-align: center;
   padding: 25px;
 }
+
 footer a { color: #ffe6bd; }
+
 @media(max-width:650px) {
   .grid,.answers { grid-template-columns: 1fr; }
   .quiz-box { padding: 17px; }
   nav { gap: 10px; font-size: 14px; }
+  .quiz-footer { flex-wrap: wrap; }
 }
 </style>
 </head>
+
 <body>
 
 <header id="top">
   <h1>French Revolution & Napoleon</h1>
   <p>1789–1815 • Liberty, Equality and Fraternity</p>
-  <p>Revolution • Reign of Terror • Napoleon • Empire • Waterloo</p>
+  <p>Revolution • Reign of Terror • Empire • Waterloo</p>
 </header>
 
 <nav>
-  <a class="main-menu" href="History.html">
+  <a class="main-menu" id="main-menu-top">
     ← Back to Main Menu
   </a>
   <a href="#about">About</a>
@@ -239,121 +303,179 @@ footer a { color: #ffe6bd; }
 
 <section id="about">
   <h2>About the French Revolution</h2>
+
   <p>
-    The French Revolution began in 1789, when people in France
-    challenged the power of King Louis XVI and the unfair
-    social system known as the Ancien Régime.
+    The French Revolution began in 1789.
+    People in France challenged King Louis XVI and
+    the unfair social structure known as the
+    Ancien Régime.
   </p>
+
   <p>
-    Economic difficulties, high taxation, food shortages and
-    Enlightenment ideas encouraged demands for political
-    change, liberty and equality.
+    High taxes, food shortages, rising bread prices,
+    government debt and Enlightenment ideas all
+    contributed to demands for change.
   </p>
+
   <p>
-    France eventually abolished its monarchy and established
-    a republic. However, the Revolution also led to violence,
-    political instability and the Reign of Terror.
+    France abolished the monarchy and established
+    a republic. However, the Revolution also
+    led to political violence and the Reign of Terror.
   </p>
+
   <p>
-    Napoleon Bonaparte rose to power in 1799. He introduced
-    important reforms and became Emperor of the French in
-    1804. His military campaigns changed Europe before his
-    final defeat at Waterloo in 1815.
+    Napoleon Bonaparte seized power in 1799 and
+    became Emperor in 1804.
+    He introduced reforms that changed French law,
+    government and education.
   </p>
+
+  <p>
+    Napoleon also fought wars across Europe.
+    His rule ended following his defeat at
+    the Battle of Waterloo in 1815.
+  </p>
+
   <div class="panel">
-    <strong>Big historical question:</strong>
-    Did Napoleon protect the achievements of the French
-    Revolution, or did he betray its ideals?
+    <strong>Big Historical Question:</strong>
+    Did Napoleon protect the achievements of
+    the French Revolution, or betray its ideals?
   </div>
 </section>
 
 <section id="topics">
   <h2>Key History Topics</h2>
+
   <div class="grid">
 
     <article class="card">
       <span class="tag">1780s–1789</span>
       <h3>🏛️ Causes of the Revolution</h3>
+
       <p>
         French society was divided into three estates.
-        The clergy and nobility enjoyed privileges, while
-        the Third Estate included most of the population.
       </p>
+
       <p>
-        Government debt, unequal taxation, poor harvests,
-        rising bread prices and Enlightenment ideas helped
-        create a revolutionary crisis.
+        The First Estate was the clergy.
+        The Second Estate was the nobility.
+        The Third Estate included peasants,
+        workers and the middle classes.
+      </p>
+
+      <p>
+        Unequal taxes, financial problems,
+        food shortages and Enlightenment ideas
+        helped cause the Revolution.
       </p>
     </article>
 
     <article class="card">
       <span class="tag">1789–1791</span>
       <h3>📜 Revolution and Rights</h3>
+
       <p>
-        The Tennis Court Oath challenged royal authority.
-        On 14 July 1789, crowds stormed the Bastille.
+        The Third Estate formed the National Assembly
+        and promised to create a constitution
+        during the Tennis Court Oath.
       </p>
+
       <p>
-        The National Assembly abolished many feudal
-        privileges and adopted the Declaration of the
-        Rights of Man and of the Citizen.
+        On 14 July 1789, Parisians stormed
+        the Bastille.
+      </p>
+
+      <p>
+        The Declaration of the Rights of Man
+        and of the Citizen promoted liberty
+        and equality before the law.
       </p>
     </article>
 
     <article class="card">
       <span class="tag">1792–1794</span>
-      <h3>⚖️ Republic and Reign of Terror</h3>
+      <h3>⚖️ Reign of Terror</h3>
+
       <p>
-        France became a republic in September 1792.
-        Louis XVI was executed in January 1793.
+        France became a republic in 1792.
+        King Louis XVI was executed in 1793.
       </p>
+
       <p>
-        During the Reign of Terror, revolutionary leaders,
-        including Robespierre, used emergency measures and
-        executions against perceived enemies.
+        Revolutionary leaders believed harsh
+        measures were necessary to protect
+        France from enemies.
+      </p>
+
+      <p>
+        Robespierre became one of the leading
+        figures associated with the Terror.
+        Thousands were executed.
       </p>
     </article>
 
     <article class="card">
       <span class="tag">1795–1799</span>
       <h3>🗳️ The Directory</h3>
+
       <p>
-        The Directory governed France after the Terror.
-        It struggled with economic problems, corruption
-        and political conflict.
+        After the Reign of Terror,
+        France was governed by the Directory.
       </p>
+
       <p>
-        Napoleon gained popularity through military success
-        and seized power in the coup of 18 Brumaire in 1799.
+        Its government faced corruption,
+        economic problems and political instability.
+      </p>
+
+      <p>
+        Napoleon became popular through
+        his military victories.
+        He seized power in November 1799.
       </p>
     </article>
 
     <article class="card">
       <span class="tag">1799–1815</span>
       <h3>👑 Napoleon Bonaparte</h3>
+
       <p>
-        Napoleon became First Consul and later Emperor.
-        He introduced the Napoleonic Code, strengthened
-        administration and reorganised education.
+        Napoleon became First Consul in 1799
+        and Emperor of the French in 1804.
       </p>
+
       <p>
-        However, he also censored opposition, concentrated
-        political power and restored slavery in French
-        colonies.
+        He introduced the Napoleonic Code,
+        strengthened the administration
+        and reorganised education.
+      </p>
+
+      <p>
+        However, he restricted political freedoms,
+        controlled the press and restored slavery
+        in French colonies.
       </p>
     </article>
 
     <article class="card">
       <span class="tag">1803–1815</span>
       <h3>⚔️ Napoleonic Wars</h3>
+
       <p>
-        Napoleon won major victories such as Austerlitz
-        in 1805, but faced resistance across Europe.
+        Napoleon fought major European powers,
+        including Britain, Austria, Prussia
+        and Russia.
       </p>
+
       <p>
-        The Peninsular War, invasion of Russia and
-        European coalitions weakened his empire.
-        His rule ended after Waterloo in 1815.
+        He won the Battle of Austerlitz in 1805,
+        but suffered major losses during
+        the Russian campaign in 1812.
+      </p>
+
+      <p>
+        In 1815, Napoleon was defeated
+        at Waterloo and exiled to Saint Helena.
       </p>
     </article>
 
@@ -367,48 +489,55 @@ footer a { color: #ffe6bd; }
 
 <section id="interpretations">
   <h2>Historical Interpretations</h2>
+
   <div class="grid">
+
     <article class="card">
       <h3>Was the Revolution inevitable?</h3>
       <p>
-        Some historians focus on economic inequality,
-        royal debt and Enlightenment ideas.
+        Some historians focus on economic inequality
+        and Enlightenment ideas.
         Others emphasise political mistakes,
         food shortages and immediate events.
       </p>
     </article>
+
     <article class="card">
       <h3>Did the Revolution create freedom?</h3>
       <p>
-        It challenged inherited privilege and promoted
-        individual rights, but many women, poor citizens
-        and enslaved people remained excluded from
-        full freedom and political equality.
+        The Revolution challenged inherited privilege,
+        but political and social inequalities remained.
+        Women and many poorer citizens still lacked
+        equal political rights.
       </p>
     </article>
+
     <article class="card">
       <h3>Did Napoleon betray the Revolution?</h3>
       <p>
-        Napoleon preserved important legal reforms and
-        encouraged advancement through talent.
-        However, he restricted political freedom and
-        established a hereditary empire.
+        Napoleon preserved legal reforms but
+        concentrated power in his own hands.
+        His rule combined revolutionary reforms
+        with authoritarian government.
       </p>
     </article>
+
     <article class="card">
       <h3>Why did Napoleon fall?</h3>
       <p>
         Military overexpansion, economic warfare,
         resistance in Spain, the failed Russian
-        campaign and strong enemy coalitions
-        all contributed to his defeat.
+        campaign and powerful coalitions
+        contributed to Napoleon's defeat.
       </p>
     </article>
+
   </div>
 </section>
 
 <section id="quiz">
   <h2>🇫🇷 French Revolution & Napoleon Quiz</h2>
+
   <div class="quiz-box">
 
     <p>
@@ -417,67 +546,123 @@ footer a { color: #ffe6bd; }
     </p>
 
     <div class="rules">
-      <p>📘 Begin with the 10-question Entry Quiz.</p>
-      <p>🏆 Score 10/10 to unlock University Level.</p>
-      <p>📝 Score below 10/10 to unlock Easier Practice.</p>
-      <p>🏅 Score 10/10 at University Level to win the
-      History Teacher Award.</p>
+      <p>📘 Entry Level: 10 questions</p>
+      <p>📝 Easier Practice: 10 questions</p>
+      <p>🎓 University Level: 10 questions</p>
+      <p>
+        Score 10/10 in Entry Level to unlock
+        University Level.
+      </p>
+      <p>
+        Score below 10/10 in Entry Level to
+        unlock Easier Practice.
+      </p>
+      <p>
+        🏆 Score 10/10 in University Level
+        to earn the History Teacher Award.
+      </p>
     </div>
 
     <div id="start-controls" class="buttons">
       <button onclick="startQuiz('entry')">
         Start Entry Quiz
       </button>
-      <button id="practice-button" class="secondary hidden"
+
+      <button
+        id="practice-button"
+        class="secondary hidden"
         onclick="startQuiz('practice')">
         Easier Practice Quiz
       </button>
-      <button id="university-button" class="secondary hidden"
+
+      <button
+        id="university-button"
+        class="secondary hidden"
         onclick="startQuiz('university')">
         University-Level Quiz
       </button>
     </div>
 
     <div id="question-view" class="hidden">
+
       <p><strong id="level-name"></strong></p>
       <p id="question-number"></p>
-      <div class="progress"><div id="progress-fill"></div></div>
+
+      <div class="progress">
+        <div id="progress-fill"></div>
+      </div>
+
       <div class="context">
         <strong>Historical Context</strong>
         <p id="context-text"></p>
       </div>
+
       <h3 id="question-text"></h3>
+
       <div class="answers" id="answers"></div>
+
       <div id="feedback" class="hidden"></div>
+
       <div class="quiz-footer">
         <strong id="live-score"></strong>
-        <button id="next-button" onclick="nextQuestion()" disabled>
+
+        <button
+          id="next-button"
+          onclick="nextQuestion()"
+          disabled>
           Next Question
         </button>
       </div>
     </div>
 
     <div id="result" class="hidden">
+
       <h3 id="result-title">Quiz Complete!</h3>
+
       <div id="result-score"></div>
+
       <p id="result-message"></p>
 
       <div id="certificate" class="certificate hidden">
         <div style="font-size:55px">🏆</div>
-        <strong>CERTIFICATE OF EXCELLENCE</strong>
+
+        <strong>
+          CERTIFICATE OF EXCELLENCE
+        </strong>
+
         <h3>History Teacher Award</h3>
-        <p>Awarded for exceptional historical knowledge.</p>
+
+        <p>
+          Awarded for exceptional historical knowledge.
+        </p>
+
         <h4>French Revolution & Napoleon</h4>
-        <p>University Level — Perfect Score 10/10</p>
+
+        <p>
+          University Level — Perfect Score 10/10
+        </p>
       </div>
 
-      <div class="buttons" style="justify-content:center">
-        <button onclick="startQuiz(mode)">Try Again</button>
-        <button id="continue-button" class="secondary hidden"
-          onclick="continueQuiz()">Continue</button>
-        <button class="secondary" onclick="returnToMenu()">
+      <div class="buttons"
+           style="justify-content:center">
+
+        <button onclick="startQuiz(mode)">
+          Try Again
+        </button>
+
+        <button
+          id="continue-button"
+          class="secondary hidden"
+          onclick="continueQuiz()">
+          Continue
+        </button>
+
+        <button
+          class="secondary"
+          onclick="returnToMenu()">
           Quiz Menu
         </button>
+
       </div>
     </div>
 
@@ -488,361 +673,571 @@ footer a { color: #ffe6bd; }
 
 <footer>
   <p>
-    <a href="History.html">← Back to Main History Menu</a>
+    <a id="main-menu-footer" class="main-menu">
+      ← Back to Main History Menu
+    </a>
   </p>
-  <p>© 2026 French Revolution & Napoleon History Website</p>
+
+  <p>
+    © 2026 French Revolution & Napoleon History Website
+  </p>
+
   <a href="#top">Back to Top ↑</a>
 </footer>
 
 <script>
 "use strict";
 
+// ===================================
+// MAIN MENU LINKS
+// ===================================
+
+// Change this address if your main History
+// website uses a different URL.
+
+const MAIN_MENU_URL =
+  "https://jujucheung.github.io/History.html";
+
+document.getElementById("main-menu-top").href =
+  MAIN_MENU_URL;
+
+document.getElementById("main-menu-footer").href =
+  MAIN_MENU_URL;
+
+
+// ===================================
 // HISTORICAL TIMELINE
+// ===================================
 
 const timeline = [
-  ["1789","Estates-General",
-   "Louis XVI called the Estates-General because of a financial crisis."],
-  ["20 June 1789","Tennis Court Oath",
-   "The National Assembly promised to create a constitution."],
-  ["14 July 1789","Storming of the Bastille",
-   "Parisians attacked the Bastille, symbolising resistance to royal authority."],
-  ["August 1789","Declaration of Rights",
-   "Revolutionaries proclaimed liberty and equality before the law."],
-  ["1791","Constitutional Monarchy",
-   "A constitution limited the king's political authority."],
-  ["1792","French Republic",
-   "The monarchy was overthrown and a republic proclaimed."],
-  ["1793","Execution of Louis XVI",
-   "The former king was executed by guillotine."],
-  ["1793–1794","Reign of Terror",
-   "Emergency government and political repression intensified."],
-  ["1794","Fall of Robespierre",
-   "Robespierre was overthrown and executed."],
-  ["1795","The Directory",
-   "France adopted a five-member executive government."],
-  ["1799","Napoleon Takes Power",
-   "Napoleon became First Consul following the coup of 18 Brumaire."],
-  ["1804","Napoleon Becomes Emperor",
-   "Napoleon became Emperor of the French and the Civil Code was adopted."],
-  ["1805","Battle of Austerlitz",
-   "Napoleon defeated Austrian and Russian forces."],
-  ["1806","Continental System",
-   "Napoleon attempted to restrict European trade with Britain."],
-  ["1808","Peninsular War",
-   "Conflict and resistance weakened French control in Iberia."],
-  ["1812","Invasion of Russia",
-   "Napoleon's army suffered catastrophic losses."],
-  ["1813","Battle of Leipzig",
-   "Coalition armies defeated Napoleon."],
-  ["1814","Exile to Elba",
-   "Napoleon abdicated and was exiled."],
-  ["1815","Battle of Waterloo",
-   "Napoleon was defeated and later exiled to Saint Helena."]
+  [
+    "1789",
+    "Estates-General",
+    "Louis XVI called the Estates-General because of a financial crisis."
+  ],
+  [
+    "20 June 1789",
+    "Tennis Court Oath",
+    "The National Assembly promised to create a constitution."
+  ],
+  [
+    "14 July 1789",
+    "Storming of the Bastille",
+    "Parisians stormed the Bastille, a symbol of royal authority."
+  ],
+  [
+    "August 1789",
+    "Declaration of Rights",
+    "Revolutionaries proclaimed liberty and equality before the law."
+  ],
+  [
+    "1791",
+    "Constitutional Monarchy",
+    "A new constitution limited the king's political power."
+  ],
+  [
+    "1792",
+    "French Republic",
+    "The monarchy was abolished and a republic proclaimed."
+  ],
+  [
+    "1793",
+    "Execution of Louis XVI",
+    "The former king was executed by guillotine."
+  ],
+  [
+    "1793–1794",
+    "Reign of Terror",
+    "Revolutionary leaders used emergency powers and political repression."
+  ],
+  [
+    "1794",
+    "Fall of Robespierre",
+    "Robespierre was overthrown and executed."
+  ],
+  [
+    "1795",
+    "The Directory",
+    "France adopted a five-member executive government."
+  ],
+  [
+    "1799",
+    "Napoleon Takes Power",
+    "Napoleon became First Consul following the coup of 18 Brumaire."
+  ],
+  [
+    "1804",
+    "Napoleon Becomes Emperor",
+    "Napoleon became Emperor of the French and introduced the Civil Code."
+  ],
+  [
+    "1805",
+    "Battle of Austerlitz",
+    "Napoleon defeated Austrian and Russian forces."
+  ],
+  [
+    "1806",
+    "Continental System",
+    "Napoleon attempted to restrict European trade with Britain."
+  ],
+  [
+    "1808",
+    "Peninsular War",
+    "War in Spain and Portugal weakened French control."
+  ],
+  [
+    "1812",
+    "Invasion of Russia",
+    "Napoleon's army suffered catastrophic losses."
+  ],
+  [
+    "1813",
+    "Battle of Leipzig",
+    "Coalition armies defeated Napoleon."
+  ],
+  [
+    "1814",
+    "Exile to Elba",
+    "Napoleon abdicated and was exiled."
+  ],
+  [
+    "1815",
+    "Battle of Waterloo",
+    "Napoleon was defeated and later exiled to Saint Helena."
+  ]
 ];
 
-const timelineList = document.getElementById("timeline-list");
+const timelineList =
+  document.getElementById("timeline-list");
 
 timeline.forEach(item => {
   const div = document.createElement("div");
   div.className = "timeline-item";
+
   const year = document.createElement("div");
   year.className = "year";
   year.textContent = item[0];
+
   const title = document.createElement("h3");
   title.textContent = item[1];
-  const desc = document.createElement("p");
-  desc.textContent = item[2];
-  div.append(year,title,desc);
+
+  const description = document.createElement("p");
+  description.textContent = item[2];
+
+  div.append(year, title, description);
   timelineList.appendChild(div);
 });
 
-// QUESTION BANK
-// q = question, o = options, a = correct index
-// c = historical context, e = answer explanation
+
+// ===================================
+// QUIZ QUESTION BANK
+// 10 QUESTIONS IN EACH LEVEL
+// 30 QUESTIONS IN TOTAL
+// ===================================
+
+// c = Historical context
+// q = Question
+// o = Answer options
+// a = Correct answer index
+// e = Explanation
 
 const quizBank = {
 
+
+// ===================================
+// ENTRY LEVEL — 10 QUESTIONS
+// ===================================
+
 entry: [
 {
- c:"French society was divided into three estates.",
- q:"Who belonged to the Third Estate?",
- o:["The clergy","The nobility","Commoners","The king"],
- a:2,
- e:"The Third Estate included peasants, workers and the bourgeoisie."
+  c: "French society was divided into three estates.",
+  q: "Who belonged to the Third Estate?",
+  o: [
+    "The clergy",
+    "The nobility",
+    "Commoners",
+    "The king"
+  ],
+  a: 2,
+  e: "The Third Estate included peasants, workers and the middle classes."
 },
 {
- c:"The French monarchy faced a serious financial crisis.",
- q:"Why did Louis XVI call the Estates-General in 1789?",
- o:["To crown Napoleon","To address financial problems",
-    "To invade Russia","To end the republic"],
- a:1,
- e:"The king needed support for financial and taxation reforms."
+  c: "France faced a major financial crisis in the 1780s.",
+  q: "Why did Louis XVI call the Estates-General in 1789?",
+  o: [
+    "To crown Napoleon",
+    "To address financial problems",
+    "To invade Russia",
+    "To end the republic"
+  ],
+  a: 1,
+  e: "Louis XVI needed support for financial and taxation reforms."
 },
 {
- c:"The Third Estate challenged traditional royal authority.",
- q:"What was promised in the Tennis Court Oath?",
- o:["To start a war","To write a constitution",
-    "To crown an emperor","To restore feudalism"],
- a:1,
- e:"Representatives promised not to disband until a constitution was established."
+  c: "The Third Estate challenged traditional royal authority.",
+  q: "What was promised in the Tennis Court Oath?",
+  o: [
+    "To start a war",
+    "To establish a constitution",
+    "To crown an emperor",
+    "To restore feudalism"
+  ],
+  a: 1,
+  e: "The National Assembly promised not to disband until a constitution was established."
 },
 {
- c:"The Bastille was a fortress-prison in Paris.",
- q:"When was the Bastille stormed?",
- o:["14 July 1789","21 January 1793",
-    "18 June 1815","2 December 1804"],
- a:0,
- e:"The storming of the Bastille took place on 14 July 1789."
+  c: "The Bastille was a fortress-prison in Paris.",
+  q: "When was the Bastille stormed?",
+  o: [
+    "14 July 1789",
+    "21 January 1793",
+    "18 June 1815",
+    "2 December 1804"
+  ],
+  a: 0,
+  e: "The storming of the Bastille took place on 14 July 1789."
 },
 {
- c:"The National Assembly adopted a declaration in 1789.",
- q:"Which principle was important in the Declaration of Rights?",
- o:["Absolute monarchy","Equality before the law",
-    "Feudal privilege","Royal dictatorship"],
- a:1,
- e:"The declaration promoted liberty and equality before the law."
+  c: "The National Assembly adopted a declaration in 1789.",
+  q: "Which principle appeared in the Declaration of Rights?",
+  o: [
+    "Absolute monarchy",
+    "Equality before the law",
+    "Feudal privilege",
+    "Royal dictatorship"
+  ],
+  a: 1,
+  e: "The declaration promoted liberty and equality before the law."
 },
 {
- c:"The monarchy was overthrown in August 1792.",
- q:"What government was proclaimed in September 1792?",
- o:["Republic","Empire","Absolute monarchy","Kingdom"],
- a:0,
- e:"France officially became a republic in September 1792."
+  c: "The French monarchy was overthrown in 1792.",
+  q: "What type of government replaced the monarchy?",
+  o: [
+    "Republic",
+    "Empire",
+    "Absolute monarchy",
+    "Kingdom"
+  ],
+  a: 0,
+  e: "France became a republic in September 1792."
 },
 {
- c:"Louis XVI was placed on trial by the National Convention.",
- q:"What happened to Louis XVI in 1793?",
- o:["He became emperor","He escaped","He was executed",
-    "He became First Consul"],
- a:2,
- e:"Louis XVI was executed by guillotine in January 1793."
+  c: "Louis XVI was placed on trial by the National Convention.",
+  q: "What happened to Louis XVI in 1793?",
+  o: [
+    "He became emperor",
+    "He escaped to Britain",
+    "He was executed",
+    "He became First Consul"
+  ],
+  a: 2,
+  e: "Louis XVI was executed by guillotine in January 1793."
 },
 {
- c:"The Committee of Public Safety exercised emergency powers.",
- q:"Who is most associated with the Reign of Terror?",
- o:["Napoleon III","Robespierre","Louis XIV","Wellington"],
- a:1,
- e:"Maximilien Robespierre was a leading figure during the Terror."
+  c: "The Committee of Public Safety exercised emergency powers.",
+  q: "Who was a leading figure during the Reign of Terror?",
+  o: [
+    "Napoleon III",
+    "Robespierre",
+    "Louis XIV",
+    "Wellington"
+  ],
+  a: 1,
+  e: "Maximilien Robespierre was closely associated with the Reign of Terror."
 },
 {
- c:"Napoleon rose through the revolutionary army.",
- q:"In what year did Napoleon seize power?",
- o:["1789","1793","1799","1815"],
- a:2,
- e:"Napoleon took power in November 1799."
+  c: "Napoleon gained popularity through military success.",
+  q: "In what year did Napoleon seize power?",
+  o: [
+    "1789",
+    "1793",
+    "1799",
+    "1815"
+  ],
+  a: 2,
+  e: "Napoleon seized power in November 1799 and became First Consul."
 },
 {
- c:"Napoleon briefly returned from exile in 1815.",
- q:"Which battle ended Napoleon's rule?",
- o:["Austerlitz","Trafalgar","Waterloo","Valmy"],
- a:2,
- e:"Napoleon lost the Battle of Waterloo on 18 June 1815."
+  c: "Napoleon returned to power briefly in 1815.",
+  q: "Which battle ended Napoleon's rule?",
+  o: [
+    "Austerlitz",
+    "Trafalgar",
+    "Waterloo",
+    "Valmy"
+  ],
+  a: 2,
+  e: "Napoleon was defeated at Waterloo on 18 June 1815."
 }
 ],
+
+
+// ===================================
+// EASIER PRACTICE — 10 QUESTIONS
+// ===================================
 
 practice: [
 {
- c:"The First Estate was a privileged social group.",
- q:"Who belonged to the First Estate?",
- o:["Clergy","Peasants","Soldiers","Merchants"],
- a:0,
- e:"The clergy belonged to the First Estate."
+  c: "The First Estate enjoyed important privileges.",
+  q: "Who belonged to the First Estate?",
+  o: [
+    "Clergy",
+    "Peasants",
+    "Soldiers",
+    "Merchants"
+  ],
+  a: 0,
+  e: "The clergy belonged to the First Estate."
 },
 {
- c:"France had a monarchy in 1789.",
- q:"Who was the king of France?",
- o:["Louis XIV","Louis XVI","Napoleon","Robespierre"],
- a:1,
- e:"Louis XVI was the king at the beginning of the Revolution."
+  c: "France was ruled by a monarchy in 1789.",
+  q: "Who was the King of France in 1789?",
+  o: [
+    "Louis XIV",
+    "Louis XVI",
+    "Napoleon",
+    "Robespierre"
+  ],
+  a: 1,
+  e: "Louis XVI ruled France when the Revolution began."
 },
 {
- c:"The Bastille was a fortress-prison.",
- q:"Where was the Bastille?",
- o:["London","Vienna","Paris","Rome"],
- a:2,
- e:"The Bastille was located in Paris."
+  c: "The Bastille was a fortress-prison.",
+  q: "In which city was the Bastille?",
+  o: [
+    "London",
+    "Vienna",
+    "Paris",
+    "Rome"
+  ],
+  a: 2,
+  e: "The Bastille was located in Paris."
 },
 {
- c:"The Revolution promoted political rights.",
- q:"Which was an important revolutionary ideal?",
- o:["Liberty","Absolute monarchy","Serfdom","Censorship"],
- a:0,
- e:"Liberty was a major revolutionary ideal."
+  c: "Revolutionaries demanded important political rights.",
+  q: "Which was a major revolutionary ideal?",
+  o: [
+    "Liberty",
+    "Absolute monarchy",
+    "Serfdom",
+    "Censorship"
+  ],
+  a: 0,
+  e: "Liberty, equality and fraternity became major revolutionary ideals."
 },
 {
- c:"The monarchy was abolished in 1792.",
- q:"What replaced the monarchy?",
- o:["An empire","A republic","A kingdom","A colony"],
- a:1,
- e:"The First French Republic was proclaimed in 1792."
+  c: "France abolished its monarchy in 1792.",
+  q: "What replaced the monarchy?",
+  o: [
+    "An empire",
+    "A republic",
+    "A kingdom",
+    "A colony"
+  ],
+  a: 1,
+  e: "The First French Republic was proclaimed in September 1792."
 },
 {
- c:"Louis XVI was executed in 1793.",
- q:"How was Louis XVI executed?",
- o:["By firing squad","By guillotine","In battle","By drowning"],
- a:1,
- e:"Louis XVI was executed by guillotine."
+  c: "Louis XVI was executed during the Revolution.",
+  q: "How was Louis XVI executed?",
+  o: [
+    "By firing squad",
+    "By guillotine",
+    "In battle",
+    "By drowning"
+  ],
+  a: 1,
+  e: "Louis XVI was executed by guillotine in January 1793."
 },
 {
- c:"Robespierre became a leading revolutionary politician.",
- q:"Which period was associated with Robespierre?",
- o:["The Renaissance","The Reign of Terror",
-    "The Cold War","The Restoration"],
- a:1,
- e:"Robespierre was closely associated with the Reign of Terror."
+  c: "Robespierre became a leading revolutionary politician.",
+  q: "Which period was associated with Robespierre?",
+  o: [
+    "The Renaissance",
+    "The Reign of Terror",
+    "The Cold War",
+    "The Restoration"
+  ],
+  a: 1,
+  e: "Robespierre was a leading figure during the Reign of Terror."
 },
 {
- c:"Napoleon seized power in 1799.",
- q:"What was Napoleon's first political title?",
- o:["First Consul","King of England","Pope","President"],
- a:0,
- e:"Napoleon became First Consul of France."
+  c: "Napoleon seized power in 1799.",
+  q: "What title did Napoleon first take?",
+  o: [
+    "First Consul",
+    "King of England",
+    "Pope",
+    "President of Britain"
+  ],
+  a: 0,
+  e: "Napoleon became First Consul following the coup of 1799."
 },
 {
- c:"Napoleon established an empire in 1804.",
- q:"What title did Napoleon take?",
- o:["President","Emperor","Prime Minister","Chancellor"],
- a:1,
- e:"Napoleon became Emperor of the French."
+  c: "Napoleon established an empire in 1804.",
+  q: "What title did Napoleon take in 1804?",
+  o: [
+    "President",
+    "Emperor",
+    "Prime Minister",
+    "Chancellor"
+  ],
+  a: 1,
+  e: "Napoleon became Emperor of the French in 1804."
 },
 {
- c:"Napoleon fought at Waterloo in 1815.",
- q:"Did Napoleon win at Waterloo?",
- o:["Yes","No","It was a draw","The battle was cancelled"],
- a:1,
- e:"Napoleon was defeated at Waterloo."
+  c: "Napoleon fought the Battle of Waterloo in 1815.",
+  q: "Did Napoleon win at Waterloo?",
+  o: [
+    "Yes",
+    "No",
+    "It was a draw",
+    "The battle was cancelled"
+  ],
+  a: 1,
+  e: "Napoleon was defeated by coalition forces at Waterloo."
 }
 ],
 
+
+// ===================================
+// UNIVERSITY LEVEL — 10 QUESTIONS
+// ===================================
+
 university: [
 {
- c:"The Estates-General traditionally voted by estate.",
- q:"Why did voting by order disadvantage the Third Estate?",
- o:[
-  "The privileged estates could outvote it",
-  "The king abolished all voting",
-  "The army controlled votes",
-  "The clergy refused to attend"
- ],
- a:0,
- e:"The First and Second Estates could combine to defeat the Third Estate."
+  c: "The Estates-General traditionally voted by estate.",
+  q: "Why did voting by order disadvantage the Third Estate?",
+  o: [
+    "The privileged estates could outvote it",
+    "The king abolished all voting",
+    "The army controlled the votes",
+    "The clergy refused to attend"
+  ],
+  a: 0,
+  e: "The First and Second Estates could combine to outvote the Third Estate."
 },
 {
- c:"The 1789 reforms challenged inherited privileges.",
- q:"Which interpretation best explains their limitations?",
- o:[
-  "All inequality disappeared",
-  "Legal privileges declined but other inequalities remained",
-  "Noble privileges increased",
-  "Women gained universal voting rights"
- ],
- a:1,
- e:"Property, gender and political inequalities continued despite legal reforms."
+  c: "The Revolution challenged inherited privileges.",
+  q: "Which interpretation best explains the limitations of the 1789 reforms?",
+  o: [
+    "All inequality disappeared",
+    "Legal privileges declined but other inequalities remained",
+    "Noble privileges increased",
+    "Women gained universal voting rights"
+  ],
+  a: 1,
+  e: "Property, gender and political inequalities continued despite revolutionary reforms."
 },
 {
- c:"Louis XVI initially remained king under constitutional reform.",
- q:"What event weakened trust in him in 1791?",
- o:[
-  "Waterloo",
-  "Flight to Varennes",
-  "Congress of Vienna",
-  "Russian campaign"
- ],
- a:1,
- e:"His attempted escape raised doubts about his loyalty to the Revolution."
+  c: "Louis XVI initially remained king under constitutional reform.",
+  q: "Which event weakened trust in Louis XVI in 1791?",
+  o: [
+    "Waterloo",
+    "Flight to Varennes",
+    "Congress of Vienna",
+    "Russian campaign"
+  ],
+  a: 1,
+  e: "His attempted escape during the Flight to Varennes raised doubts about his loyalty to the Revolution."
 },
 {
- c:"France faced war, rebellion and political rivalry during the Terror.",
- q:"Which explanation of the Terror is strongest?",
- o:[
-  "It resulted from one speech",
-  "War, ideology and political struggles combined",
-  "It was unrelated to internal conflict",
-  "It immediately restored absolute monarchy"
- ],
- a:1,
- e:"Historians emphasise several interacting causes, including wartime emergency."
+  c: "France experienced war, rebellion and political rivalry during the Terror.",
+  q: "Which explanation of the Reign of Terror is strongest?",
+  o: [
+    "It resulted from one speech",
+    "War, ideology and political struggles combined",
+    "It was unrelated to internal conflict",
+    "It immediately restored absolute monarchy"
+  ],
+  a: 1,
+  e: "The Terror developed through interacting factors including wartime emergencies, political conflict and revolutionary ideology."
 },
 {
- c:"Napoleon took power in 1799.",
- q:"Why was his rule both revolutionary and authoritarian?",
- o:[
-  "He restored the Bourbon king",
-  "He preserved reforms but concentrated political power",
-  "He abolished every civil law",
-  "He created universal female suffrage"
- ],
- a:1,
- e:"Napoleon preserved some revolutionary legal reforms while restricting political freedom."
+  c: "Napoleon seized political power in 1799.",
+  q: "Why was Napoleon's rule both revolutionary and authoritarian?",
+  o: [
+    "He restored the Bourbon king",
+    "He preserved reforms but concentrated political power",
+    "He abolished every civil law",
+    "He created universal female suffrage"
+  ],
+  a: 1,
+  e: "Napoleon preserved legal reforms while restricting political freedoms and concentrating power."
 },
 {
- c:"The Civil Code of 1804 standardised French law.",
- q:"What was a contradiction of the Napoleonic Code?",
- o:[
-  "It guaranteed complete gender equality",
-  "It strengthened civil equality for men but restricted married women",
-  "It restored all feudal estates",
-  "It abolished property rights"
- ],
- a:1,
- e:"The Code supported property rights and legal equality for men but reinforced patriarchy."
+  c: "The Civil Code of 1804 standardised French law.",
+  q: "What contradiction existed within the Napoleonic Code?",
+  o: [
+    "It guaranteed complete gender equality",
+    "It strengthened civil equality for men but restricted married women",
+    "It restored every feudal privilege",
+    "It abolished private property"
+  ],
+  a: 1,
+  e: "The Code supported legal equality for men but reinforced patriarchal authority."
 },
 {
- c:"Napoleon reformed religion and administration.",
- q:"What did the Concordat and prefect system demonstrate?",
- o:[
-  "Weak central government",
-  "Religious reconciliation and centralised authority",
-  "Independent provincial rule",
-  "The abolition of administration"
- ],
- a:1,
- e:"Napoleon stabilised relations with the Church while strengthening state control."
+  c: "Napoleon reformed religion and government.",
+  q: "What did the Concordat and prefect system demonstrate?",
+  o: [
+    "Weak central government",
+    "Religious reconciliation and centralised authority",
+    "Independent provincial rule",
+    "The abolition of administration"
+  ],
+  a: 1,
+  e: "Napoleon stabilised relations with the Catholic Church while strengthening central government."
 },
 {
- c:"Napoleon attempted to damage Britain's economy.",
- q:"Why was the Continental System difficult to enforce?",
- o:[
-  "Britain had no trade",
-  "Smuggling and competing economic interests",
-  "Napoleon controlled all seas",
-  "Britain supported the system"
- ],
- a:1,
- e:"Smuggling, economic costs and Britain's naval strength weakened the blockade."
+  c: "Napoleon tried to damage Britain's economy.",
+  q: "Why was the Continental System difficult to enforce?",
+  o: [
+    "Britain had no overseas trade",
+    "Smuggling and competing economic interests",
+    "Napoleon controlled all oceans",
+    "Britain supported the system"
+  ],
+  a: 1,
+  e: "Smuggling, economic costs, and Britain's naval strength weakened the Continental System."
 },
 {
- c:"Napoleon invaded Russia in 1812.",
- q:"What best explains the failure of this campaign?",
- o:[
-  "Winter alone",
-  "Logistics, disease, attrition, combat and weather",
-  "Waterloo in 1812",
-  "Russia immediately surrendered"
- ],
- a:1,
- e:"Supply failures, disease, fighting and weather all contributed to the disaster."
+  c: "Napoleon invaded Russia in 1812.",
+  q: "Which explanation best accounts for the failure of the Russian campaign?",
+  o: [
+    "Winter alone",
+    "Logistics, disease, attrition, combat and weather",
+    "The Battle of Waterloo",
+    "Russia surrendered immediately"
+  ],
+  a: 1,
+  e: "Supply difficulties, disease, fighting, exhaustion and severe weather all contributed to the disaster."
 },
 {
- c:"Napoleon was finally defeated in 1815.",
- q:"What was the lasting legacy of the Revolutionary and Napoleonic eras?",
- o:[
-  "Europe returned completely unchanged",
-  "Legal reform, nationalism and administrative changes continued",
-  "Every European country became a republic",
-  "Citizenship disappeared"
- ],
- a:1,
- e:"Many legal and political developments survived the restoration of monarchies."
+  c: "Napoleon was finally defeated in 1815.",
+  q: "What was the lasting legacy of the Revolutionary and Napoleonic eras?",
+  o: [
+    "Europe returned completely unchanged",
+    "Legal reform, nationalism and administrative changes continued",
+    "Every European country became a republic",
+    "Citizenship disappeared"
+  ],
+  a: 1,
+  e: "Legal reforms, nationalism and administrative changes continued to influence Europe after Napoleon."
 }
 ]
 
 };
 
+
+// ===================================
 // QUIZ ENGINE
+// ===================================
 
 const $ = id => document.getElementById(id);
-const storageKey = "french-revolution-quiz-progress-v1";
+
+const storageKey =
+  "french-revolution-napoleon-progress-v2";
 
 let unlocked = {
   practice: false,
@@ -850,10 +1245,15 @@ let unlocked = {
 };
 
 try {
-  const saved = JSON.parse(localStorage.getItem(storageKey));
-  if (saved) unlocked = {...unlocked,...saved};
+  const saved =
+    JSON.parse(localStorage.getItem(storageKey));
+
+  if (saved && typeof saved === "object") {
+    unlocked.practice = saved.practice === true;
+    unlocked.university = saved.university === true;
+  }
 } catch (error) {
-  // The quiz still works if local storage is unavailable.
+  // Quiz works even if storage is unavailable.
 }
 
 let mode = "entry";
@@ -869,22 +1269,37 @@ const levelNames = {
 
 function saveProgress() {
   try {
-    localStorage.setItem(storageKey,JSON.stringify(unlocked));
+    localStorage.setItem(
+      storageKey,
+      JSON.stringify(unlocked)
+    );
   } catch (error) {}
 }
 
 function updateButtons() {
   $("practice-button").classList.toggle(
-    "hidden",!unlocked.practice
+    "hidden",
+    !unlocked.practice
   );
+
   $("university-button").classList.toggle(
-    "hidden",!unlocked.university
+    "hidden",
+    !unlocked.university
   );
 }
 
 function startQuiz(level) {
-  if (level === "practice" && !unlocked.practice) return;
-  if (level === "university" && !unlocked.university) return;
+  if (!quizBank[level]) return;
+
+  if (
+    level === "practice" &&
+    !unlocked.practice
+  ) return;
+
+  if (
+    level === "university" &&
+    !unlocked.university
+  ) return;
 
   mode = level;
   index = 0;
@@ -896,41 +1311,64 @@ function startQuiz(level) {
   $("question-view").classList.remove("hidden");
 
   showQuestion();
-  $("quiz").scrollIntoView({behavior:"smooth"});
+
+  $("quiz").scrollIntoView({
+    behavior: "smooth"
+  });
 }
 
 function showQuestion() {
   const item = quizBank[mode][index];
+  const total = quizBank[mode].length;
+
   answered = false;
 
   $("level-name").textContent = levelNames[mode];
+
   $("question-number").textContent =
-    `Question ${index+1} of 10`;
-  $("progress-fill").style.width = `${index*10}%`;
+    `Question ${index + 1} of ${total}`;
+
+  $("progress-fill").style.width =
+    `${index / total * 100}%`;
+
   $("context-text").textContent = item.c;
   $("question-text").textContent = item.q;
-  $("live-score").textContent = `Score: ${score}/10`;
+
+  $("live-score").textContent =
+    `Score: ${score}/${total}`;
 
   $("feedback").classList.add("hidden");
+
   $("next-button").disabled = true;
+
   $("next-button").textContent =
-    index === 9 ? "See Results" : "Next Question";
+    index === total - 1
+      ? "See Results"
+      : "Next Question";
 
   const answers = $("answers");
   answers.replaceChildren();
 
-  item.o.forEach((option,i) => {
+  item.o.forEach((option, i) => {
     const button = document.createElement("button");
+
     button.className = "answer";
+
     button.textContent =
-      `${String.fromCharCode(65+i)}. ${option}`;
-    button.addEventListener("click",() => selectAnswer(i));
+      `${String.fromCharCode(65 + i)}. ${option}`;
+
+    button.addEventListener(
+      "click",
+      () => selectAnswer(i)
+    );
+
     answers.appendChild(button);
   });
 }
 
 function selectAnswer(choice) {
   if (answered) return;
+
   answered = true;
 
   const item = quizBank[mode][index];
@@ -938,16 +1376,23 @@ function selectAnswer(choice) {
 
   if (correct) score++;
 
-  [...$("answers").children].forEach((button,i) => {
-    button.disabled = true;
-    if (i === item.a) button.classList.add("correct");
-    else if (i === choice) button.classList.add("wrong");
-  });
+  [...$("answers").children].forEach(
+    (button, i) => {
+      button.disabled = true;
+
+      if (i === item.a) {
+        button.classList.add("correct");
+      } else if (i === choice) {
+        button.classList.add("wrong");
+      }
+    }
+  );
 
   const feedback = $("feedback");
   feedback.replaceChildren();
 
   const heading = document.createElement("strong");
+
   heading.textContent = correct
     ? "✓ Correct!"
     : "✗ Not quite.";
@@ -955,18 +1400,22 @@ function selectAnswer(choice) {
   const explanation = document.createElement("p");
   explanation.textContent = item.e;
 
-  feedback.append(heading,explanation);
+  feedback.append(heading, explanation);
   feedback.classList.remove("hidden");
 
-  $("live-score").textContent = `Score: ${score}/10`;
-  $("progress-fill").style.width = `${(index+1)*10}%`;
+  $("live-score").textContent =
+    `Score: ${score}/${quizBank[mode].length}`;
+
+  $("progress-fill").style.width =
+    `${(index + 1) / quizBank[mode].length * 100}%`;
+
   $("next-button").disabled = false;
 }
 
 function nextQuestion() {
   if (!answered) return;
 
-  if (index < 9) {
+  if (index < quizBank[mode].length - 1) {
     index++;
     showQuestion();
   } else {
@@ -978,51 +1427,79 @@ function showResults() {
   $("question-view").classList.add("hidden");
   $("result").classList.remove("hidden");
 
-  $("result-title").textContent = "Quiz Complete!";
-  $("result-score").textContent = `${score}/10`;
+  $("result-title").textContent =
+    "Quiz Complete!";
+
+  $("result-score").textContent =
+    `${score}/${quizBank[mode].length}`;
+
   $("certificate").classList.add("hidden");
   $("continue-button").classList.add("hidden");
 
   let message = "";
 
   if (mode === "entry") {
+
     if (score === 10) {
       unlocked.university = true;
+
       message =
-        "Outstanding! You unlocked University Level.";
+        "Outstanding! You scored 10/10 and " +
+        "unlocked University Level.";
+
       $("continue-button").textContent =
         "Start University-Level Quiz";
+
       $("continue-button").classList.remove("hidden");
+
     } else {
       unlocked.practice = true;
+
       message =
         "Good effort! You unlocked Easier Practice. " +
-        "Try to get 10/10 on the Entry Quiz.";
+        "Keep learning and aim for 10/10 " +
+        "on the Entry Quiz.";
+
       $("continue-button").textContent =
         "Start Easier Practice";
+
       $("continue-button").classList.remove("hidden");
     }
   }
 
   else if (mode === "practice") {
+
     message = score === 10
-      ? "Excellent! Return to Entry Level and aim for 10/10."
-      : "Keep practising and review the explanations.";
-    $("continue-button").textContent = "Return to Entry Quiz";
+      ? "Excellent! Return to Entry Level " +
+        "and aim for 10/10."
+      : "Keep practising and review " +
+        "the explanations.";
+
+    $("continue-button").textContent =
+      "Return to Entry Quiz";
+
     $("continue-button").classList.remove("hidden");
   }
 
   else if (mode === "university") {
+
     if (score === 10) {
+
       message =
-        "Perfect score! You earned the History Teacher Award!";
+        "Perfect score! You earned the " +
+        "History Teacher Award!";
+
       $("result-title").textContent =
         "Outstanding Achievement!";
+
       $("certificate").classList.remove("hidden");
+
     } else {
+
       message =
-        "Strong effort! Review your answers and try again " +
-        "to earn the History Teacher Award.";
+        "Strong effort! Review the explanations " +
+        "and try again to earn the " +
+        "History Teacher Award.";
     }
   }
 
@@ -1030,12 +1507,17 @@ function showResults() {
 
   saveProgress();
   updateButtons();
-  $("quiz").scrollIntoView({behavior:"smooth"});
+
+  $("quiz").scrollIntoView({
+    behavior: "smooth"
+  });
 }
 
 function continueQuiz() {
   if (mode === "entry") {
-    startQuiz(score === 10 ? "university" : "practice");
+    startQuiz(
+      score === 10 ? "university" : "practice"
+    );
   } else {
     startQuiz("entry");
   }
@@ -1045,11 +1527,13 @@ function returnToMenu() {
   $("result").classList.add("hidden");
   $("question-view").classList.add("hidden");
   $("start-controls").classList.remove("hidden");
+
   updateButtons();
 }
 
 updateButtons();
 
 </script>
+
 </body>
 </html>
