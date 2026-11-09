@@ -15,9 +15,13 @@
   --border: #e2dbcd;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
@@ -26,8 +30,34 @@ body {
   font: 16px/1.65 Arial, sans-serif;
 }
 
+/* BACK TO MAIN MENU - TOP LEFT CORNER */
+
+.back-menu {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: white;
+  color: var(--green);
+  padding: 12px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 100;
+  transition: background .2s, color .2s;
+}
+
+.back-menu:hover,
+.back-menu:focus-visible {
+  background: var(--gold);
+  color: #1e261e;
+}
+
+/* HEADER AND NAVIGATION */
+
 header {
-  padding: 75px 20px;
+  padding: 105px 20px 75px;
   background: linear-gradient(120deg,#18261f,#56634b);
   color: white;
   text-align: center;
@@ -38,7 +68,9 @@ header h1 {
   margin: 0 0 15px;
 }
 
-header p { color: #ffe6bd; }
+header p {
+  color: #ffe6bd;
+}
 
 nav {
   position: sticky;
@@ -49,7 +81,6 @@ nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
   gap: 15px;
 }
 
@@ -59,21 +90,11 @@ nav a {
   font-weight: bold;
 }
 
-nav a:hover { color: var(--gold); }
-
-.main-menu {
-  color: #ffe3a0;
-  border: 1px solid var(--gold);
-  border-radius: 8px;
-  padding: 6px 12px;
-  text-decoration: none;
-  display: inline-block;
+nav a:hover {
+  color: var(--gold);
 }
 
-.main-menu:hover {
-  background: var(--gold);
-  color: #1e261e;
-}
+/* MAIN CONTENT */
 
 main {
   max-width: 1100px;
@@ -83,7 +104,7 @@ main {
 
 section {
   margin-bottom: 55px;
-  scroll-margin-top: 100px;
+  scroll-margin-top: 95px;
 }
 
 h2 {
@@ -93,7 +114,9 @@ h2 {
   padding-bottom: 12px;
 }
 
-h3 { color: var(--brown); }
+h3 {
+  color: var(--brown);
+}
 
 .grid {
   display: grid;
@@ -101,7 +124,9 @@ h3 { color: var(--brown); }
   gap: 20px;
 }
 
-.card, .panel, .timeline-item {
+.card,
+.panel,
+.timeline-item {
   background: white;
   padding: 24px;
   border: 1px solid var(--border);
@@ -120,6 +145,8 @@ h3 { color: var(--brown); }
   font-weight: bold;
 }
 
+/* TIMELINE */
+
 .timeline {
   border-left: 4px solid var(--brown);
   padding-left: 25px;
@@ -127,7 +154,9 @@ h3 { color: var(--brown); }
   gap: 15px;
 }
 
-.timeline-item { position: relative; }
+.timeline-item {
+  position: relative;
+}
 
 .timeline-item::before {
   content: "";
@@ -145,6 +174,8 @@ h3 { color: var(--brown); }
   color: var(--brown);
   font-weight: bold;
 }
+
+/* QUIZ */
 
 .quiz-box {
   background: white;
@@ -179,7 +210,9 @@ button:disabled {
   cursor: default;
 }
 
-.secondary { background: var(--green); }
+.secondary {
+  background: var(--green);
+}
 
 .buttons {
   display: flex;
@@ -187,7 +220,9 @@ button:disabled {
   flex-wrap: wrap;
 }
 
-.hidden { display: none !important; }
+.hidden {
+  display: none !important;
+}
 
 .progress {
   background: #e5e3dd;
@@ -223,8 +258,13 @@ button:disabled {
   min-height: 64px;
 }
 
-.answer.correct { background: #267449; }
-.answer.wrong { background: #a43838; }
+.answer.correct {
+  background: #267449;
+}
+
+.answer.wrong {
+  background: #a43838;
+}
 
 #feedback {
   background: #f0f1e9;
@@ -241,12 +281,16 @@ button:disabled {
   margin-top: 20px;
 }
 
-#result { text-align: center; }
+#result {
+  text-align: center;
+}
 
 #result-score {
   font: bold 4rem Georgia,serif;
   color: var(--brown);
 }
+
+/* HISTORY TEACHER AWARD */
 
 .certificate {
   background: #fff4cc;
@@ -262,6 +306,8 @@ button:disabled {
   font-size: 2rem;
 }
 
+/* FOOTER */
+
 footer {
   background: #1e261e;
   color: white;
@@ -269,18 +315,51 @@ footer {
   padding: 25px;
 }
 
-footer a { color: #ffe6bd; }
+footer a {
+  color: #ffe6bd;
+}
+
+/* MOBILE DESIGN */
 
 @media(max-width:650px) {
-  .grid,.answers { grid-template-columns: 1fr; }
-  .quiz-box { padding: 17px; }
-  nav { gap: 10px; font-size: 14px; }
-  .quiz-footer { flex-wrap: wrap; }
+  .grid,
+  .answers {
+    grid-template-columns: 1fr;
+  }
+
+  .quiz-box {
+    padding: 17px;
+  }
+
+  nav {
+    gap: 10px;
+    font-size: 14px;
+  }
+
+  .quiz-footer {
+    flex-wrap: wrap;
+  }
+
+  .back-menu {
+    top: 12px;
+    left: 12px;
+    padding: 9px 12px;
+    font-size: 12px;
+  }
 }
 </style>
 </head>
 
 <body>
+
+<!-- BACK TO MASTER PAGE -->
+
+<a
+  href="https://jujucheung.github.io/"
+  class="back-menu"
+  aria-label="Back to Main Menu">
+  ← Back to Main Menu
+</a>
 
 <header id="top">
   <h1>French Revolution & Napoleon</h1>
@@ -289,9 +368,6 @@ footer a { color: #ffe6bd; }
 </header>
 
 <nav>
-  <a class="main-menu" id="main-menu-top">
-    ← Back to Main Menu
-  </a>
   <a href="#about">About</a>
   <a href="#topics">Topics</a>
   <a href="#timeline">Timeline</a>
@@ -301,14 +377,15 @@ footer a { color: #ffe6bd; }
 
 <main>
 
+<!-- ABOUT SECTION -->
+
 <section id="about">
   <h2>About the French Revolution</h2>
 
   <p>
     The French Revolution began in 1789.
     People in France challenged King Louis XVI and
-    the unfair social structure known as the
-    Ancien Régime.
+    the unfair social structure known as the Ancien Régime.
   </p>
 
   <p>
@@ -319,15 +396,14 @@ footer a { color: #ffe6bd; }
 
   <p>
     France abolished the monarchy and established
-    a republic. However, the Revolution also
-    led to political violence and the Reign of Terror.
+    a republic. However, the Revolution also led
+    to political violence and the Reign of Terror.
   </p>
 
   <p>
-    Napoleon Bonaparte seized power in 1799 and
-    became Emperor in 1804.
-    He introduced reforms that changed French law,
-    government and education.
+    Napoleon Bonaparte seized power in 1799 and became
+    Emperor in 1804. He introduced reforms that changed
+    French law, government and education.
   </p>
 
   <p>
@@ -342,6 +418,8 @@ footer a { color: #ffe6bd; }
     the French Revolution, or betray its ideals?
   </div>
 </section>
+
+<!-- KEY TOPICS -->
 
 <section id="topics">
   <h2>Key History Topics</h2>
@@ -381,8 +459,7 @@ footer a { color: #ffe6bd; }
       </p>
 
       <p>
-        On 14 July 1789, Parisians stormed
-        the Bastille.
+        On 14 July 1789, Parisians stormed the Bastille.
       </p>
 
       <p>
@@ -463,8 +540,7 @@ footer a { color: #ffe6bd; }
 
       <p>
         Napoleon fought major European powers,
-        including Britain, Austria, Prussia
-        and Russia.
+        including Britain, Austria, Prussia and Russia.
       </p>
 
       <p>
@@ -474,18 +550,22 @@ footer a { color: #ffe6bd; }
       </p>
 
       <p>
-        In 1815, Napoleon was defeated
-        at Waterloo and exiled to Saint Helena.
+        In 1815, Napoleon was defeated at Waterloo
+        and exiled to Saint Helena.
       </p>
     </article>
 
   </div>
 </section>
 
+<!-- TIMELINE -->
+
 <section id="timeline">
   <h2>Historical Timeline</h2>
   <div class="timeline" id="timeline-list"></div>
 </section>
+
+<!-- INTERPRETATIONS -->
 
 <section id="interpretations">
   <h2>Historical Interpretations</h2>
@@ -535,6 +615,8 @@ footer a { color: #ffe6bd; }
   </div>
 </section>
 
+<!-- QUIZ -->
+
 <section id="quiz">
   <h2>🇫🇷 French Revolution & Napoleon Quiz</h2>
 
@@ -549,14 +631,17 @@ footer a { color: #ffe6bd; }
       <p>📘 Entry Level: 10 questions</p>
       <p>📝 Easier Practice: 10 questions</p>
       <p>🎓 University Level: 10 questions</p>
+
       <p>
         Score 10/10 in Entry Level to unlock
         University Level.
       </p>
+
       <p>
         Score below 10/10 in Entry Level to
         unlock Easier Practice.
       </p>
+
       <p>
         🏆 Score 10/10 in University Level
         to earn the History Teacher Award.
@@ -564,6 +649,7 @@ footer a { color: #ffe6bd; }
     </div>
 
     <div id="start-controls" class="buttons">
+
       <button onclick="startQuiz('entry')">
         Start Entry Quiz
       </button>
@@ -581,6 +667,7 @@ footer a { color: #ffe6bd; }
         onclick="startQuiz('university')">
         University-Level Quiz
       </button>
+
     </div>
 
     <div id="question-view" class="hidden">
@@ -618,17 +705,13 @@ footer a { color: #ffe6bd; }
     <div id="result" class="hidden">
 
       <h3 id="result-title">Quiz Complete!</h3>
-
       <div id="result-score"></div>
-
       <p id="result-message"></p>
 
       <div id="certificate" class="certificate hidden">
         <div style="font-size:55px">🏆</div>
 
-        <strong>
-          CERTIFICATE OF EXCELLENCE
-        </strong>
+        <strong>CERTIFICATE OF EXCELLENCE</strong>
 
         <h3>History Teacher Award</h3>
 
@@ -638,9 +721,7 @@ footer a { color: #ffe6bd; }
 
         <h4>French Revolution & Napoleon</h4>
 
-        <p>
-          University Level — Perfect Score 10/10
-        </p>
+        <p>University Level — Perfect Score 10/10</p>
       </div>
 
       <div class="buttons"
@@ -673,8 +754,8 @@ footer a { color: #ffe6bd; }
 
 <footer>
   <p>
-    <a id="main-menu-footer" class="main-menu">
-      ← Back to Main History Menu
+    <a href="https://jujucheung.github.io/">
+      ← Back to Main Menu
     </a>
   </p>
 
@@ -687,23 +768,6 @@ footer a { color: #ffe6bd; }
 
 <script>
 "use strict";
-
-// ===================================
-// MAIN MENU LINKS
-// ===================================
-
-// Change this address if your main History
-// website uses a different URL.
-
-const MAIN_MENU_URL =
-  "https://jujucheung.github.io/History.html";
-
-document.getElementById("main-menu-top").href =
-  MAIN_MENU_URL;
-
-document.getElementById("main-menu-footer").href =
-  MAIN_MENU_URL;
-
 
 // ===================================
 // HISTORICAL TIMELINE
@@ -830,9 +894,9 @@ timeline.forEach(item => {
 
 
 // ===================================
-// QUIZ QUESTION BANK
+// QUESTION BANK
 // 10 QUESTIONS IN EACH LEVEL
-// 30 QUESTIONS IN TOTAL
+// 30 QUESTIONS TOTAL
 // ===================================
 
 // c = Historical context
@@ -843,9 +907,8 @@ timeline.forEach(item => {
 
 const quizBank = {
 
-
 // ===================================
-// ENTRY LEVEL — 10 QUESTIONS
+// ENTRY LEVEL - 10 QUESTIONS
 // ===================================
 
 entry: [
@@ -973,7 +1036,7 @@ entry: [
 
 
 // ===================================
-// EASIER PRACTICE — 10 QUESTIONS
+// EASIER PRACTICE - 10 QUESTIONS
 // ===================================
 
 practice: [
@@ -1101,7 +1164,7 @@ practice: [
 
 
 // ===================================
-// UNIVERSITY LEVEL — 10 QUESTIONS
+// UNIVERSITY LEVEL - 10 QUESTIONS
 // ===================================
 
 university: [
@@ -1199,7 +1262,7 @@ university: [
     "Britain supported the system"
   ],
   a: 1,
-  e: "Smuggling, economic costs, and Britain's naval strength weakened the Continental System."
+  e: "Smuggling, economic costs and Britain's naval strength weakened the Continental System."
 },
 {
   c: "Napoleon invaded Russia in 1812.",
@@ -1245,15 +1308,16 @@ let unlocked = {
 };
 
 try {
-  const saved =
-    JSON.parse(localStorage.getItem(storageKey));
+  const saved = JSON.parse(
+    localStorage.getItem(storageKey)
+  );
 
   if (saved && typeof saved === "object") {
     unlocked.practice = saved.practice === true;
     unlocked.university = saved.university === true;
   }
 } catch (error) {
-  // Quiz works even if storage is unavailable.
+  // Quiz still works when storage is unavailable.
 }
 
 let mode = "entry";
@@ -1351,7 +1415,6 @@ function showQuestion() {
 
   item.o.forEach((option, i) => {
     const button = document.createElement("button");
-
     button.className = "answer";
 
     button.textContent =
@@ -1392,7 +1455,6 @@ function selectAnswer(choice) {
   feedback.replaceChildren();
 
   const heading = document.createElement("strong");
-
   heading.textContent = correct
     ? "✓ Correct!"
     : "✗ Not quite.";
