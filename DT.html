@@ -1,437 +1,1034 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Philippe Starck | GCSE DT</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GCSE Design & Technology | AQA Revision</title>
 
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom right, #f4f7fb, #dde7f3);
-      color: #222;
-      line-height: 1.6;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    header {
-      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-      url('https://images.unsplash.com/photo-1519947486511-46149fa0a254?auto=format&fit=crop&w=1200&q=80');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      text-align: center;
-      padding: 90px 20px;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    header h1 {
-      font-size: 52px;
-      margin-bottom: 10px;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom right, #f4f7fb, #dde7f3);
+  color: #222;
+  line-height: 1.6;
+}
 
-    header p {
-      font-size: 20px;
-    }
+header {
+  background:
+    linear-gradient(rgba(0,0,0,.68), rgba(0,0,0,.68)),
+    url('https://images.unsplash.com/photo-1519947486511-46149fa0a254?auto=format&fit=crop&w=1200&q=80')
+    center / cover;
+  color: white;
+  text-align: center;
+  padding: 75px 20px;
+}
 
-    nav {
-      background: #111;
-      padding: 15px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+header h1 {
+  font-size: clamp(32px, 5vw, 52px);
+  margin: 0 0 10px;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 14px;
-      font-weight: bold;
-    }
+header p {
+  font-size: 19px;
+  margin: 0;
+}
 
-    nav a:hover {
-      color: #ffd54f;
-    }
+nav {
+  background: #111;
+  text-align: center;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
 
-    .container {
-      width: 88%;
-      max-width: 1100px;
-      margin: 35px auto;
-    }
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 13px;
+}
 
-    .section {
-      background: white;
-      padding: 30px;
-      border-radius: 18px;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
-      margin-bottom: 30px;
-    }
+nav a:hover {
+  color: #ffd54f;
+}
 
-    h2 {
-      font-size: 30px;
-      margin-bottom: 18px;
-      color: #111;
-      border-left: 6px solid #ffd54f;
-      padding-left: 12px;
-    }
+.container {
+  width: 88%;
+  max-width: 1100px;
+  margin: 35px auto;
+}
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 25px;
-      align-items: center;
-    }
+.section {
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 10px 24px #00000014;
+  margin-bottom: 30px;
+}
 
-    .about-grid img {
-      width: 100%;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
+h2 {
+  font-size: clamp(23px, 3vw, 30px);
+  margin: 0 0 18px;
+  border-left: 6px solid #ffd54f;
+  padding-left: 12px;
+  color: #111;
+}
 
-    .cards, .materials-grid, .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
+h3 {
+  margin: 0 0 10px;
+}
 
-    .card, .material-box, .info-card {
-      background: linear-gradient(to bottom right, #ffffff, #f7f7f7);
-      border-radius: 14px;
-      padding: 20px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
-      border-top: 5px solid #ffd54f;
-    }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
 
-    .quote {
-      background: linear-gradient(to right, #fff5cc, #ffe082);
-      padding: 20px;
-      border-radius: 12px;
-      font-style: italic;
-      font-size: 18px;
-      margin-top: 20px;
-    }
+.card {
+  background: linear-gradient(to bottom right, #fff, #f7f7f7);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 6px 14px #00000012;
+  border-top: 5px solid #ffd54f;
+}
 
-    .highlight {
-      color: #c68a00;
-      font-weight: bold;
-    }
+.card p {
+  font-size: 14px;
+}
 
-    .fact-box, .quiz-box {
-      margin-top: 20px;
-      background: #f4f7fb;
-      padding: 18px;
-      border-radius: 12px;
-    }
+.card button {
+  margin-top: 10px;
+}
 
-    .quiz-options button {
-      margin-right: 10px;
-      margin-bottom: 10px;
-    }
+.quiz-box {
+  background: #f4f7fb;
+  padding: 18px;
+  border-radius: 12px;
+  margin-top: 20px;
+}
 
-    button {
-      background: #111;
-      color: white;
-      border: none;
-      padding: 14px 22px;
-      font-size: 16px;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-top: 15px;
-    }
+button, .btn {
+  background: #111;
+  color: white;
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 19px;
+  font: 600 15px Arial, sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
 
-    button:hover {
-      background: #ffd54f;
-      color: #111;
-    }
+button:hover, .btn:hover {
+  background: #ffd54f;
+  color: #111;
+}
 
-    ul {
-      padding-left: 20px;
-      margin-top: 10px;
-    }
+button:focus-visible,
+nav a:focus-visible {
+  outline: 3px solid #d59600;
+  outline-offset: 3px;
+}
 
-    li {
-      margin-bottom: 10px;
-    }
+.topic {
+  display: none;
+}
 
-    footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 30px;
-      font-size: 15px;
-    }
+.topic.active {
+  display: block;
+}
 
-    .product-image {
-      width: 100%;
-      max-width: 420px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      display: block;
-      margin: 20px auto;
-    }
+.options {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0;
+}
 
-    @media (max-width: 850px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
+.options button {
+  text-align: left;
+  background: white;
+  color: #222;
+  border: 1px solid #bdc8d4;
+}
 
-      header h1 {
-        font-size: 40px;
-      }
+.options button:hover {
+  background: #fff5cc;
+}
 
-      header p {
-        font-size: 17px;
-      }
+.options button.correct {
+  background: #d9f5e4;
+  border-color: #198754;
+  color: #14532d;
+}
 
-      nav a {
-        display: inline-block;
-        margin: 8px 10px;
-      }
-    }
-  </style>
+.options button.incorrect {
+  background: #ffe1e1;
+  border-color: #cc3535;
+  color: #6e1010;
+}
+
+.options button:disabled {
+  cursor: default;
+}
+
+.feedback {
+  font-weight: bold;
+  min-height: 25px;
+}
+
+.progress {
+  font-size: 14px;
+  color: #555;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.hidden {
+  display: none;
+}
+
+.quote {
+  background: linear-gradient(to right, #fff5cc, #ffe082);
+  padding: 17px;
+  border-radius: 12px;
+  margin-top: 18px;
+}
+
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+@media (max-width: 600px) {
+  .container { width: 94%; }
+  .section { padding: 20px; }
+  nav { gap: 9px; }
+  nav a { font-size: 12px; }
+  header { padding: 55px 18px; }
+}
+</style>
 </head>
+
 <body>
 
-  <header>
-    <h1>Philippe Starck</h1>
-    <p>GCSE Design & Technology | Famous Designers Project</p>
-  </header>
+<header>
+  <h1>GCSE Design &amp; Technology</h1>
+  <p>AQA | Revision Notes &amp; Interactive Quizzes</p>
+</header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#style">Style</a>
-    <a href="#products">Products</a>
-    <a href="#materials">Colours & Materials</a>
-    <a href="#importance">Importance</a>
-    <a href="#facts">Facts</a>
-    <a href="#juicy">Juicy Salif</a>
-    <a href="#quiz">Quiz</a>
-  </nav>
+<nav>
+  <a href="https://jujucheung.github.io/">← Main Menu</a>
+  <a href="#home" id="homeNav">Topics</a>
+  <a href="#study" id="studyNav">Revision</a>
+  <a href="#quiz" id="quizNav">Quiz</a>
+</nav>
 
-  <div class="container">
+<main class="container">
 
-    <section class="section" id="about">
-      <h2>About Philippe Starck</h2>
-      <div class="about-grid">
-        <img src="https://www.starck.com/media/cache/thumb_800_0/uploads/media/default/0001/04/thumb_3558_default_big.jpeg" alt="Philippe Starck">
-        <div>
-          <p>
-            <span class="highlight">Philippe Starck</span> is a famous French designer known for
-            furniture, interiors and household products. His work often combines
-            <span class="highlight">function</span>, <span class="highlight">creativity</span>
-            and bold modern style.
-          </p>
-          <p style="margin-top:15px;">
-            He is important for GCSE DT because his products show how everyday objects can be both practical and visually striking.
-          </p>
-        </div>
-      </div>
-    </section>
+<section class="section" id="home">
+  <h2>GCSE DT Topics</h2>
+  <p>
+    Choose one of the six topics below to revise, then
+    test yourself with <strong>10 questions</strong>.
+  </p>
+  <div class="cards" id="topics"></div>
+</section>
 
-    <section class="section" id="style">
-      <h2>Design Style</h2>
-      <div class="cards">
-        <div class="card"><h3>Modern</h3><p>Clean shapes and simple forms.</p></div>
-        <div class="card"><h3>Creative</h3><p>Ordinary products look unusual and exciting.</p></div>
-        <div class="card"><h3>Functional</h3><p>Designed to be useful in everyday life.</p></div>
-        <div class="card"><h3>Innovative</h3><p>Experiments with materials and shape.</p></div>
-      </div>
-    </section>
-
-    <section class="section" id="products">
-      <h2>Famous Products</h2>
-      <ul>
-        <li><strong>Juicy Salif</strong> – a famous lemon squeezer with a tripod form.</li>
-        <li><strong>Louis Ghost Chair</strong> – a transparent modern chair.</li>
-        <li><strong>Interior Design</strong> – hotels, restaurants and stylish spaces.</li>
-        <li><strong>Household Products</strong> – furniture, bathroom items and kitchen products.</li>
-      </ul>
-      <div class="quote">
-        Philippe Starck’s work shows that products can be useful, artistic and memorable at the same time.
-      </div>
-    </section>
-
-    <section class="section" id="materials">
-      <h2>Colours and Materials</h2>
-      <div class="materials-grid">
-        <div class="material-box"><h3>Metallic Silver</h3><p>Creates a sleek, futuristic look.</p></div>
-        <div class="material-box"><h3>Transparent Plastic</h3><p>Gives products a light modern appearance.</p></div>
-        <div class="material-box"><h3>Black and Neutral Tones</h3><p>Feel elegant and sophisticated.</p></div>
-        <div class="material-box"><h3>Glossy Finishes</h3><p>Make products look eye-catching and premium.</p></div>
-      </div>
-    </section>
-
-    <section class="section" id="importance">
-      <h2>Why He Is Important</h2>
-      <p>
-        Philippe Starck is important because he changed the way people think about everyday
-        objects. He showed that products can be both <span class="highlight">useful</span> and
-        <span class="highlight">artistic</span>. His work combines creativity, function and innovation.
-      </p>
-    </section>
-
-    <section class="section" id="facts">
-      <h2>Quick Facts</h2>
-      <p>Click the button to show a random fact.</p>
-      <button onclick="showFact()">Show Fact</button>
-      <div class="fact-box" id="factBox">Your fact will appear here.</div>
-    </section>
-
-    <section class="section" id="juicy">
-      <h2>Juicy Salif</h2>
-      <p>
-        <span class="highlight">Juicy Salif</span> is one of Philippe Starck’s most famous products.
-        It is a lemon squeezer created for Alessi and is known for its unusual tripod shape and futuristic appearance.
-      </p>
-
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Juicy_Salif_and_lemon.jpg/800px-Juicy_Salif_and_lemon.jpg" alt="Juicy Salif lemon squeezer" class="product-image">
-
-      <div class="info-grid">
-        <div class="info-card"><h3>Designer</h3><p>Philippe Starck</p></div>
-        <div class="info-card"><h3>Manufacturer</h3><p>Alessi</p></div>
-        <div class="info-card"><h3>Material</h3><p>Cast aluminium</p></div>
-        <div class="info-card"><h3>Year</h3><p>1990</p></div>
-      </div>
-
-      <div class="info-grid">
-        <div class="info-card"><h3>Shape</h3><p>Tall, slim and tripod-like.</p></div>
-        <div class="info-card"><h3>Colour</h3><p>Silver metallic finish.</p></div>
-        <div class="info-card"><h3>Material Choice</h3><p>Aluminium is strong and lightweight.</p></div>
-        <div class="info-card"><h3>User Appeal</h3><p>Eye-catching and memorable.</p></div>
-      </div>
-
-      <div class="info-grid">
-        <div class="info-card">
-          <h3>Advantages</h3>
-          <ul>
-            <li>Very stylish and modern appearance</li>
-            <li>Easy to recognise and memorable</li>
-            <li>Strong material</li>
-            <li>Creative and original design</li>
-          </ul>
-        </div>
-        <div class="info-card">
-          <h3>Disadvantages</h3>
-          <ul>
-            <li>Not as practical as some other lemon squeezers</li>
-            <li>Can be harder to use</li>
-            <li>Sometimes valued more for looks than function</li>
-            <li>May be less comfortable for some users</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="quiz">
-      <h2>Mini Quiz</h2>
-      <p>Test your knowledge about Philippe Starck.</p>
-
-      <div class="quiz-box">
-        <p id="questionText"><strong>Question will appear here</strong></p>
-
-        <div class="quiz-options">
-          <button onclick="checkAnswer('A')" id="btnA">A</button>
-          <button onclick="checkAnswer('B')" id="btnB">B</button>
-          <button onclick="checkAnswer('C')" id="btnC">C</button>
-          <button onclick="checkAnswer('D')" id="btnD">D</button>
-        </div>
-
-        <div id="quizResult" style="margin-top:15px; font-weight:bold;">Click an answer to begin.</div>
-        <button onclick="nextQuestion()" style="margin-top:15px;">Next Question</button>
-
-        <div style="margin-top:15px; font-weight:bold;">
-          Score: <span id="score">0</span> / <span id="total">10</span>
-        </div>
-      </div>
-    </section>
-
+<section class="section topic" id="study">
+  <div class="row">
+    <h2 id="topicTitle">Revision Notes</h2>
+    <button onclick="showHome()">← All Topics</button>
   </div>
+  <p id="topicIntro"></p>
+  <div class="cards" id="notes"></div>
+  <div class="quote">
+    GCSE exam tip: Include a clear reason and a real-world
+    example when explaining a design decision.
+  </div>
+  <button onclick="startQuiz()">
+    Start 10-Question Quiz →
+  </button>
+</section>
 
-  <footer>
-    <p>Made for GCSE Design & Technology | Philippe Starck Project</p>
-  </footer>
+<section class="section topic" id="quiz">
+  <div class="row">
+    <h2 id="quizTitle">Topic Quiz</h2>
+    <button onclick="showNotes()">← Revision Notes</button>
+  </div>
+  <div id="quizBody" class="quiz-box"></div>
+</section>
 
-  <script>
-    const facts = [
-      "Philippe Starck is a French designer.",
-      "He is famous for designing Juicy Salif.",
-      "His designs are often modern, imaginative and practical.",
-      "He has designed furniture, interiors and household products.",
-      "The Louis Ghost Chair is one of his best-known chair designs."
-    ];
+</main>
 
-    function showFact() {
-      const randomIndex = Math.floor(Math.random() * facts.length);
-      document.getElementById("factBox").innerText = facts[randomIndex];
-    }
+<footer>
+  GCSE Design &amp; Technology | AQA Revision
+</footer>
 
-    const quizQuestions = [
-      { question: "1. What nationality is Philippe Starck?", A: "Italian", B: "French", C: "Spanish", D: "German", correct: "B" },
-      { question: "2. Which famous product was designed by Philippe Starck?", A: "Juicy Salif", B: "Anglepoise Lamp", C: "Mini Cooper", D: "Dyson Fan", correct: "A" },
-      { question: "3. What type of product is Juicy Salif?", A: "Chair", B: "Lamp", C: "Lemon squeezer", D: "Clock", correct: "C" },
-      { question: "4. Which company made Juicy Salif?", A: "IKEA", B: "Apple", C: "Kartell", D: "Alessi", correct: "D" },
-      { question: "5. What material is Juicy Salif mainly made from?", A: "Wood", B: "Cast aluminium", C: "Glass", D: "Rubber", correct: "B" },
-      { question: "6. Which word best describes Philippe Starck’s style?", A: "Old-fashioned", B: "Traditional", C: "Modern", D: "Boring", correct: "C" },
-      { question: "7. What is the Louis Ghost Chair known for?", A: "Being transparent", B: "Being made of stone", C: "Being very small", D: "Being made of cardboard", correct: "A" },
-      { question: "8. Philippe Starck is famous for designing...", A: "Only cars", B: "Only phones", C: "Furniture, interiors and products", D: "Only clothes", correct: "C" },
-      { question: "9. Why is Philippe Starck important in DT?", A: "He only copies old products", B: "He combines function and creativity", C: "He avoids unusual designs", D: "He only designs toys", correct: "B" },
-      { question: "10. Which finish is often linked to Starck’s products?", A: "Bright furry texture", B: "Rough muddy surface", C: "Sleek glossy finish", D: "Soft fabric only", correct: "C" }
-    ];
+<script>
 
-    let currentQuestion = 0;
-    let score = 0;
-    let answered = false;
+// =================================================
+// TOPICS AND QUESTIONS
+// =================================================
 
-    function loadQuestion() {
-      const q = quizQuestions[currentQuestion];
-      document.getElementById("questionText").innerHTML = "<strong>" + q.question + "</strong>";
-      document.getElementById("btnA").innerText = "A. " + q.A;
-      document.getElementById("btnB").innerText = "B. " + q.B;
-      document.getElementById("btnC").innerText = "C. " + q.C;
-      document.getElementById("btnD").innerText = "D. " + q.D;
-      document.getElementById("quizResult").innerText = "Choose one answer.";
-      answered = false;
-    }
+// Each question:
+// [question, [option A, B, C, D], correctIndex, explanation]
+// correctIndex: 0=A, 1=B, 2=C, 3=D
 
-    function checkAnswer(answer) {
-      if (answered) return;
-      const q = quizQuestions[currentQuestion];
+const data = [
 
-      if (answer === q.correct) {
+{
+  title: 'New and Emerging Technologies',
+  icon: '🤖',
+  intro: 'How technology changes industry, enterprise, people, culture, society and the environment.',
+
+  notes: [
+    ['Industry',
+      'Automation and robotics can improve speed and precision, but equipment has high initial costs and may change job roles.'],
+
+    ['Enterprise',
+      'Crowdfunding raises small investments from many supporters. Online retail reaches wider markets. Fair trade aims to improve trading conditions.'],
+
+    ['Sustainability',
+      'Finite resources can run out. Designers can reduce waste, reuse components and consider ecological footprints.'],
+
+    ['People and Society',
+      'Technology push starts with an innovation. Market pull starts with a customer need. Inclusive design considers people of different abilities and ages.'],
+
+    ['Culture and Environment',
+      'Products may reflect fashion, faiths and traditions. Designers consider pollution, resource use and lifecycle impacts.']
+  ],
+
+  questions: [
+    [
+      'Which is a benefit of industrial robots?',
+      ['More consistent accuracy', 'Unlimited free energy', 'No initial cost', 'No maintenance'],
+      0,
+      'Robots can carry out repetitive tasks accurately.'
+    ],
+    [
+      'What is crowdfunding?',
+      ['A type of factory robot', 'Raising money from many individuals', 'Waste disposal', 'A material property'],
+      1,
+      'Crowdfunding collects financial support from a large group.'
+    ],
+    [
+      'Which resource is finite?',
+      ['Wind', 'Sunlight', 'Crude oil', 'Tidal energy'],
+      2,
+      'Crude oil is a limited, non-renewable resource.'
+    ],
+    [
+      'What is market pull?',
+      ['Inventing something because a new technology exists', 'Designing in response to consumer demand', 'Making products without testing', 'Producing only one item'],
+      1,
+      'Market pull responds to a need or demand.'
+    ],
+    [
+      'What is technology push?',
+      ['A new invention creates a product opportunity', 'A customer requests a change', 'A product is recycled', 'A company lowers its price'],
+      0,
+      'Technology push happens when technological advances inspire new products.'
+    ],
+    [
+      'What is an ecological footprint?',
+      ['A shoe size', 'A measure of environmental demand', 'A robot component', 'A manufacturing schedule'],
+      1,
+      'It reflects the environmental resources used to support an activity or lifestyle.'
+    ],
+    [
+      'What does inclusive design aim to do?',
+      ['Serve only one age group', 'Make products usable by a wide range of people', 'Remove all product features', 'Avoid user research'],
+      1,
+      'Inclusive design considers the needs of different users.'
+    ],
+    [
+      'What can online retail help a business do?',
+      ['Reach customers beyond its local area', 'Avoid all delivery costs', 'Stop needing customer service', 'Eliminate competition'],
+      0,
+      'Online shops can reach more customers.'
+    ],
+    [
+      'Which is a potential disadvantage of automation?',
+      ['Consistent output', 'Improved precision', 'High setup costs', 'Repeatability'],
+      2,
+      'Automated systems may be expensive to buy and install.'
+    ],
+    [
+      'Which design choice can reduce environmental harm?',
+      ['Using excessive packaging', 'Designing for easy repair', 'Using unnecessary mixed materials', 'Preventing recycling'],
+      1,
+      'Repairability extends useful product life and can reduce waste.'
+    ]
+  ]
+},
+
+{
+  title: 'Energy Generation and Storage',
+  icon: '⚡',
+  intro: 'Renewable and non-renewable energy sources, and how energy is stored.',
+
+  notes: [
+    ['Renewable Sources',
+      'Solar, wind, hydroelectric, tidal and geothermal sources are replenished naturally. They can depend on location and weather.'],
+
+    ['Non-renewable Sources',
+      'Coal, oil and natural gas are finite fossil fuels. Burning them releases carbon dioxide.'],
+
+    ['Batteries',
+      'Rechargeable batteries store energy chemically and release it as electrical energy when needed.'],
+
+    ['Other Storage',
+      'Pumped-storage hydro moves water uphill when energy is available. It releases water through turbines when electricity is needed.'],
+
+    ['Choosing a Source',
+      'Designers consider reliability, cost, environmental impact and availability.']
+  ],
+
+  questions: [
+    [
+      'Which energy source is renewable?',
+      ['Coal', 'Oil', 'Wind', 'Natural gas'],
+      2,
+      'Wind is naturally replenished.'
+    ],
+    [
+      'Which of these is a fossil fuel?',
+      ['Solar', 'Natural gas', 'Tidal', 'Geothermal'],
+      1,
+      'Natural gas is a fossil fuel.'
+    ],
+    [
+      'What do batteries store energy as?',
+      ['Chemical energy', 'Sound energy', 'Light energy only', 'Gravitational energy only'],
+      0,
+      'Batteries use chemical reactions to store and release energy.'
+    ],
+    [
+      'What is one limitation of solar panels?',
+      ['They use sunlight', 'They work equally well at midnight', 'Their output depends on light levels', 'They always release smoke'],
+      2,
+      'Less sunlight usually means less electricity generated.'
+    ],
+    [
+      'Which process creates electricity from moving water?',
+      ['Hydroelectric power', 'Coal mining', 'Oil refining', 'Injection moulding'],
+      0,
+      'Hydroelectric systems use moving water to drive turbines.'
+    ],
+    [
+      'Why is energy storage useful?',
+      ['It makes electricity unnecessary', 'It helps supply electricity when generation is low', 'It removes all energy losses', 'It makes fossil fuels renewable'],
+      1,
+      'Stored energy can be used when demand is higher than generation.'
+    ],
+    [
+      'Which is a disadvantage of fossil fuels?',
+      ['They are finite and release CO2 when burned', 'They never produce electricity', 'They are all renewable', 'They need no transport'],
+      0,
+      'Fossil fuels are limited and burning them emits carbon dioxide.'
+    ],
+    [
+      'Which renewable source uses heat from the Earth?',
+      ['Wind', 'Geothermal', 'Solar photovoltaic', 'Tidal'],
+      1,
+      'Geothermal systems use heat from the Earth.'
+    ],
+    [
+      'In pumped-storage hydro, energy is stored by...',
+      ['Lifting water to a higher reservoir', 'Heating a plastic casing', 'Compressing paper', 'Changing the colour of a battery'],
+      0,
+      'Water gains gravitational potential energy when pumped uphill.'
+    ],
+    [
+      'Which factor matters when choosing energy for a product?',
+      ['Only colour', 'Only packaging', 'Reliability and environmental impact', 'Only brand name'],
+      2,
+      'Energy choices depend on reliability, cost and environmental effects.'
+    ]
+  ]
+},
+
+{
+  title: 'Developments in New Materials',
+  icon: '🧪',
+  intro: 'Smart materials, modern materials and their applications.',
+
+  notes: [
+    ['Smart Materials',
+      'These respond to a stimulus such as heat, light, pressure or electricity.'],
+
+    ['Thermochromic Pigments',
+      'Change colour when temperature changes. Used for temperature indicators.'],
+
+    ['Photochromic Pigments',
+      'Change colour or darken under ultraviolet light. Used in some lenses.'],
+
+    ['Shape-memory Alloys',
+      'Can return to a trained shape when heated. Used in specialised actuators and frames.'],
+
+    ['Composite and Modern Materials',
+      'Carbon-fibre composites offer high strength-to-weight ratios. Nanomaterials have specialised uses at very small scales.']
+  ],
+
+  questions: [
+    [
+      'What causes a thermochromic pigment to change?',
+      ['Temperature', 'Volume of music', 'Mass', 'Speed'],
+      0,
+      'Thermochromic pigments respond to temperature.'
+    ],
+    [
+      'What is a smart material?',
+      ['A material that responds to a stimulus', 'Any expensive material', 'Any metal', 'A material that cannot change'],
+      0,
+      'Smart materials respond to changes in conditions.'
+    ],
+    [
+      'What affects photochromic lenses?',
+      ['Ultraviolet light', 'Salt only', 'Loud sounds', 'Gravity'],
+      0,
+      'Photochromic materials react to ultraviolet light.'
+    ],
+    [
+      'What is a shape-memory alloy known for?',
+      ['Returning to a trained shape', 'Dissolving in water', 'Always being transparent', 'Producing its own fuel'],
+      0,
+      'Shape-memory alloys can recover their trained form under suitable conditions.'
+    ],
+    [
+      'Why use carbon-fibre composites?',
+      ['High strength-to-weight ratio', 'They are always cheap', 'They cannot be damaged', 'They are magnetic'],
+      0,
+      'They combine high strength with low mass.'
+    ],
+    [
+      'Which is an application of thermochromic pigment?',
+      ['Heat-sensitive mug print', 'Standard wooden ruler', 'Steel nail', 'Plain paper'],
+      0,
+      'Heat-sensitive prints can change colour with temperature.'
+    ],
+    [
+      'What does a composite material contain?',
+      ['Two or more combined constituents', 'Only pure copper', 'Only one chemical element', 'No materials'],
+      0,
+      'Composites combine materials to achieve useful properties.'
+    ],
+    [
+      'Which stimulus commonly changes a photochromic pigment?',
+      ['UV light', 'Magnetism only', 'Sound', 'Humidity only'],
+      0,
+      'Photochromic pigments react to UV exposure.'
+    ],
+    [
+      'What makes modern materials valuable to designers?',
+      ['Specialist useful properties', 'They never cost money', 'They work identically in every application', 'They always replace timber'],
+      0,
+      'Specialised properties can improve product performance.'
+    ],
+    [
+      'Why might a designer avoid a carbon-fibre composite?',
+      ['It may be expensive and hard to recycle', 'It has no strength', 'It is always heavier than steel', 'It is naturally transparent'],
+      0,
+      'Cost and end-of-life disposal can be limitations.'
+    ]
+  ]
+},
+
+{
+  title: 'Systems Approach to Designing',
+  icon: '💡',
+  intro: 'Inputs, processes, outputs, sensors and feedback in electronic systems.',
+
+  notes: [
+    ['Input',
+      'A sensor or switch detects a condition or user action, such as light, temperature or pressure.'],
+
+    ['Process',
+      'A microcontroller or circuit processes the input according to programmed rules.'],
+
+    ['Output',
+      'An LED, speaker, buzzer or motor responds to the processing stage.'],
+
+    ['Feedback',
+      'A sensor can monitor the output and allow the system to adjust itself.'],
+
+    ['Example',
+      'An automatic night light uses a light sensor → controller → LED.']
+  ],
+
+  questions: [
+    [
+      'What is an input?',
+      ['A sensor detecting a change', 'An LED glowing', 'A motor turning', 'A speaker making sound'],
+      0,
+      'Inputs gather information for the system.'
+    ],
+    [
+      'What is an LED usually used as?',
+      ['Output', 'Input', 'Processor', 'Fuel'],
+      0,
+      'An LED produces light as an output.'
+    ],
+    [
+      'Which is a processing component?',
+      ['Microcontroller', 'Buzzer', 'Lamp', 'Wheel'],
+      0,
+      'A microcontroller processes input information.'
+    ],
+    [
+      'Which device senses temperature?',
+      ['Thermistor', 'LED', 'Speaker', 'Motor'],
+      0,
+      'Thermistors change resistance with temperature.'
+    ],
+    [
+      'Which is an output device?',
+      ['Buzzer', 'Push switch', 'Light-dependent resistor', 'Temperature sensor'],
+      0,
+      'Buzzers produce sound.'
+    ],
+    [
+      'What is feedback?',
+      ['Using results to adjust system behaviour', 'Removing every sensor', 'Switching the system off permanently', 'Ignoring output'],
+      0,
+      'Feedback helps a system respond to its performance.'
+    ],
+    [
+      'In an automatic night light, what detects darkness?',
+      ['Light sensor', 'Motor', 'LED', 'Buzzer'],
+      0,
+      'A light sensor measures surrounding light.'
+    ],
+    [
+      'What is the correct order?',
+      ['Input → process → output', 'Output → process → input only', 'Process → output → input always', 'Output → input → process always'],
+      0,
+      'This is the standard systems model.'
+    ],
+    [
+      'Why are microcontrollers useful?',
+      ['They can follow programmed instructions', 'They generate unlimited power', 'They are all sensors', 'They require no electricity'],
+      0,
+      'Microcontrollers run programmed logic.'
+    ],
+    [
+      'What does an LDR respond to?',
+      ['Light', 'Sound', 'Mass', 'Temperature alone'],
+      0,
+      'An LDR changes resistance with light intensity.'
+    ]
+  ]
+},
+
+{
+  title: 'Mechanical Devices',
+  icon: '⚙️',
+  intro: 'Movement, levers, gears, cams, linkages and pulleys.',
+
+  notes: [
+    ['Four Movements',
+      'Linear: straight line. Rotary: circular. Reciprocating: repeated back-and-forth line. Oscillating: repeated swing around a pivot.'],
+
+    ['First-class Lever',
+      'The fulcrum is between the effort and the load. Example: seesaw.'],
+
+    ['Second-class Lever',
+      'The load is between the fulcrum and effort. Example: wheelbarrow.'],
+
+    ['Third-class Lever',
+      'The effort is between the fulcrum and load. Example: tweezers.'],
+
+    ['Gears, Cams and Linkages',
+      'Gears transmit rotary motion. Cams can convert rotary into reciprocating or oscillating motion. Linkages transfer motion and forces.'],
+
+    ['Pulleys',
+      'Belts and pulleys transmit motion between shafts. Pulley arrangements can also provide mechanical advantage.']
+  ],
+
+  questions: [
+    [
+      'What is in the centre of a first-class lever?',
+      ['Fulcrum', 'Load', 'Effort', 'Handle'],
+      0,
+      'The fulcrum lies between effort and load.'
+    ],
+    [
+      'What is in the centre of a second-class lever?',
+      ['Load', 'Fulcrum', 'Effort', 'Spring'],
+      0,
+      'The load lies between the fulcrum and effort.'
+    ],
+    [
+      'What is in the centre of a third-class lever?',
+      ['Effort', 'Fulcrum', 'Load', 'Gear'],
+      0,
+      'The effort is between the fulcrum and load.'
+    ],
+    [
+      'Which is a first-class lever?',
+      ['Seesaw', 'Wheelbarrow', 'Tweezers', 'Fishing rod'],
+      0,
+      'A seesaw pivots in the middle.'
+    ],
+    [
+      'Which is a second-class lever?',
+      ['Wheelbarrow', 'Seesaw', 'Tweezers', 'Scissors'],
+      0,
+      'A wheelbarrow places the load between the wheel and handles.'
+    ],
+    [
+      'What is rotary motion?',
+      ['Movement in a circle', 'Straight-line movement', 'Back-and-forth in a straight line', 'Swinging about a pivot'],
+      0,
+      'Rotary motion turns around an axis.'
+    ],
+    [
+      'What is reciprocating motion?',
+      ['Repeated back-and-forth in a line', 'Rotation only', 'One-way linear movement', 'Random vibration only'],
+      0,
+      'Reciprocating movement alternates in opposite linear directions.'
+    ],
+    [
+      'What can a cam and follower do?',
+      ['Convert rotation to reciprocating motion', 'Always store electricity', 'Change steel to plastic', 'Prevent all movement'],
+      0,
+      'The rotating cam drives the follower up and down.'
+    ],
+    [
+      'What happens to two meshing external gears?',
+      ['They rotate in opposite directions', 'They both stop', 'They rotate at identical speeds regardless of size', 'They must be made of wood'],
+      0,
+      'Meshing external gears turn in opposite directions.'
+    ],
+    [
+      'What is oscillating movement?',
+      ['Swinging repeatedly about a pivot', 'Moving straight once', 'Continuous full rotation', 'Melting under heat'],
+      0,
+      'Oscillating motion swings back and forth.'
+    ]
+  ]
+},
+
+{
+  title: 'Material Categories and Properties',
+  icon: '🧱',
+  intro: 'Timber, metals, polymers, textiles and material properties.',
+
+  notes: [
+    ['Material Families',
+      'Know examples of hardwoods, softwoods, manufactured boards, ferrous/non-ferrous metals, thermoplastics, thermosets and textiles.'],
+
+    ['Hardness and Toughness',
+      'Hardness: resistance to indentation or scratching. Toughness: ability to absorb energy without breaking.'],
+
+    ['Strength and Stiffness',
+      'Strength: resistance to failure under load. Stiffness: resistance to bending or deformation.'],
+
+    ['Ductility and Malleability',
+      'Ductility: ability to be drawn into wire. Malleability: ability to be hammered or rolled into sheets.'],
+
+    ['Thermoplastics and Thermosets',
+      'Thermoplastics can soften again on heating. Thermosetting polymers form permanent crosslinks after curing.']
+  ],
+
+  questions: [
+    [
+      'What does ductility mean?',
+      ['Can be drawn into wire', 'Resists scratches', 'Floats in water', 'Conducts light'],
+      0,
+      'Ductile materials can be drawn into wires.'
+    ],
+    [
+      'What is hardness?',
+      ['Resistance to scratching or indentation', 'Ability to stretch into wire', 'Resistance to heat only', 'Ability to absorb water'],
+      0,
+      'Hardness relates to resistance to surface deformation.'
+    ],
+    [
+      'What is toughness?',
+      ['Ability to resist impact and fracture', 'Resistance to rust only', 'Ability to conduct light', 'Ability to melt quickly'],
+      0,
+      'Tough materials absorb energy before breaking.'
+    ],
+    [
+      'What does malleability mean?',
+      ['Can be shaped into sheets', 'Can conduct sound only', 'Always transparent', 'Always magnetic'],
+      0,
+      'Malleable materials can be hammered or rolled into sheets.'
+    ],
+    [
+      'Which is a manufactured board?',
+      ['Plywood', 'Oak log', 'Steel bar', 'Cotton fabric'],
+      0,
+      'Plywood is made from bonded layers of veneer.'
+    ],
+    [
+      'Which is a ferrous metal?',
+      ['Mild steel', 'Aluminium', 'Copper', 'Brass'],
+      0,
+      'Mild steel contains iron.'
+    ],
+    [
+      'Which is a thermoplastic?',
+      ['Acrylic', 'Epoxy after curing', 'Melamine formaldehyde', 'Fully cured polyester resin'],
+      0,
+      'Acrylic can soften under heat and be reshaped.'
+    ],
+    [
+      'What does stiffness describe?',
+      ['Resistance to bending or deformation', 'Resistance to scratching only', 'Ability to stretch into wire', 'Ability to absorb water'],
+      0,
+      'Stiffness measures resistance to deformation.'
+    ],
+    [
+      'What does a non-ferrous metal lack as its main metal?',
+      ['Iron', 'Copper', 'Aluminium', 'Zinc'],
+      0,
+      'Non-ferrous metals do not have iron as their main constituent.'
+    ],
+    [
+      'Which property is important for a protective helmet?',
+      ['Toughness and impact resistance', 'High brittleness', 'Low strength', 'Water solubility'],
+      0,
+      'A helmet should resist impact and absorb energy.'
+    ]
+  ]
+}
+
+];
+
+// =================================================
+// WEBSITE FUNCTIONALITY
+// =================================================
+
+let topicIndex = 0;
+let qIndex = 0;
+let score = 0;
+let locked = false;
+
+const $ = id => document.getElementById(id);
+
+// Create topic cards
+$('topics').innerHTML = data.map((t, i) => `
+  <div class="card">
+    <div style="font-size:35px" aria-hidden="true">${t.icon}</div>
+    <h3>Topic ${i + 1}</h3>
+    <p><strong>${t.title}</strong></p>
+    <p>${t.intro}</p>
+    <button data-topic="${i}">Study Topic →</button>
+  </div>
+`).join('');
+
+// Topic card buttons
+document.querySelectorAll('[data-topic]').forEach(button => {
+  button.addEventListener('click', () => {
+    openTopic(Number(button.dataset.topic));
+  });
+});
+
+// Change between website sections
+function visibility(name) {
+  document.querySelectorAll('.topic').forEach(element => {
+    element.classList.remove('active');
+  });
+
+  if (name) {
+    $(name).classList.add('active');
+  }
+
+  $('home').style.display = name ? 'none' : 'block';
+
+  if (name) {
+    $(name).scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  } else {
+    $('home').scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+}
+
+// Open revision notes
+function openTopic(i) {
+  topicIndex = i;
+  const topic = data[i];
+
+  $('topicTitle').textContent =
+    `Topic ${i + 1}: ${topic.title}`;
+
+  $('topicIntro').textContent = topic.intro;
+
+  $('notes').innerHTML = topic.notes.map(note => `
+    <article class="card">
+      <h3>${note[0]}</h3>
+      <p>${note[1]}</p>
+    </article>
+  `).join('');
+
+  visibility('study');
+}
+
+// Back to all topics
+function showHome() {
+  visibility(null);
+}
+
+// Back to revision notes
+function showNotes() {
+  visibility('study');
+}
+
+// Start quiz
+function startQuiz() {
+  qIndex = 0;
+  score = 0;
+
+  $('quizTitle').textContent =
+    data[topicIndex].title + ' — Quiz';
+
+  visibility('quiz');
+  renderQuestion();
+}
+
+// Display a quiz question
+function renderQuestion() {
+  const question = data[topicIndex].questions[qIndex];
+  locked = false;
+
+  $('quizBody').innerHTML = `
+    <div class="row">
+      <b class="progress">Question ${qIndex + 1} of 10</b>
+      <b class="progress">Score: ${score}</b>
+    </div>
+
+    <h3 style="margin-top:20px">${question[0]}</h3>
+
+    <div class="options" id="options"></div>
+
+    <div id="feedback" class="feedback" aria-live="polite"></div>
+
+    <button id="next" class="hidden">
+      ${qIndex === 9 ? 'See Results' : 'Next Question →'}
+    </button>
+  `;
+
+  $('options').innerHTML = question[1].map((option, i) => `
+    <button data-choice="${i}">
+      ${String.fromCharCode(65 + i)}. ${option}
+    </button>
+  `).join('');
+
+  document.querySelectorAll('[data-choice]').forEach(button => {
+    button.addEventListener('click', () => {
+      if (locked) return;
+
+      locked = true;
+      const choice = Number(button.dataset.choice);
+
+      if (choice === question[2]) {
         score++;
-        document.getElementById("quizResult").innerText = "Correct!";
-      } else {
-        document.getElementById("quizResult").innerText = "Wrong. The correct answer was " + q.correct + ".";
       }
 
-      document.getElementById("score").innerText = score;
-      answered = true;
+      document.querySelectorAll('[data-choice]').forEach(answer => {
+        answer.disabled = true;
+
+        if (Number(answer.dataset.choice) === question[2]) {
+          answer.classList.add('correct');
+        } else if (answer === button) {
+          answer.classList.add('incorrect');
+        }
+      });
+
+      $('feedback').textContent =
+        (choice === question[2] ? '✓ Correct! ' : '✗ Not quite. ')
+        + question[3];
+
+      $('next').classList.remove('hidden');
+    });
+  });
+
+  $('next').onclick = () => {
+    qIndex++;
+
+    if (qIndex < 10) {
+      renderQuestion();
+    } else {
+      showResults();
     }
+  };
+}
 
-    function nextQuestion() {
-      if (currentQuestion < quizQuestions.length - 1) {
-        currentQuestion++;
-        loadQuestion();
-      } else {
-        document.getElementById("questionText").innerHTML = "<strong>Quiz finished!</strong>";
-        document.getElementById("btnA").style.display = "none";
-        document.getElementById("btnB").style.display = "none";
-        document.getElementById("btnC").style.display = "none";
-        document.getElementById("btnD").style.display = "none";
-        document.getElementById("quizResult").innerText = "Your final score is " + score + " out of 10.";
-      }
-    }
+// Display quiz results
+function showResults() {
+  let message = '';
 
-    document.getElementById("total").innerText = quizQuestions.length;
-    loadQuestion();
-  </script>
+  if (score === 10) {
+    message = '🏆 Perfect score! Achievement unlocked: 10/10!';
+  } else if (score >= 7) {
+    message = 'Great work! Review your mistakes and try again.';
+  } else {
+    message = 'Keep practising — revise the notes and try again.';
+  }
 
+  $('quizBody').innerHTML = `
+    <h3>Quiz completed!</h3>
+
+    <p style="font-size:28px">
+      <strong>${score} / 10</strong>
+    </p>
+
+    <p>${message}</p>
+
+    <button onclick="startQuiz()">Try Again</button>
+    <button onclick="showNotes()">Back to Notes</button>
+    <button onclick="showHome()">All Topics</button>
+  `;
+}
+
+// Navigation
+$('homeNav').onclick = event => {
+  event.preventDefault();
+  showHome();
+};
+
+$('studyNav').onclick = event => {
+  event.preventDefault();
+  openTopic(topicIndex);
+};
+
+$('quizNav').onclick = event => {
+  event.preventDefault();
+  startQuiz();
+};
+
+</script>
 </body>
 </html>
